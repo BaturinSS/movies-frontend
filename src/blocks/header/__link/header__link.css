@@ -1,0 +1,24 @@
+.header__link {
+  margin: 0;
+  padding: 0;
+  display: block;
+  text-decoration: none;
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 16px;
+  color: #FFFFFF;
+}
+
+@media screen and (min-width: 320px) {
+  .header__link {
+    font-size: calc((100vw - 768px)/(320 - 768) * (10 - 12) + 12px);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header__link {
+    font-size: 12px;
+  }
+}
