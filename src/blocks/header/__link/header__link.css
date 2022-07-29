@@ -8,7 +8,13 @@
   font-weight: 500;
   font-size: 10px;
   line-height: 16px;
+  transition: .5s;
   color: #FFFFFF;
+}
+
+.header__link:hover {
+  cursor: pointer;
+  opacity: .5;
 }
 
 @media screen and (min-width: 320px) {

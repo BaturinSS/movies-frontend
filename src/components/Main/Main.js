@@ -3,13 +3,15 @@ import './Main.css';
 import React, { useState } from "react";
 import { Link, Route } from "react-router-dom";
 
+import Promo from '../Promo/Promo'
+
 function Main(
 
 ) {
   return (
     <>
       <div className='main'>
-        <h1>Привет, я Main</h1>
+        <Promo />
       </div>
     </>
   )

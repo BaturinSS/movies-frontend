@@ -1,0 +1,17 @@
+.promo {
+  margin: 15px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #272727;
+  /* border: 1px solid blueviolet; */
+}
+
+@media screen and (min-width: 1000px) {
+  .promo {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+}
