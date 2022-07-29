@@ -1,18 +1,18 @@
-import './Header.css';
+import './Main.css';
 
 import React, { useState } from "react";
 import { Link, Route } from "react-router-dom";
 
-function Header(
+function Main(
 
 ) {
   return (
     <>
-      <div className='header'>
-        <h1>Привет, я Header</h1>
+      <div className='main'>
+        <h1>Привет, я Main</h1>
       </div>
     </>
   )
 }
 
-export default Header;
+export default Main;
