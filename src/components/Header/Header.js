@@ -8,13 +8,13 @@ function Header(
 ) {
   return (
     <>
-      <div className='header'>
+      <section className='header'>
         <Link to='/' className='header__logo'></Link>
-        <div className='header__group'>
+        <nav className='header__group'>
           <Link to='/sign-up' className='header__link'>Регистрация</Link>
           <Link to='/sign-in' className='header__link header__link_enter'>Войти</Link>
-        </div>
-      </div>
+        </nav>
+      </section>
     </>
   )
 }

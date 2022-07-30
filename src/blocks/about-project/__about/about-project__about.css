@@ -1,0 +1,26 @@
+.about-project__about {
+  margin: 0;
+  padding: 0 0 27px;
+  width: 100%;
+  max-width: 310px;
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: -.8px;
+  border-bottom: 1px solid #DADADA;
+}
+
+@media screen and (min-width: 320px) {
+  .about-project__about {
+    font-size: calc((100vw - 768px)/(320 - 768) * (18 - 22) + 22px);
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .about-project__about {
+    max-width: none;
+    padding-bottom: 25px;
+    font-size: 22px;
+  }
+}

@@ -4,15 +4,17 @@ import React, { useState } from "react";
 import { Link, Route } from "react-router-dom";
 
 import Promo from '../Promo/Promo'
+import AboutProject from '../AboutProject/AboutProject'
 
 function Main(
 
 ) {
   return (
     <>
-      <div className='main'>
+      <section className='main'>
         <Promo />
-      </div>
+        <AboutProject />
+      </section>
     </>
   )
 }

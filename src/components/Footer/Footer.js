@@ -8,9 +8,9 @@ function Footer(
 ) {
   return (
     <>
-      <div className='footer'>
+      <section className='footer'>
         <h1>Привет, я Footer</h1>
-      </div>
+      </section>
     </>
   )
 }
