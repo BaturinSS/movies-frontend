@@ -1,15 +1,14 @@
 import './AboutProject.css';
 
-import React, { useState } from "react";
-import { Link, Route } from "react-router-dom";
+import React from "react";
 
 function AboutProject(
 
 ) {
   return (
     <>
-      <section className='about-project'>
-        <h2 className='about-project__about'>
+      <section className='about-project default__block'>
+        <h2 className='about-project__about default__title'>
           О проекте
         </h2>
         <ul className='about-project__list'>
@@ -32,24 +31,24 @@ function AboutProject(
             </p>
           </li>
         </ul>
-        <div className='about-project__scheme'>
-          <div>
+        <article className='about-project__scheme'>
+          <article>
             <p className='about-project__stage'>
               1 неделя
             </p>
             <span className='about-project__comment'>
               Back-end
             </span>
-          </div>
-          <div>
+          </article>
+          <article>
             <p className='about-project__stage about-project__stage_type_color'>
               4 недели
             </p>
             <span className='about-project__comment'>
               Front-end
             </span>
-          </div>
-        </div>
+          </article>
+        </article>
       </section>
     </>
   )

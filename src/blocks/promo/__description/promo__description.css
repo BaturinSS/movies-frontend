@@ -8,7 +8,7 @@
   font-weight: 400;
   font-size: 29px;
   line-height: 37px;
-  letter-spacing: -1.2px;
+  letter-spacing: -0.04em;
   /* border: 1px solid red */
 }
 
@@ -42,7 +42,6 @@
 
 @media screen and (min-width: 768px) {
   .promo__description {
-    letter-spacing: -1.4px;
     font-size: calc((100vw - 1280px)/(768 - 1280) * (40 - 50) + 50px);
     line-height: calc((100vw - 1280px)/(768 - 1280) * (52 - 58) + 58px);
     margin-top: calc((100vw - 1280px)/(768 - 1280) * (355 - 165) + 165px);
@@ -58,7 +57,6 @@
 
 @media screen and (min-width: 1280px) {
   .promo__description {
-    letter-spacing: -1.8px;
     font-size: 50px;
     line-height: 58px;
     margin-top: 165px;

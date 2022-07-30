@@ -1,6 +1,6 @@
-.about-project {
+.default__block {
   margin: 0;
-  padding: 55px 18px;
+  padding: 55px 18px 87px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,28 +10,28 @@
 }
 
 @media screen and (min-width: 320px) {
-  .about-project {
+  .default__block {
     padding-top: calc((100vw - 768px)/(320 - 768) * (55 - 75) + 75px);
     padding-left: calc((100vw - 768px)/(320 - 768) * (18 - 50) + 50px);
     padding-right: calc((100vw - 768px)/(320 - 768) * (18 - 50) + 50px);
-    padding-bottom: calc((100vw - 768px)/(320 - 768) * (55 - 90) + 90px);
+    padding-bottom: calc((100vw - 768px)/(320 - 768) * (87 - 104) + 104px);
     row-gap: calc((100vw - 768px)/(320 - 768) * (63.5 - 70) + 70px);
   }
 }
 
 @media screen and (min-width: 768px) {
-  .about-project {
+  .default__block {
     padding-top: calc((100vw - 1280px)/(768 - 1280) * (75 - 97) + 97px);
     padding-left: calc((100vw - 1280px)/(768 - 1280) * (50 - 70) + 70px);
     padding-right: calc((100vw - 1280px)/(768 - 1280) * (50 - 70) + 70px);
-    padding-bottom: calc((100vw - 768px)/(320 - 768) * (55 - 90) + 90px);
+    padding-bottom: calc((100vw - 1280px)/(768 - 1280) * (104 - 116.5) + 116.5px);
     row-gap: 65px;
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .about-project {
-    padding: 97px 70px 110px;
+  .default__block {
+    padding: 97px 70px 116.5px;
     row-gap: 70px;
   }
 }

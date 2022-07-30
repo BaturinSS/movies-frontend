@@ -1,10 +1,10 @@
 import './Main.css';
 
-import React, { useState } from "react";
-import { Link, Route } from "react-router-dom";
+import React from "react";
 
 import Promo from '../Promo/Promo'
 import AboutProject from '../AboutProject/AboutProject'
+import Techs from '../Techs/Techs'
 
 function Main(
 
@@ -14,6 +14,7 @@ function Main(
       <section className='main'>
         <Promo />
         <AboutProject />
+        <Techs />
       </section>
     </>
   )

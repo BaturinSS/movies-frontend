@@ -1,0 +1,17 @@
+.techs__about {
+  margin: -3px 0 0;
+  padding: 0;
+  /* border: 1px solid red;*/
+}
+
+@media screen and (min-width: 500px) {
+  .techs__about {
+    margin-top: 12px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .techs__about {
+    margin-top: 17px;
+  }
+}

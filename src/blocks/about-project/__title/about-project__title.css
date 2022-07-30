@@ -5,7 +5,7 @@
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
-  letter-spacing: -.8px;
+  letter-spacing: -0.04em;
 }
 
 @media screen and (min-width: 320px) {
