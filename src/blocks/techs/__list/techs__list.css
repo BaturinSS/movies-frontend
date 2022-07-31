@@ -19,12 +19,12 @@
 
 @media screen and (min-width: 400px) {
   .techs__list {
-    min-width: 272px;
+    min-width: 366px;
     margin-top: 20px;
   }
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 747px) {
   .techs__list {
     min-width: 648px;
   }

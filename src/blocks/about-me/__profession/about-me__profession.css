@@ -1,0 +1,23 @@
+.about-me__profession {
+  margin: 0 0 20px;
+  padding: 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 16px;
+}
+
+@media screen and (min-width: 500px) {
+  .about-me__profession {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  .about-me__profession {
+    font-size: 18px;
+    line-height: 20px;
+  }
+}

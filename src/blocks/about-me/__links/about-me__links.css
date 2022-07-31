@@ -1,0 +1,29 @@
+.about-me__links {
+  margin: 40px 0 0;
+  padding: 0;
+  display: flex;
+  column-gap: 26px;
+  /* border: 1px solid green; */
+}
+
+@media screen and (min-width: 575px) {
+  .about-me__links {
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+  }
+}
+
+@media screen and (min-width: 747px) {
+  .about-me__links {
+    width: 100%;
+    grid-area: link;
+    margin-top: 80px;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  .about-me__links {
+    margin-top: 85px;
+  }
+}

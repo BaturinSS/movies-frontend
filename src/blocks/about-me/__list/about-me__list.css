@@ -1,0 +1,25 @@
+.about-me__list {
+  margin: 7px 0 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 400px) {
+  .about-me__list {
+    max-width: 500px;
+  }
+}
+
+@media screen and (min-width: 747px) {
+  .about-me__list {
+    max-width: 100%;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  .about-me__list {
+    margin-top: 0;
+  }
+}

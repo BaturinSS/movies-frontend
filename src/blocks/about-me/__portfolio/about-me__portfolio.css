@@ -1,0 +1,18 @@
+.about-me__portfolio {
+  margin: 0 0 20px;
+  padding: 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #A0A0A0;
+}
+
+@media screen and (min-width: 500px) {
+  .about-me__portfolio {
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+}

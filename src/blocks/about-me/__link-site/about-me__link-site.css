@@ -1,0 +1,29 @@
+.about-me__link-site {
+  margin: 20px 0 0;
+  padding: 0 0 19px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: -0.04em;
+  text-decoration: none;
+  border-bottom: 1px solid #E6E6E6;
+  color: #FFFFFF;
+}
+
+@media screen and (min-width: 768px) {
+  .about-me__link-site {
+    font-size: 28px;
+    line-height: 50px;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  .about-me__link-site {
+    font-size: 30px;
+  }
+}
