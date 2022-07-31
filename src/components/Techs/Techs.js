@@ -7,7 +7,7 @@ function Techs(
 ) {
   return (
     <>
-      <section className='techs default__block'>
+      <section className='techs default__block' id="techs">
         <h2 className='techs__heading default__title'>
           Технологии
         </h2>

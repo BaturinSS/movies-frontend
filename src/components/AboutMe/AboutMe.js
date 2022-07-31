@@ -10,7 +10,7 @@ function AboutMe(
 ) {
   return (
     <>
-      <section className='about-me default__block'>
+      <section className='about-me default__block' id="aboutMe">
         <h2 className='about-me__title default__title'>
           Студент
         </h2>

@@ -9,24 +9,24 @@ function NavTab(
   return (
     <>
       <nav className='nav-tab'>
-        <Link
-          to='/#aboutProject'
+        <a
+          href='/#aboutProject'
           className='nav-tab__link'
         >
           О проекте
-        </Link>
-        <Link
-          to='/#techs'
+        </a>
+        <a
+          href='/#techs'
           className='nav-tab__link '
         >
           Технологии
-        </Link>
-        <Link
-          to='/#aboutMe'
+        </a>
+        <a
+          href='/#aboutMe'
           className='nav-tab__link'
         >
           Студент
-        </Link>
+        </a>
       </nav>
     </>
   )
