@@ -1,4 +1,4 @@
-.about-me__link-site {
+.portfolio__link {
   margin: 20px 0 0;
   padding: 0 0 19px;
   display: flex;
@@ -16,20 +16,20 @@
   color: #FFFFFF;
 }
 
-.about-me__link-site:hover {
+.portfolio__link:hover {
   cursor: pointer;
   opacity: .5;
 }
 
-@media screen and (min-width: 768px) {
-  .about-me__link-site {
+@media screen and (min-width: 747px) {
+  .portfolio__link {
     font-size: 28px;
     line-height: 50px;
   }
 }
 
 @media screen and (min-width: 850px) {
-  .about-me__link-site {
+  .portfolio__link {
     font-size: 30px;
   }
 }

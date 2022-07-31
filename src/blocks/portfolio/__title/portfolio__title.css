@@ -1,4 +1,4 @@
-.about-me__portfolio {
+.portfolio__title {
   margin: 0 0 20px;
   padding: 0;
   font-family: "Inter", Arial, sans-serif;
@@ -10,7 +10,7 @@
 }
 
 @media screen and (min-width: 500px) {
-  .about-me__portfolio {
+  .portfolio__title {
     font-size: 18px;
     margin-top: 20px;
     margin-bottom: 30px;

@@ -3,7 +3,7 @@ import './AboutMe.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import linkIcon from '../../images/aboutMe/link-icon.svg'
+import Portfolio from '../Portfolio/Portfolio';
 
 function AboutMe(
 
@@ -49,53 +49,7 @@ function AboutMe(
             </Link>
           </article>
         </article>
-        <article className='about-me__list'>
-          <h3 className='about-me__portfolio'>
-            Портфолио
-          </h3>
-          <Link
-            className='about-me__link-site'
-            to={{
-              pathname: 'https://baturinss.github.io/how-to-learn'
-            }}
-            target="_blank"
-          >
-            Статичный сайт
-            <img
-              className='about-me__link-icon'
-              src={linkIcon}
-              alt="Иконка ссылки"
-            />
-          </Link>
-          <Link
-            className='about-me__link-site'
-            to={{
-              pathname: 'https://baturinss.github.io/russian-travel'
-            }}
-            target="_blank"
-          >
-            Адаптивный сайт
-            <img
-              className='about-me__link-icon'
-              src={linkIcon}
-              alt="Иконка ссылки"
-            />
-          </Link>
-          <Link
-            className='about-me__link-site'
-            to={{
-              pathname: 'https://server-mesto.ru'
-            }}
-            target="_blank"
-          >
-            Одностраничное приложение
-            <img
-              className='about-me__link-icon'
-              src={linkIcon}
-              alt="Иконка ссылки"
-            />
-          </Link>
-        </article>
+        <Portfolio />
       </section>
     </>
   )
