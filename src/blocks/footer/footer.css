@@ -1,3 +1,29 @@
 .footer {
-  border: 1px solid green;
+  padding: 42px 10px 10px;
+  row-gap: 31px;
+  /* border: 1px solid green; */
+}
+
+@media screen and (min-width: 500px) {
+  .footer {
+    padding-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .footer {
+    row-gap: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  .footer {
+    padding-top: 70px;
+    padding-left: 70px;
+    padding-right: 70px;
+  }
 }

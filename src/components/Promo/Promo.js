@@ -1,7 +1,6 @@
 import './Promo.css';
 
-import React, { useState } from "react";
-import { Link, Route } from "react-router-dom";
+import React from "react";
 
 import NavTab from '../NavTab/NavTab'
 

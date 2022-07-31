@@ -6,7 +6,7 @@
   /* border: 1px solid green; */
 }
 
-@media screen and (min-width: 575px) {
+@media screen and (min-width: 530px) {
   .about-me__links {
     margin-left: auto;
     margin-right: auto;
