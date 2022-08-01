@@ -1,8 +1,8 @@
-import './NotFound.css';
+import './NotFoundPage.css';
 
 import { useHistory } from 'react-router-dom';
 
-function NotFound() {
+function NotFoundPage() {
   const history = useHistory();
 
   function handleClick() {
@@ -30,4 +30,4 @@ function NotFound() {
   );
 }
 
-export default NotFound;
+export default NotFoundPage;

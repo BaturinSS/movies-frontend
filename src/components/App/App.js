@@ -7,14 +7,16 @@ import { Route, Switch } from 'react-router-dom';
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 import scrollLock from 'scroll-lock';
 
+//* Components
 import Header from '../Header/Header';
-import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
-import NotFound from '../NotFound/NotFound';
 
+//* Pages
+import AboutProjectPage from '../../pages/AboutProject/AboutProjectPage';
+import NotFoundPage from '../../pages/NotFound/NotFoundPage';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   const isOpen = isOpenMenu;
@@ -54,13 +56,13 @@ function App() {
       <Switch>
 
         <Route path="/" exact>
-          <Header
+          <AboutProjectPage
             isLoggedIn={isLoggedIn}
             closeOpenMenu={closeOpenMenu}
             isOpenMenu={isOpenMenu}
+            Header={Header}
+            Footer={Footer}
           />
-          <Main />
-          <Footer />
         </Route>
 
         <Route path="/sign-up" exact>
@@ -111,7 +113,7 @@ function App() {
         </Route>
 
         <Route path="*">
-          <NotFound />
+          <NotFoundPage />
         </Route>
 
       </Switch>

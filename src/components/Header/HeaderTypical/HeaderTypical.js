@@ -1,14 +1,14 @@
-import './Header.css';
+import './HeaderTypical.css';
 
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-import HeaderLogoLink from './HeaderLogoLink/HeaderLogoLink';
-import HeaderNotLogin from './HeaderNotLogin/HeaderNotLogin';
-import HeaderLogin from './HeaderLogin/HeaderLogin';
-import HeaderAuth from './HeaderAuth/HeaderAuth';
+import HeaderNotLogin from '../HeaderNotLogin/HeaderNotLogin';
+import HeaderLogin from '../HeaderLogin/HeaderLogin';
+import HeaderAuth from '../HeaderAuth/HeaderAuth';
 
-function Header({
+function HeaderTypical({
+  children,
   isLoggedIn,
   closeOpenMenu,
   isOpenMenu,
@@ -18,7 +18,7 @@ function Header({
   return (
     <>
       <section className={`header ${isSignIn ? 'header_auth' : ''}`}>
-        <HeaderLogoLink />
+        {children}
 
         {!isLoggedIn && !isSignIn && <HeaderNotLogin />}
 
@@ -35,4 +35,4 @@ function Header({
   )
 }
 
-export default Header;
+export default HeaderTypical;
