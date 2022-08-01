@@ -11,9 +11,9 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^5.2.1",
     "react-scripts": "5.0.1",
+    "scroll-lock": "^2.1.5",
     "web-vitals": "^2.1.4"
   },
-  "devDependencies": {},
   "scripts": {
     "start": "set PORT=3106 && react-scripts start",
     "build": "react-scripts build",

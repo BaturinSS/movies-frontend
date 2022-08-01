@@ -1,20 +1,24 @@
 import './Header.css';
 
 import React from "react";
-import { Link } from "react-router-dom";
 
-function Header(
+import HeaderTypical from '../HeaderTypical/HeaderTypical';
+import HeaderLogoLink from '../HeaderLogoLink/HeaderLogoLink';
 
-) {
+function Header({
+  isLoggedIn,
+  closeOpenMenu,
+  isOpenMenu,
+}) {
   return (
     <>
-      <section className='header'>
-        <Link to='/' className='header__logo'></Link>
-        <nav className='header__group'>
-          <Link to='/sign-up' className='header__link'>Регистрация</Link>
-          <Link to='/sign-in' className='header__link header__link_enter'>Войти</Link>
-        </nav>
-      </section>
+      <HeaderTypical
+        isLoggedIn={isLoggedIn}
+        closeOpenMenu={closeOpenMenu}
+        isOpenMenu={isOpenMenu}
+      >
+        <HeaderLogoLink />
+      </HeaderTypical >
     </>
   )
 }

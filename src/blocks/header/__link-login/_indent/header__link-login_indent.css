@@ -1,0 +1,23 @@
+.header__link-login_indent {
+  margin-bottom: 50px;
+  font-size: 13px;
+  line-height: 22px;
+}
+
+@media screen and (min-width: 768px) {
+  .header__link-login_indent {
+    margin-bottom: 90px;
+  }
+}
+
+@media screen and (min-width: 770px) {
+  .header__link-login_indent {
+    margin: 0 0 0 calc((100vw - 1280px)/(770 - 1280) * (140 - 370) + 370px);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .header__link-login_indent {
+    margin: 0 0 0 370px;
+  }
+}
