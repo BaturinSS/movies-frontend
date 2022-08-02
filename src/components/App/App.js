@@ -1,11 +1,9 @@
 import './App.css';
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Route, Switch } from 'react-router-dom';
 
-// eslint-disable-next-line no-unused-vars
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
-import scrollLock from 'scroll-lock';
 
 //* Components
 import Header from '../Header/Header';
@@ -13,6 +11,8 @@ import Footer from '../Footer/Footer';
 
 //* Pages
 import AboutProjectPage from '../../pages/AboutProject/AboutProjectPage';
+import RegistrationPage from '../../pages/RegistrationPage/RegistrationPage';
+import AuthenticationPage from '../../pages/AuthenticationPage/AuthenticationPage';
 import NotFoundPage from '../../pages/NotFound/NotFoundPage';
 
 function App() {
@@ -22,11 +22,11 @@ function App() {
   const isOpen = isOpenMenu;
 
   const disableScroll = () => {
-    scrollLock.disablePageScroll();
+    disablePageScroll();
   };
 
   const enableScroll = () => {
-    scrollLock.enablePageScroll();
+    enablePageScroll();
   };
 
   const closeOpenMenu = () => {
@@ -41,8 +41,8 @@ function App() {
   useEffect(() => {
     if (!isOpen) return;
     function handleOverlay(event) {
-      if (event.target.classList.contains('header__items_opened')
-        || event.target.classList.contains('header__close-menu')) {
+      if (event.target.classList.contains('open-popup')
+        || event.target.classList.contains('close-popup')) {
         closeOpenMenu();
       }
     };
@@ -51,36 +51,42 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
+  const onSubmitForm = () => {
+    console.log('submit')
+  }
+
   return (
     <>
       <Switch>
 
         <Route path="/" exact>
           <AboutProjectPage
+            Header={Header}
+            Footer={Footer}
             isLoggedIn={isLoggedIn}
             closeOpenMenu={closeOpenMenu}
             isOpenMenu={isOpenMenu}
-            Header={Header}
-            Footer={Footer}
           />
         </Route>
 
         <Route path="/sign-up" exact>
-          <Header
+          <RegistrationPage
+            Header={Header}
             isLoggedIn={isLoggedIn}
             closeOpenMenu={closeOpenMenu}
             isOpenMenu={isOpenMenu}
+            onSubmitForm={onSubmitForm}
           />
-          <h1>Hello, is Register!!!</h1>
         </Route>
 
         <Route path="/sign-in" exact>
-          <Header
+          <AuthenticationPage
+            Header={Header}
             isLoggedIn={isLoggedIn}
             closeOpenMenu={closeOpenMenu}
             isOpenMenu={isOpenMenu}
+            onSubmitForm={onSubmitForm}
           />
-          <h1>Hello, is Login!!!</h1>
         </Route>
 
         <Route path="/profile" exact>

@@ -8,7 +8,7 @@ function Footer(
 ) {
   return (
     <>
-      <section className='footer default__block'>
+      <section className='footer'>
         <h2 className='footer__title'>
           Учебный проект Яндекс.Практикум х BeatFilm.
         </h2>

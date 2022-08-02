@@ -3,16 +3,12 @@ import './HeaderAuth.css';
 import React from "react";
 
 function HeaderAuth({
-  currentPath,
+  textGreetings,
 }) {
   return (
     <>
       <h1
-        className='header__title'>{
-          currentPath === '/sign-in'
-            ? 'Добро пожаловать!'
-            : 'Рады видеть!'
-        }
+        className='header__title'>{textGreetings}
       </h1>
     </>
   )

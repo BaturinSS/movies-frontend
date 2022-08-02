@@ -1,7 +1,5 @@
 import './AboutProjectPage.css';
 
-import React from "react";
-
 import MainAboutProject from '../../components/Main/AboutProject/MainAboutProject';
 
 function AboutProjectPage({

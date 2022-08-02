@@ -1,4 +1,5 @@
 @import url('../../blocks/footer/footer.css');
+@import url('../../blocks/default/__block/default__block.css');
 @import url('../../blocks/footer/__block/footer__block.css');
 @import url('../../blocks/footer/__link/footer__link.css');
 @import url('../../blocks/footer/__links/footer__links.css');

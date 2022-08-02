@@ -12,6 +12,7 @@ function Header({
   isLoggedIn,
   closeOpenMenu,
   isOpenMenu,
+  textGreetings,
 }) {
   const currentPath = useHistory().location.pathname;
   const isSignIn = currentPath === '/sign-in' || currentPath === '/sign-up';
@@ -20,15 +21,17 @@ function Header({
       <section className={`header ${isSignIn ? 'header_auth' : ''}`}>
         <HeaderLogoLink />
 
-        {!isLoggedIn && !isSignIn && <HeaderNotLogin />}
-
         {isLoggedIn && !isSignIn && <HeaderLogin
           closeOpenMenu={closeOpenMenu}
           isOpenMenu={isOpenMenu}
         />}
 
+        {!isLoggedIn && !isSignIn && <HeaderNotLogin
+          textGreetings={textGreetings}
+        />}
+
         {!isLoggedIn && isSignIn && <HeaderAuth
-          currentPath={currentPath}
+          textGreetings={textGreetings}
         />}
       </section>
     </>

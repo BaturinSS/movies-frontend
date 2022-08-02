@@ -18,10 +18,11 @@ function HeaderLogin({
         <div className="header__menu-img"></div>
       </div>
       <article
-        className={`header__items ${isOpenMenu ? 'header__items_opened' : ''}`}
+        className={`header__items ${isOpenMenu ? 'header__items_opened open-popup' : ''}`}
       >
         <button
-          className="header__close-menu"
+          id='closeMenu'
+          className="header__close-menu close-popup"
           type="button"
         ></button>
         <nav className='header__links'>

@@ -4,3 +4,18 @@
   flex-direction: column;
   justify-content: center;
 }
+
+@media screen and (min-width: 470px) {
+  .header_auth {
+    margin: auto;
+    align-items: flex-start;
+    max-width: 396px;
+    padding-top: 232px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .header_auth {
+    padding-top: 70px;
+  }
+}

@@ -19,7 +19,6 @@
     position: static;
     padding: 0;
     width: max-content;
-    min-height: 100%;
     background: none;
     flex-direction: row;
     min-height: max-content;
