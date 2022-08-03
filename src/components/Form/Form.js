@@ -10,8 +10,20 @@ function Form({
   textQuestion,
   textLink,
   pathLink,
+  isEmail,
+  setIsEmail,
+  isName,
+  setIsName,
 }) {
   const signInPath = pathLink === '/sign-in';
+
+  const handleEmailChange = (event) => {
+    setIsEmail(event.target.value);
+  }
+
+  const handleNameChange = (event) => {
+    setIsName(event.target.value);
+  }
 
   return (
     <>
@@ -22,7 +34,7 @@ function Form({
         noValidate
       >
         <div className={`form__inputs`}>
-          <InputForm
+          {signInPath && <InputForm
             idInput={`inputName`}
             textLabel={`Имя`}
             required={true}
@@ -30,15 +42,19 @@ function Form({
             minLength={`2`}
             maxLength={`30`}
             activeMessageError={false}
-          />
+            value={isName}
+            onChange={handleNameChange}
+          />}
           <InputForm
             idInput={`inputEmail`}
             textLabel={`E-mail`}
             required={true}
             type={`email`}
             activeMessageError={false}
+            value={isEmail}
+            onChange={handleEmailChange}
           />
-          {signInPath && < InputForm
+          < InputForm
             idInput={`inputPassword`}
             textLabel={`Пароль`}
             required={true}
@@ -47,7 +63,7 @@ function Form({
             maxLength={`30`}
             activeMessageError={true}
             textMessageError={`Что-то пошло не так...`}
-          />}
+          />
         </div>
         <div
           className={`form__block ${!signInPath ? 'form__block_auth' : ''}`}

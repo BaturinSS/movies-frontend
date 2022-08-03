@@ -4,6 +4,8 @@ import Form from '../../Form/Form';
 
 function MainAuthentication({
   onSubmitForm,
+  isEmail,
+  setIsEmail,
 }) {
   const idForm = 'formAuth'
   return (
@@ -16,6 +18,8 @@ function MainAuthentication({
           textQuestion={`Ещё не зарегистрированы?`}
           textLink={`Регистрация`}
           pathLink={`/sign-up`}
+          isEmail={isEmail}
+          setIsEmail={setIsEmail}
         />
       </section>
     </>

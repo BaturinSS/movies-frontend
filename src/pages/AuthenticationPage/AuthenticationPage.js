@@ -6,6 +6,8 @@ function AuthenticationPage({
   closeOpenMenu,
   isOpenMenu,
   onSubmitForm,
+  isEmail,
+  setIsEmail,
 }) {
   return (
     <>
@@ -17,6 +19,8 @@ function AuthenticationPage({
       />
       <MainAuthentication
         onSubmitForm={onSubmitForm}
+        isEmail={isEmail}
+        setIsEmail={setIsEmail}
       />
     </>
   );

@@ -4,6 +4,10 @@ import Form from '../../Form/Form';
 
 function MainRegistration({
   onSubmitForm,
+  isEmail,
+  setIsEmail,
+  isName,
+  setIsName,
 }) {
   const idForm = 'formRegistration'
   return (
@@ -16,6 +20,10 @@ function MainRegistration({
           textQuestion={`Уже зарегистрированы?`}
           textLink={`Войти`}
           pathLink={`/sign-in`}
+          isEmail={isEmail}
+          setIsEmail={setIsEmail}
+          isName={isName}
+          setIsName={setIsName}
         />
       </section>
     </>

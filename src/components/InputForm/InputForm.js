@@ -9,6 +9,8 @@ function InputForm({
   type,
   minLength,
   maxLength,
+  onChange,
+  value,
 }) {
   const arrType = [
     'text', 'password', 'email',
@@ -33,6 +35,8 @@ function InputForm({
         minLength={`${Number(minLength) ? minLength : ''}`}
         maxLength={`${Number(maxLength) ? maxLength : ''}`}
         autoComplete={type === 'password' ? 'on' : undefined}
+        onChange={onChange}
+        value={value}
       />
       <span
         className={`${idInput}-input-error form__input-error ${textMessageError

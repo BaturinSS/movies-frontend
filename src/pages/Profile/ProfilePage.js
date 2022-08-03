@@ -1,15 +1,15 @@
-import MainRegistration from '../../components/Main/Registration/MainRegistration';
+import MainProfile from '../../components/Main/Profile/MainProfile';
 
-function RegistrationPage({
-  Header,
-  isLoggedIn,
+function ProfilePage({
   closeOpenMenu,
   isOpenMenu,
-  onSubmitForm,
+  isLoggedIn,
+  Header,
   isEmail,
   setIsEmail,
   isName,
   setIsName,
+  outputProfile,
 }) {
   return (
     <>
@@ -17,17 +17,16 @@ function RegistrationPage({
         isLoggedIn={isLoggedIn}
         closeOpenMenu={closeOpenMenu}
         isOpenMenu={isOpenMenu}
-        textGreetings={`Добро пожаловать!`}
       />
-      <MainRegistration
-        onSubmitForm={onSubmitForm}
+      <MainProfile
         isEmail={isEmail}
         setIsEmail={setIsEmail}
         isName={isName}
         setIsName={setIsName}
+        outputProfile={outputProfile}
       />
     </>
-  );
+  )
 }
 
-export default RegistrationPage;
+export default ProfilePage;

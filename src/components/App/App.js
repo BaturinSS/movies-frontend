@@ -1,7 +1,7 @@
 import './App.css';
 
 import { useState, useEffect } from "react";
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 
@@ -13,11 +13,21 @@ import Footer from '../Footer/Footer';
 import AboutProjectPage from '../../pages/AboutProject/AboutProjectPage';
 import RegistrationPage from '../../pages/RegistrationPage/RegistrationPage';
 import AuthenticationPage from '../../pages/AuthenticationPage/AuthenticationPage';
+import ProfilePage from '../../pages/Profile/ProfilePage';
 import NotFoundPage from '../../pages/NotFound/NotFoundPage';
 
 function App() {
+  const history = useHistory();
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isOpenMenu, setIsOpenMenu] = useState(false);
+
+  const [
+    isEmail,
+    setIsEmail,
+  ] = useState(localStorage.getItem('login'));
+
+  const [isName, setIsName] = useState('');
 
   const isOpen = isOpenMenu;
 
@@ -51,8 +61,23 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
-  const onSubmitForm = () => {
-    console.log('submit')
+  const onSubmitFormLogin = (event) => {
+    event.preventDefault();
+    setIsLoggedIn(true);
+    localStorage.setItem("login", event.target[0].value);
+    history.push('/');
+  }
+
+  const onSubmitFormAuth = (event) => {
+    event.preventDefault();
+    localStorage.setItem("login", event.target[1].value);
+    history.push('/sign-in');
+  }
+
+  const outputProfile = () => {
+    setIsLoggedIn(false);
+    history.push('/');
+    setIsName('');
   }
 
   return (
@@ -72,30 +97,41 @@ function App() {
         <Route path="/sign-up" exact>
           <RegistrationPage
             Header={Header}
+            isEmail={isEmail}
+            setIsEmail={setIsEmail}
+            isName={isName}
+            setIsName={setIsName}
             isLoggedIn={isLoggedIn}
             closeOpenMenu={closeOpenMenu}
             isOpenMenu={isOpenMenu}
-            onSubmitForm={onSubmitForm}
+            onSubmitForm={onSubmitFormAuth}
           />
         </Route>
 
         <Route path="/sign-in" exact>
           <AuthenticationPage
             Header={Header}
+            isEmail={isEmail}
+            setIsEmail={setIsEmail}
             isLoggedIn={isLoggedIn}
             closeOpenMenu={closeOpenMenu}
             isOpenMenu={isOpenMenu}
-            onSubmitForm={onSubmitForm}
+            onSubmitForm={onSubmitFormLogin}
           />
         </Route>
 
         <Route path="/profile" exact>
-          <Header
+          <ProfilePage
+            Header={Header}
             isLoggedIn={isLoggedIn}
             closeOpenMenu={closeOpenMenu}
             isOpenMenu={isOpenMenu}
+            isEmail={isEmail}
+            setIsEmail={setIsEmail}
+            isName={isName}
+            setIsName={setIsName}
+            outputProfile={outputProfile}
           />
-          <h1>Hello, is Profile!!!</h1>
         </Route>
 
         <Route path="/movies" exact>

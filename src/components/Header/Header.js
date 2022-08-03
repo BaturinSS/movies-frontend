@@ -1,7 +1,7 @@
 import './Header.css';
 
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { Route, useHistory } from "react-router-dom";
 
 import HeaderLogoLink from './HeaderLogoLink/HeaderLogoLink';
 import HeaderNotLogin from './HeaderNotLogin/HeaderNotLogin';
@@ -16,6 +16,7 @@ function Header({
 }) {
   const currentPath = useHistory().location.pathname;
   const isSignIn = currentPath === '/sign-in' || currentPath === '/sign-up';
+
   return (
     <>
       <section className={`header ${isSignIn ? 'header_auth' : ''}`}>
@@ -26,9 +27,7 @@ function Header({
           isOpenMenu={isOpenMenu}
         />}
 
-        {!isLoggedIn && !isSignIn && <HeaderNotLogin
-          textGreetings={textGreetings}
-        />}
+        {!isLoggedIn && !isSignIn && <HeaderNotLogin />}
 
         {!isLoggedIn && isSignIn && <HeaderAuth
           textGreetings={textGreetings}
