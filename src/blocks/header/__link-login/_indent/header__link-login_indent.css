@@ -10,14 +10,15 @@
   }
 }
 
-@media screen and (min-width: 770px) {
+@media screen and (min-width: 769px) {
   .header__link-login_indent {
-    margin: 0 0 0 calc((100vw - 1280px)/(770 - 1280) * (140 - 370) + 370px);
+    margin-bottom: 0;
+    margin-left: calc((100vw - 1280px)/(770 - 1280) * (140 - 370) + 370px);
   }
 }
 
 @media screen and (min-width: 1280px) {
   .header__link-login_indent {
-    margin: 0 0 0 370px;
+    margin-left: 370px;
   }
 }

@@ -35,15 +35,15 @@ function Footer(
             <Link
               className='footer__link'
               to={{
-                pathname: 'https://t.me/Sergey32323'
+                pathname: 'https://vk.com/baturinss'
               }}
               target="_blank"
             >
-              Telegram
+              VK
             </Link>
           </nav>
           <p className='footer__copyright'>
-            ©2020
+            © 2022 - {new Date().getFullYear()}. Батурин Сергей
           </p>
         </article>
       </section>
