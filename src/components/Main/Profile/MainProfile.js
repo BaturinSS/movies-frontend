@@ -19,6 +19,7 @@ function MainProfile({
           isName={isName}
           setIsName={setIsName}
           outputProfile={outputProfile}
+          textMessageError={'При обновлении профиля произошла ошибка.'}
         />
       </section>
     </>

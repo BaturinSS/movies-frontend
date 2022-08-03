@@ -1,1 +1,12 @@
+@import url('../../blocks/form/form.css');
 @import url('../../blocks/form/_profile/form_profile.css');
+@import url('../../blocks/form/__inputs/form__inputs.css');
+@import url('../../blocks/form/__input-label/form__input-label.css');
+@import url('../../blocks/form/__input-label/_profile/form__input-label_profile.css');
+@import url('../../blocks/form/__input/form__input.css');
+@import url('../../blocks/form/__input/_profile/form__input_profile.css');
+@import url('../../blocks/form/__button/form__button.css');
+@import url('../../blocks/form/__submit-button/form__submit-button.css');
+@import url('../../blocks/form/__block/form__block.css');
+@import url('../../blocks/form/__block/_profile/form__block_profile.css');
+@import url('../../blocks/form/__submit-button/_disabled/form__submit-button_disabled.css');

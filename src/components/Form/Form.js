@@ -17,6 +17,8 @@ function Form({
 }) {
   const signInPath = pathLink === '/sign-in';
 
+  const textMessageError = 'Что-то пошло не так...';
+
   const handleEmailChange = (event) => {
     setIsEmail(event.target.value);
   }
@@ -62,14 +64,14 @@ function Form({
             minLength={`6`}
             maxLength={`30`}
             activeMessageError={true}
-            textMessageError={`Что-то пошло не так...`}
+            textMessageError={textMessageError}
           />
         </div>
         <div
           className={`form__block ${!signInPath ? 'form__block_auth' : ''}`}
         >
           <button
-            className={`form__submit-button`}
+            className={`form__submit-button ${!textMessageError ? 'form__submit-button_disabled' : ''}`}
             type={`submit`}
           >
             {textButton}

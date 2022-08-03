@@ -1,0 +1,23 @@
+.form__input-label_profile {
+  margin: 0;
+  padding-bottom: 16px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: max-content auto;
+  column-gap: 30px;
+  align-items: center;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+  color: #FFFFFF;
+  border-bottom: 1px solid #424242;
+}
+
+.form__input-label_profile:first-child {
+  margin-top: 50px;
+}
+
+.form__input-label_profile:last-child {
+  margin-top: 17px;
+  border: none;
+}
