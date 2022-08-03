@@ -1,7 +1,7 @@
 import './Header.css';
 
 import React from "react";
-import { Route, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import HeaderLogoLink from './HeaderLogoLink/HeaderLogoLink';
 import HeaderNotLogin from './HeaderNotLogin/HeaderNotLogin';

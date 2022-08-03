@@ -35,10 +35,10 @@ function AboutMe(
           <article className='about-me__links'>
             <Link
               className='about-me__link'
-              to={{ pathname: "https://t.me/Sergey32323" }}
+              to={{ pathname: "https://vk.com/baturinss" }}
               target="_blank"
             >
-              Telegram
+              VK
             </Link>
             <Link
               className='about-me__link'
