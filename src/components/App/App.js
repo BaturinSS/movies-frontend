@@ -5,11 +5,9 @@ import { Route, Switch, useHistory } from 'react-router-dom';
 
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 
-//* Components
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
-//* Pages
 import AboutProjectPage from '../../pages/AboutProject/AboutProjectPage';
 import RegistrationPage from '../../pages/RegistrationPage/RegistrationPage';
 import AuthenticationPage from '../../pages/AuthenticationPage/AuthenticationPage';

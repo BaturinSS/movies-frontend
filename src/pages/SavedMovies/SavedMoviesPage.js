@@ -1,6 +1,6 @@
-import MainMovies from '../../components/Main/Movies/MainMovies';
+import MainSavedMovies from '../../components/Main/SavedMovies/MainSavedMovies';
 
-function MoviesPage({
+function SavedMoviesPage({
   closeOpenMenu,
   isOpenMenu,
   isLoggedIn,
@@ -14,11 +14,10 @@ function MoviesPage({
         closeOpenMenu={closeOpenMenu}
         isOpenMenu={isOpenMenu}
       />
-      <MainMovies
-      />
+      <MainSavedMovies />
       <Footer />
     </>
   )
 }
 
-export default MoviesPage;
+export default SavedMoviesPage;
