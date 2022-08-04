@@ -1,17 +1,21 @@
-import './InputForm.css';
+import './FormInput.css';
 
-function InputForm({
-  idInput,
+function FormInput({
+  config,
   textMessageError,
-  textLabel,
-  placeholder,
-  required,
-  type,
-  minLength,
-  maxLength,
   onChange,
   value,
 }) {
+  const {
+    idInput,
+    placeholder,
+    textLabel,
+    required,
+    type,
+    minLength,
+    maxLength,
+  } = config;
+
   const arrType = [
     'text', 'password', 'email',
     'number', 'tel', 'url',
@@ -19,6 +23,7 @@ function InputForm({
   const checkType = (arr, elem) => {
     return arr.indexOf(elem) !== -1;
   }
+
   return (
     <>
       <label
@@ -50,4 +55,4 @@ function InputForm({
   )
 }
 
-export default InputForm;
+export default FormInput;

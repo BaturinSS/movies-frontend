@@ -1,0 +1,1 @@
+export const textMessageError = 'Что-то пошло не так...';

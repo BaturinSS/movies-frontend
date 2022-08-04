@@ -1,4 +1,8 @@
+import React from "react";
+
 import './FilterCheckbox.css';
+
+import CheckboxSearch from '../SubstitutionCheckbox/CheckboxSearch/CheckboxSearch';
 
 function FilterCheckbox({
   value,
@@ -19,7 +23,7 @@ function FilterCheckbox({
           defaultChecked={checked}
         />
         {label}
-        <span className='checkbox__new' />
+        <CheckboxSearch />
       </label>
     </>
   )

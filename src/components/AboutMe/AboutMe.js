@@ -1,13 +1,11 @@
 import './AboutMe.css';
 
-import React from 'react';
+import React from "react";
 import { Link } from 'react-router-dom';
 
-import Portfolio from '../Portfolio/Portfolio';
-
-function AboutMe(
-
-) {
+function AboutMe({
+  children,
+}) {
   return (
     <>
       <section className='about-me default__block' id="aboutMe">
@@ -49,7 +47,7 @@ function AboutMe(
             </Link>
           </article>
         </article>
-        <Portfolio />
+        {children}
       </section>
     </>
   )

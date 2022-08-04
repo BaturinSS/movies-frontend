@@ -1,10 +1,11 @@
+import Header from '../../components/Header/Header';
+
 import MainProfile from '../../components/Main/Profile/MainProfile';
 
 function ProfilePage({
   closeOpenMenu,
   isOpenMenu,
   isLoggedIn,
-  Header,
   isEmail,
   setIsEmail,
   isName,

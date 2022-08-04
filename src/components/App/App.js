@@ -1,12 +1,7 @@
-import './App.css';
-
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Switch, useHistory } from 'react-router-dom';
 
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
-
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
 
 import AboutProjectPage from '../../pages/AboutProject/AboutProjectPage';
 import RegistrationPage from '../../pages/RegistrationPage/RegistrationPage';
@@ -16,15 +11,20 @@ import MoviesPage from '../../pages/Movies/MoviesPage';
 import SavedMoviesPage from '../../pages/SavedMovies/SavedMoviesPage';
 import NotFoundPage from '../../pages/NotFound/NotFoundPage';
 
+import moviesList from '../../components/utils/moviesList.json';
+
+import { textMessageError } from '../../components/utils/constants'
+
 function App() {
   const history = useHistory();
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const [isCards, setIsCards] = useState(moviesList);
 
   const [
     isEmail,
-    setIsEmail,
+    setIsEmail
   ] = useState(localStorage.getItem('login'));
 
   const [isName, setIsName] = useState('');
@@ -83,20 +83,16 @@ function App() {
   return (
     <>
       <Switch>
-
         <Route path="/" exact>
           <AboutProjectPage
-            Header={Header}
-            Footer={Footer}
             isLoggedIn={isLoggedIn}
             closeOpenMenu={closeOpenMenu}
             isOpenMenu={isOpenMenu}
           />
         </Route>
-
         <Route path="/sign-up" exact>
           <RegistrationPage
-            Header={Header}
+            textMessageError={textMessageError}
             isEmail={isEmail}
             setIsEmail={setIsEmail}
             isName={isName}
@@ -107,10 +103,9 @@ function App() {
             onSubmitForm={onSubmitFormAuth}
           />
         </Route>
-
         <Route path="/sign-in" exact>
           <AuthenticationPage
-            Header={Header}
+            textMessageError={textMessageError}
             isEmail={isEmail}
             setIsEmail={setIsEmail}
             isLoggedIn={isLoggedIn}
@@ -119,10 +114,8 @@ function App() {
             onSubmitForm={onSubmitFormLogin}
           />
         </Route>
-
         <Route path="/profile" exact>
           <ProfilePage
-            Header={Header}
             isLoggedIn={isLoggedIn}
             closeOpenMenu={closeOpenMenu}
             isOpenMenu={isOpenMenu}
@@ -133,31 +126,24 @@ function App() {
             outputProfile={outputProfile}
           />
         </Route>
-
         <Route path="/movies" exact>
           <MoviesPage
-            Header={Header}
-            Footer={Footer}
             isLoggedIn={isLoggedIn}
             closeOpenMenu={closeOpenMenu}
             isOpenMenu={isOpenMenu}
+            isCards={isCards}
           />
         </Route>
-
         <Route path="/saved-movies" exact>
           <SavedMoviesPage
-            Header={Header}
-            Footer={Footer}
             isLoggedIn={isLoggedIn}
             closeOpenMenu={closeOpenMenu}
             isOpenMenu={isOpenMenu}
           />
         </Route>
-
         <Route path="*">
           <NotFoundPage />
         </Route>
-
       </Switch>
     </>
   );

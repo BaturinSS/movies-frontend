@@ -2,18 +2,16 @@ import './Promo.css';
 
 import React from "react";
 
-import NavTab from '../NavTab/NavTab'
-
-function Promo(
-
-) {
+function Promo({
+  children,
+}) {
   return (
     <>
       <section className='promo'>
         <h1 className='promo__description'>
           Учебный проект студента факультета Веб-разработки.
         </h1>
-        <NavTab />
+        {children}
       </section>
     </>
   )

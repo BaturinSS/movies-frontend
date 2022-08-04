@@ -22,8 +22,7 @@ function SearchForm() {
           </div>
           <FilterCheckbox
             label={'Короткометражки'}
-            value={true}
-            checked={false}
+            checked={true}
           />
         </form>
       </section>
