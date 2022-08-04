@@ -1,9 +1,8 @@
 import './MainSavedMovies.css';
 
 import SearchForm from '../../SearchForm/SearchForm'
-function MainSavedMovies({
 
-}) {
+function MainSavedMovies() {
   return (
     <>
       <section className={`main`}>

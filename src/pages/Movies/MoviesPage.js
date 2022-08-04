@@ -1,4 +1,5 @@
 import MainMovies from '../../components/Main/Movies/MainMovies';
+import Preloader from '../../components/Preloader/Preloader'
 
 function MoviesPage({
   closeOpenMenu,
@@ -9,6 +10,7 @@ function MoviesPage({
 }) {
   return (
     <>
+      {false && <Preloader />}
       <Header
         isLoggedIn={isLoggedIn}
         closeOpenMenu={closeOpenMenu}
