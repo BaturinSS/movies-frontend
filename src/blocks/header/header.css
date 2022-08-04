@@ -15,7 +15,7 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 850px) {
   .header {
     padding-right: calc((100vw - 1280px)/(768 - 1280) * (30 - 70) + 70px);
     padding-left: calc((100vw - 1280px)/(768 - 1280) * (30 - 70) + 70px);

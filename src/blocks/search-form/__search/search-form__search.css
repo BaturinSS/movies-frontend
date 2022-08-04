@@ -1,0 +1,19 @@
+.search-form__search {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #2F2F2F;
+  border-radius: 9px;
+}
+
+@media screen and (min-width: 747px) {
+  .search-form__search {
+    flex-direction: row;
+    max-width: 100%;
+    background-color: none;
+    border-radius: none;
+  }
+}

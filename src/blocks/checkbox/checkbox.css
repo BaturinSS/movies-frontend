@@ -1,0 +1,26 @@
+.checkbox {
+  width: max-content;
+  margin-top: 45px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  column-gap: 13px;
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 18px;
+  /* border: 1px solid red; */
+}
+
+@media screen and (min-width: 747px) {
+  .checkbox {
+    height: 40px;
+    margin-top: 0;
+    margin-right: 20px;
+    padding-left: 19px;
+    font-size: 13px;
+    border-left: 1px solid rgba(80, 80, 80, 1);
+    ;
+  }
+}

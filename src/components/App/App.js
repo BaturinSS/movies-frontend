@@ -14,6 +14,8 @@ import AboutProjectPage from '../../pages/AboutProject/AboutProjectPage';
 import RegistrationPage from '../../pages/RegistrationPage/RegistrationPage';
 import AuthenticationPage from '../../pages/AuthenticationPage/AuthenticationPage';
 import ProfilePage from '../../pages/Profile/ProfilePage';
+import MoviesPage from '../../pages/Movies/MoviesPage';
+import SavedMoviesPage from '../../pages/SavedMovies/SavedMoviesPage';
 import NotFoundPage from '../../pages/NotFound/NotFoundPage';
 
 function App() {
@@ -135,23 +137,23 @@ function App() {
         </Route>
 
         <Route path="/movies" exact>
-          <Header
+          <MoviesPage
+            Header={Header}
+            Footer={Footer}
             isLoggedIn={isLoggedIn}
             closeOpenMenu={closeOpenMenu}
             isOpenMenu={isOpenMenu}
           />
-          <h1>Hello, is Movies!!!</h1>
-          <Footer />
         </Route>
 
         <Route path="/saved-movies" exact>
-          <Header
+          <SavedMoviesPage
+            Header={Header}
+            Footer={Footer}
             isLoggedIn={isLoggedIn}
             closeOpenMenu={closeOpenMenu}
             isOpenMenu={isOpenMenu}
           />
-          <h1>Hello, is Saved-movies!!!</h1>
-          <Footer />
         </Route>
 
         <Route path="*">
