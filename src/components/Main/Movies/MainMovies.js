@@ -1,6 +1,8 @@
 import './MainMovies.css';
 
 import SearchForm from '../../SearchForm/SearchForm'
+import Preloader from '../../Preloader/Preloader'
+
 function MainMovies({
 
 }) {
@@ -9,6 +11,8 @@ function MainMovies({
       <section className={`main`}>
         <SearchForm
         />
+        {false && <Preloader />}
+
       </section>
     </>
   )

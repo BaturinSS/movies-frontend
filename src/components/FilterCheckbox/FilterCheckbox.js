@@ -1,6 +1,6 @@
-import './Checkbox.css';
+import './FilterCheckbox.css';
 
-function Checkbox({
+function FilterCheckbox({
   value,
   checked,
   label,
@@ -25,4 +25,4 @@ function Checkbox({
   )
 }
 
-export default Checkbox;
+export default FilterCheckbox;

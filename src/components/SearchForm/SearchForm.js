@@ -2,7 +2,7 @@ import './SearchForm.css';
 
 import React from "react";
 
-import Checkbox from '../Checkbox/Checkbox'
+import FilterCheckbox from '../FilterCheckbox/FilterCheckbox'
 
 function SearchForm() {
   return (
@@ -20,7 +20,7 @@ function SearchForm() {
               type='submit'
             />
           </div>
-          <Checkbox
+          <FilterCheckbox
             label={'Короткометражки'}
             value={true}
             checked={false}
