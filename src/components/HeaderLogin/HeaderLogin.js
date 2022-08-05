@@ -16,9 +16,9 @@ function HeaderLogin({
         <div className="header__menu-img" />
       </div>
       <article className={`header__items ${isOpenMenu
-        ? 'header__items_opened open-popup'
+        ? 'header__items_opened popup_opened'
         : ''}`}>
-        <button className="header__close-menu close-popup"
+        <button className="header__close-menu popup_close"
           type="button" />
         <nav className='header__links'>
           {linksNav.map(link => {

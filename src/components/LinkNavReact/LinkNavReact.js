@@ -1,3 +1,5 @@
+import './LinkNavReact.css';
+
 import React from "react";
 import { NavLink } from "react-router-dom";
 
@@ -14,8 +16,7 @@ function LinkNavReact({
         onClick={closeOpenMenu}
         className={selector}
         activeClassName={selectorActive}
-      >
-        {title}
+      >{title}
         {addIcon && <div className={selectorIcon}></div>}
       </NavLink>
     </>

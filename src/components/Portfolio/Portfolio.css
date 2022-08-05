@@ -1,4 +1,4 @@
 @import url('../../blocks/portfolio/portfolio.css');
-@import url('../../blocks/portfolio/__link-icon/portfolio__link-icon.css');
-@import url('../../blocks/portfolio/__link/portfolio__link.css');
 @import url('../../blocks/portfolio/__title/portfolio__title.css');
+@import url('../../blocks/portfolio/__link/portfolio__link.css');
+@import url('../../blocks/portfolio/__link-icon/portfolio__link-icon.css');

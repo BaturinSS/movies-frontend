@@ -42,8 +42,8 @@ function App() {
   useEffect(() => {
     if (!isOpenMenu) return;
     function handleOverlay(event) {
-      if (event.target.classList.contains('open-popup')
-        || event.target.classList.contains('close-popup')) {
+      if (event.target.classList.contains('popup_opened')
+        || event.target.classList.contains('popup_close')) {
         closeOpenMenu();
       }
     };

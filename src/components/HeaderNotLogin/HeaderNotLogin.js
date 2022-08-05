@@ -8,7 +8,7 @@ function HeaderNotLogin({ config }) {
   const { links, linkEnter } = config;
   return (
     <>
-      <nav className='header__group'>
+      <nav className='header__nav'>
         {links.map(link => {
           return (
             <LinkReact

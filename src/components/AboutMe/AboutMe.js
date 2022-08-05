@@ -10,7 +10,6 @@ function AboutMe({ config }) {
     title, name, profession,
     description, links, portfolio,
   } = config;
-
   return (
     <>
       <section id="aboutMe" className='about-me default__block'>

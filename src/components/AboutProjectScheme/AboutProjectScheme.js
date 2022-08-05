@@ -16,5 +16,4 @@ function AboutProjectScheme({ config, modifier }) {
     </>
   )
 }
-
 export default AboutProjectScheme;
