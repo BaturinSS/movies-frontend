@@ -1,5 +1,5 @@
 @import url('../../blocks/not-found/not-found.css');
 @import url('../../blocks/not-found/__block/not-found__block.css');
-@import url('../../blocks/not-found/__button-back/not-found__button-back.css');
-@import url('../../blocks/not-found/__description/not-found__description.css');
 @import url('../../blocks/not-found/__title/not-found__title.css');
+@import url('../../blocks/not-found/__description/not-found__description.css');
+@import url('../../blocks/not-found/__button-back/not-found__button-back.css');

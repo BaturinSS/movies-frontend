@@ -1,9 +1,9 @@
 import './FormInputProfile.css';
 
+import React from "react";
+
 function FormInputProfile({
-  config, readOnly,
-  onChange, value, modifier,
-  modifierLabel,
+  config, readOnly, onChange, value, modifier, modifierLabel,
 }) {
   const {
     idInput, placeholder, textLabel,

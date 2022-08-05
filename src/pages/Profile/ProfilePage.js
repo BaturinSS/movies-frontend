@@ -17,15 +17,9 @@ import configFormInputEmail from "../../components/utils/config/formInput/config
 import configFormInputName from '../../components/utils/config/formInput/configFormInputName';
 
 function ProfilePage({
-  isLoggedIn,
-  closeOpenMenu,
-  isOpenMenu,
-  isEmail,
-  setIsEmail,
-  isName,
-  setIsName,
-  outputProfile,
-  onSubmitFormProfile,
+  isLoggedIn, closeOpenMenu,
+  isOpenMenu, isEmail, setIsEmail, isName,
+  setIsName, outputProfile, onSubmitFormProfile,
 }) {
   const [isPermission, setIsPermission] = useState(true);
   const [isNewName, setIsNewName] = useState(isName);
@@ -60,10 +54,6 @@ function ProfilePage({
       <Main>
         <GreetingProfile isName={isName} />
         <FormProfile
-          outputProfile={outputProfile}
-          textMessageError={'При обновлении профиля произошла ошибка.'}
-          isPermission={isPermission}
-          editProfile={editProfile}
           onSubmitFormProfile={onSubmitFormProfile}
         >
           <div className={`form__inputs`}>
@@ -85,6 +75,7 @@ function ProfilePage({
             />
           </div>
           <FormSubmitProfile
+            modifier={'form__block_profile'}
             outputProfile={outputProfile}
             isPermission={isPermission}
             editProfile={editProfile}

@@ -2,19 +2,15 @@ import './FormProfile.css';
 
 import React from "react";
 
-function FormProfile({
-  children,
-  onSubmitFormProfile,
-}) {
+function FormProfile({ children, onSubmitFormProfile }) {
   return (
     <>
       <form
-        id={`formProfile`}
-        className={`form form_profile`}
+        id='formProfile'
+        className='form form_profile'
         onSubmit={onSubmitFormProfile}
         noValidate
-      >
-        {children}
+      >{children}
       </form>
     </>
   )
