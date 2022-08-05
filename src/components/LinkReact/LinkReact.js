@@ -24,5 +24,4 @@ function LinkReact({
     </>
   )
 }
-
 export default LinkReact;

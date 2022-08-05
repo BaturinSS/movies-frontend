@@ -5,12 +5,8 @@ import React from "react";
 import linkIcon from '../../images/aboutMe/link-icon.svg'
 import LinkReact from '../LinkReact/LinkReact';
 
-function Portfolio({
-  config,
-}) {
-  const {
-    title, links,
-  } = config;
+function Portfolio({ config }) {
+  const { title, links } = config;
   return (
     <>
       <section className='portfolio'>
@@ -30,5 +26,4 @@ function Portfolio({
     </>
   )
 }
-
 export default Portfolio;

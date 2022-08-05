@@ -20,9 +20,7 @@ import configAboutMe from "../../components/utils/config/configTechs copy";
 import configFooter from "../../components/utils/config/configFooter";
 
 function AboutProjectPage({
-  isLoggedIn,
-  closeOpenMenu,
-  isOpenMenu,
+  isLoggedIn, closeOpenMenu, isOpenMenu,
 }) {
   return (
     <>
@@ -46,5 +44,4 @@ function AboutProjectPage({
     </>
   )
 }
-
 export default AboutProjectPage;

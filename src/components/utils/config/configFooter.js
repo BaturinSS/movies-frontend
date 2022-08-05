@@ -28,5 +28,4 @@ const configFooter = {
   ],
   copyright: 'Батурин Сергей',
 }
-
 export default configFooter;

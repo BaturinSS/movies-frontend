@@ -12,5 +12,4 @@ export const configHeaderNotLogin = {
     title: 'Войти',
   },
 }
-
 export default configHeaderNotLogin;

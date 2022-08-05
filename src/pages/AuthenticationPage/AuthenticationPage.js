@@ -13,31 +13,27 @@ import configFormInputPassword from '../../components/utils/config/formInput/con
 import configFormInputEmail from '../../components/utils/config/formInput/configFormInputEmail';
 import configFormAuth from '../../components/utils/config/form/configFormAuth';
 
-import { textMessageError } from '../../components/utils/constants'
+import {
+  textMessageError, textGreetingsLogin,
+} from '../../components/utils/constants'
 
 function AuthenticationPage({
   isLoggedIn,
   isEmail,
-  setIsEmail,
   onSubmitForm,
+  handleEmailChange,
 }) {
-  const handleEmailChange = (event) => {
-    setIsEmail(event.target.value);
-  }
-
   return (
     <>
       <Header modifier={'header_auth'}>
         {!isLoggedIn && <HeaderAuth
-          textGreetings={'Рады видеть!'}
+          textGreetings={textGreetingsLogin}
         />}
       </Header>
       <Main>
         <Form
           config={configFormAuth}
           onSubmitForm={onSubmitForm}
-          isEmail={isEmail}
-          setIsEmail={setIsEmail}
         >
           <FormInput
             config={configFormInputEmail}

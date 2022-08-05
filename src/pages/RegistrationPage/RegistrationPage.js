@@ -13,7 +13,9 @@ import configFormInputEmail from '../../components/utils/config/formInput/config
 import configFormInputPassword from '../../components/utils/config/formInput/configFormInputPassword';
 import configFormInputName from '../../components/utils/config/formInput/configFormInputName';
 
-import { textMessageError } from '../../components/utils/constants'
+import {
+  textMessageError, textGreetingsAuth,
+} from '../../components/utils/constants'
 
 function RegistrationPage({
   isLoggedIn,
@@ -22,20 +24,14 @@ function RegistrationPage({
   isName,
   setIsName,
   onSubmitForm,
+  handleEmailChange,
+  handleNameChange,
 }) {
-  const handleNameChange = (event) => {
-    setIsName(event.target.value);
-  }
-
-  const handleEmailChange = (event) => {
-    setIsEmail(event.target.value);
-  }
-
   return (
     <>
       <Header modifier={'header_auth'}>
         {!isLoggedIn && <HeaderAuth
-          textGreetings={`Добро пожаловать!`}
+          textGreetings={textGreetingsAuth}
         />}
       </Header>
       <Main>
@@ -59,7 +55,7 @@ function RegistrationPage({
           />
           <FormSubmit
             config={configFormSubmitLogin}
-            classNameBlock={''}
+            modifier={''}
             textMessageError={textMessageError}
           />
         </Form>

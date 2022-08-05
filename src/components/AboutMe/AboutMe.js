@@ -34,12 +34,9 @@ function AboutMe({ config }) {
             })}
           </article>
         </article>
-        <Portfolio
-          config={portfolio}
-        />
+        <Portfolio config={portfolio} />
       </section>
     </>
   )
 }
-
 export default AboutMe;

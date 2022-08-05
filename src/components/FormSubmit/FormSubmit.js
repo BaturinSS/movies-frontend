@@ -1,29 +1,23 @@
 import './FormSubmit.css';
 
-import { Link } from 'react-router-dom';
+import LinkReact from '../LinkReact/LinkReact';
 
-function FormSubmit({
-  classNameBlock,
-  textMessageError,
-  config,
-}) {
-  const {
-    textButton, textLink,
-    pathLink, textQuestion,
-  } = config;
+function FormSubmit({ modifier, textMessageError, config }) {
+  const { textButton, textQuestion } = config;
+
   return (
     <>
-      <div
-        className={`form__block ${classNameBlock}`}
-      >
+      <div className={`form__block ${modifier ? modifier : ''}`}>
         <button
-          className={`form__submit-button ${!textMessageError ? 'form__submit-button_disabled' : ''}`}
+          className={`form__submit-button ${!textMessageError
+            ? 'form__submit-button_disabled'
+            : ''}`}
           type={`submit`}
         >
           {textButton}
         </button>
         <p className={`form__question`}>{textQuestion}
-          <Link to={pathLink} className={`form__link`}>{textLink}</Link>
+          <LinkReact config={config} selector={'form__link'} />
         </p>
       </div>
     </>

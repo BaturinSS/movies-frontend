@@ -1,8 +1,8 @@
 const configFormSubmitAuth = {
   textButton: 'Войти',
   textQuestion: 'Ещё не зарегистрированы?',
-  textLink: 'Регистрация',
-  pathLink: '/sign-up',
+  title: 'Регистрация',
+  to: '/sign-up',
 }
 
 export default configFormSubmitAuth;

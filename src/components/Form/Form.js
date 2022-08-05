@@ -5,6 +5,7 @@ import React from "react";
 function Form({
   config,
   children,
+  modifier,
   onSubmitForm,
 }) {
   const { idForm } = config;
@@ -13,7 +14,7 @@ function Form({
     <>
       <form
         id={`${idForm}`}
-        className={`form`}
+        className={`form ${modifier ? modifier : ''}`}
         onSubmit={onSubmitForm}
         noValidate
       >

@@ -5,8 +5,9 @@ import Footer from '../../components/Footer/Footer';
 import Main from '../../components/Main/Main';
 
 import HeaderLogin from "../../components/HeaderLogin/HeaderLogin";
-import MainMovies from '../../components/Main/Movies/MainMovies';
 import Preloader from '../../components/Preloader/Preloader';
+import SearchForm from "../../components/SearchForm/SearchForm";
+import MoviesList from "../../components/MoviesList/MoviesList";
 
 import configHeaderLogin from "../../components/utils/config/configHeaderLogin";
 import configFooter from "../../components/utils/config/configFooter";
@@ -28,9 +29,10 @@ function MoviesPage({
           isOpenMenu={isOpenMenu}
         />}
       </Header>
-      <MainMovies
-        isCards={[]}
-      />
+      <Main>
+        <SearchForm />
+        <MoviesList isCards={isCards} />
+      </Main>
       <Footer
         config={configFooter}
       />

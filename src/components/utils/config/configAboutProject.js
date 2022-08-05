@@ -25,5 +25,4 @@ const configAboutProject = {
     },
   ],
 }
-
 export default configAboutProject;

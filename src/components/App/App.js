@@ -65,11 +65,25 @@ function App() {
     history.push('/sign-in');
   }
 
+  const onSubmitFormProfile = (event) => {
+    event.preventDefault();
+  }
+
+
   const outputProfile = () => {
     setIsLoggedIn(false);
     history.push('/');
     setIsName('');
   }
+
+  const handleEmailChange = (event) => {
+    setIsEmail(event.target.value);
+  }
+
+  const handleNameChange = (event) => {
+    setIsName(event.target.value);
+  }
+
 
   return (
     <>
@@ -88,11 +102,14 @@ function App() {
             setIsEmail={setIsEmail}
             isName={isName}
             setIsName={setIsName}
+            handleNameChange={handleNameChange}
+            handleEmailChange={handleEmailChange}
             onSubmitForm={onSubmitFormAuth}
           />
         </Route>
         <Route path="/sign-in" exact>
           <AuthenticationPage
+            handleEmailChange={handleEmailChange}
             isLoggedIn={isLoggedIn}
             isEmail={isEmail}
             setIsEmail={setIsEmail}
@@ -107,6 +124,7 @@ function App() {
             setIsEmail={setIsEmail}
             isName={isName}
             setIsName={setIsName}
+            onSubmitFormProfile={onSubmitFormProfile}
             closeOpenMenu={closeOpenMenu}
             outputProfile={outputProfile}
           />

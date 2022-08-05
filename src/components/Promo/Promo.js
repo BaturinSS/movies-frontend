@@ -4,9 +4,7 @@ import React from "react";
 
 import NavTab from '../../components/NavTab/NavTab';
 
-function Promo({
-  config,
-}) {
+function Promo({ config }) {
   const { description } = config;
   return (
     <>
@@ -17,5 +15,4 @@ function Promo({
     </>
   )
 }
-
 export default Promo;

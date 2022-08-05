@@ -4,9 +4,7 @@ import React from "react";
 
 import ListItem from '../../components/ListItem/ListItem'
 
-function Techs({
-  config,
-}) {
+function Techs({ config }) {
   const {
     list, title, aboutTitle, aboutDescription,
   } = config;
@@ -33,5 +31,4 @@ function Techs({
     </>
   )
 }
-
 export default Techs;

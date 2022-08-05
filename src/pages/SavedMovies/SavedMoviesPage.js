@@ -5,11 +5,12 @@ import Footer from '../../components/Footer/Footer';
 import Main from '../../components/Main/Main';
 
 import HeaderLogin from "../../components/HeaderLogin/HeaderLogin";
-import MainSavedMovies from '../../components/Main/SavedMovies/MainSavedMovies';
-import Preloader from '../../components/Preloader/Preloader'
+import Preloader from '../../components/Preloader/Preloader';
+import SearchForm from "../../components/SearchForm/SearchForm";
 
 import configHeaderLogin from "../../components/utils/config/configHeaderLogin";
 import configFooter from "../../components/utils/config/configFooter";
+
 
 function SavedMoviesPage({
   isLoggedIn,
@@ -27,7 +28,9 @@ function SavedMoviesPage({
           isOpenMenu={isOpenMenu}
         />}
       </Header>
-      <MainSavedMovies />
+      <Main>
+        <SearchForm />
+      </Main>
       <Footer
         config={configFooter}
       />

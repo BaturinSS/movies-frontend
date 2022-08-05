@@ -33,5 +33,4 @@ const configTechs = {
     },
   ]
 }
-
 export default configTechs;

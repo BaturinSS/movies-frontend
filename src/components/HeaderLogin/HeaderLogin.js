@@ -4,31 +4,22 @@ import React from "react";
 
 import LinkNavReact from '../../components/LinkNavReact/LinkNavReact';
 
-
 function HeaderLogin({
-  config,
-  closeOpenMenu,
-  isOpenMenu,
+  config, closeOpenMenu, isOpenMenu,
 }) {
   const { linksNav, linkProfile } = config;
-
   return (
     <>
-      <div
-        className="header__menu"
-        onClick={closeOpenMenu}
-      >
-        <div className="header__menu-img"></div>
-        <div className="header__menu-img"></div>
-        <div className="header__menu-img"></div>
+      <div className="header__menu" onClick={closeOpenMenu}>
+        <div className="header__menu-img" />
+        <div className="header__menu-img" />
+        <div className="header__menu-img" />
       </div>
-      <article
-        className={`header__items ${isOpenMenu ? 'header__items_opened open-popup' : ''}`}
-      >
-        <button
-          className="header__close-menu close-popup"
-          type="button"
-        ></button>
+      <article className={`header__items ${isOpenMenu
+        ? 'header__items_opened open-popup'
+        : ''}`}>
+        <button className="header__close-menu close-popup"
+          type="button" />
         <nav className='header__links'>
           {linksNav.map(link => {
             return (
@@ -53,5 +44,4 @@ function HeaderLogin({
     </>
   )
 }
-
 export default HeaderLogin;

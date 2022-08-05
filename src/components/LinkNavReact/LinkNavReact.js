@@ -2,14 +2,10 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 function LinkNavReact({
-  config,
-  closeOpenMenu,
-  selector,
-  selectorActive,
-  selectorIcon,
+  config, closeOpenMenu, selector,
+  selectorActive, selectorIcon,
 }) {
   const { to, addIcon, title, exact } = config;
-
   return (
     <>
       <NavLink
@@ -25,5 +21,4 @@ function LinkNavReact({
     </>
   )
 }
-
 export default LinkNavReact;

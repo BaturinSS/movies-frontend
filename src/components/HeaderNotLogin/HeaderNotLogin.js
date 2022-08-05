@@ -4,13 +4,8 @@ import React from "react";
 
 import LinkReact from '../LinkReact/LinkReact';
 
-function HeaderNotLogin({
-  config,
-}) {
-  const {
-    links, linkEnter,
-  } = config;
-
+function HeaderNotLogin({ config }) {
+  const { links, linkEnter } = config;
   return (
     <>
       <nav className='header__group'>
@@ -31,5 +26,4 @@ function HeaderNotLogin({
     </>
   )
 }
-
 export default HeaderNotLogin;

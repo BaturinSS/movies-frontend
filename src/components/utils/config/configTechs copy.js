@@ -53,5 +53,4 @@ const configAboutMe = {
     ]
   }
 };
-
 export default configAboutMe;

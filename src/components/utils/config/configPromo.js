@@ -18,5 +18,4 @@ const configPromo = {
     }
   ]
 }
-
 export default configPromo;

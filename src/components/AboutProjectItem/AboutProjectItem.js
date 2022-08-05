@@ -9,12 +9,8 @@ function AboutProjectItem({
   return (
     <>
       <li className='about-project__item'>
-        <h3 className='about-project__title'>
-          {title}
-        </h3>
-        <p className='about-project__description'>
-          {description}
-        </p>
+        <h3 className='about-project__title'>{title}</h3>
+        <p className='about-project__description'>{description}</p>
       </li>
     </>
   )

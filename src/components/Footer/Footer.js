@@ -5,16 +5,11 @@ import React from "react";
 import LinkReact from '../../components/LinkReact/LinkReact'
 
 function Footer({ config }) {
-  const {
-    title, links, copyright,
-  } = config;
-
+  const { title, links, copyright } = config;
   return (
     <>
       <section className='footer'>
-        <h2 className='footer__title'>
-          {title}
-        </h2>
+        <h2 className='footer__title'>{title}</h2>
         <article className='footer__block'>
           <nav className='footer__links'>
             {links.map(link => {
@@ -28,12 +23,10 @@ function Footer({ config }) {
             })}
           </nav>
           <p className='footer__copyright'>
-            © {new Date().getFullYear()}. {copyright}
-          </p>
+            © {new Date().getFullYear()}. {copyright}</p>
         </article>
       </section>
     </>
   )
 }
-
 export default Footer;

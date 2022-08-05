@@ -1,19 +1,13 @@
 import './FormInput.css';
 
 function FormInput({
-  config,
-  textMessageError,
-  onChange,
-  value,
+  config, textMessageError,
+  onChange, value, modifier,
+  modifierLabel,
 }) {
   const {
-    idInput,
-    placeholder,
-    textLabel,
-    required,
-    type,
-    minLength,
-    maxLength,
+    idInput, placeholder, textLabel,
+    required, type, minLength, maxLength,
   } = config;
 
   const arrType = [
@@ -27,19 +21,19 @@ function FormInput({
   return (
     <>
       <label
-        className={`form__input-label`}
+        className={`form__input-label ${modifierLabel ? modifierLabel : ''}`}
         htmlFor={`${idInput}`}>{textLabel}</label>
       <input
         id={`${idInput}`}
-        className={`form__input`}
+        className={`form__input ${modifier ? modifier : ''}`}
         style={{ color: type === 'password' ? "#EE3465" : 'none' }}
         required={Boolean(required) ? required : false}
-        placeholder={String(placeholder) ? placeholder : ''}
+        placeholder={String(placeholder) ? placeholder : false}
         spellCheck={`${type === 'text' ? 'true' : 'false'}`}
         type={String(type) && checkType(arrType, type) ? type : 'text'}
-        minLength={`${Number(minLength) ? minLength : ''}`}
-        maxLength={`${Number(maxLength) ? maxLength : ''}`}
-        autoComplete={type === 'password' ? 'on' : undefined}
+        minLength={`${Number(minLength) ? minLength : false}`}
+        maxLength={`${Number(maxLength) ? maxLength : false}`}
+        autoComplete={type === 'password' ? 'on' : 'off'}
         onChange={onChange}
         value={value}
       />
