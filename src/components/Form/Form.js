@@ -3,13 +3,9 @@ import './Form.css';
 import React from "react";
 
 function Form({
-  config,
-  children,
-  modifier,
-  onSubmitForm,
+  config, children, modifier, onSubmitForm,
 }) {
   const { idForm } = config;
-
   return (
     <>
       <form
@@ -18,12 +14,9 @@ function Form({
         onSubmit={onSubmitForm}
         noValidate
       >
-        <div className={`form__inputs`}>
-          {children}
-        </div>
+        <div className={`form__inputs`}>{children}</div>
       </form>
     </>
   )
 }
-
 export default Form;

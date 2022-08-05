@@ -5,5 +5,4 @@ const configFormInputEmail = {
   required: true,
   type: 'email',
 }
-
 export default configFormInputEmail;

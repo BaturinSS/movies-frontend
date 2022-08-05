@@ -13,8 +13,7 @@ function FormSubmit({ modifier, textMessageError, config }) {
             ? 'form__submit-button_disabled'
             : ''}`}
           type={`submit`}
-        >
-          {textButton}
+        >{textButton}
         </button>
         <p className={`form__question`}>{textQuestion}
           <LinkReact config={config} selector={'form__link'} />

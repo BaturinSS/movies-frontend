@@ -7,5 +7,4 @@ const configFormInputPassword = {
   minLength: '6',
   maxLength: '30',
 }
-
 export default configFormInputPassword;

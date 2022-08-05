@@ -4,5 +4,4 @@ const configFormSubmitLogin = {
   title: 'Войти',
   to: '/sign-in',
 }
-
 export default configFormSubmitLogin;

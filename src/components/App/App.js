@@ -99,9 +99,7 @@ function App() {
           <RegistrationPage
             isLoggedIn={isLoggedIn}
             isEmail={isEmail}
-            setIsEmail={setIsEmail}
             isName={isName}
-            setIsName={setIsName}
             handleNameChange={handleNameChange}
             handleEmailChange={handleEmailChange}
             onSubmitForm={onSubmitFormAuth}

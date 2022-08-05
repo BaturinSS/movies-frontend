@@ -13,19 +13,11 @@ import configFormInputEmail from '../../components/utils/config/formInput/config
 import configFormInputPassword from '../../components/utils/config/formInput/configFormInputPassword';
 import configFormInputName from '../../components/utils/config/formInput/configFormInputName';
 
-import {
-  textMessageError, textGreetingsAuth,
-} from '../../components/utils/constants'
+import { textMessageError, textGreetingsAuth } from '../../components/utils/constants'
 
 function RegistrationPage({
-  isLoggedIn,
-  isEmail,
-  setIsEmail,
-  isName,
-  setIsName,
-  onSubmitForm,
-  handleEmailChange,
-  handleNameChange,
+  isLoggedIn, isEmail, isName,
+  onSubmitForm, handleEmailChange, handleNameChange,
 }) {
   return (
     <>
@@ -55,7 +47,6 @@ function RegistrationPage({
           />
           <FormSubmit
             config={configFormSubmitLogin}
-            modifier={''}
             textMessageError={textMessageError}
           />
         </Form>

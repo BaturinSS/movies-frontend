@@ -1,5 +1,7 @@
 import './FormInput.css';
 
+import React from "react";
+
 function FormInput({
   config, textMessageError,
   onChange, value, modifier,
@@ -14,6 +16,7 @@ function FormInput({
     'text', 'password', 'email',
     'number', 'tel', 'url',
   ]
+
   const checkType = (arr, elem) => {
     return arr.indexOf(elem) !== -1;
   }
@@ -48,5 +51,4 @@ function FormInput({
     </>
   )
 }
-
 export default FormInput;
