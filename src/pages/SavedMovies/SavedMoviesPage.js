@@ -5,6 +5,8 @@ import Main from '../../components/Main/Main';
 import MainSavedMovies from '../../components/Main/SavedMovies/MainSavedMovies';
 import Preloader from '../../components/Preloader/Preloader'
 
+import configFooter from '../../components/utils/config/default/configFooter';
+
 function SavedMoviesPage({
   closeOpenMenu,
   isOpenMenu,
@@ -19,7 +21,9 @@ function SavedMoviesPage({
         isOpenMenu={isOpenMenu}
       />
       <MainSavedMovies />
-      <Footer />
+      <Footer
+        config={configFooter}
+      />
     </>
   )
 }

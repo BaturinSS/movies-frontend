@@ -1,9 +1,9 @@
-import './HeaderLogoLink.css';
+import './LogoLink.css';
 
 import React from "react";
 import { Link } from "react-router-dom";
 
-function HeaderLogoLink() {
+function LogoLink() {
   return (
     <>
       <Link to='/' className='header__logo-link'></Link>
@@ -11,4 +11,4 @@ function HeaderLogoLink() {
   )
 }
 
-export default HeaderLogoLink;
+export default LogoLink;
