@@ -2,26 +2,32 @@ import './Techs.css';
 
 import React from "react";
 
+import ListItem from '../../components/ListItem/ListItem'
+
 function Techs({
-  children,
+  config,
 }) {
+  const {
+    list, title, aboutTitle, aboutDescription,
+  } = config;
   return (
     <>
-      <section className='techs default__block' id="techs">
-        <h2 className='techs__heading default__title'>
-          Технологии
-        </h2>
+      <section id="techs" className='techs default__block'>
+        <h2 id='techsTitle'
+          className='techs__heading default__title'>{title}</h2>
         <article className='techs__about'>
-          <h3 className='techs__title'>
-            7 технологий
-          </h3>
-          <p className='techs__description'>
-            На курсе веб-разработки мы освоили технологии,
-            которые применили в дипломном проекте.
-          </p>
+          <h3 className='techs__title'>{aboutTitle}</h3>
+          <p className='techs__description'>{aboutDescription}</p>
         </article>
         <ul className='techs__list'>
-          {children}
+          {list.map(item => {
+            return (
+              <ListItem
+                key={item.id}
+                config={item}
+              />
+            );
+          })}
         </ul>
       </section>
     </>

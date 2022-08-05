@@ -7,9 +7,7 @@ function HeaderAuth({
 }) {
   return (
     <>
-      <h1
-        className='header__title'>{textGreetings}
-      </h1>
+      <h1 className='header__title'>{textGreetings}</h1>
     </>
   )
 }

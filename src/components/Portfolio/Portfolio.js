@@ -1,61 +1,31 @@
 import './Portfolio.css';
 
 import React from "react";
-import { Link } from 'react-router-dom';
 
 import linkIcon from '../../images/aboutMe/link-icon.svg'
+import LinkReact from '../LinkReact/LinkReact';
 
-function Portfolio(
-
-) {
+function Portfolio({
+  config,
+}) {
+  const {
+    title, links,
+  } = config;
   return (
     <>
       <section className='portfolio'>
-        <h3 className='portfolio__title'>
-          Портфолио
-        </h3>
-        <Link
-          className='portfolio__link'
-          to={{
-            pathname: 'https://baturinss.github.io/how-to-learn'
-          }}
-          target="_blank"
-        >
-          Статичный сайт
-          <img
-            className='portfolio__link-icon'
-            src={linkIcon}
-            alt="Иконка ссылки"
-          />
-        </Link>
-        <Link
-          className='portfolio__link'
-          to={{
-            pathname: 'https://baturinss.github.io/russian-travel'
-          }}
-          target="_blank"
-        >
-          Адаптивный сайт
-          <img
-            className='portfolio__link-icon'
-            src={linkIcon}
-            alt="Иконка ссылки"
-          />
-        </Link>
-        <Link
-          className='portfolio__link'
-          to={{
-            pathname: 'https://server-mesto.ru'
-          }}
-          target="_blank"
-        >
-          Одностраничное приложение
-          <img
-            className='portfolio__link-icon'
-            src={linkIcon}
-            alt="Иконка ссылки"
-          />
-        </Link>
+        <h3 className='portfolio__title'>{title}</h3>
+        {links.map(link => {
+          return (
+            <LinkReact
+              key={link.id}
+              config={link}
+              selector={'portfolio__link'}
+              selectorIcon={'portfolio__link-icon'}
+              linkIcon={linkIcon}
+            />
+          );
+        })}
       </section>
     </>
   )

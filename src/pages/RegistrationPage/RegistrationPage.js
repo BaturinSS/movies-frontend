@@ -2,7 +2,7 @@ import React from "react";
 
 import Header from '../../components/Header/Header';
 import Main from '../../components/Main/Main';
-
+import HeaderAuth from "../../components/HeaderAuth/HeaderAuth";
 import Form from '../../components/Form/Form';
 import FormInput from '../../components/FormInput/FormInput';
 import FormSubmit from '../../components/FormSubmit/FormSubmit';
@@ -13,16 +13,15 @@ import configFormInputEmail from '../../components/utils/config/formInput/config
 import configFormInputPassword from '../../components/utils/config/formInput/configFormInputPassword';
 import configFormInputName from '../../components/utils/config/formInput/configFormInputName';
 
+import { textMessageError } from '../../components/utils/constants'
+
 function RegistrationPage({
-  textMessageError,
   isLoggedIn,
-  closeOpenMenu,
-  isOpenMenu,
-  onSubmitForm,
   isEmail,
   setIsEmail,
   isName,
   setIsName,
+  onSubmitForm,
 }) {
   const handleNameChange = (event) => {
     setIsName(event.target.value);
@@ -34,12 +33,11 @@ function RegistrationPage({
 
   return (
     <>
-      <Header
-        isLoggedIn={isLoggedIn}
-        closeOpenMenu={closeOpenMenu}
-        isOpenMenu={isOpenMenu}
-        textGreetings={`Добро пожаловать!`}
-      />
+      <Header modifier={'header_auth'}>
+        {!isLoggedIn && <HeaderAuth
+          textGreetings={`Добро пожаловать!`}
+        />}
+      </Header>
       <Main>
         <Form
           config={configFormLogin}

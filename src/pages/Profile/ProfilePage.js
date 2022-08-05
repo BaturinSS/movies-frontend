@@ -1,11 +1,17 @@
-import Header from '../../components/Header/Header';
+import React from "react";
 
+import Header from '../../components/Header/Header';
+import Main from '../../components/Main/Main';
+
+import HeaderLogin from "../../components/HeaderLogin/HeaderLogin";
 import MainProfile from '../../components/Main/Profile/MainProfile';
 
+import configHeaderLogin from "../../components/utils/config/configHeaderLogin";
+
 function ProfilePage({
+  isLoggedIn,
   closeOpenMenu,
   isOpenMenu,
-  isLoggedIn,
   isEmail,
   setIsEmail,
   isName,
@@ -14,11 +20,13 @@ function ProfilePage({
 }) {
   return (
     <>
-      <Header
-        isLoggedIn={isLoggedIn}
-        closeOpenMenu={closeOpenMenu}
-        isOpenMenu={isOpenMenu}
-      />
+      <Header>
+        {isLoggedIn && <HeaderLogin
+          config={configHeaderLogin}
+          closeOpenMenu={closeOpenMenu}
+          isOpenMenu={isOpenMenu}
+        />}
+      </Header>
       <MainProfile
         isEmail={isEmail}
         setIsEmail={setIsEmail}

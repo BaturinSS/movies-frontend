@@ -3,14 +3,12 @@ import './LinkAnchor.css';
 import React from "react";
 
 function LinkAnchor({
-  config,
+  config, selector,
 }) {
-  const { href, textLink } = config;
+  const { href, title } = config;
   return (
     <>
-      <a href={href} className='nav-tab__link'>
-        {textLink}
-      </a>
+      <a href={href} className={selector}>{title}</a>
     </>
   )
 }

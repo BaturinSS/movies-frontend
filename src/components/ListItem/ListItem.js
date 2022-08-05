@@ -3,13 +3,12 @@ import './ListItem.css';
 import React from "react";
 
 function ListItem({
-  textItem,
+  config,
 }) {
+  const { textItem } = config;
   return (
     <>
-      <li className='techs__item'>
-        {textItem}
-      </li>
+      <li className='techs__item'>{textItem}</li>
     </>
   )
 }

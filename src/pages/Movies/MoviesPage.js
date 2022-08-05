@@ -1,28 +1,35 @@
+import React from "react";
+
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import Main from '../../components/Main/Main';
 
+import HeaderLogin from "../../components/HeaderLogin/HeaderLogin";
 import MainMovies from '../../components/Main/Movies/MainMovies';
-import Preloader from '../../components/Preloader/Preloader'
+import Preloader from '../../components/Preloader/Preloader';
 
-import configFooter from '../../components/utils/config/default/configFooter';
+import configHeaderLogin from "../../components/utils/config/configHeaderLogin";
+import configFooter from "../../components/utils/config/configFooter";
 
 function MoviesPage({
+  isLoggedIn,
   closeOpenMenu,
   isOpenMenu,
-  isLoggedIn,
   isCards,
 }) {
+  //! Убрать loggedIn после реализации защиты роутов
   return (
     <>
       {false && <Preloader />}
-      <Header
-        isLoggedIn={isLoggedIn}
-        closeOpenMenu={closeOpenMenu}
-        isOpenMenu={isOpenMenu}
-      />
+      <Header>
+        {isLoggedIn && <HeaderLogin
+          config={configHeaderLogin}
+          closeOpenMenu={closeOpenMenu}
+          isOpenMenu={isOpenMenu}
+        />}
+      </Header>
       <MainMovies
-        isCards={isCards}
+        isCards={[]}
       />
       <Footer
         config={configFooter}

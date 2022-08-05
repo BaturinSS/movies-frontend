@@ -2,16 +2,17 @@ import './Promo.css';
 
 import React from "react";
 
+import NavTab from '../../components/NavTab/NavTab';
+
 function Promo({
-  children,
+  config,
 }) {
+  const { description } = config;
   return (
     <>
       <section className='promo'>
-        <h1 className='promo__description'>
-          Учебный проект студента факультета Веб-разработки.
-        </h1>
-        {children}
+        <h1 className='promo__description'>{description}</h1>
+        <NavTab config={config} />
       </section>
     </>
   )

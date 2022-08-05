@@ -1,14 +1,11 @@
-import './LinkReact.css';
-
 import React from "react";
 import { Link } from 'react-router-dom';
 
 function LinkReact({
-  config,
-  selector,
+  config, selector, selectorIcon, linkIcon,
 }) {
   const {
-    to, target, title,
+    to, target, title, addIcon, alt,
   } = config;
   return (
     <>
@@ -18,6 +15,11 @@ function LinkReact({
         target={target}
       >
         {title}
+        {addIcon && <img
+          className={selectorIcon}
+          src={linkIcon}
+          alt={alt}
+        />}
       </Link>
     </>
   )

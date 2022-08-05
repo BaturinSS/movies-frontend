@@ -8,12 +8,13 @@ function LinkNavReact({
   selectorActive,
   selectorIcon,
 }) {
-  const { to, addIcon, title } = config;
+  const { to, addIcon, title, exact } = config;
 
   return (
     <>
       <NavLink
         to={to}
+        exact={`${exact ? exact : false}`}
         onClick={closeOpenMenu}
         className={selector}
         activeClassName={selectorActive}

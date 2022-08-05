@@ -9,11 +9,8 @@ function MainMovies({
   return (
     <>
       <section className={`main`}>
-        <SearchForm
-        />
-        <MoviesList
-          isCards={isCards}
-        />
+        <SearchForm />
+        <MoviesList isCards={isCards} />
       </section>
     </>
   )

@@ -3,23 +3,16 @@ import './Header.css';
 import React from "react";
 
 import LogoLink from '../../components/LogoLink/LogoLink';
-import HeaderAuth from './HeaderAuth/HeaderAuth';
 
 function Header({
   children,
-  isLoggedIn,
-  textGreetings,
-  isSignIn,
+  modifier,
 }) {
   return (
     <>
-      <section className={`header ${isSignIn ? 'header_auth' : ''}`}>
+      <section className={`header ${modifier ? modifier : ''}`}>
         <LogoLink />
         {children}
-
-        {!isLoggedIn && isSignIn && <HeaderAuth
-          textGreetings={textGreetings}
-        />}
       </section>
     </>
   )

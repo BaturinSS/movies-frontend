@@ -1,12 +1,23 @@
 import './NavTab.css';
 
+import LinkAnchor from '../../components/LinkAnchor/LinkAnchor';
+
 function NavTab({
-  children,
+  config,
 }) {
+  const { links } = config;
   return (
     <>
       <nav className='nav-tab'>
-        {children}
+        {links.map(link => {
+          return (
+            <LinkAnchor
+              key={link.id}
+              config={link}
+              selector={'nav-tab__link'}
+            />
+          );
+        })}
       </nav>
     </>
   )

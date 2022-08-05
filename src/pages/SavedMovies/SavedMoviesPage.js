@@ -1,25 +1,32 @@
+import React from "react";
+
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import Main from '../../components/Main/Main';
 
+import HeaderLogin from "../../components/HeaderLogin/HeaderLogin";
 import MainSavedMovies from '../../components/Main/SavedMovies/MainSavedMovies';
 import Preloader from '../../components/Preloader/Preloader'
 
-import configFooter from '../../components/utils/config/default/configFooter';
+import configHeaderLogin from "../../components/utils/config/configHeaderLogin";
+import configFooter from "../../components/utils/config/configFooter";
 
 function SavedMoviesPage({
+  isLoggedIn,
   closeOpenMenu,
   isOpenMenu,
-  isLoggedIn,
 }) {
+  //! Убрать loggedIn после реализации защиты роутов
   return (
     <>
       {true && <Preloader />}
-      <Header
-        isLoggedIn={isLoggedIn}
-        closeOpenMenu={closeOpenMenu}
-        isOpenMenu={isOpenMenu}
-      />
+      <Header>
+        {isLoggedIn && <HeaderLogin
+          config={configHeaderLogin}
+          closeOpenMenu={closeOpenMenu}
+          isOpenMenu={isOpenMenu}
+        />}
+      </Header>
       <MainSavedMovies />
       <Footer
         config={configFooter}
