@@ -13,15 +13,11 @@ import configFormInputPassword from '../../components/utils/config/formInput/con
 import configFormInputEmail from '../../components/utils/config/formInput/configFormInputEmail';
 import configFormAuth from '../../components/utils/config/form/configFormAuth';
 
-import {
-  textMessageError, textGreetingsLogin,
-} from '../../components/utils/constants'
+import { textMessageError, textGreetingsLogin } from '../../components/utils/constants'
 
 function AuthenticationPage({
-  isLoggedIn,
-  isEmail,
-  onSubmitForm,
-  handleEmailChange,
+  isLoggedIn, isEmail,
+  onSubmitForm, handleEmailChange,
 }) {
   return (
     <>
@@ -46,7 +42,7 @@ function AuthenticationPage({
           />
           <FormSubmit
             config={configFormSubmitAuth}
-            classNameBlock={'form__block_auth'}
+            modifier={'form__block_auth'}
             textMessageError={textMessageError}
           />
         </Form>

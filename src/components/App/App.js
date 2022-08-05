@@ -110,7 +110,6 @@ function App() {
             handleEmailChange={handleEmailChange}
             isLoggedIn={isLoggedIn}
             isEmail={isEmail}
-            setIsEmail={setIsEmail}
             onSubmitForm={onSubmitFormLogin}
           />
         </Route>
