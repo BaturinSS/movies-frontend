@@ -1,4 +1,4 @@
-import './Card.css';
+import './MoviesCard.css';
 
 import React, { useState } from "react";
 

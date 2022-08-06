@@ -1,10 +1,10 @@
-import './MoviesList.css';
+import './MoviesCardList.css';
 
 import React from "react";
 
-import Card from '../Card/Card'
+import Card from '../MoviesCard/MoviesCard'
 
-function MoviesList({
+function MoviesCardList({
   isCards, modifierActiveButton, modifierButton, children,
 }) {
   return (
@@ -28,4 +28,4 @@ function MoviesList({
   )
 }
 
-export default MoviesList;
+export default MoviesCardList;

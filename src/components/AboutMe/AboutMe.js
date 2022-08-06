@@ -38,4 +38,5 @@ function AboutMe({ config }) {
     </>
   )
 }
+
 export default AboutMe;

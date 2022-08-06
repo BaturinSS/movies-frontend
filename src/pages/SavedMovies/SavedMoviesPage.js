@@ -7,7 +7,7 @@ import Main from '../../components/Main/Main';
 import HeaderLogin from "../../components/HeaderLogin/HeaderLogin";
 import Preloader from '../../components/Preloader/Preloader';
 import SearchForm from "../../components/SearchForm/SearchForm";
-import MoviesList from "../../components/MoviesList/MoviesList";
+import MoviesCardList from "../../components/MoviesCardList/MoviesCardList";
 import MoviesAddButton from "../../components/MoviesAddButton/MoviesAddButton";
 
 import configHeaderLogin from "../../components/utils/config/configHeaderLogin";
@@ -34,7 +34,7 @@ function SavedMoviesPage({
       </Header>
       <Main>
         <SearchForm />
-        <MoviesList
+        <MoviesCardList
           isCards={isCards}
           modifierButton={'movies-list__button_delete'}
         />
