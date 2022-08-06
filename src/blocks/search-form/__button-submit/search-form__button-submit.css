@@ -10,6 +10,7 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 15px;
+  transition: .5s;
 }
 
 .search-form__button-submit:hover {

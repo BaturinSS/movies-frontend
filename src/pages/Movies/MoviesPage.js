@@ -5,37 +5,43 @@ import Footer from '../../components/Footer/Footer';
 import Main from '../../components/Main/Main';
 
 import HeaderLogin from "../../components/HeaderLogin/HeaderLogin";
-import Preloader from '../../components/Preloader/Preloader';
 import SearchForm from "../../components/SearchForm/SearchForm";
 import MoviesList from "../../components/MoviesList/MoviesList";
+import MoviesAddButton from "../../components/MoviesAddButton/MoviesAddButton";
 
 import configHeaderLogin from "../../components/utils/config/configHeaderLogin";
 import configFooter from "../../components/utils/config/configFooter";
 
 function MoviesPage({
   isLoggedIn,
-  closeOpenMenu,
+  closePopup,
+  openPopup,
   isOpenMenu,
   isCards,
 }) {
+  const addMovies = () => {
+    console.log('Click addMovies')
+  }
   //! Убрать loggedIn после реализации защиты роутов
   return (
     <>
-      {false && <Preloader />}
       <Header>
         {isLoggedIn && <HeaderLogin
           config={configHeaderLogin}
-          closeOpenMenu={closeOpenMenu}
-          isOpenMenu={isOpenMenu}
-        />}
+          closePopup={closePopup}
+          openPopup={openPopup}
+          isOpenMenu={isOpenMenu} />}
       </Header>
       <Main>
         <SearchForm />
-        <MoviesList isCards={isCards} />
+        <MoviesList
+          isCards={isCards}
+          modifierActiveButton={'movies-list__button_active'}
+        >
+          <MoviesAddButton addMovies={addMovies} />
+        </MoviesList>
       </Main>
-      <Footer
-        config={configFooter}
-      />
+      <Footer config={configFooter} />
     </>
   )
 }

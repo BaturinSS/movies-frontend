@@ -1,10 +1,12 @@
 import './Card.css';
 
-import React from "react";
+import React, { useState } from "react";
 
 function Card({
-  card, children,
+  card, modifierActiveButton, modifierButton
 }) {
+  const [isFavorite, setIsFavorite] = useState(false);
+
   const time = () => {
     const timeMinutesFull = card.duration;
     const timeMinutes = `${(timeMinutesFull % 60) !== 0
@@ -19,6 +21,9 @@ function Card({
       ? `0${timeMinutes}`
       : `${timeMinutes}`}`
   }
+  const addFavorites = () => {
+    setIsFavorite(!isFavorite);
+  }
 
   return (
     <>
@@ -26,16 +31,21 @@ function Card({
         <figure className="movies-list__info">
           <figcaption>
             <h2 className="movies-list__title">{card.nameRU}
-              <p className=''>{time()}</p>
+              <p className='movies-list__title-time'>{time()}</p>
             </h2>
           </figcaption>
           <img
             className="movies-list__image"
             src={`https://forsazh-film-smotret.ru/wp-content${card.image.formats.thumbnail.url}`}
-            alt={card.nameRU}
-          />
+            alt={card.nameRU} />
         </figure>
-        {children}
+        <button
+          className={`movies-list__button
+          ${modifierButton ? `${modifierButton}` : ''}
+          ${isFavorite ? `${modifierActiveButton}` : ''}`}
+          onClick={addFavorites}
+          type='button'
+        />
       </li>
     </>
   )

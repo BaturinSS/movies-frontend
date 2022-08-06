@@ -10,6 +10,7 @@ import ProfilePage from '../../pages/Profile/ProfilePage';
 import MoviesPage from '../../pages/Movies/MoviesPage';
 import SavedMoviesPage from '../../pages/SavedMovies/SavedMoviesPage';
 import NotFoundPage from '../../pages/NotFound/NotFoundPage';
+import Preloader from "../Preloader/Preloader";
 
 import moviesList from '../../components/utils/moviesList.json';
 
@@ -19,8 +20,17 @@ function App() {
   const [isCards, setIsCards] = useState(moviesList || []);
   const [isEmail, setIsEmail] = useState(localStorage.getItem('login') || '');
   const [isName, setIsName] = useState('');
+  const [isDownload, setIsDownload] = useState(false);
 
   const history = useHistory();
+
+  const openPopup = () => {
+    setIsOpenMenu(true);
+  };
+
+  const closePopup = () => {
+    setIsOpenMenu(false);
+  };
 
   const disableScroll = () => {
     disablePageScroll();
@@ -30,21 +40,18 @@ function App() {
     enablePageScroll();
   };
 
-  const closeOpenMenu = () => {
-    setIsOpenMenu(!isOpenMenu);
-    if (!isOpenMenu) {
-      disableScroll();
-    } else {
-      enableScroll();
-    }
-  };
+  useEffect(() => {
+    if (!isOpenMenu) return enableScroll();
+    disableScroll();
+  }, [isOpenMenu, isDownload]);
 
   useEffect(() => {
     if (!isOpenMenu) return;
+
     function handleOverlay(event) {
       if (event.target.classList.contains('popup_opened')
         || event.target.classList.contains('popup_close')) {
-        closeOpenMenu();
+        closePopup();
       }
     };
     document.addEventListener("mousedown", handleOverlay);
@@ -87,12 +94,14 @@ function App() {
 
   return (
     <>
+      {isDownload && <Preloader />}
       <Switch>
         <Route path="/" exact>
           <AboutProjectPage
             isLoggedIn={isLoggedIn}
             isOpenMenu={isOpenMenu}
-            closeOpenMenu={closeOpenMenu}
+            closePopup={closePopup}
+            openPopup={openPopup}
           />
         </Route>
         <Route path="/sign-up" exact>
@@ -122,7 +131,8 @@ function App() {
             isName={isName}
             setIsName={setIsName}
             onSubmitFormProfile={onSubmitFormProfile}
-            closeOpenMenu={closeOpenMenu}
+            closePopup={closePopup}
+            openPopup={openPopup}
             outputProfile={outputProfile}
           />
         </Route>
@@ -131,14 +141,17 @@ function App() {
             isLoggedIn={isLoggedIn}
             isOpenMenu={isOpenMenu}
             isCards={isCards}
-            closeOpenMenu={closeOpenMenu}
+            c closePopup={closePopup}
+            openPopup={openPopup}
           />
         </Route>
         <Route path="/saved-movies" exact>
           <SavedMoviesPage
             isLoggedIn={isLoggedIn}
             isOpenMenu={isOpenMenu}
-            closeOpenMenu={closeOpenMenu}
+            closePopup={closePopup}
+            openPopup={openPopup}
+            isCards={isCards}
           />
         </Route>
         <Route path="*">

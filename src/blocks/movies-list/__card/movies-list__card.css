@@ -1,0 +1,14 @@
+.movies-list__card {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: #222222;
+  transition: .5s;
+  /* border: 1px solid red; */
+}
+
+.movies-list__card:hover {
+  cursor: pointer;
+  opacity: .8;
+}

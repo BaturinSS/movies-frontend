@@ -21,6 +21,9 @@
     padding-left: 19px;
     font-size: 13px;
     border-left: 1px solid rgba(80, 80, 80, 1);
-    ;
   }
+}
+
+.checkbox:hover {
+  cursor: pointer;
 }

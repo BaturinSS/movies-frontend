@@ -11,6 +11,7 @@
   justify-content: space-between;
   background-color: #202020;
   transition: right .8s linear;
+  z-index: 10;
   /* border: 1px solid red; */
 }
 

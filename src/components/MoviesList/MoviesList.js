@@ -3,31 +3,26 @@ import './MoviesList.css';
 import React from "react";
 
 import Card from '../Card/Card'
-import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
-import CheckboxSearch from '../SubstitutionCheckbox/CheckboxSearch/CheckboxSearch';
 
 function MoviesList({
-  isCards,
+  isCards, modifierActiveButton, modifierButton, children,
 }) {
   return (
     <>
       <section className="movies-list">
         <ul className="movies-list__cards">
-          {isCards.slice().reverse().map(card => {
+          {isCards.map(card => {
             return (
               <Card
                 key={card.id}
                 card={card}
-              >
-                <FilterCheckbox
-                  label={''}
-                  checked={false}>
-                  <CheckboxSearch />
-                </FilterCheckbox>
-              </Card>
+                modifierButton={modifierButton}
+                modifierActiveButton={modifierActiveButton}
+              />
             );
           })}
         </ul>
+        {children}
       </section>
     </>
   )

@@ -1,0 +1,9 @@
+.movies-list__button_active {
+  background-color: #3DDC84;
+  background-image: url('../../../../images/movies/icon__flag_white.svg');
+}
+
+.movies-list__button_active:hover {
+  border: none;
+  opacity: .5;
+}

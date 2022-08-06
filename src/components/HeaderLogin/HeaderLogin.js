@@ -5,12 +5,12 @@ import React from "react";
 import LinkNavReact from '../../components/LinkNavReact/LinkNavReact';
 
 function HeaderLogin({
-  config, closeOpenMenu, isOpenMenu,
+  config, closePopup, openPopup, isOpenMenu,
 }) {
   const { linksNav, linkProfile } = config;
   return (
     <>
-      <div className="header__menu" onClick={closeOpenMenu}>
+      <div className="header__menu" onClick={openPopup}>
         <div className="header__menu-img" />
         <div className="header__menu-img" />
         <div className="header__menu-img" />
@@ -26,7 +26,7 @@ function HeaderLogin({
               <LinkNavReact
                 key={link.id}
                 config={link}
-                closeOpenMenu={closeOpenMenu}
+                closeOpenMenu={closePopup}
                 selector={'header__link-login'}
                 selectorActive={'header__active-link'}
               />
@@ -35,7 +35,7 @@ function HeaderLogin({
         </nav>
         <LinkNavReact
           config={linkProfile}
-          closeOpenMenu={closeOpenMenu}
+          closeOpenMenu={closePopup}
           selector={'header__link-login header__link-login_indent'}
           selectorActive={'header__active-link'}
           selectorIcon={'header__logo'}

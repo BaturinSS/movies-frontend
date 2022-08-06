@@ -402,58 +402,5 @@
       "created_at": "2020-12-02T20:57:25.729Z",
       "updated_at": "2020-12-02T20:57:25.729Z"
     }
-  },
-  {
-    "id": 9,
-    "nameRU": " 196 ударов в минуту",
-    "nameEN": "196 BPM",
-    "director": "Ромуальд Кармакар",
-    "country": "Германия",
-    "year": "2003",
-    "duration": 60,
-    "description": "Панорамный взгляд на берлинский Лав-парад 2002-го года с трех разных точек зрения, каждая из которых образует отдельную новеллу. Первая, «Интро», показывает происходящее глазами людей, стоящих у входа в клуб Linientreu; вторая, «Габба», переносит зрителя в гущу толпы на площади Брайтшайдплац, где диджейские вертушки установлены даже в кебабной. И третья, «Хелл за работой», дает исчерпывающее представление о том, как DJ Hell сводит пластинки во время своего сета в WMF.",
-    "trailerLink": "https://www.youtube.com/watch?v=GsDRVpdgNJ4",
-    "created_at": "2020-12-02T20:59:53.997Z",
-    "updated_at": "2020-12-02T20:59:53.997Z",
-    "image": {
-      "id": 9,
-      "name": "загруженное (1)",
-      "alternativeText": "",
-      "caption": "",
-      "width": 560,
-      "height": 292,
-      "formats": {
-        "thumbnail": {
-          "hash": "thumbnail_zagruzhennoe_1_fd5faff237",
-          "ext": ".jpeg",
-          "mime": "image/jpeg",
-          "width": 245,
-          "height": 128,
-          "size": 5.57,
-          "path": null,
-          "url": "/uploads/2019/11/fast-and-furious-6-2560x1600.jpg"
-        },
-        "small": {
-          "hash": "small_zagruzhennoe_1_fd5faff237",
-          "ext": ".jpeg",
-          "mime": "image/jpeg",
-          "width": 500,
-          "height": 261,
-          "size": 17.87,
-          "path": null,
-          "url": "/uploads/small_zagruzhennoe_1_fd5faff237.jpeg"
-        }
-      },
-      "hash": "zagruzhennoe_1_fd5faff237",
-      "ext": ".jpeg",
-      "mime": "image/jpeg",
-      "size": 19.39,
-      "url": "/uploads/zagruzhennoe_1_fd5faff237.jpeg",
-      "previewUrl": null,
-      "provider": "local",
-      "provider_metadata": null,
-      "created_at": "2020-12-02T20:59:37.364Z",
-      "updated_at": "2020-12-02T20:59:37.364Z"
-    }
   }
 ]

@@ -17,7 +17,7 @@ import configFormInputEmail from "../../components/utils/config/formInput/config
 import configFormInputName from '../../components/utils/config/formInput/configFormInputName';
 
 function ProfilePage({
-  isLoggedIn, closeOpenMenu,
+  isLoggedIn, closePopup, openPopup,
   isOpenMenu, isEmail, setIsEmail, isName,
   setIsName, outputProfile, onSubmitFormProfile,
 }) {
@@ -42,12 +42,14 @@ function ProfilePage({
   const editProfile = () => {
     setIsPermission(!isPermission)
   }
+
   return (
     <>
       <Header>
         {isLoggedIn && <HeaderLogin
           config={configHeaderLogin}
-          closeOpenMenu={closeOpenMenu}
+          closePopup={closePopup}
+          openPopup={openPopup}
           isOpenMenu={isOpenMenu}
         />}
       </Header>

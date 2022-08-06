@@ -20,7 +20,7 @@ import configAboutMe from "../../components/utils/config/configAboutMe";
 import configFooter from "../../components/utils/config/configFooter";
 
 function AboutProjectPage({
-  isLoggedIn, closeOpenMenu, isOpenMenu,
+  isLoggedIn, closePopup, openPopup, isOpenMenu,
 }) {
   return (
     <>
@@ -30,7 +30,8 @@ function AboutProjectPage({
         />}
         {isLoggedIn && <HeaderLogin
           config={configHeaderLogin}
-          closeOpenMenu={closeOpenMenu}
+          closePopup={closePopup}
+          openPopup={openPopup}
           isOpenMenu={isOpenMenu}
         />}
       </Header>

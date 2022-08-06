@@ -5,6 +5,6 @@ const configFormInputName = {
   required: true,
   type: 'text',
   minLength: '2',
-  maxLength: '30',
+  maxLength: '46',
 }
 export default configFormInputName;

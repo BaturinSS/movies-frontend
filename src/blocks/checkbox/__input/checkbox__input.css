@@ -15,7 +15,7 @@
   background-color: #FFFFFF;
   border: .1px solid #3ab170;
   border-radius: 50%;
-  transition: .8s;
+  transition: .5s;
 }
 
 .checkbox__input:focus+.checkbox__new {

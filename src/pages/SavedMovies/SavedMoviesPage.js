@@ -7,29 +7,37 @@ import Main from '../../components/Main/Main';
 import HeaderLogin from "../../components/HeaderLogin/HeaderLogin";
 import Preloader from '../../components/Preloader/Preloader';
 import SearchForm from "../../components/SearchForm/SearchForm";
+import MoviesList from "../../components/MoviesList/MoviesList";
+import MoviesAddButton from "../../components/MoviesAddButton/MoviesAddButton";
 
 import configHeaderLogin from "../../components/utils/config/configHeaderLogin";
 import configFooter from "../../components/utils/config/configFooter";
 
 
 function SavedMoviesPage({
-  isLoggedIn,
-  closeOpenMenu,
-  isOpenMenu,
+  isLoggedIn, isCards,
+  closePopup,
+  openPopup,
+  isOpenMenu, deleteCardFavorite,
 }) {
   //! Убрать loggedIn после реализации защиты роутов
   return (
     <>
-      {true && <Preloader />}
+      {false && <Preloader />}
       <Header>
         {isLoggedIn && <HeaderLogin
           config={configHeaderLogin}
-          closeOpenMenu={closeOpenMenu}
+          closePopup={closePopup}
+          openPopup={openPopup}
           isOpenMenu={isOpenMenu}
         />}
       </Header>
       <Main>
         <SearchForm />
+        <MoviesList
+          isCards={isCards}
+          modifierButton={'movies-list__button_delete'}
+        />
       </Main>
       <Footer
         config={configFooter}

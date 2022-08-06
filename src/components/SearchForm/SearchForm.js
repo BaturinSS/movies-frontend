@@ -6,6 +6,10 @@ import FilterCheckbox from '../FilterCheckbox/FilterCheckbox'
 import CheckboxSearch from '../SubstitutionCheckbox/CheckboxSearch/CheckboxSearch';
 
 function SearchForm() {
+  const performSearch = (event) => {
+    event.preventDefault();
+  }
+
   return (
     <>
       <section className='search-form'>
@@ -17,7 +21,9 @@ function SearchForm() {
               placeholder={`Фильм`} />
             <button
               className='search-form__button-submit'
-              type='submit' />
+              type='submit'
+              onClick={performSearch}
+            />
           </div>
           <FilterCheckbox
             label={'Короткометражки'}
