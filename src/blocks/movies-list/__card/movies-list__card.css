@@ -7,8 +7,3 @@
   transition: .5s;
   /* border: 1px solid red; */
 }
-
-.movies-list__card:hover {
-  cursor: pointer;
-  opacity: .8;
-}
