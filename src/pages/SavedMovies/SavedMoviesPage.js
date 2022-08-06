@@ -8,7 +8,6 @@ import HeaderLogin from "../../components/HeaderLogin/HeaderLogin";
 import Preloader from '../../components/Preloader/Preloader';
 import SearchForm from "../../components/SearchForm/SearchForm";
 import MoviesCardList from "../../components/MoviesCardList/MoviesCardList";
-import MoviesAddButton from "../../components/MoviesAddButton/MoviesAddButton";
 
 import configHeaderLogin from "../../components/utils/config/configHeaderLogin";
 import configFooter from "../../components/utils/config/configFooter";

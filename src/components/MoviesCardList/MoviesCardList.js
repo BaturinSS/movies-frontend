@@ -2,7 +2,7 @@ import './MoviesCardList.css';
 
 import React from "react";
 
-import Card from '../MoviesCard/MoviesCard'
+import MoviesCard from '../MoviesCard/MoviesCard'
 
 function MoviesCardList({
   isCards, modifierActiveButton, modifierButton, children,
@@ -13,7 +13,7 @@ function MoviesCardList({
         <ul className="movies-list__cards">
           {isCards.map(card => {
             return (
-              <Card
+              <MoviesCard
                 key={card.id}
                 card={card}
                 modifierButton={modifierButton}

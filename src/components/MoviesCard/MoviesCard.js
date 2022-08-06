@@ -2,7 +2,7 @@ import './MoviesCard.css';
 
 import React, { useState } from "react";
 
-function Card({
+function MoviesCard({
   card, modifierActiveButton, modifierButton
 }) {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -51,4 +51,4 @@ function Card({
   )
 }
 
-export default Card;
+export default MoviesCard;

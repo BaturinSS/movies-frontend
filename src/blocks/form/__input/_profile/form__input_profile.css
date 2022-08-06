@@ -4,5 +4,17 @@
   text-align: right;
   border: none;
   font-size: 11px;
-  line-height: 13px;
+  line-height: 22px;
+}
+
+.form__input_profile:hover{
+  border-bottom: none;
+  color: #8B8B8B;
+}
+
+.form__input_profile:focus{
+  border-bottom: none;
+  color: white;
+  font-size: 20px;
+  line-height: 22px;
 }

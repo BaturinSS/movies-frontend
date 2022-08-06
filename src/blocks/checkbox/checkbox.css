@@ -10,6 +10,7 @@
   font-weight: 400;
   font-size: 11px;
   line-height: 18px;
+  transition: .5s;
   /* border: 1px solid red; */
 }
 
@@ -26,4 +27,5 @@
 
 .checkbox:hover {
   cursor: pointer;
+  color: #8B8B8B;
 }
