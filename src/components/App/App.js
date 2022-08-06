@@ -63,7 +63,7 @@ function App() {
     event.preventDefault();
     setIsLoggedIn(true);
     localStorage.setItem("login", event.target[0].value);
-    history.push('/');
+    history.push('/movies');
   }
 
   const onSubmitFormAuth = (event) => {
