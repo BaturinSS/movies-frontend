@@ -10,9 +10,9 @@ function Techs({ config }) {
   } = config;
   return (
     <>
-      <section id="techs" className='techs default__block'>
+      <section id="techs" className='default__block techs'>
         <h2 id='techsTitle'
-          className='techs__heading default__title'>{title}</h2>
+          className='default__title techs__heading '>{title}</h2>
         <article className='techs__about'>
           <h3 className='techs__title'>{aboutTitle}</h3>
           <p className='techs__description'>{aboutDescription}</p>

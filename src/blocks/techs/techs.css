@@ -1,3 +1,5 @@
-.techs {
-  background-color: #272727;
+@media screen and (min-width: 747px) {
+  .techs {
+    background-color: #272727;
+  }
 }
