@@ -16,7 +16,7 @@ import configHeaderLogin from "../../components/utils/config/configHeaderLogin";
 import configPromo from '../../components/utils/config/configPromo';
 import configAboutProject from "../../components/utils/config/configAboutProject";
 import configTechs from "../../components/utils/config/configTechs";
-import configAboutMe from "../../components/utils/config/configTechs copy";
+import configAboutMe from "../../components/utils/config/configAboutMe";
 import configFooter from "../../components/utils/config/configFooter";
 
 function AboutProjectPage({

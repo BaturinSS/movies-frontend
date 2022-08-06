@@ -1,11 +1,9 @@
-import React from "react";
-
 import './FilterCheckbox.css';
 
-import CheckboxSearch from '../SubstitutionCheckbox/CheckboxSearch/CheckboxSearch';
+import React from "react";
 
 function FilterCheckbox({
-  value,
+  value, children,
   checked,
   label,
 }) {
@@ -13,17 +11,15 @@ function FilterCheckbox({
     <>
       <label
         className='checkbox'
-        htmlFor='filterCheckbox'
-      >
+        htmlFor='filterCheckbox'>
         <input
           className='checkbox__input'
           id='filterCheckbox'
           type='checkbox'
           value={value}
-          defaultChecked={checked}
-        />
+          defaultChecked={checked} />
         {label}
-        <CheckboxSearch />
+        {children}
       </label>
     </>
   )

@@ -3,6 +3,7 @@ import './SearchForm.css';
 import React from "react";
 
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox'
+import CheckboxSearch from '../SubstitutionCheckbox/CheckboxSearch/CheckboxSearch';
 
 function SearchForm() {
   return (
@@ -13,17 +14,16 @@ function SearchForm() {
             <input
               className='search-form__string'
               type='search'
-              placeholder={`Фильм`}
-            />
+              placeholder={`Фильм`} />
             <button
               className='search-form__button-submit'
-              type='submit'
-            />
+              type='submit' />
           </div>
           <FilterCheckbox
             label={'Короткометражки'}
-            checked={false}
-          />
+            checked={false}>
+            <CheckboxSearch />
+          </FilterCheckbox>
         </form>
       </section>
     </>

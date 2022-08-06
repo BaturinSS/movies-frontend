@@ -1,6 +1,10 @@
 import './MoviesList.css';
 
+import React from "react";
+
 import Card from '../Card/Card'
+import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
+import CheckboxSearch from '../SubstitutionCheckbox/CheckboxSearch/CheckboxSearch';
 
 function MoviesList({
   isCards,
@@ -14,7 +18,13 @@ function MoviesList({
               <Card
                 key={card.id}
                 card={card}
-              />
+              >
+                <FilterCheckbox
+                  label={''}
+                  checked={false}>
+                  <CheckboxSearch />
+                </FilterCheckbox>
+              </Card>
             );
           })}
         </ul>

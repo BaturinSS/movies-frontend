@@ -1,5 +1,7 @@
 import './CheckboxSearch.css';
 
+import React from "react";
+
 function CheckboxSearch() {
   return (
     <>
