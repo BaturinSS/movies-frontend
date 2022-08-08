@@ -5,7 +5,6 @@ import Footer from '../../components/Footer/Footer';
 import Main from '../../components/Main/Main';
 
 import HeaderLogin from "../../components/HeaderLogin/HeaderLogin";
-import Preloader from '../../components/Preloader/Preloader';
 import SearchForm from "../../components/SearchForm/SearchForm";
 import MoviesCardList from "../../components/MoviesCardList/MoviesCardList";
 
