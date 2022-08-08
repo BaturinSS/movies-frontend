@@ -7,6 +7,11 @@
   border: 1px solid #424242;
   border-radius: 6px;
   transition: .5s;
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
   color: #FFFFFF;
 }
 
