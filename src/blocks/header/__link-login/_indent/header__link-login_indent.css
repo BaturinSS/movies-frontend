@@ -13,12 +13,13 @@
 @media screen and (min-width: 769px) {
   .header__link-login_indent {
     margin-bottom: 0;
-    margin-left: calc((100vw - 1280px)/(770 - 1280) * (140 - 370) + 370px);
+    margin-left: calc((100vw - 1280px)/(770 - 1280) * (130 - 345) + 345px);
+    padding: 0;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .header__link-login_indent {
-    margin-left: 370px;
+    margin-left: 345px;
   }
 }

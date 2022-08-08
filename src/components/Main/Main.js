@@ -4,7 +4,7 @@ import React from "react";
 
 function Main({ children }) {
   return (
-    <><section className='main'>{children}</section></>
+    <><main className='main'>{children}</main></>
   )
 }
 export default Main;

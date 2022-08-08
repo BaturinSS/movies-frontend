@@ -32,7 +32,7 @@
 
   .header__link-login {
     margin-right: 16px;
-    padding: 0;
+    padding: 0 0 3px;
     font-size: 13px;
     line-height: 18px;
   }

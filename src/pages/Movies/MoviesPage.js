@@ -13,7 +13,6 @@ import configHeaderLogin from "../../components/utils/config/configHeaderLogin";
 import configFooter from "../../components/utils/config/configFooter";
 
 function MoviesPage({
-  isLoggedIn,
   closePopup,
   openPopup,
   isOpenMenu,
@@ -22,15 +21,14 @@ function MoviesPage({
   const addMovies = () => {
     console.log('Click addMovies')
   }
-  //! Убрать loggedIn после реализации защиты роутов
   return (
     <>
       <Header>
-        {isLoggedIn && <HeaderLogin
+        <HeaderLogin
           config={configHeaderLogin}
           closePopup={closePopup}
           openPopup={openPopup}
-          isOpenMenu={isOpenMenu} />}
+          isOpenMenu={isOpenMenu} />
       </Header>
       <Main>
         <SearchForm />

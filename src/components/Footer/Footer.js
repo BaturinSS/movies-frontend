@@ -8,7 +8,7 @@ function Footer({ config }) {
   const { title, links, copyright } = config;
   return (
     <>
-      <section className='footer'>
+      <footer className='footer'>
         <h2 className='footer__title'>{title}</h2>
         <article className='footer__block'>
           <nav className='footer__links'>
@@ -25,7 +25,7 @@ function Footer({ config }) {
           <p className='footer__copyright'>
             © {new Date().getFullYear()}. {copyright}</p>
         </article>
-      </section>
+      </footer>
     </>
   )
 }

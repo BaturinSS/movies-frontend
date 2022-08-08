@@ -17,7 +17,7 @@ import configFormInputEmail from "../../components/utils/config/formInput/config
 import configFormInputName from '../../components/utils/config/formInput/configFormInputName';
 
 function ProfilePage({
-  isLoggedIn, closePopup, openPopup,
+  closePopup, openPopup,
   isOpenMenu, isEmail, setIsEmail, isName,
   setIsName, outputProfile, onSubmitFormProfile,
 }) {
@@ -46,12 +46,12 @@ function ProfilePage({
   return (
     <>
       <Header>
-        {isLoggedIn && <HeaderLogin
+        <HeaderLogin
           config={configHeaderLogin}
           closePopup={closePopup}
           openPopup={openPopup}
           isOpenMenu={isOpenMenu}
-        />}
+        />
       </Header>
       <Main>
         <GreetingProfile isName={isName} />

@@ -14,22 +14,20 @@ import configFooter from "../../components/utils/config/configFooter";
 
 
 function SavedMoviesPage({
-  isLoggedIn, isCards,
+  isCards,
   closePopup,
   openPopup,
   isOpenMenu, deleteCardFavorite,
 }) {
-  //! Убрать loggedIn после реализации защиты роутов
   return (
     <>
-      {false && <Preloader />}
       <Header>
-        {isLoggedIn && <HeaderLogin
+        <HeaderLogin
           config={configHeaderLogin}
           closePopup={closePopup}
           openPopup={openPopup}
           isOpenMenu={isOpenMenu}
-        />}
+        />
       </Header>
       <Main>
         <SearchForm />
