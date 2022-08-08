@@ -18,6 +18,11 @@
   color: rgba(255, 255, 255, 1);
 }
 
+.search-form__string:focus {
+  color: #4285f4;
+}
+
+
 @media screen and (min-width: 450px) {
   .search-form__string::placeholder {
     background-image: url('../../../images/searchForm/magnifier_icon.svg');

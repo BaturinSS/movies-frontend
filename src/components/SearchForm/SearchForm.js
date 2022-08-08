@@ -18,7 +18,9 @@ function SearchForm() {
             <input
               className='search-form__string'
               type='search'
-              placeholder={`Фильм`} />
+              required={true}
+              placeholder={`Фильм`}
+            />
             <button
               className='search-form__button-submit'
               type='submit'
@@ -28,7 +30,7 @@ function SearchForm() {
           <FilterCheckbox
             label={'Короткометражки'}
             checked={false}>
-            <CheckboxSearch />
+            <CheckboxSearch/>
           </FilterCheckbox>
         </form>
       </section>

@@ -10,6 +10,10 @@
   /* border: 1px solid red; */
 }
 
+.search-form__form:hover {
+  opacity: .8;
+}
+
 @media screen and (min-width: 747px) {
   .search-form__form {
     flex-direction: row;
