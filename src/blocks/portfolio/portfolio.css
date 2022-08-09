@@ -1,0 +1,25 @@
+.portfolio {
+  margin: 7px auto 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 400px) {
+  .portfolio {
+    max-width: 500px;
+  }
+}
+
+@media screen and (min-width: 747px) {
+  .portfolio {
+    max-width: 100%;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  .portfolio {
+    margin-top: 0;
+  }
+}

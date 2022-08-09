@@ -1,0 +1,19 @@
+.header__logo {
+  margin: 0 0 0 7px;
+  padding: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-size: 11px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: #313131;
+  background-image: url('../../../images/header/icon_profile.svg');
+  transition: .5s;
+  /* border: 1px solid red; */
+}
+
+.header__logo:hover {
+  cursor: pointer;
+  opacity: .5;
+}

@@ -1,0 +1,16 @@
+.form__input_profile {
+  padding: 0;
+  font-weight: 400;
+  text-align: right;
+  border: none;
+  font-size: 11px;
+  line-height: 22px;
+}
+
+.form__input_profile:hover{
+  border-bottom: none;
+}
+
+.form__input_profile:focus{
+  border-bottom: none;
+}

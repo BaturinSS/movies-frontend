@@ -1,0 +1,26 @@
+.about-project__scheme {
+  margin: -4px 0 0;
+  padding: 0;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: min-content;
+  width: 100%;
+}
+
+@media screen and (max-width: 749px) {
+  .about-project__scheme {
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .about-project__scheme {
+    margin-top: 25px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .about-project__scheme {
+    margin-top: 37px;
+  }
+}

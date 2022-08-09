@@ -1,0 +1,20 @@
+.about-me__group {
+  margin: 0 auto 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid red; */
+}
+
+@media screen and (min-width: 400px) {
+  .about-me__group {
+    max-width: 500px;
+  }
+}
+
+@media screen and (min-width: 747px) {
+  .about-me__group {
+    grid-area: text;
+    max-width: 100%;
+  }
+}

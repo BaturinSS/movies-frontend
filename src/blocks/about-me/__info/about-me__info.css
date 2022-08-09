@@ -1,0 +1,23 @@
+.about-me__info {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: grid;
+  /* border: 1px solid rebeccapurple; */
+}
+
+@media screen and (min-width: 747px) {
+  .about-me__info {
+    grid-template-columns: 364px max-content;
+    justify-content: space-between;
+    grid-template-areas:
+      'text photo'
+      'link photo';
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .about-me__info {
+    grid-template-columns: 600px max-content;
+  }
+}

@@ -1,0 +1,39 @@
+.techs__list {
+  margin: -12px 0 0;
+  padding: 0;
+  min-width: 178px;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, 84px);
+  grid-auto-rows: 57px;
+  gap: 10px;
+  list-style-type: none;
+  /* border: 1px solid red; */
+}
+
+@media screen and (min-width: 320px) {
+  .techs__list {
+    min-width: calc((100vw - 400px)/(320 - 400) * (178 - 272) + 272px);
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .techs__list {
+    min-width: 366px;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width: 747px) {
+  .techs__list {
+    min-width: 648px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .techs__list {
+    margin-top: 32px;
+    grid-template-columns: repeat(auto-fit, 90px);
+    grid-auto-rows: 60px;
+  }
+}

@@ -1,0 +1,39 @@
+.header__link-login {
+  margin: 24px auto 0;
+  padding: 0 0 7px;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 25px;
+  transition: .5s;
+  color: #FFFFFF;
+}
+
+.header__link-login:hover {
+  cursor: pointer;
+  opacity: .5;
+}
+
+@media screen and (min-width: 768px) {
+  .header__link-login {
+    margin-top: 22px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .header__link-login:first-child {
+    display: none;
+  }
+
+  .header__link-login {
+    margin-right: 16px;
+    padding: 0 0 3px;
+    font-size: 13px;
+    line-height: 18px;
+  }
+}

@@ -1,0 +1,22 @@
+.nav-tab {
+  margin: 0;
+  padding: 0;
+  width: 650px;
+  max-width: 90%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 5px;
+}
+
+@media screen and (min-width: 320px) {
+  .nav-tab {
+    column-gap: calc((100vw - 768px)/(320 - 768) * (5 - 10) + 10px);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .nav-tab {
+    column-gap: 10px;
+  }
+}

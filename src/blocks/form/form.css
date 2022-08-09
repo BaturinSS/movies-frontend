@@ -1,0 +1,15 @@
+.form {
+  margin: 0 30px;
+  padding: 0;
+  max-width: 396px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* border: 1px solid red; */
+}
+
+@media screen and (min-width: 470px) {
+  .form {
+    margin: auto;
+  }
+}

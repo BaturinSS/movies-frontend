@@ -1,0 +1,6 @@
+@import url('../../blocks/header/__menu/header__menu.css');
+@import url('../../blocks/header/__menu-img/header__menu-img.css');
+@import url('../../blocks/header/__items/header__items.css');
+@import url('../../blocks/header/__items/_opened/header__items_opened.css');
+@import url('../../blocks/header/__close-menu/header__close-menu.css');
+@import url('../../blocks/header/__links/header__links.css');

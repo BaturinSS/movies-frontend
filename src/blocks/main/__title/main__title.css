@@ -1,0 +1,24 @@
+.main__title {
+  margin: 70px auto 0;
+  padding: 0 30px;
+  height: 60px;
+  max-width: 410px;
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+}
+
+@media screen and (min-width: 500px) {
+  .main__title {
+    margin-top: 236px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .main__title {
+    margin-top: 74px;
+  }
+}

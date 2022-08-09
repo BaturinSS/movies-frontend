@@ -1,0 +1,65 @@
+.promo__description {
+  margin: 220px 0 210px;
+  padding: 0;
+  max-width: 280px;
+  text-align: center;
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 29px;
+  line-height: 37px;
+  letter-spacing: -0.04em;
+  /* border: 1px solid red */
+}
+
+@media screen and (min-width: 320px) {
+  .promo__description {
+    font-size: calc((100vw - 768px)/(320 - 768) * (29 - 40) + 40px);
+    line-height: calc((100vw - 768px)/(320 - 768) * (37 - 52) + 52px);
+    max-width: calc((100vw - 768px)/(320 - 768) * (280 - 630) + 630px);
+    margin-top: calc((100vw - 768px)/(320 - 768) * (220 - 355) + 355px);
+    margin-bottom: calc((100vw - 768px)/(320 - 768) * (210 - 315) + 315px);
+  }
+}
+
+@media screen and (min-width: 440px) {
+  .promo__description {
+    max-width: 375px;
+  }
+}
+
+@media screen and (min-width: 550px) {
+  .promo__description {
+    max-width: 500px;
+  }
+}
+
+@media screen and (min-width: 670px) {
+  .promo__description {
+    max-width: 630px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .promo__description {
+    font-size: calc((100vw - 1280px)/(768 - 1280) * (40 - 50) + 50px);
+    line-height: calc((100vw - 1280px)/(768 - 1280) * (52 - 58) + 58px);
+    margin-top: calc((100vw - 1280px)/(768 - 1280) * (355 - 165) + 165px);
+    margin-bottom: calc((100vw - 1280px)/(768 - 1280) * (315 - 150) + 150px);
+  }
+}
+
+@media screen and (min-width: 1060px) {
+  .promo__description {
+    max-width: 780px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .promo__description {
+    font-size: 50px;
+    line-height: 58px;
+    margin-top: 165px;
+    margin-bottom: 150px;
+  }
+}

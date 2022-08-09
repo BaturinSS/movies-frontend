@@ -1,0 +1,14 @@
+.movies-list__title {
+  margin: 14px 0 14px 14px;
+  padding: 0;
+  width: 75%;
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  /* border: 1px solid red; */
+}

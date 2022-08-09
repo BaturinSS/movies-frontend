@@ -1,0 +1,9 @@
+.form__block_profile {
+  margin-top: 221px;
+}
+
+@media screen and (min-width: 500px) {
+  .form__block_profile {
+    margin-top: 180px;
+  }
+}
