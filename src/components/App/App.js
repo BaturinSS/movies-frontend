@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { Route, Switch, useHistory } from 'react-router-dom';
+import React, {useState, useEffect} from "react";
+import {Route, Switch, useHistory} from 'react-router-dom';
 
-import { disablePageScroll, enablePageScroll } from 'scroll-lock';
+import {disablePageScroll, enablePageScroll} from 'scroll-lock';
 
 import AboutProjectPage from '../../pages/AboutProject/AboutProjectPage';
 import RegistrationPage from '../../pages/RegistrationPage/RegistrationPage';
@@ -11,6 +11,7 @@ import MoviesPage from '../../pages/Movies/MoviesPage';
 import SavedMoviesPage from '../../pages/SavedMovies/SavedMoviesPage';
 import NotFoundPage from '../../pages/NotFound/NotFoundPage';
 import Preloader from "../Preloader/Preloader";
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import moviesList from '../../components/utils/moviesList.json';
 
@@ -53,7 +54,7 @@ function App() {
         || event.target.classList.contains('popup_close')) {
         closePopup();
       }
-    };
+    }
     document.addEventListener("mousedown", handleOverlay);
     return () => document.removeEventListener("mousedown", handleOverlay);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -94,7 +95,7 @@ function App() {
 
   return (
     <>
-      {isDownload && <Preloader />}
+      {isDownload && <Preloader/>}
       <Switch>
         <Route path="/" exact>
           <AboutProjectPage
@@ -122,40 +123,43 @@ function App() {
             onSubmitForm={onSubmitFormLogin}
           />
         </Route>
-        <Route path="/profile" exact>
-          <ProfilePage
-            isLoggedIn={isLoggedIn}
-            isOpenMenu={isOpenMenu}
-            isEmail={isEmail}
-            setIsEmail={setIsEmail}
-            isName={isName}
-            setIsName={setIsName}
-            onSubmitFormProfile={onSubmitFormProfile}
-            closePopup={closePopup}
-            openPopup={openPopup}
-            outputProfile={outputProfile}
-          />
-        </Route>
-        <Route path="/movies" exact>
-          <MoviesPage
-            isLoggedIn={isLoggedIn}
-            isOpenMenu={isOpenMenu}
-            isCards={isCards}
-            c closePopup={closePopup}
-            openPopup={openPopup}
-          />
-        </Route>
-        <Route path="/saved-movies" exact>
-          <SavedMoviesPage
-            isLoggedIn={isLoggedIn}
-            isOpenMenu={isOpenMenu}
-            closePopup={closePopup}
-            openPopup={openPopup}
-            isCards={isCards}
-          />
-        </Route>
+        <ProtectedRoute
+          exact
+          path="/profile"
+          component={ProfilePage}
+          isLoggedIn={isLoggedIn}
+          isOpenMenu={isOpenMenu}
+          isEmail={isEmail}
+          setIsEmail={setIsEmail}
+          isName={isName}
+          setIsName={setIsName}
+          onSubmitFormProfile={onSubmitFormProfile}
+          closePopup={closePopup}
+          openPopup={openPopup}
+          outputProfile={outputProfile}
+        />
+        <ProtectedRoute
+          exact
+          path="/movies"
+          component={MoviesPage}
+          isLoggedIn={isLoggedIn}
+          isOpenMenu={isOpenMenu}
+          isCards={isCards}
+          c closePopup={closePopup}
+          openPopup={openPopup}
+        />
+        <ProtectedRoute
+          exact
+          path="/saved-movies"
+          component={SavedMoviesPage}
+          isLoggedIn={isLoggedIn}
+          isOpenMenu={isOpenMenu}
+          closePopup={closePopup}
+          openPopup={openPopup}
+          isCards={isCards}
+        />
         <Route path="*">
-          <NotFoundPage />
+          <NotFoundPage/>
         </Route>
       </Switch>
     </>

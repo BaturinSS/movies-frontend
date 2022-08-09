@@ -10,7 +10,6 @@ function LinkAnchor({
   const { href, title } = config;
   return (
     <>
-      {/*<a href={href} className={selector}>{title}</a>*/}
       <LinkScroll
         className={selector}
         activeClass=''
