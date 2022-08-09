@@ -1,0 +1,25 @@
+.about-project__comment {
+  margin: 10px 0 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  color: #A0A0A0;
+  /* border: 1px solid red; */
+}
+
+@media screen and (min-width: 600px) {
+  .about-project__comment {
+    font-size: calc((100vw - 768px)/(320 - 768) * (11 - 14) + 14px);
+    margin-top: 15px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .about-project__comment {
+    font-size: 14px;
+  }
+}

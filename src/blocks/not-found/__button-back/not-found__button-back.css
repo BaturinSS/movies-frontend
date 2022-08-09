@@ -1,0 +1,43 @@
+.not-found__button-back {
+  position: absolute;
+  bottom: 30px;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  color: #4285F4;
+  border: none;
+  background: none;
+  transition: .5s;
+}
+
+.not-found__button-back:hover {
+  cursor: pointer;
+  opacity: .7;
+}
+
+@media screen and (min-width: 320px) {
+  .not-found__button-back {
+    font-size: calc((100vw - 768px)/(320 - 768) * (12 - 14) + 14px);
+    line-height: calc((100vw - 768px)/(320 - 768) * (15 - 17) + 17px);
+    bottom: calc((100vw - 768px)/(320 - 768) * (30 - 222) + 222px);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .not-found__button-back {
+    bottom: calc((100vw - 1280px)/(768 - 1280) * (222 - 60) + 60px);
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .not-found__button-back {
+    bottom: 60px;
+  }
+}

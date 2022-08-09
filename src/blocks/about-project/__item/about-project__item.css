@@ -1,0 +1,21 @@
+.about-project__item {
+  margin: 0;
+  padding: 0;
+  max-width: 310px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+
+@media screen and (min-width: 758px) {
+  .about-project__item {
+    max-width: calc((100vw - 1280px)/(758 - 1280) * (310 - 500) + 500px);
+    row-gap: 25px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .about-project__item {
+    max-width: 500px;
+  }
+}

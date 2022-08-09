@@ -1,0 +1,12 @@
+.about-project__stage_type_color {
+  min-width: 184px;
+  display: flex;
+  background-color: #303030;
+  color: #FFFFFF;
+}
+
+@media screen and (min-width: 750px) {
+  .about-project__stage_type_color {
+    min-width: 100%;
+  }
+}

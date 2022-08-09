@@ -1,0 +1,7 @@
+@import url('../../blocks/form/__block/form__block.css');
+@import url('../../blocks/form/__block/_profile/form__block_profile.css');
+@import url('../../blocks/form/__input-error/form__input-error.css');
+@import url('../../blocks/form/__input-error/_active/form__input-error_active.css');
+@import url('../../blocks/form/__button/form__button.css');
+@import url('../../blocks/form/__submit-button/form__submit-button.css');
+@import url('../../blocks/form/__submit-button/_disabled/form__submit-button_disabled.css');

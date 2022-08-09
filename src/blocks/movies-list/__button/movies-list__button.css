@@ -1,0 +1,24 @@
+.movies-list__button {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 19px;
+  right: 14px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: none;
+  background-color: #313131;
+  border-radius: 50%;
+  background-image: url('../../../images/movies/icon__flag_contour.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 12px 15px;
+  transition: .5s;
+}
+
+.movies-list__button:hover {
+  cursor: pointer;
+  background-image: url('../../../images/movies/icon__flag_white.svg');
+  border: 1px solid white;
+}

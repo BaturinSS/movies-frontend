@@ -1,0 +1,19 @@
+.search-form__button-submit {
+  margin: 19px;
+  padding: 0;
+  min-width: 34px;
+  height: 34px;
+  background-color: #4285F4;
+  border: none;
+  border-radius: 50%;
+  background-image: url('../../../images/searchForm/magnifier.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 15px;
+  transition: .5s;
+}
+
+.search-form__button-submit:hover {
+  cursor: pointer;
+  background-color: rgba(66, 133, 244, .5);
+}

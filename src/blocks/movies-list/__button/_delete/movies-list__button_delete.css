@@ -1,0 +1,7 @@
+.movies-list__button_delete {
+  background-image: url('../../../../images/moviesSearch/icon__delete_card.svg');
+}
+
+.movies-list__button_delete:hover {
+  background-image: url('../../../../images/moviesSearch/icon__delete_card.svg');
+}

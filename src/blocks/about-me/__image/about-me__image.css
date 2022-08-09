@@ -1,0 +1,34 @@
+.about-me__image {
+  margin: -4px auto 40px;
+  padding: 0;
+  width: 292px;
+  height: 352px;
+  border-radius: 10px;
+  background-image: url('../../../images/aboutMe/student_photo.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #272727;
+}
+
+@media screen and (min-width: 747px) {
+  .about-me__image {
+    height: 307px;
+    width: 255px;
+  }
+}
+
+@media screen and (min-width: 747px) {
+  .about-me__image {
+    grid-area: photo;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 880px) {
+  .about-me__image {
+    height: 327px;
+    width: 270px;
+  }
+}

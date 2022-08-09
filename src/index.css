@@ -1,1 +1,5 @@
 @import '~normalize.css';
+
+@import url('../src/blocks/body/body.css');
+@import url('../src/blocks/root/root.css');
+@import url('../src/vendor/fonts/fonts.css');

@@ -1,6 +1,8 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "lang": "ru",
+  "der": "ltr",
+  "short_name": "Movies",
+  "name": "Movies project on React.js",
   "icons": [
     {
       "src": "favicon.ico",
