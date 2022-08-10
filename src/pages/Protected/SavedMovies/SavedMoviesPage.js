@@ -1,15 +1,15 @@
 import React from "react";
 
-import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
-import Main from '../../components/Main/Main';
+import Header from '../../../components/Header/Header';
+import Footer from '../../../components/Footer/Footer';
+import Main from '../../../components/Main/Main';
 
-import HeaderLogin from "../../components/HeaderLogin/HeaderLogin";
-import SearchForm from "../../components/SearchForm/SearchForm";
-import MoviesCardList from "../../components/MoviesCardList/MoviesCardList";
+import HeaderLogin from '../../../components/HeaderLogin/HeaderLogin';
+import SearchForm from '../../../components/SearchForm/SearchForm';
+import MoviesCardList from '../../../components/MoviesCardList/MoviesCardList';
 
-import configHeaderLogin from "../../components/utils/config/configHeaderLogin";
-import configFooter from "../../components/utils/config/configFooter";
+import configHeaderLogin from '../../../components/utils/config/configHeaderLogin';
+import configFooter from '../../../components/utils/config/configFooter';
 
 
 function SavedMoviesPage({

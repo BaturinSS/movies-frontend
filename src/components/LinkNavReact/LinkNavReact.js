@@ -1,11 +1,12 @@
-import './LinkNavReact.css';
+import "./LinkNavReact.css";
 
 import React from "react";
 import { NavLink } from "react-router-dom";
 
 function LinkNavReact({
-  config, closeOpenMenu, selector,
+  config, handleClickLink,
   selectorActive, selectorIcon,
+  modifier, selector,
 }) {
   const { to, addIcon, title, exact } = config;
   return (
@@ -13,8 +14,8 @@ function LinkNavReact({
       <NavLink
         to={to}
         exact={`${exact ? exact : false}`}
-        onClick={closeOpenMenu}
-        className={selector}
+        onClick={handleClickLink}
+        className={`${selector} ${modifier ? modifier : ''}`}
         activeClassName={selectorActive}
       >{title}
         {addIcon && <div className={selectorIcon}></div>}
@@ -22,4 +23,5 @@ function LinkNavReact({
     </>
   )
 }
+
 export default LinkNavReact;

@@ -14,4 +14,5 @@ function Header({ children, modifier }) {
     </>
   )
 }
+
 export default Header;

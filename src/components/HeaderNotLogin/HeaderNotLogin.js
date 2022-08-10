@@ -1,11 +1,12 @@
-import './HeaderNotLogin.css';
+import "./HeaderNotLogin.css";
 
 import React from "react";
 
-import LinkReact from '../LinkReact/LinkReact';
+import LinkReact from "../LinkReact/LinkReact";
 
 function HeaderNotLogin({ config }) {
   const { links, linkEnter } = config;
+  const selector = 'header__link';
   return (
     <>
       <nav className='header__nav'>
@@ -14,16 +15,18 @@ function HeaderNotLogin({ config }) {
             <LinkReact
               key={link.id}
               config={link}
-              selector={'header__link'}
+              selector={selector}
             />
           );
         })}
         <LinkReact
           config={linkEnter}
-          selector={'header__link header__link_enter'}
+          selector={selector}
+          modifier={'header__link_enter'}
         />
       </nav>
     </>
   )
 }
+
 export default HeaderNotLogin;

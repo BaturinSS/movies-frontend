@@ -3,18 +3,18 @@ import './ProfilePage.css';
 import React from "react";
 import { useState, useEffect } from "react";
 
-import Header from '../../components/Header/Header';
-import Main from '../../components/Main/Main';
+import Header from '../../../components/Header/Header';
+import Main from '../../../components/Main/Main';
 
-import HeaderLogin from "../../components/HeaderLogin/HeaderLogin";
-import FormProfile from '../../components/FormProfile/FormProfile';
-import GreetingProfile from "../../components/GreetingProfile/GreetingProfile";
-import FormInputProfile from '../../components/FormInputProfile/FormInputProfile';
-import FormSubmitProfile from '../../components/FormSubmitProfile/FormSubmitProfile';
+import HeaderLogin from '../../../components/HeaderLogin/HeaderLogin';
+import FormProfile from '../../../components/FormProfile/FormProfile';
+import GreetingProfile from '../../../components/GreetingProfile/GreetingProfile';
+import FormInputProfile from '../../../components/FormInputProfile/FormInputProfile';
+import FormSubmitProfile from '../../../components/FormSubmitProfile/FormSubmitProfile';
 
-import configHeaderLogin from "../../components/utils/config/configHeaderLogin";
-import configFormInputEmail from "../../components/utils/config/formInput/configFormInputEmail";
-import configFormInputName from '../../components/utils/config/formInput/configFormInputName';
+import configHeaderLogin from '../../../components/utils/config/configHeaderLogin';
+import configFormInputEmail from '../../../components/utils/config/formInput/configFormInputEmail';
+import configFormInputName from '../../../components/utils/config/formInput/configFormInputName';
 
 function ProfilePage({
   closePopup, openPopup,

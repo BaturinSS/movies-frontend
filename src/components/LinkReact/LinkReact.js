@@ -1,18 +1,16 @@
-import './LinkReact.css';
+import "./LinkReact.css";
 
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 function LinkReact({
-  config, selector, selectorIcon, linkIcon,
+  config, selector, modifier, selectorIcon, linkIcon,
 }) {
-  const {
-    to, target, title, addIcon, alt,
-  } = config;
+  const { to, target, title, addIcon, alt } = config;
   return (
     <>
       <Link
-        className={selector}
+        className={`${selector} ${modifier ? modifier : ''}`}
         to={to}
         target={target}
       >
@@ -26,4 +24,5 @@ function LinkReact({
     </>
   )
 }
+
 export default LinkReact;

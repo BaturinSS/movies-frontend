@@ -1,39 +1,40 @@
 import React from "react";
 
-import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
-import Main from '../../components/Main/Main';
+import Header from "../../components/Header/Header";
+
+import Main from "../../components/Main/Main";
 
 import HeaderLogin from "../../components/HeaderLogin/HeaderLogin";
-import HeaderNotLogin from '../../components/HeaderNotLogin/HeaderNotLogin';
-import Promo from '../../components/Promo/Promo';
-import AboutProject from '../../components/AboutProject/AboutProject';
-import Techs from '../../components/Techs/Techs';
-import AboutMe from '../../components/AboutMe/AboutMe';
-
-import configHeaderNotLogin from "../../components/utils/config/configHeaderNotLogin";
 import configHeaderLogin from "../../components/utils/config/configHeaderLogin";
-import configPromo from '../../components/utils/config/configPromo';
+
+import HeaderNotLogin from "../../components/HeaderNotLogin/HeaderNotLogin";
+import configHeaderNotLogin from "../../components/utils/config/configHeaderNotLogin";
+
+import Promo from "../../components/Promo/Promo";
+import configPromo from "../../components/utils/config/configPromo";
+
+import AboutProject from "../../components/AboutProject/AboutProject";
 import configAboutProject from "../../components/utils/config/configAboutProject";
+
+import Techs from "../../components/Techs/Techs";
 import configTechs from "../../components/utils/config/configTechs";
+
+import AboutMe from "../../components/AboutMe/AboutMe";
 import configAboutMe from "../../components/utils/config/configAboutMe";
+
+import Footer from "../../components/Footer/Footer";
 import configFooter from "../../components/utils/config/configFooter";
 
-function AboutProjectPage({
-  isLoggedIn, closePopup, openPopup, isOpenMenu,
-}) {
+import useLogin from "../../components/utils/hooks/useLogin";
+
+function AboutProjectPage() {
+  const { isLoggedIn } = useLogin;
+
   return (
     <>
       <Header>
-        {!isLoggedIn && <HeaderNotLogin
-          config={configHeaderNotLogin}
-        />}
-        {isLoggedIn && <HeaderLogin
-          config={configHeaderLogin}
-          closePopup={closePopup}
-          openPopup={openPopup}
-          isOpenMenu={isOpenMenu}
-        />}
+        {!isLoggedIn && <HeaderNotLogin config={configHeaderNotLogin} />}
+        {isLoggedIn && <HeaderLogin config={configHeaderLogin} />}
       </Header>
       <Main>
         <Promo config={configPromo} />
