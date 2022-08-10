@@ -1,11 +1,12 @@
-import './Promo.css';
+import "./Promo.css";
 
 import React from "react";
 
-import NavTab from '../../components/NavTab/NavTab';
+import NavTab from "../../components/NavTab/NavTab";
 
 function Promo({ config }) {
   const { description } = config;
+
   return (
     <>
       <section className='promo'>
@@ -15,4 +16,5 @@ function Promo({ config }) {
     </>
   )
 }
+
 export default Promo;

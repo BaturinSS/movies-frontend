@@ -1,12 +1,13 @@
-import './AboutProject.css';
+import "./AboutProject.css";
 
 import React from "react";
 
-import AboutProjectItem from '../../components/AboutProjectItem/AboutProjectItem';
-import AboutProjectScheme from '../AboutProjectScheme/AboutProjectScheme';
+import AboutProjectItem from "../../components/AboutProjectItem/AboutProjectItem";
+import AboutProjectScheme from "../AboutProjectScheme/AboutProjectScheme";
 
 function AboutProject({ config }) {
   const { title, list, scheme } = config;
+
   return (
     <>
       <section id="aboutProject" className='about-project default__block'>
@@ -37,4 +38,5 @@ function AboutProject({ config }) {
     </>
   )
 }
+
 export default AboutProject;

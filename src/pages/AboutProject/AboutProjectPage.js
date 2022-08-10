@@ -2,13 +2,13 @@ import React from "react";
 
 import Header from "../../components/Header/Header";
 
-import Main from "../../components/Main/Main";
-
 import HeaderLogin from "../../components/HeaderLogin/HeaderLogin";
 import configHeaderLogin from "../../components/utils/config/configHeaderLogin";
 
 import HeaderNotLogin from "../../components/HeaderNotLogin/HeaderNotLogin";
 import configHeaderNotLogin from "../../components/utils/config/configHeaderNotLogin";
+
+import Main from "../../components/Main/Main";
 
 import Promo from "../../components/Promo/Promo";
 import configPromo from "../../components/utils/config/configPromo";
@@ -46,4 +46,5 @@ function AboutProjectPage() {
     </>
   )
 }
+
 export default AboutProjectPage;

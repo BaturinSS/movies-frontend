@@ -1,11 +1,12 @@
-import './Footer.css';
+import "./Footer.css";
 
 import React from "react";
 
-import LinkReact from '../../components/LinkReact/LinkReact'
+import LinkReact from "../../components/LinkReact/LinkReact";
 
 function Footer({ config }) {
   const { title, links, copyright } = config;
+
   return (
     <>
       <footer className='footer'>
@@ -29,4 +30,5 @@ function Footer({ config }) {
     </>
   )
 }
+
 export default Footer;

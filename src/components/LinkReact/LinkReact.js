@@ -7,6 +7,7 @@ function LinkReact({
   config, selector, modifier, selectorIcon, linkIcon,
 }) {
   const { to, target, title, addIcon, alt } = config;
+
   return (
     <>
       <Link

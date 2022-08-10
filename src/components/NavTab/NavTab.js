@@ -1,21 +1,26 @@
-import './NavTab.css';
+import "./NavTab.css";
 
-import LinkAnchor from '../../components/LinkAnchor/LinkAnchor';
+import { Link as LinkScroll } from "react-scroll";
 
-function NavTab({
-  config,
-}) {
+function NavTab({ config }) {
   const { links } = config;
+
   return (
     <>
       <nav className='nav-tab'>
         {links.map(link => {
           return (
-            <LinkAnchor
-              key={link.id}
-              config={link}
-              selector={'nav-tab__link'}
-            />
+            <LinkScroll
+              className={'nav-tab__link'}
+              activeClass=''
+              to={link.href.substring(2)}
+              spy={true}
+              smooth={true}
+              offset={0}
+              duration={500}
+            >
+              {link.title}
+            </LinkScroll>
           );
         })}
       </nav>

@@ -1,13 +1,14 @@
-import './Techs.css';
+import "./Techs.css";
 
 import React from "react";
 
-import ListItem from '../../components/ListItem/ListItem'
+import ListItem from "../../components/ListItem/ListItem";
 
 function Techs({ config }) {
   const {
     list, title, aboutTitle, aboutDescription,
   } = config;
+
   return (
     <>
       <section id="techs" className='default__block techs'>
@@ -31,4 +32,5 @@ function Techs({ config }) {
     </>
   )
 }
+
 export default Techs;

@@ -1,19 +1,23 @@
 import React from "react";
 
-import Header from '../../components/Header/Header';
-import Main from '../../components/Main/Main';
+import Header from "../../components/Header/Header";
+
+import Main from "../../components/Main/Main";
+
 import HeaderAuth from "../../components/HeaderAuth/HeaderAuth";
-import Form from '../../components/Form/Form';
-import FormInput from '../../components/FormInput/FormInput';
-import FormSubmit from '../../components/FormSubmit/FormSubmit';
 
-import configFormLogin from '../../components/utils/config/form/configFormLogin';
-import configFormSubmitLogin from '../../components/utils/config/formSubmit/configFormSubmitLogin';
-import configFormInputEmail from '../../components/utils/config/formInput/configFormInputEmail';
-import configFormInputPassword from '../../components/utils/config/formInput/configFormInputPassword';
-import configFormInputName from '../../components/utils/config/formInput/configFormInputName';
+import Form from "../../components/Form/Form";
+import configFormLogin from "../../components/utils/config/form/configFormLogin";
 
-import { textMessageError, textGreetingsAuth } from '../../components/utils/constants'
+import FormInput from "../../components/FormInput/FormInput";
+import configFormInputEmail from "../../components/utils/config/formInput/configFormInputEmail";
+import configFormInputPassword from "../../components/utils/config/formInput/configFormInputPassword";
+import configFormInputName from "../../components/utils/config/formInput/configFormInputName";
+
+import FormSubmit from "../../components/FormSubmit/FormSubmit";
+import configFormSubmitLogin from "../../components/utils/config/formSubmit/configFormSubmitLogin";
+
+import { textMessageError, textGreetingsAuth } from "../../components/utils/constants";
 
 function RegistrationPage({
   isLoggedIn, isEmail, isName,
