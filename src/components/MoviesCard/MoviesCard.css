@@ -6,3 +6,7 @@
 @import url('../../blocks/movies-list/__button/_active/movies-list__button_active.css');
 @import url('../../blocks/movies-list/__title-time/movies-list__title-time.css');
 @import url('../../blocks/movies-list/__button/_delete/movies-list__button_delete.css');
+@import url('../../blocks/movies-list/__block-img/movies-list__block-img.css');
+@import url('../../blocks/movies-list/__play/movies-list__play.css');
+@import url('../../blocks/movies-list/__play-img/movies-list__play-img.css');
+@import url('../../blocks/movies-list/__zoom-img/movies-list__zoom-img.css');

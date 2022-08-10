@@ -8,16 +8,22 @@ import HeaderLogin from "../../components/HeaderLogin/HeaderLogin";
 import SearchForm from "../../components/SearchForm/SearchForm";
 import MoviesCardList from "../../components/MoviesCardList/MoviesCardList";
 import MoviesAddButton from "../../components/MoviesAddButton/MoviesAddButton";
+import Popup from "../../components/Popup/Popup";
+import ImageZoom from "../../components/ImageZoom/ImageZoom";
 
 import configHeaderLogin from "../../components/utils/config/configHeaderLogin";
 import configFooter from "../../components/utils/config/configFooter";
 
+
+
 function MoviesPage({
-  closePopup,
-  openPopup,
-  isOpenMenu,
-  isCards,
-}) {
+  closePopup, titleImage,
+  openPopup, linkImage,
+  isOpenMenu, isLinkImage,
+  isCards, isOpenPopup,
+  handleClickPlayVideo,
+  handleClickZoomImage,
+  }) {
   const addMovies = () => {
     console.log('Click addMovies')
   }
@@ -28,18 +34,29 @@ function MoviesPage({
           config={configHeaderLogin}
           closePopup={closePopup}
           openPopup={openPopup}
-          isOpenMenu={isOpenMenu} />
+          isOpenMenu={isOpenMenu}/>
       </Header>
       <Main>
-        <SearchForm />
+        <SearchForm/>
         <MoviesCardList
           isCards={isCards}
           modifierActiveButton={'movies-list__button_active'}
+          handleClickPlayVideo={handleClickPlayVideo}
+          handleClickZoomImage={handleClickZoomImage}
         >
-          <MoviesAddButton addMovies={addMovies} />
+          <MoviesAddButton addMovies={addMovies}/>
         </MoviesCardList>
       </Main>
-      <Footer config={configFooter} />
+      <Footer config={configFooter}/>
+      <Popup
+        isOpenPopup={isOpenPopup}
+      >
+        <ImageZoom
+          titleImage={titleImage}
+          linkImage={linkImage}
+          isLinkImage={isLinkImage}
+        />
+      </Popup>
     </>
   )
 }

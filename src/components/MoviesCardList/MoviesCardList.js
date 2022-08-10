@@ -6,6 +6,8 @@ import MoviesCard from '../MoviesCard/MoviesCard'
 
 function MoviesCardList({
   isCards, modifierActiveButton, modifierButton, children,
+  handleClickPlayVideo,
+  handleClickZoomImage,
 }) {
   return (
     <>
@@ -18,6 +20,8 @@ function MoviesCardList({
                 card={card}
                 modifierButton={modifierButton}
                 modifierActiveButton={modifierActiveButton}
+                handleClickPlayVideo={handleClickPlayVideo}
+                handleClickZoomImage={handleClickZoomImage}
               />
             );
           })}

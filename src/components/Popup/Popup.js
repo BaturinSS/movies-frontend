@@ -1,10 +1,10 @@
-import './PopupWithForm.css';
+import './Popup.css';
 
 import React from "react";
 
 import cross from '../../images/image-cross.svg';
 
-function PopupWithForm({
+function Popup({
   isOpen,
   title,
   children,
@@ -14,7 +14,7 @@ function PopupWithForm({
     <div className={`popup ${isOpenPopup ? 'popup_opened' : ''}`}>
       <div className="popup__container">
         <button className="popup__close" type="button">
-          <img className="popup__image-cross" src={cross} alt="иконка" />
+          {isOpenPopup && <img className="popup__image-cross" src={cross} alt="иконка"/>}
         </button>
         {children}
       </div>
@@ -22,4 +22,4 @@ function PopupWithForm({
   )
 }
 
-export default PopupWithForm;
+export default Popup;

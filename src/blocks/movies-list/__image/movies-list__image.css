@@ -1,4 +1,5 @@
 .movies-list__image {
+  position: relative;
   margin: 0;
   padding: 0;
   max-height: 168px;
@@ -6,16 +7,14 @@
   object-fit: cover;
   object-position: center center;
   vertical-align: bottom;
+  z-index: 1;
 }
 
-.movies-list__image:hover {
-  cursor: pointer;
-  opacity: .5;
-}
+
 
 @media screen and (min-width: 320px) {
   .movies-list__image {
-    max-height: calc((100vw - 520px)/(320 - 520) * (168 - 300) + 300px);
+    max-height: calc((100vw - 520px) / (320 - 520) * (168 - 300) + 300px);
     /* max-height: 300px */
   }
 }
@@ -34,19 +33,19 @@
 
 @media screen and (min-width: 768px) {
   .movies-list__image {
-    max-height: calc((100vw - 812px)/(768 - 812) * (190 - 200) + 200px);
+    max-height: calc((100vw - 812px) / (768 - 812) * (190 - 200) + 200px);
   }
 }
 
 @media screen and (min-width: 850px) {
   .movies-list__image {
-    max-height: calc((100vw - 1028px)/(850 - 1028) * (190 - 255) + 255px);
+    max-height: calc((100vw - 1028px) / (850 - 1028) * (190 - 255) + 255px);
   }
 }
 
 @media screen and (min-width: 1028px) {
   .movies-list__image {
-    max-height: calc((100vw - 1280px)/(1028 - 1280) * (170 - 203) + 203px);
+    max-height: calc((100vw - 1280px) / (1028 - 1280) * (170 - 203) + 203px);
 
   }
 }

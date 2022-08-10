@@ -22,11 +22,18 @@ function App() {
   const [isEmail, setIsEmail] = useState(localStorage.getItem('login') || '');
   const [isName, setIsName] = useState('');
   const [isDownload, setIsDownload] = useState(false);
+  const [isOpenPopup, setIsOpenPopup] = useState(false);
+  const [isLinkImage, setIsLinkImage] = useState('');
 
   const history = useHistory();
 
   const openPopup = () => {
     setIsOpenMenu(true);
+  };
+
+  const openPopupImage = (linkImage) => {
+    setIsLinkImage(linkImage);
+    setIsOpenPopup(true);
   };
 
   const closePopup = () => {
@@ -47,18 +54,22 @@ function App() {
   }, [isOpenMenu, isDownload]);
 
   useEffect(() => {
-    if (!isOpenMenu) return;
-
+    if (!isOpenMenu) {
+      if (!isOpenPopup) return;
+    }
     function handleOverlay(event) {
       if (event.target.classList.contains('popup_opened')
-        || event.target.classList.contains('popup_close')) {
+        || event.target.classList.contains('popup_close')
+        || event.target.classList.contains('popup__image-cross')) {
         closePopup();
+        setIsOpenPopup(false);
+        setIsLinkImage('')
       }
     }
     document.addEventListener("mousedown", handleOverlay);
     return () => document.removeEventListener("mousedown", handleOverlay);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpenMenu]);
+  }, [isOpenMenu, isOpenPopup]);
 
   const onSubmitFormLogin = (event) => {
     event.preventDefault();
@@ -92,6 +103,16 @@ function App() {
     setIsName(event.target.value);
   }
 
+  const handleClickZoomImage = (event) => {
+    const elementBlock = event.target.parentElement.parentElement;
+    const linkImage = elementBlock.querySelector('.movies-list__image').src;
+    openPopupImage(linkImage)
+  }
+
+  const handleClickPlayVideo =()=>{
+    setIsOpenPopup(true);
+    console.log('play')
+  }
 
   return (
     <>
@@ -145,8 +166,12 @@ function App() {
           isLoggedIn={isLoggedIn}
           isOpenMenu={isOpenMenu}
           isCards={isCards}
-          c closePopup={closePopup}
+          closePopup={closePopup}
           openPopup={openPopup}
+          isOpenPopup={isOpenPopup}
+          handleClickPlayVideo={handleClickPlayVideo}
+          handleClickZoomImage={handleClickZoomImage}
+          isLinkImage={isLinkImage}
         />
         <ProtectedRoute
           exact

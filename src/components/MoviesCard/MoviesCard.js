@@ -1,10 +1,15 @@
 import './MoviesCard.css';
 
-import React, { useState } from "react";
+import React, {useState} from "react";
+
+import playImage from '../../images/movies/play_icon.svg'
+import zoomImage from '../../images/movies/zoom_icon.svg'
 
 function MoviesCard({
-  card, modifierActiveButton, modifierButton
-}) {
+  card, modifierActiveButton, modifierButton,
+  handleClickPlayVideo,
+  handleClickZoomImage,
+  }) {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const time = () => {
@@ -34,10 +39,17 @@ function MoviesCard({
               <p className='movies-list__title-time'>{time()}</p>
             </h2>
           </figcaption>
-          <img
-            className="movies-list__image"
-            src={`https://forsazh-film-smotret.ru/wp-content${card.image.formats.thumbnail.url}`}
-            alt={card.nameRU} />
+          <div className={'movies-list__block-img'}>
+            <div className={'movies-list__play'}>
+              <img className={'movies-list__play-img'} src={playImage} onClick={handleClickPlayVideo}/>
+              <img className={'movies-list__zoom-img'} src={zoomImage} onClick={handleClickZoomImage}/>
+            </div>
+            <img
+              className="movies-list__image"
+              src={`https://forsazh-film-smotret.ru/wp-content${card.image.formats.thumbnail.url}`}
+              alt={card.nameRU}
+            />
+          </div>
         </figure>
         <button
           className={`movies-list__button
