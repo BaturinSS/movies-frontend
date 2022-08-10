@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from "react";
-import {Route, Switch, useHistory} from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Route, Switch, useHistory } from 'react-router-dom';
 
-import {disablePageScroll, enablePageScroll} from 'scroll-lock';
+import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 
 import AboutProjectPage from '../../pages/AboutProject/AboutProjectPage';
 import RegistrationPage from '../../pages/RegistrationPage/RegistrationPage';
@@ -40,17 +40,9 @@ function App() {
     setIsOpenMenu(false);
   };
 
-  const disableScroll = () => {
-    disablePageScroll();
-  };
-
-  const enableScroll = () => {
-    enablePageScroll();
-  };
-
   useEffect(() => {
-    if (!isOpenMenu) return enableScroll();
-    disableScroll();
+    if (!isOpenMenu) return enablePageScroll();
+    disablePageScroll();
   }, [isOpenMenu, isDownload]);
 
   useEffect(() => {
@@ -109,14 +101,14 @@ function App() {
     openPopupImage(linkImage)
   }
 
-  const handleClickPlayVideo =()=>{
+  const handleClickPlayVideo = () => {
     setIsOpenPopup(true);
     console.log('play')
   }
 
   return (
     <>
-      {isDownload && <Preloader/>}
+      {isDownload && <Preloader />}
       <Switch>
         <Route path="/" exact>
           <AboutProjectPage
@@ -184,7 +176,7 @@ function App() {
           isCards={isCards}
         />
         <Route path="*">
-          <NotFoundPage/>
+          <NotFoundPage />
         </Route>
       </Switch>
     </>
