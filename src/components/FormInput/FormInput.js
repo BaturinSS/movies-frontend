@@ -9,11 +9,13 @@ function FormInput({
   autoComplete,
 }) {
   const {
-    idInput, placeholder, textLabel, name,
+    idInput, placeholder, textLabel,
     required, type, minLength, maxLength,
   } = config;
 
-  const textMessageError = errors[`${name}`];
+  const textMessageError = errors[`${idInput}`];
+
+
 
   const arrType = [
     'text', 'password', 'Email',
@@ -31,7 +33,7 @@ function FormInput({
         htmlFor={`${idInput}`}>{textLabel}</label>
       <input
         id={`${idInput}`}
-        name={name}
+        name={idInput}
         className={`form__input ${modifier ? modifier : ''}`}
         style={{ color: type === 'password' ? "#EE3465" : 'none' }}
         required={required}
@@ -56,4 +58,5 @@ function FormInput({
     </>
   )
 }
+
 export default FormInput;

@@ -1,6 +1,6 @@
-import './FormSubmit.css';
+import "./FormSubmit.css";
 
-import LinkReact from '../LinkReact/LinkReact';
+import LinkReact from "../LinkReact/LinkReact";
 
 function FormSubmit({ modifier, textMessageError, config, isValid }) {
   const { textButton, textQuestion } = config;

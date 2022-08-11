@@ -4,7 +4,6 @@ const configFormInputName = {
   textLabel: 'Имя',
   required: true,
   type: 'text',
-  name: 'Name',
   minLength: '2',
   maxLength: '30',
 }

@@ -4,7 +4,6 @@ const configFormInputPassword = {
   textLabel: 'Пароль',
   required: true,
   type: 'password',
-  name: 'Password',
   minLength: '6',
   maxLength: '30',
 }

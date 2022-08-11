@@ -41,7 +41,6 @@ function RegistrationPage({
           <FormInput
             config={configFormInputName}
             onChange={onChange}
-            onFocus={onChange}
             value={isName}
             errors={errors}
             autoComplete={'given-name'}
@@ -49,7 +48,6 @@ function RegistrationPage({
           <FormInput
             config={configFormInputEmail}
             onChange={onChange}
-            onFocus={onChange}
             value={isEmail}
             errors={errors}
             autoComplete={'email'}
@@ -57,7 +55,6 @@ function RegistrationPage({
           <FormInput
             config={configFormInputPassword}
             onChange={onChange}
-            onFocus={onChange}
             errors={errors}
             autoComplete={'new-password'}
           />
