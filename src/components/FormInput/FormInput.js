@@ -1,19 +1,22 @@
-import './FormInput.css';
+import "./FormInput.css";
 
 import React from "react";
 
 function FormInput({
-  config, textMessageError,
+  config, errors,
   onChange, value, modifier,
-  modifierLabel,
+  modifierLabel, onFocus,
+  autoComplete,
 }) {
   const {
-    idInput, placeholder, textLabel,
+    idInput, placeholder, textLabel, name,
     required, type, minLength, maxLength,
   } = config;
 
+  const textMessageError = errors[`${name}`];
+
   const arrType = [
-    'text', 'password', 'email',
+    'text', 'password', 'Email',
     'number', 'tel', 'url',
   ]
 
@@ -28,16 +31,18 @@ function FormInput({
         htmlFor={`${idInput}`}>{textLabel}</label>
       <input
         id={`${idInput}`}
+        name={name}
         className={`form__input ${modifier ? modifier : ''}`}
         style={{ color: type === 'password' ? "#EE3465" : 'none' }}
-        required={Boolean(required) ? required : false}
-        placeholder={String(placeholder) ? placeholder : false}
+        required={required}
+        placeholder={placeholder}
         spellCheck={`${type === 'text' ? 'true' : 'false'}`}
         type={String(type) && checkType(arrType, type) ? type : 'text'}
-        minLength={`${Number(minLength) ? minLength : false}`}
-        maxLength={`${Number(maxLength) ? maxLength : false}`}
-        autoComplete={type === 'password' ? 'on' : 'off'}
+        minLength={minLength}
+        maxLength={maxLength}
+        autoComplete={autoComplete}
         onChange={onChange}
+        onFocus={onFocus}
         value={value}
       />
       <span

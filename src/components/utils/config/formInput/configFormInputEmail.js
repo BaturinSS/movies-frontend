@@ -3,6 +3,8 @@ const configFormInputEmail = {
   placeholder: '',
   textLabel: 'E-mail',
   required: true,
-  type: 'email',
+  type: 'Email',
+  name: 'Email'
 }
+
 export default configFormInputEmail;

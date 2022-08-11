@@ -17,18 +17,21 @@ import configFormInputName from "../../components/utils/config/formInput/configF
 import FormSubmit from "../../components/FormSubmit/FormSubmit";
 import configFormSubmitLogin from "../../components/utils/config/formSubmit/configFormSubmitLogin";
 
-import { textMessageError, textGreetingsAuth } from "../../components/utils/constants";
+import { textMessageError } from "../../components/utils/constants";
+
+import useAuth from "../../components/utils/hooks/useAuth";
 
 function RegistrationPage({
-  isLoggedIn, isEmail, isName,
-  onSubmitForm, handleEmailChange, handleNameChange,
+  isEmail, isName,
+  handleEmailChange,
+  handleNameChange,
 }) {
+  const { errors, isValid, onChange, onSubmitForm } = useAuth();
+
   return (
     <>
       <Header modifier={'header_auth'}>
-        {!isLoggedIn && <HeaderAuth
-          textGreetings={textGreetingsAuth}
-        />}
+        <HeaderAuth textGreetings={'Добро пожаловать!'} />
       </Header>
       <Main>
         <Form
@@ -37,19 +40,29 @@ function RegistrationPage({
         >
           <FormInput
             config={configFormInputName}
-            onChange={handleNameChange}
+            onChange={onChange}
+            onFocus={onChange}
             value={isName}
+            errors={errors}
+            autoComplete={'given-name'}
           />
           <FormInput
             config={configFormInputEmail}
-            onChange={handleEmailChange}
+            onChange={onChange}
+            onFocus={onChange}
             value={isEmail}
+            errors={errors}
+            autoComplete={'email'}
           />
           <FormInput
             config={configFormInputPassword}
-            textMessageError={textMessageError}
+            onChange={onChange}
+            onFocus={onChange}
+            errors={errors}
+            autoComplete={'new-password'}
           />
           <FormSubmit
+            isValid={isValid}
             config={configFormSubmitLogin}
             textMessageError={textMessageError}
           />
