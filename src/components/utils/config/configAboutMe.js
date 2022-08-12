@@ -21,7 +21,7 @@ const configAboutMe = {
     title: 'Портфолио',
     links: [
       {
-        id: 1,
+        id: 3,
         to: {
           pathname: 'https://baturinss.github.io/how-to-learn'
         },
@@ -31,7 +31,7 @@ const configAboutMe = {
         alt: 'Иконка ссылки',
       },
       {
-        id: 2,
+        id: 4,
         to: {
           pathname: 'https://baturinss.github.io/russian-travel'
         },
@@ -41,7 +41,7 @@ const configAboutMe = {
         alt: 'Иконка ссылки',
       },
       {
-        id: 3,
+        id: 5,
         to: {
           pathname: 'https://server-mesto.ru'
         },
@@ -53,4 +53,5 @@ const configAboutMe = {
     ]
   }
 };
+
 export default configAboutMe;

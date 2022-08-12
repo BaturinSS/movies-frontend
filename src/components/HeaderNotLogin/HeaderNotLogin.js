@@ -20,6 +20,7 @@ function HeaderNotLogin({ config }) {
           );
         })}
         <LinkReact
+          key={12}
           config={linkEnter}
           selector={selector}
           modifier={'header__link_enter'}

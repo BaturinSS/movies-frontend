@@ -15,8 +15,6 @@ function FormInput({
 
   const textMessageError = errors[`${idInput}`];
 
-
-
   const arrType = [
     'text', 'password', 'Email',
     'number', 'tel', 'url',

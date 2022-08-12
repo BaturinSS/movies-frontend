@@ -8,9 +8,10 @@ function NavTab({ config }) {
   return (
     <>
       <nav className='nav-tab'>
-        {links.map(link => {
+        {links.map((link, index) => {
           return (
             <LinkScroll
+              key={index * 18}
               className={'nav-tab__link'}
               activeClass=''
               to={link.href.substring(2)}

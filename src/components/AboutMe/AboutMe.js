@@ -23,10 +23,10 @@ function AboutMe({ config }) {
             <p className='about-me__description'>{description}</p>
           </article>
           <article className='about-me__links'>
-            {links.map(link => {
+            {links.map((link, index) => {
               return (
                 <LinkReact
-                  key={link.id}
+                  key={index + 10}
                   config={link}
                   selector={'about-me__link'}
                 />
@@ -34,7 +34,7 @@ function AboutMe({ config }) {
             })}
           </article>
         </article>
-        <Portfolio config={portfolio} />
+        <Portfolio key={125} config={portfolio} />
       </section>
     </>
   )

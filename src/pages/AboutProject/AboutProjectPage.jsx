@@ -25,10 +25,7 @@ import configAboutMe from "../../components/utils/config/configAboutMe";
 import Footer from "../../components/Footer/Footer";
 import configFooter from "../../components/utils/config/configFooter";
 
-import useLogin from "../../components/utils/hooks/useLogin";
-
-function AboutProjectPage() {
-  const { isLoggedIn } = useLogin;
+function AboutProjectPage({ isLoggedIn }) {
 
   return (
     <>

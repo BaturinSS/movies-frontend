@@ -1,15 +1,17 @@
 import "./FormSubmit.css";
 
+import React from "react";
+
 import LinkReact from "../LinkReact/LinkReact";
 
-function FormSubmit({ modifier, textMessageError, config, isValid }) {
-  const { textButton, textQuestion } = config;
+function FormSubmit({ modifier, textMessageError, config, isValid, isDownload }) {
+  const { textButton, textQuestion, textDownload } = config;
 
   return (
     <>
       <div className={`form__block ${modifier ? modifier : ''}`}>
         <span
-          className={`formProfile-input-error form__input-error ${isValid
+          className={`formProfile-input-error form__input-error ${textMessageError
             ? 'form__input-error_active'
             : ''}`
           }
@@ -21,7 +23,7 @@ function FormSubmit({ modifier, textMessageError, config, isValid }) {
             : ''}`}
           type={`submit`}
           disabled={!isValid}
-        >{textButton}
+        >{`${isDownload ? textDownload : textButton}`}
         </button>
         <p className={`form__question`}>{textQuestion}
           <LinkReact config={config} selector={'form__link'} />

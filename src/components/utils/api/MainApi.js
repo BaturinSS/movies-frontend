@@ -1,6 +1,5 @@
 class MainApi {
-  constructor({ headers, NODE_ENV }) {
-    this._headers = headers;
+  constructor({ NODE_ENV }) {
     this._credentials = 'include';
     this._NODE_ENV = NODE_ENV;
   };
@@ -19,12 +18,27 @@ class MainApi {
       : Promise.reject(res.json())
   };
 
-  register(password, email) {
+  _createdHeaders = () => {
+    let basicHeaders = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    }
+    if (this._NODE_ENV !== 'production') {
+      return basicHeaders = {
+        ...basicHeaders,
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+      };
+    } else {
+      return basicHeaders;
+    }
+  }
+
+  register(password, email, name) {
     return fetch(`${this._baseUrl()}/signup`, {
       method: 'POST',
       credentials: this._credentials,
-      headers: this._headers,
-      body: JSON.stringify({ password, email }),
+      headers: this._createdHeaders(),
+      body: JSON.stringify({ password, email, name }),
     })
       .then(this._checkResponse)
   };
@@ -33,7 +47,7 @@ class MainApi {
     return fetch(`${this._baseUrl()}/signin`, {
       method: 'POST',
       credentials: this._credentials,
-      headers: this._headers,
+      headers: this._createdHeaders(),
       body: JSON.stringify({ password, email }),
     })
       .then(this._checkResponse)
@@ -43,94 +57,94 @@ class MainApi {
     return fetch(`${this._baseUrl()}/users/me`, {
       method: 'GET',
       credentials: this._credentials,
-      headers: this._headers,
+      headers: this._createdHeaders(),
     })
       .then(this._checkResponse);
   };
 
-  deleteToken() {
-    return fetch(`${this._baseUrl()}/users/me`, {
-      method: 'DELETE',
-      credentials: this._credentials,
-      headers: this._headers,
-    })
-      .then(this._checkResponse);
-  };
+  // deleteToken() {
+  //   return fetch(`${this._baseUrl()}/users/me`, {
+  //     method: 'DELETE',
+  //     credentials: this._credentials,
+  //     headers: this._createdHeaders(),
+  //   })
+  //     .then(this._checkResponse);
+  // };
 
-  getUserInfo() {
-    return fetch(`${this._baseUrl()}/users/me`, {
-      method: 'GET',
-      credentials: this._credentials,
-      headers: this._headers,
-    })
-      .then(this._checkResponse)
-  };
+  // getUserInfo() {
+  //   return fetch(`${this._baseUrl()}/users/me`, {
+  //     method: 'GET',
+  //     credentials: this._credentials,
+  //     headers: this._createdHeaders(),
+  //   })
+  //     .then(this._checkResponse)
+  // };
 
-  getCards() {
-    return fetch(`${this._baseUrl()}/cards`, {
-      method: 'GET',
-      credentials: this._credentials,
-      headers: this._headers,
-    })
-      .then(this._checkResponse)
-  };
+  // getCards() {
+  //   return fetch(`${this._baseUrl()}/cards`, {
+  //     method: 'GET',
+  //     credentials: this._credentials,
+  //     headers: this._createdHeaders(),
+  //   })
+  //     .then(this._checkResponse)
+  // };
 
-  editUserInfo(name, about) {
-    return fetch(`${this._baseUrl()}/users/me`, {
-      method: 'PATCH',
-      credentials: this._credentials,
-      headers: this._headers,
-      body: JSON.stringify({ name, about }),
-    })
-      .then(this._checkResponse)
-  };
+  // editUserInfo(name, about) {
+  //   return fetch(`${this._baseUrl()}/users/me`, {
+  //     method: 'PATCH',
+  //     credentials: this._credentials,
+  //     headers: this._createdHeaders(),
+  //     body: JSON.stringify({ name, about }),
+  //   })
+  //     .then(this._checkResponse)
+  // };
 
-  addCard(name, link) {
-    return fetch(`${this._baseUrl()}/cards`, {
-      method: 'POST',
-      credentials: this._credentials,
-      headers: this._headers,
-      body: JSON.stringify({ name, link }),
-    })
-      .then(this._checkResponse)
-  };
+  // addCard(name, link) {
+  //   return fetch(`${this._baseUrl()}/cards`, {
+  //     method: 'POST',
+  //     credentials: this._credentials,
+  //     headers: this._createdHeaders(),
+  //     body: JSON.stringify({ name, link }),
+  //   })
+  //     .then(this._checkResponse)
+  // };
 
-  deleteCard(id) {
-    return fetch(`${this._baseUrl()}/cards/${id}`, {
-      method: 'DELETE',
-      credentials: this._credentials,
-      headers: this._headers,
-    })
-      .then(this._checkResponse)
-  };
+  // deleteCard(id) {
+  //   return fetch(`${this._baseUrl()}/cards/${id}`, {
+  //     method: 'DELETE',
+  //     credentials: this._credentials,
+  //     headers: this._createdHeaders(),
+  //   })
+  //     .then(this._checkResponse)
+  // };
 
-  addLike(id) {
-    return fetch(`${this._baseUrl()}/cards/${id}/likes`, {
-      method: 'PUT',
-      credentials: this._credentials,
-      headers: this._headers
-    })
-      .then(this._checkResponse)
-  };
+  // addLike(id) {
+  //   return fetch(`${this._baseUrl()}/cards/${id}/likes`, {
+  //     method: 'PUT',
+  //     credentials: this._credentials,
+  //     headers: this._createdHeaders()
+  //   })
+  //     .then(this._checkResponse)
+  // };
 
-  deleteLike(id) {
-    return fetch(`${this._baseUrl()}/cards/${id}/likes`, {
-      method: 'DELETE',
-      credentials: this._credentials,
-      headers: this._headers
-    })
-      .then(this._checkResponse)
-  };
+  // deleteLike(id) {
+  //   return fetch(`${this._baseUrl()}/cards/${id}/likes`, {
+  //     method: 'DELETE',
+  //     credentials: this._credentials,
+  //     headers: this._createdHeaders()
+  //   })
+  //     .then(this._checkResponse)
+  // };
 
-  editAvatar(avatar) {
-    return fetch(`${this._baseUrl()}/users/me/avatar`, {
-      method: 'PATCH',
-      credentials: this._credentials,
-      headers: this._headers,
-      body: JSON.stringify({ avatar }),
-    })
-      .then(this._checkResponse)
-  };
+  // editAvatar(avatar) {
+  //   return fetch(`${this._baseUrl()}/users/me/avatar`, {
+  //     method: 'PATCH',
+  //     credentials: this._credentials,
+  //     headers: this._createdHeaders(),
+  //     body: JSON.stringify({ avatar }),
+  //   })
+  //     .then(this._checkResponse)
+  // };
 }
 
 export default MainApi;
