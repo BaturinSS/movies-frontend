@@ -13,7 +13,7 @@ function LinkNavReact({
     <>
       <NavLink
         to={to}
-        exact={`${exact ? exact : false}`}
+        exact={exact ? exact : false}
         onClick={handleClickLink}
         className={`${selector} ${modifier ? modifier : ''}`}
         activeClassName={selectorActive}

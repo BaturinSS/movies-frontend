@@ -2,10 +2,9 @@ import React from "react";
 import validator from "validator";
 import { regExName } from "../constants";
 import useFormWithValidation from "./useFormWithValidation";
-import { textErrorInputEmail } from "../constants";
+import { textErrorInputEmail, textErrorInputName } from "../constants";
 
 const useRegistration = () => {
-  const textErrorInputName = 'Только латиницу, кириллицу, пробел или дефис';
   const textErrorInputPassword = 'Пароль от 6 до 30 символов.';
   const {
     values, errors, isValid, setErrors, setIsValid, handleChange, resetForm,

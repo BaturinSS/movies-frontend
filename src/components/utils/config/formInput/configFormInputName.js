@@ -1,9 +1,9 @@
 const configFormInputName = {
   idInput: 'inputName',
-  placeholder: '',
   textLabel: 'Имя',
-  required: true,
   type: 'text',
+  required: true,
+  name: 'Name',
   minLength: '2',
   maxLength: '30',
 }

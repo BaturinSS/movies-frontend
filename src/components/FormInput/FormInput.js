@@ -9,7 +9,7 @@ function FormInput({
   autoComplete,
 }) {
   const {
-    idInput, placeholder, textLabel,
+    idInput, placeholder, textLabel, name,
     required, type, minLength, maxLength,
   } = config;
 
@@ -31,12 +31,12 @@ function FormInput({
         htmlFor={`${idInput}`}>{textLabel}</label>
       <input
         id={`${idInput}`}
-        name={idInput}
+        name={name}
         className={`form__input ${modifier ? modifier : ''}`}
         style={{ color: type === 'password' ? "#EE3465" : 'none' }}
         required={required}
         placeholder={placeholder}
-        spellCheck={`${type === 'text' ? 'true' : 'false'}`}
+        spellCheck={`${type === 'text' ? true : false}`}
         type={String(type) && checkType(arrType, type) ? type : 'text'}
         minLength={minLength}
         maxLength={maxLength}

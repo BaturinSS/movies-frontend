@@ -18,6 +18,7 @@ function NotFound() {
           >Страница не найдена</p>
         </article>
         <button
+          type='button'
           className='not-found__button-back'
           onClick={handleClick}>Назад</button>
       </section>

@@ -1,12 +1,14 @@
 import React from "react";
-import { useHistory } from 'react-router-dom';
-import { Route, Switch } from "react-router-dom";
-import { TranslationContext } from '../../contexts/CurrentUserContext';
+import { Route, Switch, useHistory } from "react-router-dom";
+import { TranslationContext } from '../../contexts/TranslationContext';
 import AboutProjectPage from "../../pages/AboutProject/AboutProjectPage";
 import RegistrationPage from "../../pages/Registration/RegistrationPage";
 import AuthorizationPage from "../../pages/Authorization/AuthorizationPage";
 import NotFoundPage from "../../pages/NotFound/NotFoundPage";
-import ProtectedPages from "../../pages/Protected/ProtectedPages";
+import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
+import ProfilePage from "../../pages/Protected/Profile/ProfilePage";
+import MoviesPage from "../../pages/Protected/Movies/MoviesPage";
+import SavedMoviesPage from "../../pages/Protected/SavedMovies/SavedMoviesPage";
 import MainApi from "../../components/utils/api/MainApi";
 import { NODE_ENV } from "../../components/utils/constants";
 
@@ -57,9 +59,32 @@ function App() {
               setIsLoggedIn={setIsLoggedIn}
             />
           </Route>
-          <ProtectedPages
-            isLoggedIn={isLoggedIn}
-          />
+          <Route path="/profile" exact>
+            <ProtectedRoute
+              exact
+              path="/profile"
+              component={ProfilePage}
+              setCurrentUser={setCurrentUser}
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
+            />
+          </Route>
+          <Route path="/movies" exact>
+            <ProtectedRoute
+              exact
+              path="/movies"
+              component={MoviesPage}
+              isLoggedIn={isLoggedIn}
+            />
+          </Route>
+          <Route path="/saved-movies" exact>
+            <ProtectedRoute
+              exact
+              path="/saved-movies"
+              component={SavedMoviesPage}
+              isLoggedIn={isLoggedIn}
+            />
+          </Route>
           <Route path="*">
             <NotFoundPage />
           </Route>

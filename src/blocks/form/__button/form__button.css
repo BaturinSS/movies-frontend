@@ -17,7 +17,7 @@
   opacity: .7;
 }
 
-.form__button:first-child {
-  padding-top: 55px;
-  margin-bottom: 16px;
+.form__button:last-child {
+  padding-top: 16px;
+  color: #EE3465
 }

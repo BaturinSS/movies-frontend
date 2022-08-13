@@ -1,5 +1,8 @@
 .form__input_profile {
   padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
   font-weight: 400;
   text-align: right;
   border: none;
@@ -7,10 +10,14 @@
   line-height: 22px;
 }
 
-.form__input_profile:hover{
+.form__input_profile:hover {
   border-bottom: none;
 }
 
-.form__input_profile:focus{
-  border-bottom: none;
+.form__input_profile:focus {
+  border: none;
+}
+
+.form__input_profile:focus {
+  color: rgba(66, 133, 244, 1);
 }

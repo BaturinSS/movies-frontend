@@ -2,7 +2,10 @@ import './FormProfile.css';
 
 import React from "react";
 
-function FormProfile({ children, onSubmitFormProfile }) {
+function FormProfile({
+  children, onSubmitFormProfile,
+  exitEditProfile, isPermission,
+}) {
   return (
     <>
       <form
@@ -10,7 +13,14 @@ function FormProfile({ children, onSubmitFormProfile }) {
         className='form form_profile'
         onSubmit={onSubmitFormProfile}
         noValidate
-      >{children}
+      >
+        {children}
+        {isPermission && <button
+          type='button'
+          className='form__button-back'
+          onClick={exitEditProfile}>
+          {'Выход'}
+        </button>}
       </form>
     </>
   )

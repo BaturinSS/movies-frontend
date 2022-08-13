@@ -14,49 +14,38 @@ import ImageZoom from '../../../components/ImageZoom/ImageZoom';
 import configHeaderLogin from '../../../components/utils/config/configHeaderLogin';
 import configFooter from '../../../components/utils/config/configFooter';
 
+import moviesList from "../../../components/utils/moviesList.json"
 
-
-function MoviesPage({
-  closePopup, titleImage,
-  openPopup, linkImage,
-  isOpenMenu, isLinkImage,
-  isCards, isOpenPopup,
-  handleClickPlayVideo,
-  handleClickZoomImage,
-}) {
+function MoviesPage() {
   const addMovies = () => {
     console.log('MoviesPage 28 "Click addMovies"')
   }
   return (
     <>
       <Header>
-        <HeaderLogin
-          config={configHeaderLogin}
-          closePopup={closePopup}
-          openPopup={openPopup}
-          isOpenMenu={isOpenMenu} />
+        <HeaderLogin config={configHeaderLogin} />
       </Header>
       <Main>
         <SearchForm />
         <MoviesCardList
-          isCards={isCards}
+          isCards={moviesList}
           modifierActiveButton={'movies-list__button_active'}
-          handleClickPlayVideo={handleClickPlayVideo}
-          handleClickZoomImage={handleClickZoomImage}
+          handleClickPlayVideo={addMovies}
+          handleClickZoomImage={addMovies}
         >
           <MoviesAddButton addMovies={addMovies} />
         </MoviesCardList>
       </Main>
       <Footer config={configFooter} />
-      <Popup
-        isOpenPopup={isOpenPopup}
+      {/* <Popup
+        isOpenPopup={false}
       >
         <ImageZoom
           titleImage={titleImage}
           linkImage={linkImage}
           isLinkImage={isLinkImage}
         />
-      </Popup>
+      </Popup> */}
     </>
   )
 }

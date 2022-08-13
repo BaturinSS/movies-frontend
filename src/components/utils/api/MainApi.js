@@ -62,39 +62,30 @@ class MainApi {
       .then(this._checkResponse);
   };
 
-  // deleteToken() {
-  //   return fetch(`${this._baseUrl()}/users/me`, {
-  //     method: 'DELETE',
-  //     credentials: this._credentials,
-  //     headers: this._createdHeaders(),
-  //   })
-  //     .then(this._checkResponse);
-  // };
+  deleteToken() {
+    return fetch(`${this._baseUrl()}/signout`, {
+      method: 'POST',
+      credentials: this._credentials,
+      headers: this._createdHeaders(),
+    })
+      .then(this._checkResponse);
+  };
 
-  // getUserInfo() {
-  //   return fetch(`${this._baseUrl()}/users/me`, {
-  //     method: 'GET',
-  //     credentials: this._credentials,
-  //     headers: this._createdHeaders(),
-  //   })
-  //     .then(this._checkResponse)
-  // };
+  editUserInfo(name, email) {
+    return fetch(`${this._baseUrl()}/users/me`, {
+      method: 'PATCH',
+      credentials: this._credentials,
+      headers: this._createdHeaders(),
+      body: JSON.stringify({ name, email }),
+    })
+      .then(this._checkResponse)
+  };
 
   // getCards() {
   //   return fetch(`${this._baseUrl()}/cards`, {
   //     method: 'GET',
   //     credentials: this._credentials,
   //     headers: this._createdHeaders(),
-  //   })
-  //     .then(this._checkResponse)
-  // };
-
-  // editUserInfo(name, about) {
-  //   return fetch(`${this._baseUrl()}/users/me`, {
-  //     method: 'PATCH',
-  //     credentials: this._credentials,
-  //     headers: this._createdHeaders(),
-  //     body: JSON.stringify({ name, about }),
   //   })
   //     .then(this._checkResponse)
   // };

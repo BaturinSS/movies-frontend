@@ -14,10 +14,10 @@
   transition: .5s;
 }
 
-.form__input:hover{
+.form__input:hover {
   border-bottom: 1px solid rgba(61, 220, 132, 1);
 }
 
-.form__input:focus{
+.form__input:focus {
   border-bottom: 1px solid rgba(61, 220, 132, .5);
 }

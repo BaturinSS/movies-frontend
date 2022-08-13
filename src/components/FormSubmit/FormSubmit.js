@@ -11,7 +11,7 @@ function FormSubmit({ modifier, textMessageError, config, isValid, isDownload })
     <>
       <div className={`form__block ${modifier ? modifier : ''}`}>
         <span
-          className={`formProfile-input-error form__input-error ${textMessageError
+          className={`form-input-error form__input-error ${textMessageError
             ? 'form__input-error_active'
             : ''}`
           }

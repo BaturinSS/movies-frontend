@@ -13,7 +13,7 @@ function MoviesCardList({
     <>
       <section className="movies-list">
         <ul className="movies-list__cards">
-          {isCards.map(card => {
+          {/* {isCards.map(card => {
             return (
               <MoviesCard
                 key={card.id}
@@ -24,7 +24,7 @@ function MoviesCardList({
                 handleClickZoomImage={handleClickZoomImage}
               />
             );
-          })}
+          })} */}
         </ul>
         {children}
       </section>

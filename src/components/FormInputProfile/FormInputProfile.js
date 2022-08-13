@@ -3,15 +3,18 @@ import './FormInputProfile.css';
 import React from "react";
 
 function FormInputProfile({
-  config, readOnly, onChange, value, modifier, modifierLabel,
+  config, isPermission, onChange, value, isName,
+  onFocus, autoComplete, errors, isEmail, ref,
 }) {
   const {
-    idInput, placeholder, textLabel,
+    idInput, placeholder, textLabel, name,
     required, type, minLength, maxLength,
   } = config;
 
+  const textMessageError = errors[`${idInput}`];
+
   const arrType = [
-    'text', 'password', 'email',
+    'password', 'Email',
     'number', 'tel', 'url',
   ]
   const checkType = (arr, elem) => {
@@ -20,25 +23,45 @@ function FormInputProfile({
 
   return (
     <>
+      {isName && !isEmail && < span
+        className={`${idInput}-input-error form__input-error ${textMessageError
+          ? 'form__input-error_active'
+          : ''}`
+        }>
+        {textMessageError}
+      </span>}
       <label
-        className={`form__input-label ${modifierLabel ? modifierLabel : ''}`}
+        className={`form__input-label form__input-label_profile`}
+        style={isPermission ? {} : { pointerEvents: 'none', cursor: 'default' }}
         htmlFor={`${idInput}`}>{textLabel}
         <input
           id={`${idInput}`}
-          className={`form__input ${modifier ? modifier : ''}`}
+          name={name}
+          className={`form__input form__input_profile`}
           style={{ color: type === 'password' ? "#EE3465" : 'none' }}
-          required={Boolean(required) ? required : false}
-          placeholder={String(placeholder) ? placeholder : false}
-          spellCheck={`${type === 'text' ? 'true' : 'false'}`}
+          required={required}
+          placeholder={placeholder}
+          spellCheck={`${type === 'text' ? true : false}`}
           type={String(type) && checkType(arrType, type) ? type : 'text'}
-          minLength={`${Number(minLength) ? minLength : false}`}
-          maxLength={`${Number(maxLength) ? maxLength : false}`}
-          autoComplete={type === 'password' ? 'on' : 'off'}
+          minLength={minLength}
+          maxLength={maxLength}
+          autoComplete={autoComplete}
           onChange={onChange}
+          onFocus={onFocus}
           value={value}
-          readOnly={readOnly}
+          readOnly={!isPermission}
         />
       </label>
+      {
+        isEmail && !isName && < span
+          className={`${idInput}-input-error form__input-error ${textMessageError
+            ? 'form__input-error_active'
+            : ''}`
+          }
+        >
+          {textMessageError}
+        </span>
+      }
     </>
   )
 }
