@@ -15,11 +15,11 @@ function useFormWithValidation() {
   };
 
   const resetForm = React.useCallback(
-    (event, newValues = {}, newErrors = {}, newIsValid = false) => {
+    (evt, newValues = {}, newErrors = {}, newIsValid = false) => {
       setValues(newValues);
       setErrors(newErrors);
       setIsValid(newIsValid);
-      event.target.reset();
+      if (evt) evt.target.reset();
     },
     [setValues, setErrors, setIsValid]
   );
@@ -27,7 +27,7 @@ function useFormWithValidation() {
   return {
     values, handleChange, errors,
     isValid, resetForm, setErrors,
-    setIsValid,
+    setIsValid, setValues,
   };
 }
 

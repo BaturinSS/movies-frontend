@@ -2,19 +2,18 @@ import './FormSubmitProfile.css';
 
 function FormSubmitProfile({
   outputProfile, isPermission, editProfile,
-  errors, isValid, isDownload,
+  error, isValid, isDownload,
 }) {
-  const textMessageErrorProfile = errors;
+  const textMessageErrorProfile = error;
   return (
     <>
       <div className={`form__block form__block_profile`}>
         {isPermission && <span
-          style={{ marginBottom: '15px' }}
-          className={`formProfile-input-error form__input-error ${!isValid
+          style={{ marginBottom: '15px', marginTop: '-50px' }}
+          className={`formProfile-input-error form__input-error ${isPermission
             ? 'form__input-error_active'
             : ''}`
-          }
-        >{textMessageErrorProfile}
+          }>{textMessageErrorProfile}
         </span>}
         {!isPermission && <button
           className={'form__button'}
@@ -27,7 +26,6 @@ function FormSubmitProfile({
             ? 'form__submit-button_disabled'
             : ''}`}
           type={`submit`}
-          style={{ marginTop: `${!isPermission ? '0' : '-50px'}` }}
           disabled={!isValid}
         >{`${isDownload ? 'Сохраняю...' : 'Сохранить'}`}
         </button>}
@@ -35,7 +33,7 @@ function FormSubmitProfile({
           className={`form__button`}
           type={`button`}
           onClick={outputProfile}
-        >{`${isDownload ? 'Выхожу...' : 'Выйти из аккаунта'}`}
+        >{'Выйти из аккаунта'}
         </button>}
       </div>
     </>

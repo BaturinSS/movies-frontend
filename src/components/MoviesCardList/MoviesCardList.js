@@ -13,10 +13,10 @@ function MoviesCardList({
     <>
       <section className="movies-list">
         <ul className="movies-list__cards">
-          {/* {isCards.map(card => {
+          {isCards.map((card, i) => {
             return (
               <MoviesCard
-                key={card.id}
+                key={i + 12}
                 card={card}
                 modifierButton={modifierButton}
                 modifierActiveButton={modifierActiveButton}
@@ -24,7 +24,7 @@ function MoviesCardList({
                 handleClickZoomImage={handleClickZoomImage}
               />
             );
-          })} */}
+          })}
         </ul>
         {children}
       </section>

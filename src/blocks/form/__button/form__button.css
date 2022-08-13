@@ -17,7 +17,14 @@
   opacity: .7;
 }
 
+.form__button:focus {
+  outline: none !important;
+  border-radius: 5px;
+  border: 1px solid rgba(61, 220, 132, .5);
+  padding: 3px;
+}
+
 .form__button:last-child {
-  padding-top: 16px;
+  margin-top: 16px;
   color: #EE3465
 }

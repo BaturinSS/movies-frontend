@@ -3,11 +3,19 @@ import validator from "validator";
 import useFormWithValidation from "./useFormWithValidation";
 import { textErrorInputEmail, textErrorInputName } from "../constants";
 import { regExName } from "../constants";
+import { TranslationContext } from '../../../contexts/TranslationContext'
 
 const useProfile = () => {
   const {
-    values, errors, isValid, setErrors, setIsValid, handleChange, resetForm,
+    values, errors, isValid, setErrors, setValues,
+    setIsValid, handleChange, resetForm,
   } = useFormWithValidation();
+
+  const { currentUser } = React.useContext(TranslationContext);
+  const [newName, setNewName] = React.useState(currentUser.name);
+  const [newEmail, setNewEmail] = React.useState(currentUser.email);
+  const [isPermission, setIsPermission] = React.useState(false);
+  const [errorApi, setErrorApi] = React.useState('');
 
   React.useEffect(() => {
     const validEmail = validator.isEmail(`${values.inputEmail}`);
@@ -33,7 +41,24 @@ const useProfile = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values.inputName]);
 
-  return { errors, isValid, values, handleChange, resetForm }
+  const onChange = (evt) => {
+    handleChange(evt);
+    evt.target.name === 'Email'
+      ? setNewEmail(evt.target.value)
+      : setNewName(evt.target.value);
+    if (errorApi) setErrorApi('');
+  }
+
+  React.useEffect(() => {
+    setErrorApi('');
+    setNewName(currentUser.name);
+    setNewEmail(currentUser.email)
+  }, [isPermission])
+
+  return {
+    errors, isValid, resetForm, onChange, newName, newEmail,
+    isPermission, setIsPermission, errorApi, setErrorApi,
+  }
 }
 
 export default useProfile;

@@ -1,11 +1,11 @@
 .popup__close {
   position: absolute;
   display: flex;
-  width: 32px;
-  height: 32px;
+  width: 22px;
+  height: 22px;
   margin: 0;
-  top: -40px;
-  right: -40px;
+  top: -30px;
+  right: -30px;
   padding: 0;
   border: none;
   background: none;
@@ -20,9 +20,9 @@
 
 @media screen and (max-width: 618px) {
   .popup__close {
-    width: 20px;
-    height: 20px;
-    top: -36px;
+    width: 15px;
+    height: 15px;
+    top: -26px;
     right: 0;
   }
 }
