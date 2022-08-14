@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory, Redirect, Route } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Main from "../../components/Main/Main";
 import HeaderAuth from "../../components/HeaderAuth/HeaderAuth";
