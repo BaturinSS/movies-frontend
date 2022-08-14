@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, useLocation, useHistory } from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
 import { TranslationContext } from '../../contexts/TranslationContext';
 import AboutProjectPage from "../../pages/AboutProject/AboutProjectPage";
 import RegistrationPage from "../../pages/Registration/RegistrationPage";
@@ -20,27 +20,28 @@ function App() {
   const api = new MainApi({ NODE_ENV: NODE_ENV });
 
   React.useEffect(() => {
+    if (!isDownload) setIsDownload(true);
     if (isLoggedIn) return;
 
     if (NODE_ENV !== 'production') {
       const token = localStorage.getItem('jwt');
-      if (!token) return setIsDownload(false)
+      if (!token) return setIsDownload(false);
     };
 
     api
       .checkToken()
       .then(({ user, message }) => {
+        setIsLoggedIn(true);
         console.log(message);
         setCurrentUser(user);
-        setIsLoggedIn(true);
-        setIsDownload(false);
       })
       .catch((err) => {
         err.then(({ message }) => {
           console.error(message);
-          setIsDownload(false);
         });
-      });
+      })
+      .finally(() => setIsDownload(false));
+    // .finally(setTimeout(() => setIsDownload(false), 5000));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -51,27 +52,41 @@ function App() {
         <Switch>
           <Route path="/" exact>
             <AboutProjectPage
+              isDownload={isDownload}
               isLoggedIn={isLoggedIn}
             />
           </Route>
           <Route path="/sign-up" exact>
-            <RegistrationPage
-              isLoggedIn={isLoggedIn}
+            <ProtectedRoute
+              exact
+              path="/sign-up"
+              redirect={'/'}
+              component={RegistrationPage}
+              isLoggedIn={!isLoggedIn}
               setCurrentUser={setCurrentUser}
               setIsLoggedIn={setIsLoggedIn}
+              isDownload={isDownload}
+              setIsDownload={setIsDownload}
             />
           </Route>
           <Route path="/sign-in" exact>
-            <AuthorizationPage
-              isLoggedIn={isLoggedIn}
+            <ProtectedRoute
+              exact
+              path="/sign-in"
+              redirect={'/'}
+              component={AuthorizationPage}
+              isLoggedIn={!isLoggedIn}
               setCurrentUser={setCurrentUser}
               setIsLoggedIn={setIsLoggedIn}
+              isDownload={isDownload}
+              setIsDownload={setIsDownload}
             />
           </Route>
           <Route path="/profile" exact>
             <ProtectedRoute
               exact
               path="/profile"
+              redirect={'/sign-in'}
               component={ProfilePage}
               setCurrentUser={setCurrentUser}
               isLoggedIn={isLoggedIn}
@@ -83,6 +98,7 @@ function App() {
             <ProtectedRoute
               exact
               path="/movies"
+              redirect={'/sign-in'}
               component={MoviesPage}
               isLoggedIn={isLoggedIn}
               isDownload={isDownload}
@@ -92,6 +108,7 @@ function App() {
             <ProtectedRoute
               exact
               path="/saved-movies"
+              redirect={'/sign-in'}
               component={SavedMoviesPage}
               isLoggedIn={isLoggedIn}
               isDownload={isDownload}

@@ -1,6 +1,6 @@
 const configFormSubmitAuth = {
   textButton: 'Войти',
-  textDownload: 'Авторизую...',
+  textDownload: 'Проверяю...',
   textQuestion: 'Ещё не зарегистрированы?',
   title: 'Регистрация',
   to: '/sign-up',

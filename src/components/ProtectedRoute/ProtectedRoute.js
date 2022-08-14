@@ -2,14 +2,15 @@ import React from 'react';
 import { Route, Redirect } from "react-router-dom";
 import Preloader from '../../components/Preloader/Preloader';
 
-const ProtectedRoute = ({ component: Component, ...props }) => {
+const ProtectedRoute = ({ isLoggedIn, isDownload, component: Component, ...props }) => {
+
   return (
     <Route>
-      {props.isDownload
+      {isDownload
         ? <Preloader />
-        : () => props.isLoggedIn
+        : () => isLoggedIn
           ? <Component {...props} />
-          : <Redirect to="/sign-in" />
+          : <Redirect to={props.redirect} />
       }
     </Route>
   )

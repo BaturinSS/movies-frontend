@@ -15,8 +15,7 @@ import useRegistration from "../../components/utils/hooks/useRegistration";
 import MainApi from "../../components/utils/api/MainApi";
 import { NODE_ENV } from "../../components/utils/constants";
 
-function RegistrationPage({ setCurrentUser, setIsLoggedIn, isLoggedIn }) {
-
+function RegistrationPage({ setCurrentUser, setIsLoggedIn }) {
   const [isDownload, setIsDownload] = React.useState(false);
   const [errorApi, setErrorApi] = React.useState('');
   const api = new MainApi({ NODE_ENV: NODE_ENV });
@@ -27,10 +26,6 @@ function RegistrationPage({ setCurrentUser, setIsLoggedIn, isLoggedIn }) {
     handleChange(event);
     setErrorApi('');
   }
-
-  // React.useEffect(() => {
-  //   if (isLoggedIn) history.push('/');
-  // }, [isLoggedIn])
 
   const onSubmitForm = (event) => {
     const token = localStorage.getItem('jwt');
@@ -58,7 +53,7 @@ function RegistrationPage({ setCurrentUser, setIsLoggedIn, isLoggedIn }) {
           resetForm(event);
         });
       })
-      .finally(() => setIsDownload(false))
+      .finally(() => setIsDownload(false));
   }
 
   return (

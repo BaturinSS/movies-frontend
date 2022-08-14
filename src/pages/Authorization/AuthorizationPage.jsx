@@ -15,7 +15,7 @@ import { NODE_ENV } from "../../components/utils/constants";
 import useAuth from "../../components/utils/hooks/useAuth";
 import { textGreetingsLogin } from '../../components/utils/constants';
 
-function AuthorizationPage({ setCurrentUser, isLoggedIn, setIsLoggedIn }) {
+function AuthorizationPage({ setCurrentUser, setIsLoggedIn }) {
   const [isDownload, setIsDownload] = React.useState(false);
   const [errorApi, setErrorApi] = React.useState('');
 
@@ -54,15 +54,13 @@ function AuthorizationPage({ setCurrentUser, isLoggedIn, setIsLoggedIn }) {
           }
         });
       })
-      .finally(() => setIsDownload(false))
+      .finally(() => setIsDownload(false));
   }
 
   return (
     <>
       <Header modifier={'header_auth'}>
-        {!isLoggedIn && <HeaderAuth
-          textGreetings={textGreetingsLogin}
-        />}
+        <HeaderAuth textGreetings={textGreetingsLogin} />
       </Header>
       <Main>
         <Form
