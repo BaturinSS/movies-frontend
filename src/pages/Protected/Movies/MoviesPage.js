@@ -8,8 +8,8 @@ import HeaderLogin from '../../../components/HeaderLogin/HeaderLogin';
 import SearchForm from '../../../components/SearchForm/SearchForm';
 import MoviesCardList from '../../../components/MoviesCardList/MoviesCardList';
 import MoviesAddButton from '../../../components/MoviesAddButton/MoviesAddButton';
-import Popup from '../../../components/Popup/Popup';
-import ImageZoom from '../../../components/ImageZoom/ImageZoom';
+// import Popup from '../../../components/Popup/Popup';
+// import ImageZoom from '../../../components/ImageZoom/ImageZoom';
 
 import configHeaderLogin from '../../../utils/config/configHeaderLogin';
 import configFooter from '../../../utils/config/configFooter';

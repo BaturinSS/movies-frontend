@@ -69,6 +69,7 @@ const useProfile = () => {
     setErrorApi('');
     setNewName(currentUser.name);
     setNewEmail(currentUser.email)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPermission])
 
   return {
