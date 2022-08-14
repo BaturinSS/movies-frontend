@@ -3,5 +3,6 @@ export const textMessageErrorProfile = 'При обновлении профил
 export const textGreetingsLogin = 'Рады видеть!';
 export const textErrorInputEmail = 'Почта не соответствует формату.';
 export const textErrorInputName = 'Только латиницу, кириллицу, пробел или дефис';
+export const textErrorInputNew = 'Вы не изменили информацию о пользователе !';
 export const regExName = /^[a-zа-яё-\s]+$/i;
 export const NODE_ENV = process.env.NODE_ENV;

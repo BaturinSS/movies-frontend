@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, useHistory } from "react-router-dom";
+import { Route, Switch, useHistory, useLocation } from "react-router-dom";
 import { TranslationContext } from '../../contexts/TranslationContext';
 import AboutProjectPage from "../../pages/AboutProject/AboutProjectPage";
 import RegistrationPage from "../../pages/Registration/RegistrationPage";
@@ -15,8 +15,10 @@ import { NODE_ENV } from "../../components/utils/constants";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
+  const [isDownload, setIsDownload] = React.useState(true);
   const api = new MainApi({ NODE_ENV: NODE_ENV });
   const history = useHistory();
+  const location = useLocation();
 
   React.useEffect(() => {
     if (isLoggedIn) return;
@@ -28,11 +30,13 @@ function App() {
           console.log(message);
           setCurrentUser(user);
           setIsLoggedIn(true);
-          history.push('/movies');
+          // history.push(location.pathname);
+          setIsDownload(false);
         })
         .catch((err) => {
           err.then(({ message }) => {
             console.error(message);
+            setIsDownload(false);
           });
         });
     };
@@ -49,12 +53,14 @@ function App() {
           </Route>
           <Route path="/sign-up" exact>
             <RegistrationPage
+              isLoggedIn={isLoggedIn}
               setCurrentUser={setCurrentUser}
               setIsLoggedIn={setIsLoggedIn}
             />
           </Route>
           <Route path="/sign-in" exact>
             <AuthorizationPage
+              isLoggedIn={isLoggedIn}
               setCurrentUser={setCurrentUser}
               setIsLoggedIn={setIsLoggedIn}
             />
@@ -67,6 +73,7 @@ function App() {
               setCurrentUser={setCurrentUser}
               isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
+              isDownload={isDownload}
             />
           </Route>
           <Route path="/movies" exact>
@@ -75,6 +82,7 @@ function App() {
               path="/movies"
               component={MoviesPage}
               isLoggedIn={isLoggedIn}
+              isDownload={isDownload}
             />
           </Route>
           <Route path="/saved-movies" exact>
@@ -83,6 +91,7 @@ function App() {
               path="/saved-movies"
               component={SavedMoviesPage}
               isLoggedIn={isLoggedIn}
+              isDownload={isDownload}
             />
           </Route>
           <Route path="*">

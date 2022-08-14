@@ -1,13 +1,17 @@
 import React from "react";
 import validator from "validator";
 import useFormWithValidation from "./useFormWithValidation";
-import { textErrorInputEmail, textErrorInputName } from "../constants";
+
+import {
+  textErrorInputEmail, textErrorInputName, textErrorInputNew
+} from "../constants";
+
 import { regExName } from "../constants";
 import { TranslationContext } from '../../../contexts/TranslationContext'
 
 const useProfile = () => {
   const {
-    values, errors, isValid, setErrors, setValues,
+    values, errors, isValid, setErrors,
     setIsValid, handleChange, resetForm,
   } = useFormWithValidation();
 
@@ -16,6 +20,8 @@ const useProfile = () => {
   const [newEmail, setNewEmail] = React.useState(currentUser.email);
   const [isPermission, setIsPermission] = React.useState(false);
   const [errorApi, setErrorApi] = React.useState('');
+  const [isValidEmail, setIsValidEmail] = React.useState(false);
+  const [isValidName, setIsValidName] = React.useState(false);
 
   React.useEffect(() => {
     const validEmail = validator.isEmail(`${values.inputEmail}`);
@@ -23,11 +29,16 @@ const useProfile = () => {
       const validInput = document.getElementById('inputEmail').checkValidity();
       if ((errors.inputEmail === '' || textErrorInputEmail) && validInput) {
         setErrors({ ...errors, inputEmail: textErrorInputEmail });
-        setIsValid(false);
+        setIsValidEmail(false);
+        setIsValid(isValidEmail && isValidName)
       }
+    } else if (values.inputEmail === currentUser.email) {
+      setErrors({ ...errors, inputEmail: textErrorInputNew });
+      setIsValidEmail(false);
+      setIsValid(isValidEmail && isValidName)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [values.inputEmail]);
+  }, [values.inputName, values.inputEmail]);
 
   React.useEffect(() => {
     const validName = regExName.test(`${values.inputName}`);
@@ -35,11 +46,16 @@ const useProfile = () => {
       const validInput = document.getElementById('inputName').checkValidity();
       if ((errors.inputName === '' || textErrorInputName) && validInput) {
         setErrors({ ...errors, inputName: textErrorInputName });
+        setIsValidName(false);
+        setIsValid(isValidEmail && isValidName)
       };
-      setIsValid(false);
+    } else if (values.inputName === currentUser.name) {
+      setErrors({ ...errors, inputName: textErrorInputNew });
+      setIsValidName(false);
+      setIsValid(isValidEmail && isValidName)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [values.inputName]);
+  }, [values.inputName, values.inputEmail]);
 
   const onChange = (evt) => {
     handleChange(evt);

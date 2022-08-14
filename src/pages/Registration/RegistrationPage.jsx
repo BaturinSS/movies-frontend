@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect, Route } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Main from "../../components/Main/Main";
 import HeaderAuth from "../../components/HeaderAuth/HeaderAuth";
@@ -15,7 +15,7 @@ import useRegistration from "../../components/utils/hooks/useRegistration";
 import MainApi from "../../components/utils/api/MainApi";
 import { NODE_ENV } from "../../components/utils/constants";
 
-function RegistrationPage({ setCurrentUser, setIsLoggedIn }) {
+function RegistrationPage({ setCurrentUser, setIsLoggedIn, isLoggedIn }) {
 
   const [isDownload, setIsDownload] = React.useState(false);
   const [errorApi, setErrorApi] = React.useState('');
@@ -27,6 +27,10 @@ function RegistrationPage({ setCurrentUser, setIsLoggedIn }) {
     handleChange(event);
     setErrorApi('');
   }
+
+  React.useEffect(() => {
+    if (isLoggedIn) history.push('/');
+  }, [isLoggedIn])
 
   const onSubmitForm = (event) => {
     const token = localStorage.getItem('jwt');

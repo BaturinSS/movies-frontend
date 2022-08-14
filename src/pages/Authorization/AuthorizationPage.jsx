@@ -52,7 +52,6 @@ function AuthorizationPage({ setCurrentUser, isLoggedIn, setIsLoggedIn }) {
           } else {
             setErrorApi(message);
           }
-          resetForm(event);
         });
       })
       .finally(() => setIsDownload(false))

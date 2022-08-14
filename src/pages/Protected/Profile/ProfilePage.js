@@ -14,7 +14,7 @@ import configFormInputName from '../../../components/utils/config/formInput/conf
 import { TranslationContext } from '../../../contexts/TranslationContext'
 import useProfile from '../../../components/utils/hooks/useProfile';
 import MainApi from "../../../components/utils/api/MainApi";
-import { NODE_ENV } from "../../../components/utils/constants";
+import { NODE_ENV, textErrorInputNew } from "../../../components/utils/constants";
 import Popup from '../../../components/Popup/Popup';
 import PopupInform from '../../../components/PopupInform/PopupInform';
 import { actionTimeout } from '../../../components/utils/utils'
@@ -62,7 +62,7 @@ function ProfilePage({ setCurrentUser, setIsLoggedIn }) {
   const updateProfile = () => {
     setIsDownload(true);
     api
-      .editUserInfo(newName, newEmail)
+      .editUserInfo(newName.trim(), newEmail.trim())
       .then(({ message, user }) => {
         setErrorApi(message);
         actionTimeout(
@@ -88,8 +88,9 @@ function ProfilePage({ setCurrentUser, setIsLoggedIn }) {
     if (jwt) {
       localStorage.removeItem("jwt");
       setIsLoggedIn(false);
-      history.push('/');
       setIsDownload(false);
+      setIsOpenPopupInform(false);
+      history.push('/');
     } else {
       api
         .deleteToken()
@@ -97,6 +98,7 @@ function ProfilePage({ setCurrentUser, setIsLoggedIn }) {
           setErrorApi(message);
           history.push('/');
           setIsLoggedIn(false);
+          setIsOpenPopupInform(false);
         })
         .catch((err) => {
           err.then(({ message }) => {
@@ -109,10 +111,11 @@ function ProfilePage({ setCurrentUser, setIsLoggedIn }) {
 
   const onSubmitFormProfile = (evt) => {
     evt.preventDefault();
-    if (newName !== currentUser.name || newEmail !== currentUser.email) {
+    if (newName.trim() !== currentUser.name.trim() ||
+      newEmail.trim() !== currentUser.email.trim()) {
       updateProfile();
     } else {
-      setErrorApi('Вы не изменили информацию о пользователе !');
+      setErrorApi(textErrorInputNew);
       actionTimeout(() => setErrorApi(''), 5000);
     }
   }
@@ -123,7 +126,6 @@ function ProfilePage({ setCurrentUser, setIsLoggedIn }) {
 
   const clickButtonConfirm = () => {
     outputProfile();
-    setIsOpenPopupInform(false);
   }
 
   return (
@@ -143,7 +145,6 @@ function ProfilePage({ setCurrentUser, setIsLoggedIn }) {
               config={configFormInputName}
               autoComplete={'given-name'}
               onChange={onChange}
-              onFocus={onChange}
               value={newName}
               isPermission={isPermission}
               errors={errors}
@@ -153,7 +154,6 @@ function ProfilePage({ setCurrentUser, setIsLoggedIn }) {
               config={configFormInputEmail}
               autoComplete={'username'}
               onChange={onChange}
-              onFocus={onChange}
               value={newEmail}
               isPermission={isPermission}
               errors={errors}
