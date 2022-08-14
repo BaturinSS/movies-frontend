@@ -2,7 +2,7 @@ import './MoviesCard.css';
 
 import React from "react";
 
-import useMoviesCard from '../../components/utils/hooks/useMoviesCard'
+import useMoviesCard from '../../utils/hooks/useMoviesCard'
 
 import playImage from '../../images/movies/play_icon.svg'
 import zoomImage from '../../images/movies/zoom_icon.svg'

@@ -8,16 +8,16 @@ import FormProfile from '../../../components/FormProfile/FormProfile';
 import GreetingProfile from '../../../components/GreetingProfile/GreetingProfile';
 import FormInputProfile from '../../../components/FormInputProfile/FormInputProfile';
 import FormSubmitProfile from '../../../components/FormSubmitProfile/FormSubmitProfile';
-import configHeaderLogin from '../../../components/utils/config/configHeaderLogin';
-import configFormInputEmail from '../../../components/utils/config/formInput/configFormInputEmail';
-import configFormInputName from '../../../components/utils/config/formInput/configFormInputName';
+import configHeaderLogin from '../../../utils/config/configHeaderLogin';
+import configFormInputEmail from '../../../utils/config/formInput/configFormInputEmail';
+import configFormInputName from '../../../utils/config/formInput/configFormInputName';
 import { TranslationContext } from '../../../contexts/TranslationContext'
-import useProfile from '../../../components/utils/hooks/useProfile';
-import MainApi from "../../../components/utils/api/MainApi";
-import { NODE_ENV, textErrorInputNew } from "../../../components/utils/constants";
+import useProfile from '../../../utils/hooks/useProfile';
+import MainApi from "../../../utils/api/MainApi";
+import { NODE_ENV, textErrorInputNew } from "../../../utils/constants";
 import Popup from '../../../components/Popup/Popup';
 import PopupInform from '../../../components/PopupInform/PopupInform';
-import { actionTimeout } from '../../../components/utils/utils'
+import { actionTimeout } from '../../../utils/utils'
 
 function ProfilePage({ setCurrentUser, setIsLoggedIn }) {
   const { currentUser } = React.useContext(TranslationContext);

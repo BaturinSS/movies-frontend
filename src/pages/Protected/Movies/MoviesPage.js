@@ -11,10 +11,10 @@ import MoviesAddButton from '../../../components/MoviesAddButton/MoviesAddButton
 import Popup from '../../../components/Popup/Popup';
 import ImageZoom from '../../../components/ImageZoom/ImageZoom';
 
-import configHeaderLogin from '../../../components/utils/config/configHeaderLogin';
-import configFooter from '../../../components/utils/config/configFooter';
+import configHeaderLogin from '../../../utils/config/configHeaderLogin';
+import configFooter from '../../../utils/config/configFooter';
 
-import moviesList from "../../../components/utils/moviesList.json"
+import moviesList from "../../../utils/moviesList.json"
 
 function MoviesPage() {
   const addMovies = () => {

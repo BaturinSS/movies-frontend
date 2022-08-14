@@ -9,8 +9,8 @@ import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
 import ProfilePage from "../../pages/Protected/Profile/ProfilePage";
 import MoviesPage from "../../pages/Protected/Movies/MoviesPage";
 import SavedMoviesPage from "../../pages/Protected/SavedMovies/SavedMoviesPage";
-import MainApi from "../../components/utils/api/MainApi";
-import { NODE_ENV } from "../../components/utils/constants";
+import MainApi from "../../utils/api/MainApi";
+import { NODE_ENV } from "../../utils/constants";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);

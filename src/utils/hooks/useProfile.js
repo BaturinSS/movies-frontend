@@ -7,7 +7,7 @@ import {
 } from "../constants";
 
 import { regExName } from "../constants";
-import { TranslationContext } from '../../../contexts/TranslationContext'
+import { TranslationContext } from '../../contexts/TranslationContext'
 
 const useProfile = () => {
   const {

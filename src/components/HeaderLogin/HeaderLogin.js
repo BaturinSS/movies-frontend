@@ -4,7 +4,7 @@ import React from "react";
 
 import LinkNavReact from "../../components/LinkNavReact/LinkNavReact";
 
-import useMenu from "../../components/utils/hooks/useMenu"
+import useMenu from "../../utils/hooks/useMenu"
 
 function HeaderLogin({ config }) {
   const { linksNav, linkProfile } = config;

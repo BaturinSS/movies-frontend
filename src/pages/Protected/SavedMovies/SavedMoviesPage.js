@@ -8,8 +8,8 @@ import HeaderLogin from '../../../components/HeaderLogin/HeaderLogin';
 import SearchForm from '../../../components/SearchForm/SearchForm';
 import MoviesCardList from '../../../components/MoviesCardList/MoviesCardList';
 
-import configHeaderLogin from '../../../components/utils/config/configHeaderLogin';
-import configFooter from '../../../components/utils/config/configFooter';
+import configHeaderLogin from '../../../utils/config/configHeaderLogin';
+import configFooter from '../../../utils/config/configFooter';
 
 
 function SavedMoviesPage({

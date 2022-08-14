@@ -6,14 +6,14 @@ import HeaderAuth from "../../components/HeaderAuth/HeaderAuth";
 import Form from '../../components/Form/Form';
 import FormInput from '../../components/FormInput/FormInput';
 import FormSubmit from '../../components/FormSubmit/FormSubmit';
-import configFormSubmitAuth from '../../components/utils/config/formSubmit/configFormSubmitAuth';
-import configFormInputPassword from '../../components/utils/config/formInput/configFormInputPassword';
-import configFormInputEmail from '../../components/utils/config/formInput/configFormInputEmail';
-import configFormAuth from '../../components/utils/config/form/configFormAuth';
-import MainApi from "../../components/utils/api/MainApi";
-import { NODE_ENV } from "../../components/utils/constants";
-import useAuth from "../../components/utils/hooks/useAuth";
-import { textGreetingsLogin } from '../../components/utils/constants';
+import configFormSubmitAuth from '../../utils/config/formSubmit/configFormSubmitAuth';
+import configFormInputPassword from '../../utils/config/formInput/configFormInputPassword';
+import configFormInputEmail from '../../utils/config/formInput/configFormInputEmail';
+import configFormAuth from '../../utils/config/form/configFormAuth';
+import MainApi from "../../utils/api/MainApi";
+import { NODE_ENV } from "../../utils/constants";
+import useAuth from "../../utils/hooks/useAuth";
+import { textGreetingsLogin } from '../../utils/constants';
 
 function AuthorizationPage({ setCurrentUser, setIsLoggedIn }) {
   const [isDownload, setIsDownload] = React.useState(false);
