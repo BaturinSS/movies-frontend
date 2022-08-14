@@ -23,6 +23,7 @@ class MainApi {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
     }
+
     if (this._NODE_ENV !== 'production') {
       return basicHeaders = {
         ...basicHeaders,
