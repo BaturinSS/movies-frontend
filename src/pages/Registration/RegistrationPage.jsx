@@ -28,9 +28,9 @@ function RegistrationPage({ setCurrentUser, setIsLoggedIn, isLoggedIn }) {
     setErrorApi('');
   }
 
-  React.useEffect(() => {
-    if (isLoggedIn) history.push('/');
-  }, [isLoggedIn])
+  // React.useEffect(() => {
+  //   if (isLoggedIn) history.push('/');
+  // }, [isLoggedIn])
 
   const onSubmitForm = (event) => {
     const token = localStorage.getItem('jwt');

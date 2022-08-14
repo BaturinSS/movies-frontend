@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, useHistory, useLocation } from "react-router-dom";
+import { Route, Switch, useLocation, useHistory } from "react-router-dom";
 import { TranslationContext } from '../../contexts/TranslationContext';
 import AboutProjectPage from "../../pages/AboutProject/AboutProjectPage";
 import RegistrationPage from "../../pages/Registration/RegistrationPage";
@@ -16,30 +16,33 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
   const [isDownload, setIsDownload] = React.useState(true);
+
   const api = new MainApi({ NODE_ENV: NODE_ENV });
-  const history = useHistory();
-  const location = useLocation();
 
   React.useEffect(() => {
     if (isLoggedIn) return;
-    const token = localStorage.getItem('jwt');
-    if (token || NODE_ENV === 'production') {
-      api
-        .checkToken()
-        .then(({ user, message }) => {
-          console.log(message);
-          setCurrentUser(user);
-          setIsLoggedIn(true);
-          // history.push(location.pathname);
-          setIsDownload(false);
-        })
-        .catch((err) => {
-          err.then(({ message }) => {
-            console.error(message);
-            setIsDownload(false);
-          });
-        });
+
+    if (NODE_ENV !== 'production') {
+      const token = localStorage.getItem('jwt');
+      if (!token) return setIsDownload(false)
     };
+
+    api
+      .checkToken()
+      .then(({ user, message }) => {
+        console.log(message);
+        setCurrentUser(user);
+        setIsLoggedIn(true);
+        setIsDownload(false);
+      })
+      .catch((err) => {
+        err.then(({ message }) => {
+          console.error(message);
+          setIsDownload(false);
+        });
+      });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
