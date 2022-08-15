@@ -43,13 +43,13 @@
 }
 
 .preloader {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  padding: 20px;
 }
 
 .preloader__container {
@@ -124,6 +124,6 @@
 .preloader__round::before {
   z-index: 10;
   background: #3DDC84;
-;
+  ;
   animation: preloader-inside-red 1s ease-in-out infinite;
 }

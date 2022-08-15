@@ -10,6 +10,7 @@ import MoviesCardList from '../../../components/MoviesCardList/MoviesCardList';
 import MoviesAddButton from '../../../components/MoviesAddButton/MoviesAddButton';
 import Popup from '../../../components/Popup/Popup';
 // import ImageZoom from '../../../components/ImageZoom/ImageZoom';
+import Preloader from '../../../components/Preloader/Preloader'
 
 import configHeaderLogin from '../../../utils/config/configHeaderLogin';
 import configFooter from '../../../utils/config/configFooter';
@@ -18,6 +19,8 @@ import moviesList from "../../../utils/moviesList.json"
 
 function MoviesPage() {
   const [isOpenPopup, setIsOpenPopup] = React.useState();
+
+  const message = 'Введите текст запроса.';
 
   const addMovies = () => {
     console.log('click add movies');
@@ -34,14 +37,18 @@ function MoviesPage() {
       </Header>
       <Main>
         <SearchForm />
-        <MoviesCardList
-          isCards={moviesList}
-          modifierActiveButton={'movies-list__button_active'}
-          handleClickPlayVideo={addMovies}
-          handleClickZoomImage={addMovies}
-        >
-          <MoviesAddButton addMovies={addMovies} />
-        </MoviesCardList>
+        {false
+          ? <Preloader />
+          : true
+            ? <MoviesCardList
+              isCards={moviesList}
+              modifierActiveButton={'movies-list__button_active'}
+              handleClickPlayVideo={addMovies}
+              handleClickZoomImage={addMovies}
+            >
+              <MoviesAddButton addMovies={addMovies} />
+            </MoviesCardList>
+            : <h1>{message}</h1>}
       </Main>
       <Footer config={configFooter} />
       <Popup

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from "react-router-dom";
-import Preloader from '../../components/Preloader/Preloader';
+import Preloader from '../Preloader/Preloader';
 
 const ProtectedRoute = ({ isLoggedIn, isDownload, component: Component, ...props }) => {
 

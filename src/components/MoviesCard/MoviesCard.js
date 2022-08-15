@@ -30,7 +30,7 @@ function MoviesCard({
             </div>
             <img
               className="movies-list__image"
-              src={`${BASE_URL_IMAGE}${card.image.url}`}
+              src={`${BASE_URL_IMAGE + card.image.formats.thumbnail.url}`}
               alt={card.nameRU}
             />
           </div>
