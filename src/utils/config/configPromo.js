@@ -15,7 +15,8 @@ const configPromo = {
       id: 3,
       href: '/#aboutMe',
       title: 'Студент',
-    }
+    },
   ]
 }
+
 export default configPromo;

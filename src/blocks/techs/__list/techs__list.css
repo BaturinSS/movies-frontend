@@ -13,11 +13,11 @@
 
 @media screen and (min-width: 320px) {
   .techs__list {
-    min-width: calc((100vw - 400px)/(320 - 400) * (178 - 272) + 272px);
+    min-width: calc((100vw - 450px)/(320 - 450) * (178 - 272) + 272px);
   }
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 450px) {
   .techs__list {
     min-width: 366px;
     margin-top: 20px;

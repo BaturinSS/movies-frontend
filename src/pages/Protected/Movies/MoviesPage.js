@@ -37,7 +37,7 @@ function MoviesPage() {
       </Header>
       <Main>
         <SearchForm />
-        {false
+        {true
           ? <Preloader />
           : true
             ? <MoviesCardList

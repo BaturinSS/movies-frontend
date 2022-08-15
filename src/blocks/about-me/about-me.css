@@ -1,6 +1,9 @@
 .about-me {
   padding-left: 14px;
   padding-right: 14px;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
   /* border: 1px solid red; */
   margin: auto;
 }
