@@ -13,10 +13,10 @@ function MoviesCardList({
     <>
       <section className="movies-list">
         <ul className="movies-list__cards">
-          {isCards.map((card, i) => {
+          {isCards.map((card) => {
             return (
               <MoviesCard
-                key={i + 12}
+                key={card.id}
                 card={card}
                 modifierButton={modifierButton}
                 modifierActiveButton={modifierActiveButton}

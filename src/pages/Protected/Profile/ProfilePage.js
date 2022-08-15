@@ -14,7 +14,7 @@ import configFormInputName from '../../../utils/config/formInput/configFormInput
 import { TranslationContext } from '../../../contexts/TranslationContext'
 import useProfile from '../../../utils/hooks/useProfile';
 import MainApi from "../../../utils/api/MainApi";
-import { NODE_ENV, textErrorInputNew } from "../../../utils/constants";
+import { NODE_ENV, TEXT_ERROR_INPUT_NEW } from "../../../utils/constants";
 import Popup from '../../../components/Popup/Popup';
 import PopupInform from '../../../components/PopupInform/PopupInform';
 import { actionTimeout } from '../../../utils/utils'
@@ -115,7 +115,7 @@ function ProfilePage({ setCurrentUser, setIsLoggedIn }) {
       newEmail.trim() !== currentUser.email.trim()) {
       updateProfile();
     } else {
-      setErrorApi(textErrorInputNew);
+      setErrorApi(TEXT_ERROR_INPUT_NEW);
       actionTimeout(() => setErrorApi(''), 5000);
     }
   }

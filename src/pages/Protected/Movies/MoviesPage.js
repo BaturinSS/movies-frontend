@@ -8,7 +8,7 @@ import HeaderLogin from '../../../components/HeaderLogin/HeaderLogin';
 import SearchForm from '../../../components/SearchForm/SearchForm';
 import MoviesCardList from '../../../components/MoviesCardList/MoviesCardList';
 import MoviesAddButton from '../../../components/MoviesAddButton/MoviesAddButton';
-// import Popup from '../../../components/Popup/Popup';
+import Popup from '../../../components/Popup/Popup';
 // import ImageZoom from '../../../components/ImageZoom/ImageZoom';
 
 import configHeaderLogin from '../../../utils/config/configHeaderLogin';
@@ -17,9 +17,16 @@ import configFooter from '../../../utils/config/configFooter';
 import moviesList from "../../../utils/moviesList.json"
 
 function MoviesPage() {
+  const [isOpenPopup, setIsOpenPopup] = React.useState();
+
   const addMovies = () => {
-    console.log('MoviesPage 28 "Click addMovies"')
-  }
+    console.log('click add movies');
+  };
+
+  const keydownEnter = () => {
+    console.log('keydown Enter');
+  };
+
   return (
     <>
       <Header>
@@ -37,15 +44,17 @@ function MoviesPage() {
         </MoviesCardList>
       </Main>
       <Footer config={configFooter} />
-      {/* <Popup
-        isOpenPopup={false}
+      <Popup
+        isOpenPopup={isOpenPopup}
+        setIsOpenPopup={setIsOpenPopup}
+        keydownEnter={keydownEnter}
       >
-        <ImageZoom
+        {/* <ImageZoom
           titleImage={titleImage}
           linkImage={linkImage}
           isLinkImage={isLinkImage}
-        />
-      </Popup> */}
+        /> */}
+      </Popup>
     </>
   )
 }

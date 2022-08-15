@@ -1,18 +1,18 @@
 import './MoviesCard.css';
 
 import React from "react";
-
 import useMoviesCard from '../../utils/hooks/useMoviesCard'
-
 import playImage from '../../images/movies/play_icon.svg'
 import zoomImage from '../../images/movies/zoom_icon.svg'
+import { BASE_URL_IMAGE } from '../../utils/constants';
+import { timeFormat } from '../../utils/utils';
 
 function MoviesCard({
   card, modifierActiveButton, modifierButton,
   handleClickPlayVideo,
   handleClickZoomImage,
 }) {
-  const { isFavorite, time, handleClickFavorite } = useMoviesCard();
+  const { isFavorite, handleClickFavorite } = useMoviesCard();
 
   return (
     <>
@@ -20,7 +20,7 @@ function MoviesCard({
         <figure className="movies-list__info">
           <figcaption>
             <h2 className="movies-list__title">{card.nameRU}
-              <p className='movies-list__title-time'>{time(card.duration)}</p>
+              <p className='movies-list__title-time'>{timeFormat(card.duration)}</p>
             </h2>
           </figcaption>
           <div className={'movies-list__block-img'}>
@@ -30,7 +30,7 @@ function MoviesCard({
             </div>
             <img
               className="movies-list__image"
-              src={`https://forsazh-film-smotret.ru/wp-content${card.image.formats.thumbnail.url}`}
+              src={`${BASE_URL_IMAGE}${card.image.url}`}
               alt={card.nameRU}
             />
           </div>
@@ -39,7 +39,7 @@ function MoviesCard({
           className={`movies-list__button
           ${modifierButton ? `${modifierButton}` : ''}
           ${isFavorite ? `${modifierActiveButton}` : ''}`}
-          onClick={handleClickFavorite}
+          onClick={() => handleClickFavorite(card)}
           type='button'
         />
       </li>

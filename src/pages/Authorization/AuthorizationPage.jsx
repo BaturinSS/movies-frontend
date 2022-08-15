@@ -13,7 +13,7 @@ import configFormAuth from '../../utils/config/form/configFormAuth';
 import MainApi from "../../utils/api/MainApi";
 import { NODE_ENV } from "../../utils/constants";
 import useAuth from "../../utils/hooks/useAuth";
-import { textGreetingsLogin } from '../../utils/constants';
+import { TEXT_GREETINGS_LOGIN } from '../../utils/constants';
 
 function AuthorizationPage({ setCurrentUser, setIsLoggedIn }) {
   const [isDownload, setIsDownload] = React.useState(false);
@@ -60,7 +60,7 @@ function AuthorizationPage({ setCurrentUser, setIsLoggedIn }) {
   return (
     <>
       <Header modifier={'header_auth'}>
-        <HeaderAuth textGreetings={textGreetingsLogin} />
+        <HeaderAuth textGreetings={TEXT_GREETINGS_LOGIN} />
       </Header>
       <Main>
         <Form

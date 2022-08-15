@@ -1,7 +1,7 @@
 import React from "react";
 import validator from "validator";
 import useFormWithValidation from "./useFormWithValidation";
-import { textErrorInputEmail } from "../constants";
+import { TEXT_ERROR_INPUT_EMAIL } from "../constants";
 
 const useAuth = () => {
   const {
@@ -12,8 +12,8 @@ const useAuth = () => {
     const validEmail = validator.isEmail(`${values.inputEmail}`);
     if (!validEmail) {
       const validInput = document.getElementById('inputEmail').checkValidity();
-      if ((errors.inputEmail === '' || textErrorInputEmail) && validInput) {
-        setErrors({ ...errors, inputEmail: textErrorInputEmail });
+      if ((errors.inputEmail === '' || TEXT_ERROR_INPUT_EMAIL) && validInput) {
+        setErrors({ ...errors, inputEmail: TEXT_ERROR_INPUT_EMAIL });
         setIsValid(false);
       }
     }

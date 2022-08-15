@@ -82,61 +82,24 @@ class MainApi {
       .then(this._checkResponse)
   };
 
-  // getCards() {
-  //   return fetch(`${this._baseUrl()}/cards`, {
-  //     method: 'GET',
-  //     credentials: this._credentials,
-  //     headers: this._createdHeaders(),
-  //   })
-  //     .then(this._checkResponse)
-  // };
+  addMovies(film) {
+    return fetch(`${this._baseUrl()}/movies`, {
+      method: 'POST',
+      credentials: this._credentials,
+      headers: this._createdHeaders(),
+      body: JSON.stringify(film),
+    })
+      .then(this._checkResponse)
+  };
 
-  // addCard(name, link) {
-  //   return fetch(`${this._baseUrl()}/cards`, {
-  //     method: 'POST',
-  //     credentials: this._credentials,
-  //     headers: this._createdHeaders(),
-  //     body: JSON.stringify({ name, link }),
-  //   })
-  //     .then(this._checkResponse)
-  // };
-
-  // deleteCard(id) {
-  //   return fetch(`${this._baseUrl()}/cards/${id}`, {
-  //     method: 'DELETE',
-  //     credentials: this._credentials,
-  //     headers: this._createdHeaders(),
-  //   })
-  //     .then(this._checkResponse)
-  // };
-
-  // addLike(id) {
-  //   return fetch(`${this._baseUrl()}/cards/${id}/likes`, {
-  //     method: 'PUT',
-  //     credentials: this._credentials,
-  //     headers: this._createdHeaders()
-  //   })
-  //     .then(this._checkResponse)
-  // };
-
-  // deleteLike(id) {
-  //   return fetch(`${this._baseUrl()}/cards/${id}/likes`, {
-  //     method: 'DELETE',
-  //     credentials: this._credentials,
-  //     headers: this._createdHeaders()
-  //   })
-  //     .then(this._checkResponse)
-  // };
-
-  // editAvatar(avatar) {
-  //   return fetch(`${this._baseUrl()}/users/me/avatar`, {
-  //     method: 'PATCH',
-  //     credentials: this._credentials,
-  //     headers: this._createdHeaders(),
-  //     body: JSON.stringify({ avatar }),
-  //   })
-  //     .then(this._checkResponse)
-  // };
+  deleteMovies(id) {
+    return fetch(`${this._baseUrl()}/cards/${id}`, {
+      method: 'DELETE',
+      credentials: this._credentials,
+      headers: this._createdHeaders(),
+    })
+      .then(this._checkResponse)
+  };
 }
 
 export default MainApi;

@@ -1,8 +1,8 @@
 import React from "react";
 import validator from "validator";
-import { regExName } from "../constants";
+import { REG_EX_NAME } from "../constants";
 import useFormWithValidation from "./useFormWithValidation";
-import { textErrorInputEmail, textErrorInputName } from "../constants";
+import { TEXT_ERROR_INPUT_EMAIL, TEXT_ERROR_INPUT_NAME } from "../constants";
 
 const useRegistration = () => {
   const textErrorInputPassword = 'Пароль от 6 до 30 символов.';
@@ -11,11 +11,11 @@ const useRegistration = () => {
   } = useFormWithValidation();
 
   React.useEffect(() => {
-    const validName = regExName.test(`${values.inputName}`);
+    const validName = REG_EX_NAME.test(`${values.inputName}`);
     if (!validName) {
       const validInput = document.getElementById('inputName').checkValidity();
-      if ((errors.inputName === '' || textErrorInputName) && validInput) {
-        setErrors({ ...errors, inputName: textErrorInputName });
+      if ((errors.inputName === '' || TEXT_ERROR_INPUT_NAME) && validInput) {
+        setErrors({ ...errors, inputName: TEXT_ERROR_INPUT_NAME });
       };
       setIsValid(false);
     }
@@ -26,8 +26,8 @@ const useRegistration = () => {
     const validEmail = validator.isEmail(`${values.inputEmail}`);
     if (!validEmail) {
       const validInput = document.getElementById('inputEmail').checkValidity();
-      if ((errors.inputEmail === '' || textErrorInputEmail) && validInput) {
-        setErrors({ ...errors, inputEmail: textErrorInputEmail });
+      if ((errors.inputEmail === '' || TEXT_ERROR_INPUT_EMAIL) && validInput) {
+        setErrors({ ...errors, inputEmail: TEXT_ERROR_INPUT_EMAIL });
         setIsValid(false);
       }
     }
