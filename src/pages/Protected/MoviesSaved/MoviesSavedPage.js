@@ -10,31 +10,44 @@ import MoviesCardList from '../../../components/MoviesCardList/MoviesCardList';
 
 import configHeaderLogin from '../../../utils/config/configHeaderLogin';
 import configFooter from '../../../utils/config/configFooter';
+import useMovies from "../../../utils/hooks/useMovies";
+import useMoviesFavorite from "../../../utils/hooks/useMoviesFavorite";
+import Preloader from "../../../components/Preloader/Preloader";
+import { checkedLengthArray } from "../../../utils/utils";
 
+function MoviesSavedPage() {
+  const { } = useMovies();
 
-function SavedMoviesPage({
-  isCards,
-  closePopup,
-  openPopup,
-  isOpenMenu, deleteCardFavorite,
-}) {
+  const {
+    handleSearchFavorite, isDownload, message,
+    isFavoriteMovies, setIsFavoriteMovies,
+  } = useMoviesFavorite();
   return (
     <>
       <Header>
-        <HeaderLogin
-          config={configHeaderLogin}
-          closePopup={closePopup}
-          openPopup={openPopup}
-          isOpenMenu={isOpenMenu}
-        />
+        <HeaderLogin config={configHeaderLogin} />
       </Header>
       <Main>
-        <SearchForm />
-        <MoviesCardList
-          isCards={isCards}
-          modifierButton={'movies-list__button_delete'}
-        />
+        <SearchForm submitButton={handleSearchFavorite} />
+        {isDownload
+          ? <Preloader modifier={'preloader_main'} />
+          : checkedLengthArray([])
+            ? <h1>{message}</h1>
+            : <MoviesCardList
+              isMoviesListApi={isFavoriteMovies}
+              isFavoriteMovies={isFavoriteMovies}
+              setIsFavoriteMovies={setIsFavoriteMovies}
+              modifierActiveButton={'movies-list__button_active'}
+            >
+            </MoviesCardList>}
       </Main>
+      {/* <Main> */}
+      {/* <SearchForm /> */}
+      {/* <MoviesCardList
+          isCards={isFavoriteMovies}
+          modifierButton={'movies-list__button_delete'}
+        /> */}
+      {/* </Main> */}
       <Footer
         config={configFooter}
       />
@@ -42,4 +55,4 @@ function SavedMoviesPage({
   )
 }
 
-export default SavedMoviesPage;
+export default MoviesSavedPage;

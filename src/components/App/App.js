@@ -8,7 +8,7 @@ import NotFoundPage from "../../pages/NotFound/NotFoundPage";
 import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
 import ProfilePage from "../../pages/Protected/Profile/ProfilePage";
 import MoviesPage from "../../pages/Protected/Movies/MoviesPage";
-import SavedMoviesPage from "../../pages/Protected/SavedMovies/SavedMoviesPage";
+import MoviesSavedPage from "../../pages/Protected/MoviesSaved/MoviesSavedPage";
 import MainApi from "../../utils/api/MainApi";
 import { NODE_ENV } from "../../utils/constants";
 
@@ -41,7 +41,7 @@ function App() {
         });
       })
       .finally(() => setIsDownload(false));
-    // .finally(setTimeout(() => setIsDownload(false), 5000));
+    // .finally(setTimeout(() => setIsDownload(false), 10000));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -109,7 +109,7 @@ function App() {
               exact
               path="/saved-movies"
               redirect={'/sign-in'}
-              component={SavedMoviesPage}
+              component={MoviesSavedPage}
               isLoggedIn={isLoggedIn}
               isDownload={isDownload}
             />

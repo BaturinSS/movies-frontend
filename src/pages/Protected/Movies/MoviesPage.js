@@ -1,9 +1,7 @@
 import React from "react";
-
 import Header from '../../../components/Header/Header';
 import Footer from '../../../components/Footer/Footer';
 import Main from '../../../components/Main/Main';
-
 import HeaderLogin from '../../../components/HeaderLogin/HeaderLogin';
 import SearchForm from '../../../components/SearchForm/SearchForm';
 import MoviesCardList from '../../../components/MoviesCardList/MoviesCardList';
@@ -11,16 +9,18 @@ import MoviesAddButton from '../../../components/MoviesAddButton/MoviesAddButton
 import Popup from '../../../components/Popup/Popup';
 // import ImageZoom from '../../../components/ImageZoom/ImageZoom';
 import Preloader from '../../../components/Preloader/Preloader'
-
 import configHeaderLogin from '../../../utils/config/configHeaderLogin';
 import configFooter from '../../../utils/config/configFooter';
-
-import moviesList from "../../../utils/moviesList.json"
+import useMovies from "../../../utils/hooks/useMovies";
 
 function MoviesPage() {
   const [isOpenPopup, setIsOpenPopup] = React.useState();
 
-  const message = 'Введите текст запроса.';
+  const {
+    isDownload, isMoviesListApi, setIsMoviesListApi,
+    handleSubmitButtonSearch, isFavoriteMovies, setIsFavoriteMovies,
+    checkedLengthArray, message,
+  } = useMovies();
 
   const addMovies = () => {
     console.log('click add movies');
@@ -36,19 +36,21 @@ function MoviesPage() {
         <HeaderLogin config={configHeaderLogin} />
       </Header>
       <Main>
-        <SearchForm />
-        {true
-          ? <Preloader />
-          : true
-            ? <MoviesCardList
-              isCards={moviesList}
+        <SearchForm submitButton={handleSubmitButtonSearch} />
+        {isDownload
+          ? <Preloader modifier={'preloader_main'} />
+          : checkedLengthArray(isMoviesListApi)
+            ? <h1>{message}</h1>
+            : <MoviesCardList
+              isMoviesListApi={isMoviesListApi}
+              isFavoriteMovies={isFavoriteMovies}
+              setIsFavoriteMovies={setIsFavoriteMovies}
               modifierActiveButton={'movies-list__button_active'}
               handleClickPlayVideo={addMovies}
               handleClickZoomImage={addMovies}
             >
               <MoviesAddButton addMovies={addMovies} />
-            </MoviesCardList>
-            : <h1>{message}</h1>}
+            </MoviesCardList>}
       </Main>
       <Footer config={configFooter} />
       <Popup

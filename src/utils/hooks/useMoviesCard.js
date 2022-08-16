@@ -1,12 +1,14 @@
 import { useState } from "react";
 import validator from "validator";
 import MainApi from "../api/MainApi";
-import { NODE_ENV } from "../../utils/constants";
+import { NODE_ENV } from "../constants";
 import {
-  BASE_URL_IMAGE, URL_IMAGE_NO_IMAGE, TEXT_MOVIE_NO_NAME, URL_YOUTUBE,
-} from "../../utils/constants";
+  BASE_URL_IMAGE, URL_IMAGE_NO_IMAGE, TEXT_MOVIE_NO_NAME,
+  URL_YOUTUBE, TEXT_ERROR_NO_CONNECTION,
+} from "../constants";
 
-const useMoviesCard = () => {
+const useMoviesCard = (isFavoriteMovies, setIsFavoriteMovies,) => {
+
   const [isFavorite, setIsFavorite] = useState(false);
 
   const api = new MainApi({ NODE_ENV: NODE_ENV });
@@ -18,6 +20,7 @@ const useMoviesCard = () => {
   }
 
   const addFavorite = (film) => {
+
     const checkedUrlImage = (object) => {
       const objectFormatsImage = film.image.formats;
 
@@ -59,11 +62,16 @@ const useMoviesCard = () => {
 
     api
       .addMovies(newFilm)
-      .then((res) => {
+      .then(({ message, newFilm }) => {
         setIsFavorite(true);
-        console.log(res)
+        console.log(message);
+        // console.log(isFavoriteMovies)
+        // setIsFavoriteMovies(...isFavoriteMovies, newFilm)
       })
       .catch((err) => {
+        if (err.name === 'TypeError') {
+          return console.error(`${TEXT_ERROR_NO_CONNECTION}: "${err.message}"`);
+        }
         err.then(({ message }) => {
           console.log('error', message)
         });
@@ -73,9 +81,40 @@ const useMoviesCard = () => {
       })
   }
 
+  // const objMovies = (film, newFilm) => {
+  //   const copyIsMoviesListApi = isMoviesListApi;
+  //   return copyIsMoviesListApi.map((el, i) => {
+  //     if (el.id === film.id) {
+  //       const newEl = { ...el, _id: newFilm._id }
+  //       copyIsMoviesListApi.splice(i, 1, newEl)
+  //       setIsMoviesListApi(copyIsMoviesListApi);
+  //     };
+  //   });
+  // };
+
+
   const deleteFavorite = (film) => {
-    setIsFavorite(false);
-    console.log('del', film)
+    console.log('new', isFavoriteMovies)
+    api
+      .deleteMovies(film.id)
+      .then(({ message, newFilm }) => {
+        setIsFavorite(false);
+        // objMovies(film, newFilm);
+        console.log(message)
+        // setIsFavoriteMovies([newFilm, ...isFavoriteMovies])
+        // console.log('delete', isFavoriteMovies)
+      })
+      .catch((err) => {
+        if (err.name === 'TypeError') {
+          return console.error(`${TEXT_ERROR_NO_CONNECTION}: "${err.message}"`);
+        }
+        err.then(({ message }) => {
+          console.log('error', message)
+        });
+      })
+      .finally(() => {
+        console.log('final')
+      })
   }
 
   const handleClickFavorite = (film) => {

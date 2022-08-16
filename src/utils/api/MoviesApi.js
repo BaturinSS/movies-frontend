@@ -24,15 +24,3 @@ const moviesApi = new MoviesApi({
 });
 
 export default moviesApi;
-
-moviesApi
-  .download()
-  .then((moviesList) => {
-    console.log(moviesList);
-  })
-  .catch((err) => {
-    err.then(({ message }) => {
-      console.error(message);
-    });
-  })
-  .finally(console.log('final'));

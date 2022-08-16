@@ -5,15 +5,13 @@ import React from "react";
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox'
 import CheckboxSearch from '../SubstitutionCheckbox/CheckboxSearch/CheckboxSearch';
 
-function SearchForm() {
-  const performSearch = (event) => {
-    event.preventDefault();
-  }
-
+function SearchForm({ submitButton }) {
   return (
     <>
       <section className='search-form'>
-        <form className='search-form__form'>
+        <form className='search-form__form'
+          noValidate
+        >
           <div className='search-form__search'>
             <input
               className='search-form__string'
@@ -24,13 +22,13 @@ function SearchForm() {
             <button
               className='search-form__button-submit'
               type='submit'
-              onClick={performSearch}
+              onClick={submitButton}
             />
           </div>
           <FilterCheckbox
             label={'Короткометражки'}
             checked={false}>
-            <CheckboxSearch/>
+            <CheckboxSearch />
           </FilterCheckbox>
         </form>
       </section>

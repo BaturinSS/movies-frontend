@@ -13,7 +13,7 @@ import FormSubmit from "../../components/FormSubmit/FormSubmit";
 import configFormSubmitLogin from "../../utils/config/formSubmit/configFormSubmitLogin";
 import useRegistration from "../../utils/hooks/useRegistration";
 import MainApi from "../../utils/api/MainApi";
-import { NODE_ENV } from "../../utils/constants";
+import { NODE_ENV, TEXT_ERROR_NO_CONNECTION } from "../../utils/constants";
 
 function RegistrationPage({ setCurrentUser, setIsLoggedIn }) {
   const [isDownload, setIsDownload] = React.useState(false);
@@ -44,6 +44,9 @@ function RegistrationPage({ setCurrentUser, setIsLoggedIn }) {
         resetForm(event);
       })
       .catch((err) => {
+        if (err.name === 'TypeError') {
+          return console.error(`${TEXT_ERROR_NO_CONNECTION}: "${err.message}"`);
+        }
         err.then(({ message }) => {
           if (message === 'Validation failed') {
             setErrorApi('При регистрации пользователя произошла ошибка.');

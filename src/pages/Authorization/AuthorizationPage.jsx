@@ -13,7 +13,7 @@ import configFormAuth from '../../utils/config/form/configFormAuth';
 import MainApi from "../../utils/api/MainApi";
 import { NODE_ENV } from "../../utils/constants";
 import useAuth from "../../utils/hooks/useAuth";
-import { TEXT_GREETINGS_LOGIN } from '../../utils/constants';
+import { TEXT_GREETINGS_LOGIN, TEXT_ERROR_NO_CONNECTION } from '../../utils/constants';
 
 function AuthorizationPage({ setCurrentUser, setIsLoggedIn }) {
   const [isDownload, setIsDownload] = React.useState(false);
@@ -46,6 +46,9 @@ function AuthorizationPage({ setCurrentUser, setIsLoggedIn }) {
         resetForm(event);
       })
       .catch((err) => {
+        if (err.name === 'TypeError') {
+          return console.error(`${TEXT_ERROR_NO_CONNECTION}: "${err.message}"`);
+        }
         err.then(({ message }) => {
           if (message === 'Validation failed') {
             setErrorApi('При авторизации пользователя произошла ошибка.');

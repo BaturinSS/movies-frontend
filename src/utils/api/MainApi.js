@@ -82,6 +82,15 @@ class MainApi {
       .then(this._checkResponse)
   };
 
+  getMovies() {
+    return fetch(`${this._baseUrl()}/movies`, {
+      method: 'GET',
+      credentials: this._credentials,
+      headers: this._createdHeaders(),
+    })
+      .then(this._checkResponse)
+  };
+
   addMovies(film) {
     return fetch(`${this._baseUrl()}/movies`, {
       method: 'POST',
@@ -93,7 +102,7 @@ class MainApi {
   };
 
   deleteMovies(id) {
-    return fetch(`${this._baseUrl()}/cards/${id}`, {
+    return fetch(`${this._baseUrl()}/movies/${id}`, {
       method: 'DELETE',
       credentials: this._credentials,
       headers: this._createdHeaders(),

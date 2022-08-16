@@ -2,6 +2,10 @@ export const actionTimeout = (action, time) => {
   setTimeout(action, time)
 }
 
+export const checkedLengthArray = (arr) => {
+  return arr.length === 0;
+};
+
 export const timeFormat = (timeFull) => {
   const minutes = timeFull % 60;
   const hours = Math.trunc(timeFull / 60);

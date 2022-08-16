@@ -1,8 +1,12 @@
 export const TEXT_GREETINGS_LOGIN = 'Рады видеть!';
+
 export const TEXT_ERROR_INPUT_EMAIL = 'Почта не соответствует формату.';
 export const TEXT_ERROR_INPUT_NAME = 'Только латиницу, кириллицу, пробел или дефис';
 export const TEXT_ERROR_INPUT_NEW = 'Вы не изменили информацию о пользователе !';
+export const TEXT_ERROR_NO_CONNECTION = 'Нет соединения с сервером';
+
 export const TEXT_MOVIE_NO_NAME = 'Нет названия фильма';
+export const TEXT_MESSAGE_NO_SEARCH = 'Введите текст запроса.';
 
 export const REG_EX_NAME = /^[a-zа-яё-\s]+$/i;
 

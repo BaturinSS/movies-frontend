@@ -43,11 +43,18 @@
 }
 
 .preloader {
-  width: max-content;
-  display: flex;
-  margin: 0 auto;
+  position: fixed;
+  top: 50%;
+  right: 50%;
+  margin: -19px -19px 0 0;
   z-index: 10;
-  padding: 20px 0;
+}
+
+.preloader_main {
+  position: static;
+  width: min-content;
+  padding: 20px;
+  margin: auto;
 }
 
 .preloader__container {
@@ -78,6 +85,14 @@
 }
 
 @media screen and (min-width: 850px) {
+  .preloader {
+    margin: -25px -25px 0 0;
+  }
+
+  .preloader_main {
+    margin: auto;
+  }
+
   .preloader__container {
     width: 50px;
     height: 50px;
@@ -96,6 +111,14 @@
 }
 
 @media screen and (min-width: 1000px) {
+  .preloader {
+    margin: -30px -30px 0 0;
+  }
+
+  .preloader_main {
+    margin: auto;
+  }
+
   .preloader__container {
     width: 60px;
     height: 60px;

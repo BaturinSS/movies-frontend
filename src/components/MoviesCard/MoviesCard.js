@@ -11,8 +11,11 @@ function MoviesCard({
   card, modifierActiveButton, modifierButton,
   handleClickPlayVideo,
   handleClickZoomImage,
+  isFavoriteMovies, setIsFavoriteMovies,
 }) {
-  const { isFavorite, handleClickFavorite } = useMoviesCard();
+  const {
+    isFavorite, handleClickFavorite,
+  } = useMoviesCard(isFavoriteMovies, setIsFavoriteMovies,);
 
   return (
     <>
