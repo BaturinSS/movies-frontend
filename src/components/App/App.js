@@ -16,13 +16,19 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
   const [isDownload, setIsDownload] = React.useState(true);
-  const [isMoviesListApi, setIsMoviesListApi] = React.useState([]);
-  const [isFavoriteMovies, setIsFavoriteMovies] = React.useState([]);
+  const [listMovies, setListMovies] = React.useState([]);
+  const [listMoviesSaved, setListMoviesSaved] = React.useState([]);
+  const [configMovies, setConfigMovies] = React.useState(JSON.parse(localStorage.getItem('configMovies')))
+  const [errorApi, setErrorApi] = React.useState('');
 
   const mainApi = new MainApi({ NODE_ENV: NODE_ENV });
-  console.log('без эфекта')
+
   React.useEffect(() => {
-    console.log('app эфект')
+    setListMovies([]);
+    setListMoviesSaved([]);
+  }, [isLoggedIn])
+
+  React.useEffect(() => {
     if (!isDownload) setIsDownload(true);
     if (isLoggedIn) return;
 
@@ -43,7 +49,6 @@ function App() {
         });
       })
       .finally(() => setIsDownload(false));
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -68,6 +73,8 @@ function App() {
               setIsLoggedIn={setIsLoggedIn}
               isDownload={isDownload}
               setIsDownload={setIsDownload}
+              errorApi={errorApi}
+              setErrorApi={setErrorApi}
             />
           </Route>
           <Route path="/sign-in" exact>
@@ -81,6 +88,8 @@ function App() {
               setIsLoggedIn={setIsLoggedIn}
               isDownload={isDownload}
               setIsDownload={setIsDownload}
+              errorApi={errorApi}
+              setErrorApi={setErrorApi}
             />
           </Route>
           <Route path="/profile" exact>
@@ -93,6 +102,7 @@ function App() {
               isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
               isDownload={isDownload}
+              setConfigMovies={setConfigMovies}
             />
           </Route>
           <Route path="/movies" exact>
@@ -103,10 +113,12 @@ function App() {
               component={MoviesPage}
               isLoggedIn={isLoggedIn}
               isDownload={isDownload}
-              isMoviesListApi={isMoviesListApi}
-              setIsMoviesListApi={setIsMoviesListApi}
-              isFavoriteMovies={isFavoriteMovies}
-              setIsFavoriteMovies={setIsFavoriteMovies}
+              listMovies={listMovies}
+              setListMovies={setListMovies}
+              listMoviesSaved={listMoviesSaved}
+              setListMoviesSaved={setListMoviesSaved}
+              configMovies={configMovies}
+              setConfigMovies={setConfigMovies}
             />
           </Route>
           <Route path="/saved-movies" exact>
@@ -117,10 +129,10 @@ function App() {
               component={MoviesSavedPage}
               isLoggedIn={isLoggedIn}
               isDownload={isDownload}
-              isMoviesListApi={isMoviesListApi}
-              setIsMoviesListApi={setIsMoviesListApi}
-              isFavoriteMovies={isFavoriteMovies}
-              setIsFavoriteMovies={setIsFavoriteMovies}
+              listMovies={listMovies}
+              setListMovies={setListMovies}
+              listMoviesSaved={listMoviesSaved}
+              setListMoviesSaved={setListMoviesSaved}
             />
           </Route>
           <Route path="*">

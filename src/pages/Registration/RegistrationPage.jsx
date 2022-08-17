@@ -14,26 +14,28 @@ import configFormSubmitLogin from "../../utils/config/formSubmit/configFormSubmi
 import useRegistration from "../../utils/hooks/useRegistration";
 import MainApi from "../../utils/api/MainApi";
 import {
-  NODE_ENV, TEXT_ERROR_NO_CONNECTION, TEXT_ERROR_REGISTRATION,
+  NODE_ENV, TEXT_ERROR,
+  TEXT_ERROR_REGISTRATION,
 } from "../../utils/constants";
 
-function RegistrationPage({ setCurrentUser, setIsLoggedIn }) {
+function RegistrationPage({
+  setCurrentUser, setIsLoggedIn,
+  errorApi, setErrorApi,
+}) {
   const [isDownload, setIsDownload] = React.useState(false);
-  const [errorApi, setErrorApi] = React.useState('');
   const api = new MainApi({ NODE_ENV: NODE_ENV });
   const history = useHistory();
   const { errors, isValid, values, handleChange, resetForm } = useRegistration();
 
-  const onChange = (event) => {
-    handleChange(event);
-    setErrorApi('');
+  const onChange = (evt) => {
+    handleChange(evt);
   }
 
-  const onSubmitForm = (event) => {
+  const onSubmitForm = (evt) => {
+    evt.preventDefault();
     const token = localStorage.getItem('jwt');
     if (token) localStorage.removeItem('jwt');
     const { inputPassword, inputEmail, inputName } = values;
-    event.preventDefault();
     setIsDownload(true);
     api
       .register(inputPassword, inputEmail, inputName)
@@ -43,11 +45,12 @@ function RegistrationPage({ setCurrentUser, setIsLoggedIn }) {
         setCurrentUser(user);
         setIsLoggedIn(true);
         history.push('/movies');
-        resetForm(event);
+        resetForm(evt);
       })
       .catch((err) => {
+        setErrorApi(TEXT_ERROR);
         if (err.name === 'TypeError') {
-          return console.error(`${TEXT_ERROR_NO_CONNECTION}: "${err.message}"`);
+          return console.error(err.message);
         }
         err.then(({ message }) => {
           if (message === 'Validation failed') {
@@ -55,10 +58,13 @@ function RegistrationPage({ setCurrentUser, setIsLoggedIn }) {
           } else {
             setErrorApi(message);
           }
-          resetForm(event);
+          resetForm(evt);
         });
       })
-      .finally(() => setIsDownload(false));
+      .finally(() => {
+        setIsDownload(false);
+        setTimeout(() => setErrorApi(''), 5000);
+      });
   }
 
   return (
@@ -92,7 +98,7 @@ function RegistrationPage({ setCurrentUser, setIsLoggedIn }) {
           <FormSubmit
             isValid={isValid}
             config={configFormSubmitLogin}
-            textMessageError={errorApi}
+            errors={errorApi}
             isDownload={isDownload}
           />
         </Form>

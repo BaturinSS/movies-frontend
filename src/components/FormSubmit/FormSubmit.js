@@ -4,9 +4,9 @@ import React from "react";
 
 import LinkReact from "../LinkReact/LinkReact";
 
-function FormSubmit({ modifier, textMessageError, config, isValid, isDownload }) {
+function FormSubmit({ modifier, errors, config, isValid, isDownload }) {
   const { textButton, textQuestion, textDownload } = config;
-
+  const textMessageError = errors;
   return (
     <>
       <div className={`form__block ${modifier ? modifier : ''}`}>

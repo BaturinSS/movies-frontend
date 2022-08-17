@@ -3,7 +3,7 @@ import validator from "validator";
 import MainApi from "../api/MainApi";
 import {
   BASE_URL_IMAGE, URL_IMAGE_NO_IMAGE, TEXT_MOVIE_NO_NAME,
-  URL_YOUTUBE, TEXT_ERROR_FAVORITE, NODE_ENV,
+  URL_YOUTUBE, TEXT_ERROR, NODE_ENV,
 } from "../constants";
 
 const useMoviesCard = (
@@ -80,7 +80,7 @@ const useMoviesCard = (
         changeFavoriteMovies({ newFilm: newFilm });
       })
       .catch((err) => {
-        setIsMessage(TEXT_ERROR_FAVORITE);
+        setIsMessage(TEXT_ERROR);
         if (err.name === 'TypeError') {
           return console.error(err.message);
         }
@@ -99,7 +99,7 @@ const useMoviesCard = (
         changeFavoriteMovies({ deletedFilm: deletedFilm });
       })
       .catch((err) => {
-        setIsMessage(TEXT_ERROR_FAVORITE);
+        setIsMessage(TEXT_ERROR);
         if (err.name === 'TypeError') {
           return console.error(err.message);
         }

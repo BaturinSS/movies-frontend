@@ -21,7 +21,6 @@ const useAuth = () => {
     const validPassword = values.inputPassword
       ? `${values.inputPassword}`.length > 5
       : false
-    console.log(validPassword)
     if (!validPassword) {
       const validInput = document.getElementById('inputPassword').checkValidity();
       if ((errors.inputPassword === '' || TEXT_ERROR_INPUT_PASSWORD) && validInput) {

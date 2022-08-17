@@ -1,21 +1,17 @@
 import React from "react";
 import validator from "validator";
-import { REG_EX_NAME } from "../constants";
 import useFormWithValidation from "./useFormWithValidation";
 import {
   TEXT_ERROR_INPUT_EMAIL, TEXT_ERROR_INPUT_NAME,
-  TEXT_ERROR_INPUT_PASSWORD,
+  TEXT_ERROR_INPUT_PASSWORD, REG_EX_NAME,
 } from "../constants";
 
 const useRegistration = () => {
-  const [isValidPassword, setIsValidPassword] = React.useState();
-
   const {
     values, errors, isValid, setErrors, setIsValid, handleChange, resetForm,
   } = useFormWithValidation();
 
   React.useEffect(() => {
-
     const validName = REG_EX_NAME.test(`${values.inputName}`);
     if (!validName) {
       const validInput = document.getElementById('inputName').checkValidity();

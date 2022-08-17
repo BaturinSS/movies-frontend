@@ -1,4 +1,6 @@
 .main__message {
+  margin: auto;
+  width: 60%;
   display: flex;
   flex-direction: column;
   align-items: center;

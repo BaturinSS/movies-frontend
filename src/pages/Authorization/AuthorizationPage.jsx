@@ -11,13 +11,17 @@ import configFormInputPassword from '../../utils/config/formInput/configFormInpu
 import configFormInputEmail from '../../utils/config/formInput/configFormInputEmail';
 import configFormAuth from '../../utils/config/form/configFormAuth';
 import MainApi from "../../utils/api/MainApi";
-import { NODE_ENV } from "../../utils/constants";
 import useAuth from "../../utils/hooks/useAuth";
-import { TEXT_GREETINGS_LOGIN, TEXT_ERROR_NO_CONNECTION } from '../../utils/constants';
+import {
+  TEXT_GREETINGS_LOGIN, TEXT_ERROR_AUTH_USER,
+  TEXT_ERROR, NODE_ENV,
+} from '../../utils/constants';
 
-function AuthorizationPage({ setCurrentUser, setIsLoggedIn }) {
+function AuthorizationPage({
+  setCurrentUser, setIsLoggedIn,
+  errorApi, setErrorApi,
+}) {
   const [isDownload, setIsDownload] = React.useState(false);
-  const [errorApi, setErrorApi] = React.useState('');
 
   const {
     errors, isValid, handleChange,
@@ -42,24 +46,29 @@ function AuthorizationPage({ setCurrentUser, setIsLoggedIn }) {
       .authorize(inputPassword, inputEmail)
       .then(({ user, message, token }) => {
         if (token) localStorage.setItem('jwt', token);
+        setErrorApi(message);
         setCurrentUser(user);
         setIsLoggedIn(true);
         history.push('/movies');
         resetForm(event);
       })
       .catch((err) => {
+        setErrorApi(TEXT_ERROR);
         if (err.name === 'TypeError') {
-          return console.error(`${TEXT_ERROR_NO_CONNECTION}: "${err.message}"`);
+          return console.error(err.message);
         }
         err.then(({ message }) => {
           if (message === 'Validation failed') {
-            setErrorApi('При авторизации пользователя произошла ошибка.');
+            setErrorApi(TEXT_ERROR_AUTH_USER);
           } else {
             setErrorApi(message);
           }
         });
       })
-      .finally(() => setIsDownload(false));
+      .finally(() => {
+        setIsDownload(false);
+        setTimeout(() => setErrorApi(''), 5000);
+      });
   }
 
   return (
@@ -88,7 +97,7 @@ function AuthorizationPage({ setCurrentUser, setIsLoggedIn }) {
           <FormSubmit
             config={configFormSubmitAuth}
             modifier={'form__block_auth'}
-            textMessageError={errorApi}
+            errors={errorApi}
             isValid={isValid}
             isDownload={isDownload}
           />

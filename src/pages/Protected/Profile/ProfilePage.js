@@ -18,7 +18,7 @@ import { NODE_ENV, TEXT_ERROR_INPUT_NEW } from "../../../utils/constants";
 import Popup from '../../../components/Popup/Popup';
 import PopupInform from '../../../components/PopupInform/PopupInform';
 
-function ProfilePage({ setCurrentUser, setIsLoggedIn }) {
+function ProfilePage({ setCurrentUser, setIsLoggedIn, setConfigMovies }) {
   const { currentUser } = React.useContext(TranslationContext);
   const [isDownload, setIsDownload] = React.useState(false);
   const [isOpenPopupInform, setIsOpenPopupInform] = React.useState(false);
@@ -88,10 +88,11 @@ function ProfilePage({ setCurrentUser, setIsLoggedIn }) {
     setIsDownload(true);
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
-      localStorage.removeItem("jwt");
+      localStorage.clear();
       setIsLoggedIn(false);
       setIsDownload(false);
       setIsOpenPopupInform(false);
+      setConfigMovies({});
       history.push('/');
     } else {
       api
@@ -100,6 +101,8 @@ function ProfilePage({ setCurrentUser, setIsLoggedIn }) {
           setErrorApi(message);
           history.push('/');
           setIsLoggedIn(false);
+          localStorage.clear();
+          setConfigMovies({});
           setIsOpenPopupInform(false);
         })
         .catch((err) => {

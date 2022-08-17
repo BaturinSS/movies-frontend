@@ -14,19 +14,22 @@ import GreetingMessage from "../../../components/GreetingMessage/GreetingMessage
 import { checkedLengthArray } from "../../../utils/utils";
 
 function MoviesPage({
-  isMoviesListApi, setIsMoviesListApi,
-  isFavoriteMovies, setIsFavoriteMovies,
+  listMovies, setListMovies,
+  listMoviesSaved, setListMoviesSaved,
+  configMovies, setConfigMovies,
 }) {
 
   const {
     isDownload,
-    isMessage,
+    messageMovies,
     handleClickLikes,
-    handleSubmitButtonSearch,
+    handleSubmitForm,
     handleClickAddMovies,
+    newListMovies,
   } = useMovies(
-    isMoviesListApi, setIsMoviesListApi,
-    isFavoriteMovies, setIsFavoriteMovies,
+    listMovies, setListMovies,
+    listMoviesSaved, setListMoviesSaved,
+    configMovies, setConfigMovies,
   );
   return (
     <>
@@ -34,15 +37,17 @@ function MoviesPage({
         <HeaderLogin config={configHeaderLogin} />
       </Header>
       <Main>
-        <SearchForm submitButton={handleSubmitButtonSearch} />
+        <SearchForm
+          clickSubmitButton={handleSubmitForm}
+          nameForm={'FormSearchMovies'} />
         {isDownload
           ? <Preloader modifier={'preloader_main'} />
-          : checkedLengthArray(isMoviesListApi)
+          : checkedLengthArray(newListMovies)
             ? <GreetingMessage
-              message={isMessage}
+              message={messageMovies}
             />
             : <MoviesCardList
-              moviesList={isMoviesListApi}
+              moviesList={newListMovies}
               handleClickLikes={handleClickLikes}
             >
               <MoviesAddButton handleClickAddMovies={handleClickAddMovies} />
