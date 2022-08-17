@@ -39,9 +39,7 @@ function FormInputProfile({
         className={`${idInput}-input-error form__input-error ${textMessageError
           ? 'form__input-error_active'
           : ''}`
-        }>
-        {textMessageError}
-      </span>}
+        }>{textMessageError}</span>}
       <label
         className={`form__input-label form__input-label_profile`}
         style={isPermission ? {} : { pointerEvents: 'none', cursor: 'default' }}
@@ -50,7 +48,6 @@ function FormInputProfile({
           id={`${idInput}`}
           name={name}
           className={`form__input form__input_profile`}
-          style={{ color: type === 'password' ? "#EE3465" : 'none' }}
           required={required}
           placeholder={placeholder}
           spellCheck={`${type === 'text' ? true : false}`}
@@ -67,11 +64,8 @@ function FormInputProfile({
       {isEmail && < span
         className={`${idInput}-input-error form__input-error ${textMessageError
           ? 'form__input-error_active'
-          : ''}`
-        }
-      >
-        {textMessageError}
-      </span>}
+          : ''}`}
+      >{textMessageError}</span>}
     </>
   )
 }
