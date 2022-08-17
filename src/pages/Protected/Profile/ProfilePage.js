@@ -114,8 +114,8 @@ function ProfilePage({ setCurrentUser, setIsLoggedIn }) {
 
   const onSubmitFormProfile = (evt) => {
     evt.preventDefault();
-    if (newName.trim() !== currentUser.name.trim() ||
-      newEmail.trim() !== currentUser.email.trim()) {
+    if (newName.trim() !== currentUser.name ||
+      newEmail.trim() !== currentUser.email) {
       updateProfile();
     } else {
       setErrorApi(TEXT_ERROR_INPUT_NEW);

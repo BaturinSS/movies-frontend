@@ -25,9 +25,9 @@ function FormInputProfile({
 
   React.useEffect(() => {
     if (name === 'Name') {
-      setIsDoubleName(inputRef.current.value === currentUser.name.trim());
+      setIsDoubleName(inputRef.current.value === currentUser.name);
     } else if (name === 'Email') {
-      setIsDoubleEmail(inputRef.current.value === currentUser.email.trim());
+      setIsDoubleEmail(inputRef.current.value === currentUser.email);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value])
@@ -35,7 +35,7 @@ function FormInputProfile({
 
   return (
     <>
-      {isName && !isEmail && < span
+      {isName && < span
         className={`${idInput}-input-error form__input-error ${textMessageError
           ? 'form__input-error_active'
           : ''}`
@@ -64,16 +64,14 @@ function FormInputProfile({
           readOnly={!isPermission}
         />
       </label>
-      {
-        isEmail && !isName && < span
-          className={`${idInput}-input-error form__input-error ${textMessageError
-            ? 'form__input-error_active'
-            : ''}`
-          }
-        >
-          {textMessageError}
-        </span>
-      }
+      {isEmail && < span
+        className={`${idInput}-input-error form__input-error ${textMessageError
+          ? 'form__input-error_active'
+          : ''}`
+        }
+      >
+        {textMessageError}
+      </span>}
     </>
   )
 }
