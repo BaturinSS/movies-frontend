@@ -19,7 +19,10 @@ function AuthorizationPage({ setCurrentUser, setIsLoggedIn }) {
   const [isDownload, setIsDownload] = React.useState(false);
   const [errorApi, setErrorApi] = React.useState('');
 
-  const { errors, isValid, handleChange, values, resetForm } = useAuth();
+  const {
+    errors, isValid, handleChange,
+    values, resetForm, isValidPassword,
+  } = useAuth();
 
   const api = new MainApi({ NODE_ENV: NODE_ENV });
   const history = useHistory();
@@ -38,7 +41,6 @@ function AuthorizationPage({ setCurrentUser, setIsLoggedIn }) {
     api
       .authorize(inputPassword, inputEmail)
       .then(({ user, message, token }) => {
-        console.log(message)
         if (token) localStorage.setItem('jwt', token);
         setCurrentUser(user);
         setIsLoggedIn(true);
@@ -74,15 +76,14 @@ function AuthorizationPage({ setCurrentUser, setIsLoggedIn }) {
             config={configFormInputEmail}
             autoComplete={'username'}
             onChange={onChange}
-            onFocus={onChange}
             errors={errors}
           />
           <FormInput
             config={configFormInputPassword}
             autoComplete={'current-password'}
             onChange={onChange}
-            onFocus={onChange}
             errors={errors}
+            isValidPassword={isValidPassword}
           />
           <FormSubmit
             config={configFormSubmitAuth}

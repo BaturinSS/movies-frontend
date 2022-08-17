@@ -1,30 +1,25 @@
 import './MoviesCardList.css';
-
 import React from "react";
-
 import MoviesCard from '../MoviesCard/MoviesCard'
 
 function MoviesCardList({
-  isMoviesListApi, modifierActiveButton, modifierButton, children,
-  handleClickPlayVideo, setIsMoviesListApi,
-  handleClickZoomImage, isFavoriteMovies, setIsFavoriteMovies,
+  children,
+  moviesList,
+  handleClickLikes,
+  modifierButton,
 }) {
   return (
     <>
       <section className="movies-list">
+        {/* <span className='movies-list__message'>{isMessage}</span> */}
         <ul className="movies-list__cards">
-          {isMoviesListApi.map((card) => {
+          {moviesList.map((film) => {
             return (
               <MoviesCard
-                key={card.id}
-                card={card}
-                isFavoriteMovies={isFavoriteMovies}
-                setIsFavoriteMovies={setIsFavoriteMovies}
+                key={film._id}
+                card={film}
                 modifierButton={modifierButton}
-                modifierActiveButton={modifierActiveButton}
-                handleClickPlayVideo={handleClickPlayVideo}
-                handleClickZoomImage={handleClickZoomImage}
-              />
+                handleClickLikes={handleClickLikes} />
             );
           })}
         </ul>

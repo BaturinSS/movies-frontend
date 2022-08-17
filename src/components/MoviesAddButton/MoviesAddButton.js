@@ -1,17 +1,12 @@
 import './MoviesAddButton.css';
-
 import React from "react";
 
-
-function MoviesAddButton({
-  addMovies,
-}) {
+function MoviesAddButton({ handleClickAddMovies }) {
   return (
     <>
       <button className="movies-list__button-add"
         type="button"
-        onClick={addMovies}>
-        {`Ещё`}
+        onClick={handleClickAddMovies}>{`Ещё`}
       </button>
     </>
   )

@@ -16,10 +16,13 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
   const [isDownload, setIsDownload] = React.useState(true);
+  const [isMoviesListApi, setIsMoviesListApi] = React.useState([]);
+  const [isFavoriteMovies, setIsFavoriteMovies] = React.useState([]);
 
-  const api = new MainApi({ NODE_ENV: NODE_ENV });
-
+  const mainApi = new MainApi({ NODE_ENV: NODE_ENV });
+  console.log('без эфекта')
   React.useEffect(() => {
+    console.log('app эфект')
     if (!isDownload) setIsDownload(true);
     if (isLoggedIn) return;
 
@@ -28,11 +31,10 @@ function App() {
       if (!token) return setIsDownload(false);
     };
 
-    api
+    mainApi
       .checkToken()
       .then(({ user, message }) => {
         setIsLoggedIn(true);
-        console.log(message);
         setCurrentUser(user);
       })
       .catch((err) => {
@@ -41,7 +43,6 @@ function App() {
         });
       })
       .finally(() => setIsDownload(false));
-    // .finally(setTimeout(() => setIsDownload(false), 10000));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -102,6 +103,10 @@ function App() {
               component={MoviesPage}
               isLoggedIn={isLoggedIn}
               isDownload={isDownload}
+              isMoviesListApi={isMoviesListApi}
+              setIsMoviesListApi={setIsMoviesListApi}
+              isFavoriteMovies={isFavoriteMovies}
+              setIsFavoriteMovies={setIsFavoriteMovies}
             />
           </Route>
           <Route path="/saved-movies" exact>
@@ -112,6 +117,10 @@ function App() {
               component={MoviesSavedPage}
               isLoggedIn={isLoggedIn}
               isDownload={isDownload}
+              isMoviesListApi={isMoviesListApi}
+              setIsMoviesListApi={setIsMoviesListApi}
+              isFavoriteMovies={isFavoriteMovies}
+              setIsFavoriteMovies={setIsFavoriteMovies}
             />
           </Route>
           <Route path="*">

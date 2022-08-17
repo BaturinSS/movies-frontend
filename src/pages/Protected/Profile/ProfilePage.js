@@ -17,12 +17,14 @@ import MainApi from "../../../utils/api/MainApi";
 import { NODE_ENV, TEXT_ERROR_INPUT_NEW } from "../../../utils/constants";
 import Popup from '../../../components/Popup/Popup';
 import PopupInform from '../../../components/PopupInform/PopupInform';
-import { actionTimeout } from '../../../utils/utils'
 
 function ProfilePage({ setCurrentUser, setIsLoggedIn }) {
   const { currentUser } = React.useContext(TranslationContext);
   const [isDownload, setIsDownload] = React.useState(false);
   const [isOpenPopupInform, setIsOpenPopupInform] = React.useState(false);
+  const [isDoubleEmail, setIsDoubleEmail] = React.useState(true);
+  const [isDoubleName, setIsDoubleName] = React.useState(true);
+
   const history = useHistory();
 
   const {
@@ -65,7 +67,7 @@ function ProfilePage({ setCurrentUser, setIsLoggedIn }) {
       .editUserInfo(newName.trim(), newEmail.trim())
       .then(({ message, user }) => {
         setErrorApi(message);
-        actionTimeout(
+        setTimeout(
           () => setIsPermission(false), 1000
         );
         setCurrentUser({
@@ -103,6 +105,7 @@ function ProfilePage({ setCurrentUser, setIsLoggedIn }) {
         .catch((err) => {
           err.then(({ message }) => {
             setErrorApi(message);
+            setTimeout(() => setErrorApi(''), 5000);
           })
         })
         .finally(setIsDownload(false))
@@ -116,7 +119,7 @@ function ProfilePage({ setCurrentUser, setIsLoggedIn }) {
       updateProfile();
     } else {
       setErrorApi(TEXT_ERROR_INPUT_NEW);
-      actionTimeout(() => setErrorApi(''), 5000);
+      setTimeout(() => setErrorApi(''), 5000);
     }
   }
 
@@ -149,6 +152,8 @@ function ProfilePage({ setCurrentUser, setIsLoggedIn }) {
               isPermission={isPermission}
               errors={errors}
               isName={true}
+              currentUser={currentUser}
+              setIsDoubleName={setIsDoubleName}
             />
             <FormInputProfile
               config={configFormInputEmail}
@@ -158,13 +163,15 @@ function ProfilePage({ setCurrentUser, setIsLoggedIn }) {
               isPermission={isPermission}
               errors={errors}
               isEmail={true}
+              currentUser={currentUser}
+              setIsDoubleEmail={setIsDoubleEmail}
             />
           </div>
           <FormSubmitProfile
             outputProfile={handleClickExit}
             isPermission={isPermission}
             editProfile={editProfile}
-            isValid={isValid}
+            isValid={isValid && (!isDoubleName || !isDoubleEmail)}
             error={errorApi}
             isDownload={isDownload}
           />

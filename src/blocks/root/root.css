@@ -12,9 +12,3 @@
   color: #FFFFFF;
   /* border: 1px solid red; */
 }
-
-@media screen and (max-width: 534px) {
-  .root {
-    min-height: 85vh;
-  }
-}

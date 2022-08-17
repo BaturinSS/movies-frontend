@@ -6,30 +6,28 @@ import HeaderLogin from '../../../components/HeaderLogin/HeaderLogin';
 import SearchForm from '../../../components/SearchForm/SearchForm';
 import MoviesCardList from '../../../components/MoviesCardList/MoviesCardList';
 import MoviesAddButton from '../../../components/MoviesAddButton/MoviesAddButton';
-import Popup from '../../../components/Popup/Popup';
-// import ImageZoom from '../../../components/ImageZoom/ImageZoom';
 import Preloader from '../../../components/Preloader/Preloader'
 import configHeaderLogin from '../../../utils/config/configHeaderLogin';
 import configFooter from '../../../utils/config/configFooter';
 import useMovies from "../../../utils/hooks/useMovies";
+import GreetingMessage from "../../../components/GreetingMessage/GreetingMessage";
+import { checkedLengthArray } from "../../../utils/utils";
 
-function MoviesPage() {
-  const [isOpenPopup, setIsOpenPopup] = React.useState();
+function MoviesPage({
+  isMoviesListApi, setIsMoviesListApi,
+  isFavoriteMovies, setIsFavoriteMovies,
+}) {
 
   const {
-    isDownload, isMoviesListApi, setIsMoviesListApi,
-    handleSubmitButtonSearch, isFavoriteMovies, setIsFavoriteMovies,
-    checkedLengthArray, message,
-  } = useMovies();
-
-  const addMovies = () => {
-    console.log('click add movies');
-  };
-
-  const keydownEnter = () => {
-    console.log('keydown Enter');
-  };
-
+    isDownload,
+    isMessage,
+    handleClickLikes,
+    handleSubmitButtonSearch,
+    handleClickAddMovies,
+  } = useMovies(
+    isMoviesListApi, setIsMoviesListApi,
+    isFavoriteMovies, setIsFavoriteMovies,
+  );
   return (
     <>
       <Header>
@@ -40,30 +38,17 @@ function MoviesPage() {
         {isDownload
           ? <Preloader modifier={'preloader_main'} />
           : checkedLengthArray(isMoviesListApi)
-            ? <h1>{message}</h1>
+            ? <GreetingMessage
+              message={isMessage}
+            />
             : <MoviesCardList
-              isMoviesListApi={isMoviesListApi}
-              isFavoriteMovies={isFavoriteMovies}
-              setIsFavoriteMovies={setIsFavoriteMovies}
-              modifierActiveButton={'movies-list__button_active'}
-              handleClickPlayVideo={addMovies}
-              handleClickZoomImage={addMovies}
+              moviesList={isMoviesListApi}
+              handleClickLikes={handleClickLikes}
             >
-              <MoviesAddButton addMovies={addMovies} />
+              <MoviesAddButton handleClickAddMovies={handleClickAddMovies} />
             </MoviesCardList>}
       </Main>
       <Footer config={configFooter} />
-      <Popup
-        isOpenPopup={isOpenPopup}
-        setIsOpenPopup={setIsOpenPopup}
-        keydownEnter={keydownEnter}
-      >
-        {/* <ImageZoom
-          titleImage={titleImage}
-          linkImage={linkImage}
-          isLinkImage={isLinkImage}
-        /> */}
-      </Popup>
     </>
   )
 }

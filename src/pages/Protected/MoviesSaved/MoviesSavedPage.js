@@ -1,27 +1,32 @@
 import React from "react";
-
 import Header from '../../../components/Header/Header';
 import Footer from '../../../components/Footer/Footer';
 import Main from '../../../components/Main/Main';
-
 import HeaderLogin from '../../../components/HeaderLogin/HeaderLogin';
 import SearchForm from '../../../components/SearchForm/SearchForm';
 import MoviesCardList from '../../../components/MoviesCardList/MoviesCardList';
-
 import configHeaderLogin from '../../../utils/config/configHeaderLogin';
 import configFooter from '../../../utils/config/configFooter';
 import useMovies from "../../../utils/hooks/useMovies";
-import useMoviesFavorite from "../../../utils/hooks/useMoviesFavorite";
 import Preloader from "../../../components/Preloader/Preloader";
 import { checkedLengthArray } from "../../../utils/utils";
+import GreetingMessage from '../../../components/GreetingMessage/GreetingMessage'
 
-function MoviesSavedPage() {
-  const { } = useMovies();
+function MoviesSavedPage({
+  isMoviesListApi, setIsMoviesListApi,
+  isFavoriteMovies, setIsFavoriteMovies,
+}) {
 
   const {
-    handleSearchFavorite, isDownload, message,
+    isDownload,
+    isMessage,
+    handleClickLikes,
+    handleSearchFavorite,
+  } = useMovies(
+    isMoviesListApi, setIsMoviesListApi,
     isFavoriteMovies, setIsFavoriteMovies,
-  } = useMoviesFavorite();
+  );
+
   return (
     <>
       <Header>
@@ -31,23 +36,17 @@ function MoviesSavedPage() {
         <SearchForm submitButton={handleSearchFavorite} />
         {isDownload
           ? <Preloader modifier={'preloader_main'} />
-          : checkedLengthArray([])
-            ? <h1>{message}</h1>
+          : checkedLengthArray(isFavoriteMovies)
+            ? <GreetingMessage
+              message={isMessage}
+              addLink={true}
+            />
             : <MoviesCardList
-              isMoviesListApi={isFavoriteMovies}
-              isFavoriteMovies={isFavoriteMovies}
-              setIsFavoriteMovies={setIsFavoriteMovies}
-              modifierActiveButton={'movies-list__button_active'}
-            >
-            </MoviesCardList>}
+              moviesList={isFavoriteMovies}
+              handleClickLikes={handleClickLikes}
+              modifierButton={'movies-list__button_delete'}
+            />}
       </Main>
-      {/* <Main> */}
-      {/* <SearchForm /> */}
-      {/* <MoviesCardList
-          isCards={isFavoriteMovies}
-          modifierButton={'movies-list__button_delete'}
-        /> */}
-      {/* </Main> */}
       <Footer
         config={configFooter}
       />

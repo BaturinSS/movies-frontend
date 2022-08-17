@@ -1,7 +1,3 @@
-export const actionTimeout = (action, time) => {
-  setTimeout(action, time)
-}
-
 export const checkedLengthArray = (arr) => {
   return arr.length === 0;
 };

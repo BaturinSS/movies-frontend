@@ -1,13 +1,15 @@
 import { useState } from "react";
 import validator from "validator";
 import MainApi from "../api/MainApi";
-import { NODE_ENV } from "../constants";
 import {
   BASE_URL_IMAGE, URL_IMAGE_NO_IMAGE, TEXT_MOVIE_NO_NAME,
-  URL_YOUTUBE, TEXT_ERROR_NO_CONNECTION,
+  URL_YOUTUBE, TEXT_ERROR_FAVORITE, NODE_ENV,
 } from "../constants";
 
-const useMoviesCard = (isFavoriteMovies, setIsFavoriteMovies,) => {
+const useMoviesCard = (
+  isFavoriteMovies, setIsFavoriteMovies,
+  setIsMessage,
+) => {
 
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -18,6 +20,16 @@ const useMoviesCard = (isFavoriteMovies, setIsFavoriteMovies,) => {
       return url;
     } else { return null }
   }
+
+  const changeFavoriteMovies = (film) => {
+    if (film.deletedFilm) {
+      setIsFavoriteMovies(isFavoriteMovies.filter((el) => {
+        return el._id !== film.deletedFilm._id;
+      }))
+    } else {
+      setIsFavoriteMovies(...isFavoriteMovies, film.newFilm)
+    }
+  };
 
   const addFavorite = (film) => {
 
@@ -63,62 +75,42 @@ const useMoviesCard = (isFavoriteMovies, setIsFavoriteMovies,) => {
     api
       .addMovies(newFilm)
       .then(({ message, newFilm }) => {
+        setIsMessage(message);
         setIsFavorite(true);
-        console.log(message);
-        // console.log(isFavoriteMovies)
-        // setIsFavoriteMovies(...isFavoriteMovies, newFilm)
+        changeFavoriteMovies({ newFilm: newFilm });
       })
       .catch((err) => {
+        setIsMessage(TEXT_ERROR_FAVORITE);
         if (err.name === 'TypeError') {
-          return console.error(`${TEXT_ERROR_NO_CONNECTION}: "${err.message}"`);
+          return console.error(err.message);
         }
         err.then(({ message }) => {
-          console.log('error', message)
+          console.error('error:', message)
         });
       })
-      .finally(() => {
-        console.log('final')
-      })
   }
-
-  // const objMovies = (film, newFilm) => {
-  //   const copyIsMoviesListApi = isMoviesListApi;
-  //   return copyIsMoviesListApi.map((el, i) => {
-  //     if (el.id === film.id) {
-  //       const newEl = { ...el, _id: newFilm._id }
-  //       copyIsMoviesListApi.splice(i, 1, newEl)
-  //       setIsMoviesListApi(copyIsMoviesListApi);
-  //     };
-  //   });
-  // };
-
 
   const deleteFavorite = (film) => {
-    console.log('new', isFavoriteMovies)
     api
-      .deleteMovies(film.id)
-      .then(({ message, newFilm }) => {
+      .deleteMovies(film.id || film.movieId)
+      .then(({ message, deletedFilm }) => {
+        setIsMessage(message);
         setIsFavorite(false);
-        // objMovies(film, newFilm);
-        console.log(message)
-        // setIsFavoriteMovies([newFilm, ...isFavoriteMovies])
-        // console.log('delete', isFavoriteMovies)
+        changeFavoriteMovies({ deletedFilm: deletedFilm });
       })
       .catch((err) => {
+        setIsMessage(TEXT_ERROR_FAVORITE);
         if (err.name === 'TypeError') {
-          return console.error(`${TEXT_ERROR_NO_CONNECTION}: "${err.message}"`);
+          return console.error(err.message);
         }
         err.then(({ message }) => {
-          console.log('error', message)
+          console.error('error', message)
         });
-      })
-      .finally(() => {
-        console.log('final')
       })
   }
 
-  const handleClickFavorite = (film) => {
-    isFavorite
+  const handleClickFavorite = (film, _id) => {
+    isFavorite || _id
       ? deleteFavorite(film)
       : addFavorite(film);
   }

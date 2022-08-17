@@ -4,7 +4,8 @@ import React from "react";
 
 function FormInputProfile({
   config, isPermission, onChange, value, isName,
-  onFocus, autoComplete, errors, isEmail, ref,
+  onFocus, autoComplete, errors, isEmail, currentUser,
+  setIsDoubleName, setIsDoubleEmail
 }) {
   const {
     idInput, placeholder, textLabel, name,
@@ -20,6 +21,17 @@ function FormInputProfile({
   const checkType = (arr, elem) => {
     return arr.indexOf(elem) !== -1;
   }
+  const inputRef = React.useRef();
+
+  React.useEffect(() => {
+    if (name === 'Name') {
+      setIsDoubleName(inputRef.current.value === currentUser.name.trim());
+    } else if (name === 'Email') {
+      setIsDoubleEmail(inputRef.current.value === currentUser.email.trim());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value])
+
 
   return (
     <>
@@ -34,7 +46,7 @@ function FormInputProfile({
         className={`form__input-label form__input-label_profile`}
         style={isPermission ? {} : { pointerEvents: 'none', cursor: 'default' }}
         htmlFor={`${idInput}`}>{textLabel}
-        <input
+        <input ref={inputRef}
           id={`${idInput}`}
           name={name}
           className={`form__input form__input_profile`}

@@ -13,7 +13,9 @@ import FormSubmit from "../../components/FormSubmit/FormSubmit";
 import configFormSubmitLogin from "../../utils/config/formSubmit/configFormSubmitLogin";
 import useRegistration from "../../utils/hooks/useRegistration";
 import MainApi from "../../utils/api/MainApi";
-import { NODE_ENV, TEXT_ERROR_NO_CONNECTION } from "../../utils/constants";
+import {
+  NODE_ENV, TEXT_ERROR_NO_CONNECTION, TEXT_ERROR_REGISTRATION,
+} from "../../utils/constants";
 
 function RegistrationPage({ setCurrentUser, setIsLoggedIn }) {
   const [isDownload, setIsDownload] = React.useState(false);
@@ -36,7 +38,7 @@ function RegistrationPage({ setCurrentUser, setIsLoggedIn }) {
     api
       .register(inputPassword, inputEmail, inputName)
       .then(({ user, message, token }) => {
-        console.log(message)
+        setErrorApi(message);
         if (token) localStorage.setItem('jwt', token);
         setCurrentUser(user);
         setIsLoggedIn(true);
@@ -49,7 +51,7 @@ function RegistrationPage({ setCurrentUser, setIsLoggedIn }) {
         }
         err.then(({ message }) => {
           if (message === 'Validation failed') {
-            setErrorApi('При регистрации пользователя произошла ошибка.');
+            setErrorApi(TEXT_ERROR_REGISTRATION);
           } else {
             setErrorApi(message);
           }
@@ -72,21 +74,18 @@ function RegistrationPage({ setCurrentUser, setIsLoggedIn }) {
           <FormInput
             config={configFormInputName}
             onChange={onChange}
-            onFocus={onChange}
             errors={errors}
             autoComplete={'given-name'}
           />
           <FormInput
             config={configFormInputEmail}
             onChange={onChange}
-            onFocus={onChange}
             errors={errors}
             autoComplete={'username'}
           />
           <FormInput
             config={configFormInputPassword}
             onChange={onChange}
-            onFocus={onChange}
             errors={errors}
             autoComplete={'new-password'}
           />

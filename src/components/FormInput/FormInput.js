@@ -24,6 +24,8 @@ function FormInput({
     return arr.indexOf(elem) !== -1;
   }
 
+  const validColorPassword = type === 'password' && textMessageError;
+
   return (
     <>
       <label
@@ -32,8 +34,8 @@ function FormInput({
       <input
         id={`${idInput}`}
         name={name}
-        className={`form__input ${modifier ? modifier : ''}`}
-        style={{ color: type === 'password' ? "#EE3465" : 'none' }}
+        className={`form__input ${modifier ? modifier : ''}
+        ${validColorPassword ? 'form__input_error-password' : ''}`}
         required={required}
         placeholder={placeholder}
         spellCheck={`${type === 'text' ? true : false}`}
