@@ -9,7 +9,8 @@ import {
   TEXT_MESSAGE_NO_SEARCH, NODE_ENV, TEXT_ERROR_NOT_FOUND,
   TEXT_MESSAGE_NO_FAVORITE, TEXT_ERROR,
   TEXT_ERROR_EMPTY_REQUEST, TEXT_ERROR_API_REQUEST,
-  TEXT_ERROR_NO_MOVIES,
+  TEXT_ERROR_NO_MOVIES, REG_EX_TEXT_SEARCH,
+  TEXT_ERROR_TEST_REQUEST,
 } from "../constants";
 
 const useMovies = (
@@ -36,10 +37,14 @@ const useMovies = (
 
   const location = useLocation();
 
+  const testTextFormat = (text) => {
+    return !(REG_EX_TEXT_SEARCH.test(`${text}`));
+  };
+
   function showMessageMovies(message) {
     setMessageMovies(message);
     setTimeout(() => setMessageMovies(TEXT_MESSAGE_NO_SEARCH), 5000);
-  }
+  };
 
   function showMessageMoviesSaved(message) {
     setMessageMoviesSaved(message);
@@ -91,10 +96,10 @@ const useMovies = (
       isEN
         ? str = movies.nameEN
           ? movies.nameEN.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')
-          : ''
+          : movies.nameRU.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')
         : str = movies.nameRU
           ? movies.nameRU.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')
-          : ''
+          : movies.nameEN.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')
       return filter
         ? movies.duration <= 40 && regex.test(str)
         : regex.test(str)
@@ -131,7 +136,11 @@ const useMovies = (
       setNewListMovies([]);
       return;
     };
-
+    if (testTextFormat(arrElForm[0].value)) {
+      showMessageMovies(TEXT_ERROR_TEST_REQUEST);
+      setNewListMovies([]);
+      return;
+    };
     const newConfigMovies = createdObjConfig(arrElForm);
     setConfigMovies(newConfigMovies);
     localStorage.setItem('configMovies', JSON.stringify(newConfigMovies));
