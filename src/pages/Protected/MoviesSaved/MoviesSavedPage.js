@@ -34,6 +34,7 @@ function MoviesSavedPage({
       </Header>
       <Main>
         <SearchForm
+          isChange={true}
           configMovies={configMovies}
           nameForm={'FormSearchMoviesSaved'}
           clickSubmitButton={handleSubmitFormMoviesSaved} />

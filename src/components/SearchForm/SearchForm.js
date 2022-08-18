@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox'
 import CheckboxSearch from '../SubstitutionCheckbox/CheckboxSearch/CheckboxSearch';
 
-function SearchForm({ clickSubmitButton, nameForm, configMovies }) {
+function SearchForm({ clickSubmitButton, nameForm, configMovies, isChange }) {
   const refForm = React.useRef();
   const location = useLocation();
 
@@ -22,8 +22,7 @@ function SearchForm({ clickSubmitButton, nameForm, configMovies }) {
   }
 
   const onChangeMoviesSaved = () => {
-    if (location.pathname === '/saved-movies')
-      clickSubmitButton(refForm.current);
+    if (isChange) clickSubmitButton(refForm.current);
   }
 
   return (
