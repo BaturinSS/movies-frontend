@@ -10,7 +10,6 @@
 @media screen and (min-width: 747px) {
   .movies-list {
     max-width: 100%;
-    padding-top: 80px;
     padding-left: 30px;
     padding-right: 30px;
   }

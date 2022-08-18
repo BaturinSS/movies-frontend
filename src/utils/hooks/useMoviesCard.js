@@ -1,4 +1,3 @@
-import React from "react";
 import validator from "validator";
 import MainApi from "../api/MainApi";
 import {
@@ -7,11 +6,10 @@ import {
 } from "../constants";
 
 const useMoviesCard = (
-  isFavoriteMovies, setIsFavoriteMovies,
-  setIsMessage,
+  showMessageMoviesList,
+  listMoviesSaved, setListMoviesSaved,
+  newListMoviesSaved, setNewListMoviesSaved
 ) => {
-  const [isFavorite, setIsFavorite] = React.useState(false);
-
   const api = new MainApi({ NODE_ENV: NODE_ENV });
 
   const validUrl = (url) => {
@@ -22,11 +20,14 @@ const useMoviesCard = (
 
   const changeFavoriteMovies = (film) => {
     if (film.deletedFilm) {
-      setIsFavoriteMovies(isFavoriteMovies.filter((el) => {
+      setListMoviesSaved(listMoviesSaved.filter((el) => {
+        return el._id !== film.deletedFilm._id;
+      }))
+      setNewListMoviesSaved(newListMoviesSaved.filter((el) => {
         return el._id !== film.deletedFilm._id;
       }))
     } else {
-      setIsFavoriteMovies(...isFavoriteMovies, film.newFilm)
+      setListMoviesSaved([film.newFilm, ...listMoviesSaved]);
     }
   };
 
@@ -77,12 +78,12 @@ const useMoviesCard = (
     api
       .addMovies(newFilm)
       .then(({ message, newFilm }) => {
-        setIsMessage(message);
-        setIsFavorite(true);
+        film.like = true;
+        showMessageMoviesList(message, '')
         changeFavoriteMovies({ newFilm: newFilm });
       })
       .catch((err) => {
-        setIsMessage(TEXT_ERROR);
+        showMessageMoviesList(TEXT_ERROR, '')
         if (err.name === 'TypeError') {
           return console.error(err.message);
         }
@@ -96,12 +97,12 @@ const useMoviesCard = (
     api
       .deleteMovies(film.id || film.movieId)
       .then(({ message, deletedFilm }) => {
-        setIsMessage(message);
-        setIsFavorite(false);
+        film.like = false;
+        showMessageMoviesList(message, '')
         changeFavoriteMovies({ deletedFilm: deletedFilm });
       })
       .catch((err) => {
-        setIsMessage(TEXT_ERROR);
+        showMessageMoviesList(TEXT_ERROR, '')
         if (err.name === 'TypeError') {
           return console.error(err.message);
         }
@@ -112,13 +113,12 @@ const useMoviesCard = (
   }
 
   const handleClickLikes = (film) => {
-    console.log(isFavorite)
-    isFavorite || film._id
+    film.like || film._id
       ? deleteFavorite(film)
       : addFavorite(film);
   }
 
-  return { isFavorite, handleClickLikes }
+  return { handleClickLikes }
 }
 
 export default useMoviesCard;

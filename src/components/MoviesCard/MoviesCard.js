@@ -42,7 +42,7 @@ function MoviesCard({
         </figure>
         <button className={`movies-list__button
           ${modifierButton ? `${modifierButton}` : ''}
-          ${card.like ? 'movies-list__button_active' : ''}`}
+          ${card.id && card.like ? 'movies-list__button_active' : ''}`}
           onClick={() => handleClickLikes(card)}
           type='button' />
       </li>

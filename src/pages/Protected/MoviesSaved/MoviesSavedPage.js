@@ -18,8 +18,10 @@ function MoviesSavedPage({
 }) {
 
   const {
+    isEN,
     isDownload,
     messageMoviesSaved,
+    messageMoviesList,
     handleClickLikes,
     handleSubmitFormMoviesSaved,
     newListMoviesSaved,
@@ -46,6 +48,8 @@ function MoviesSavedPage({
               addLink={true}
             />
             : <MoviesCardList
+              isEN={isEN}
+              messageMoviesList={messageMoviesList}
               moviesList={newListMoviesSaved}
               handleClickLikes={handleClickLikes}
               modifierButton={'movies-list__button_delete'}
