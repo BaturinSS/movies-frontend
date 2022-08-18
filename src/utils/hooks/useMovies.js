@@ -122,7 +122,6 @@ const useMovies = (
   React.useEffect(() => {
     if (location.pathname === '/movies' && Object.keys(configMovies).length !== 0)
       setNewListMovies(JSON.parse(localStorage.getItem('lastMovies')));
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

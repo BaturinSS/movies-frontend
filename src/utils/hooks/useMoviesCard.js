@@ -1,3 +1,4 @@
+import React from "react";
 import validator from "validator";
 import MainApi from "../api/MainApi";
 import {
@@ -12,10 +13,21 @@ const useMoviesCard = (
 ) => {
   const api = new MainApi({ NODE_ENV: NODE_ENV });
 
+  const [listSearchMovies] = React.useState(JSON.parse(localStorage.getItem('lastMovies')))
+
   const validUrl = (url) => {
     if (validator.isURL(url.trim())) {
       return url;
     } else { return null }
+  }
+
+  const dislikeMovies = (film) => {
+    listSearchMovies.forEach((movies) => {
+      if (movies.id === film.movieId) {
+        movies.like = false;
+      }
+    })
+    localStorage.setItem('lastMovies', JSON.stringify(listSearchMovies));
   }
 
   const changeFavoriteMovies = (film) => {
@@ -98,6 +110,7 @@ const useMoviesCard = (
       .deleteMovies(film.id || film.movieId)
       .then(({ message, deletedFilm }) => {
         film.like = false;
+        if (film._id) dislikeMovies(deletedFilm);
         showMessageMoviesList(message, '')
         changeFavoriteMovies({ deletedFilm: deletedFilm });
       })
