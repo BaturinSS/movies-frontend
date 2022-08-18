@@ -18,7 +18,10 @@ import { NODE_ENV, TEXT_ERROR_INPUT_NEW } from "../../../utils/constants";
 import Popup from '../../../components/Popup/Popup';
 import PopupInform from '../../../components/PopupInform/PopupInform';
 
-function ProfilePage({ setCurrentUser, setIsLoggedIn, setConfigMovies }) {
+function ProfilePage({
+  setCurrentUser, setIsLoggedIn, setConfigMovies,
+  setListMovies, setListMoviesSaved,
+}) {
   const { currentUser } = React.useContext(TranslationContext);
   const [isDownload, setIsDownload] = React.useState(false);
   const [isOpenPopupInform, setIsOpenPopupInform] = React.useState(false);
@@ -89,6 +92,8 @@ function ProfilePage({ setCurrentUser, setIsLoggedIn, setConfigMovies }) {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
       localStorage.clear();
+      setListMovies([]);
+      setListMoviesSaved([]);
       setIsLoggedIn(false);
       setIsDownload(false);
       setIsOpenPopupInform(false);
@@ -102,6 +107,8 @@ function ProfilePage({ setCurrentUser, setIsLoggedIn, setConfigMovies }) {
           history.push('/');
           setIsLoggedIn(false);
           localStorage.clear();
+          setListMovies([]);
+          setListMoviesSaved([]);
           setConfigMovies({});
           setIsOpenPopupInform(false);
         })

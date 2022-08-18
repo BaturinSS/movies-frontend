@@ -9,7 +9,7 @@ function SearchForm({ clickSubmitButton, nameForm, configMovies, isChange }) {
   const location = useLocation();
 
   React.useEffect(() => {
-    if (location.pathname === '/movies') {
+    if (location.pathname === '/movies' && Object.keys(configMovies).length !== 0) {
       const arrElForm = Array.from(refForm.current);
       arrElForm[0].value = configMovies.searchQuery;
       arrElForm[2].checked = configMovies.filter;

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import moviesApi from "../api/MoviesApi";
 import MainApi from "../api/MainApi";
-import useMoviesCard from "./useMoviesCard";
 import {
   TEXT_MESSAGE_NO_SEARCH, NODE_ENV, TEXT_ERROR_NOT_FOUND,
   TEXT_MESSAGE_NO_FAVORITE, TEXT_ERROR,
@@ -23,8 +22,6 @@ const useMovies = (
   const [isEN, setIsEN] = useState(false)
   const [isOneDownload, setIsOneDownload] = React.useState(false);
   const mainApi = new MainApi({ NODE_ENV: NODE_ENV });
-
-  const { } = useMoviesCard();
 
   const location = useLocation();
 
@@ -55,11 +52,6 @@ const useMovies = (
     return obj;
   };
 
-  const checkedValueSearch = (el) => {
-    if (el.value.length === 0) return true;
-    return false;
-  };
-
   const filterMovies = ({ filter, searchQuery }, listMovies) => {
     const regex = new RegExp(`${searchQuery.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')}`, "i")
     const isEN = /[A-Za-z]/i.test(searchQuery);
@@ -81,7 +73,7 @@ const useMovies = (
   }
 
   React.useEffect(() => {
-    if (location.pathname === '/movies')
+    if (location.pathname === '/movies' && Object.keys(configMovies).length !== 0)
       setNewListMovies(filterMovies(configMovies, listMovies));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
