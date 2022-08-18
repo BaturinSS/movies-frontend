@@ -27,6 +27,7 @@ function MoviesPage({
     handleSubmitFormMovies,
     handleClickAddMovies,
     newListMovies,
+    messageMoviesList,
   } = useMovies(
     listMovies, setListMovies,
     listMoviesSaved, setListMoviesSaved,
@@ -50,6 +51,7 @@ function MoviesPage({
             />
             : <MoviesCardList
               isEN={isEN}
+              messageMoviesList={messageMoviesList}
               moviesList={newListMovies}
               handleClickLikes={handleClickLikes}
             >

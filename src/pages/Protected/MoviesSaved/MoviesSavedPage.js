@@ -19,7 +19,7 @@ function MoviesSavedPage({
 
   const {
     isDownload,
-    messageMoviesSave,
+    messageMoviesSaved,
     handleClickLikes,
     handleSubmitFormMoviesSaved,
     newListMoviesSaved,
@@ -42,7 +42,7 @@ function MoviesSavedPage({
           ? <Preloader modifier={'preloader_main'} />
           : checkedLengthArray(newListMoviesSaved)
             ? <GreetingMessage
-              message={messageMoviesSave}
+              message={messageMoviesSaved}
               addLink={true}
             />
             : <MoviesCardList

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React from "react";
 import validator from "validator";
 import MainApi from "../api/MainApi";
 import {
@@ -10,8 +10,7 @@ const useMoviesCard = (
   isFavoriteMovies, setIsFavoriteMovies,
   setIsMessage,
 ) => {
-
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = React.useState(false);
 
   const api = new MainApi({ NODE_ENV: NODE_ENV });
 
@@ -112,13 +111,14 @@ const useMoviesCard = (
       })
   }
 
-  const handleClickFavorite = (film, _id) => {
-    isFavorite || _id
+  const handleClickLikes = (film) => {
+    console.log(isFavorite)
+    isFavorite || film._id
       ? deleteFavorite(film)
       : addFavorite(film);
   }
 
-  return { isFavorite, handleClickFavorite }
+  return { isFavorite, handleClickLikes }
 }
 
 export default useMoviesCard;

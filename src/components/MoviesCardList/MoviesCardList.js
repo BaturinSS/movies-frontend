@@ -8,11 +8,12 @@ function MoviesCardList({
   moviesList,
   handleClickLikes,
   modifierButton,
+  messageMoviesList,
 }) {
   return (
     <>
       <section className="movies-list">
-        {/* <span className='movies-list__message'>{isMessage}</span> */}
+        <span className='movies-list__message'>{messageMoviesList}</span>
         <ul className="movies-list__cards">
           {moviesList.map((film) => {
             return (

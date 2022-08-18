@@ -10,7 +10,6 @@
 
 @media screen and (min-width: 320px) {
   .main__title_message {
-    /* width: calc((100vw - 769px) / (320 - 769) * (180 - 250) + 250px); */
     font-size: calc((100vw - 769px) / (320 - 769) * (15 - 20) + 20px);
   }
 }
@@ -18,6 +17,5 @@
 @media screen and (min-width: 769px) {
   .main__title_message {
     font-size: 20px;
-    /* width: 250px; */
   }
 }
