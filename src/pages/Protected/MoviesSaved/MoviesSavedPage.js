@@ -15,6 +15,7 @@ import GreetingMessage from '../../../components/GreetingMessage/GreetingMessage
 function MoviesSavedPage({
   listMovies, setListMovies, configMovies,
   listMoviesSaved, setListMoviesSaved,
+  isOneDownload, setIsOneDownload,
 }) {
 
   const {
@@ -28,6 +29,7 @@ function MoviesSavedPage({
   } = useMovies(
     listMovies, setListMovies,
     listMoviesSaved, setListMoviesSaved,
+    isOneDownload, setIsOneDownload,
   );
   return (
     <>

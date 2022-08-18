@@ -17,15 +17,16 @@ const useMovies = (
   listMovies, setListMovies,
   listMoviesSaved, setListMoviesSaved,
   configMovies, setConfigMovies,
+  isOneDownload, setIsOneDownload,
 ) => {
   const [isDownload, setIsDownload] = React.useState(false);
   const [messageMovies, setMessageMovies] = React.useState(TEXT_MESSAGE_NO_SEARCH);
   const [messageMoviesSaved, setMessageMoviesSaved] = React.useState(TEXT_MESSAGE_NO_FAVORITE);
   const [messageMoviesList, setMessageMoviesList] = React.useState('');
   const [isEN, setIsEN] = useState(false)
-  const [isOneDownload, setIsOneDownload] = React.useState(false);
-  const [newListMovies, setNewListMovies] = React.useState([]);
   const [newListMoviesSaved, setNewListMoviesSaved] = React.useState([]);
+  const [newListMovies, setNewListMovies] = React.useState([]);
+
 
   const { handleClickLikes } = useMoviesCard(
     showMessageMoviesList,
@@ -120,7 +121,8 @@ const useMovies = (
 
   React.useEffect(() => {
     if (location.pathname === '/movies' && Object.keys(configMovies).length !== 0)
-      setNewListMovies(listMovies);
+      setNewListMovies(JSON.parse(localStorage.getItem('lastMovies')));
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -144,6 +146,7 @@ const useMovies = (
     const newConfigMovies = createdObjConfig(arrElForm);
     setConfigMovies(newConfigMovies);
     localStorage.setItem('configMovies', JSON.stringify(newConfigMovies));
+    // checkedLengthArray(newListMovies)
     if (!isOneDownload) {
       setIsDownload(true);
       moviesApi

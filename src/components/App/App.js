@@ -18,6 +18,7 @@ function App() {
   const [isDownload, setIsDownload] = React.useState(true);
   const [listMovies, setListMovies] = React.useState(JSON.parse(localStorage.getItem('lastMovies')) || []);
   const [listMoviesSaved, setListMoviesSaved] = React.useState([]);
+  const [isOneDownload, setIsOneDownload] = React.useState(false);
   const [configMovies, setConfigMovies] = React.useState(JSON.parse(localStorage.getItem('configMovies')) || {})
   const [errorApi, setErrorApi] = React.useState('');
 
@@ -125,6 +126,8 @@ function App() {
               setListMoviesSaved={setListMoviesSaved}
               configMovies={configMovies}
               setConfigMovies={setConfigMovies}
+              isOneDownload={isOneDownload}
+              setIsOneDownload={setIsOneDownload}
             />
           </Route>
           <Route path="/saved-movies" exact>
@@ -139,6 +142,8 @@ function App() {
               setListMovies={setListMovies}
               listMoviesSaved={listMoviesSaved}
               setListMoviesSaved={setListMoviesSaved}
+              isOneDownload={isOneDownload}
+              setIsOneDownload={setIsOneDownload}
             />
           </Route>
           <Route path="*">

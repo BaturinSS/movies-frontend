@@ -17,6 +17,7 @@ function MoviesPage({
   listMovies, setListMovies,
   listMoviesSaved, setListMoviesSaved,
   configMovies, setConfigMovies,
+  isOneDownload, setIsOneDownload,
 }) {
 
   const {
@@ -32,6 +33,7 @@ function MoviesPage({
     listMovies, setListMovies,
     listMoviesSaved, setListMoviesSaved,
     configMovies, setConfigMovies,
+    isOneDownload, setIsOneDownload,
   );
   return (
     <>
