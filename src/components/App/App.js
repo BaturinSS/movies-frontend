@@ -16,7 +16,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
   const [isDownload, setIsDownload] = React.useState(true);
-  const [listMovies, setListMovies] = React.useState([]);
+  const [listMovies, setListMovies] = React.useState(JSON.parse(localStorage.getItem('lastMovies')));
   const [listMoviesSaved, setListMoviesSaved] = React.useState([]);
   const [configMovies, setConfigMovies] = React.useState(JSON.parse(localStorage.getItem('configMovies')))
   const [errorApi, setErrorApi] = React.useState('');
@@ -24,8 +24,9 @@ function App() {
   const mainApi = new MainApi({ NODE_ENV: NODE_ENV });
 
   React.useEffect(() => {
-    setListMovies([]);
-    setListMoviesSaved([]);
+    if (!isLoggedIn) {
+
+    }
   }, [isLoggedIn])
 
   React.useEffect(() => {
@@ -44,6 +45,8 @@ function App() {
         setCurrentUser(user);
       })
       .catch((err) => {
+        setListMovies([]);
+        setListMoviesSaved([]);
         err.then(({ message }) => {
           console.error(message);
         });
@@ -102,7 +105,6 @@ function App() {
               isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
               isDownload={isDownload}
-              setConfigMovies={setConfigMovies}
             />
           </Route>
           <Route path="/movies" exact>

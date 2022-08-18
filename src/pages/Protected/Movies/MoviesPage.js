@@ -20,10 +20,11 @@ function MoviesPage({
 }) {
 
   const {
+    isEN,
     isDownload,
     messageMovies,
     handleClickLikes,
-    handleSubmitForm,
+    handleSubmitFormMovies,
     handleClickAddMovies,
     newListMovies,
   } = useMovies(
@@ -38,7 +39,8 @@ function MoviesPage({
       </Header>
       <Main>
         <SearchForm
-          clickSubmitButton={handleSubmitForm}
+          configMovies={configMovies}
+          clickSubmitButton={handleSubmitFormMovies}
           nameForm={'FormSearchMovies'} />
         {isDownload
           ? <Preloader modifier={'preloader_main'} />
@@ -47,6 +49,7 @@ function MoviesPage({
               message={messageMovies}
             />
             : <MoviesCardList
+              isEN={isEN}
               moviesList={newListMovies}
               handleClickLikes={handleClickLikes}
             >

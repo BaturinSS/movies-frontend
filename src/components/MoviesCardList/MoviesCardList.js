@@ -4,6 +4,7 @@ import MoviesCard from '../MoviesCard/MoviesCard'
 
 function MoviesCardList({
   children,
+  isEN,
   moviesList,
   handleClickLikes,
   modifierButton,
@@ -16,7 +17,8 @@ function MoviesCardList({
           {moviesList.map((film) => {
             return (
               <MoviesCard
-                key={film._id}
+                key={film._id || film.id}
+                isEN={isEN}
                 card={film}
                 modifierButton={modifierButton}
                 handleClickLikes={handleClickLikes} />

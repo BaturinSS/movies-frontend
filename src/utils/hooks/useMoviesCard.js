@@ -31,8 +31,7 @@ const useMoviesCard = (
     }
   };
 
-  const addFavorite = (film) => {
-
+  const reformatCardMovies = (film) => {
     const checkedUrlImage = (object) => {
       const objectFormatsImage = film.image.formats;
 
@@ -71,7 +70,11 @@ const useMoviesCard = (
       imageSmall: checkedUrlImage('small'),
       trailerLink: checkedUrlVideo(film.trailerLink),
     }
+    return newFilm;
+  }
 
+  const addFavorite = (film) => {
+    const newFilm = reformatCardMovies(film);
     api
       .addMovies(newFilm)
       .then(({ message, newFilm }) => {
