@@ -14,13 +14,14 @@ import configFormInputName from '../../../utils/config/formInput/configFormInput
 import { TranslationContext } from '../../../contexts/TranslationContext'
 import useProfile from '../../../utils/hooks/useProfile';
 import MainApi from "../../../utils/api/MainApi";
-import { NODE_ENV, TEXT_ERROR_INPUT_NEW } from "../../../utils/constants";
+import {
+  NODE_ENV, TEXT_ERROR_INPUT_NEW, TEXT_ERROR,
+} from "../../../utils/constants";
 import Popup from '../../../components/Popup/Popup';
 import PopupInform from '../../../components/PopupInform/PopupInform';
 
 function ProfilePage({
-  setCurrentUser, setIsLoggedIn, setConfigMovies,
-  setListMovies, setListMoviesSaved,
+  setCurrentUser, setIsLoggedIn, clearingMemory,
 }) {
   const { currentUser } = React.useContext(TranslationContext);
   const [isDownload, setIsDownload] = React.useState(false);
@@ -80,24 +81,27 @@ function ProfilePage({
         });
       })
       .catch((err) => {
+        setErrorApi(TEXT_ERROR);
+        if (err.name === 'TypeError') {
+          return console.error(err.message);
+        };
         err.then(({ message }) => {
           setErrorApi(message);
         })
       })
-      .finally(setIsDownload(false))
+      .finally(() => {
+        setIsDownload(false);
+        setTimeout(() => setErrorApi(''), 5000);
+      });
   }
 
   const outputProfile = () => {
-    setIsDownload(true);
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
-      localStorage.clear();
-      setListMovies([]);
-      setListMoviesSaved([]);
+      clearingMemory();
       setIsLoggedIn(false);
       setIsDownload(false);
       setIsOpenPopupInform(false);
-      setConfigMovies({});
       history.push('/');
     } else {
       api
@@ -106,23 +110,28 @@ function ProfilePage({
           setErrorApi(message);
           history.push('/');
           setIsLoggedIn(false);
-          localStorage.clear();
-          setListMovies([]);
-          setListMoviesSaved([]);
-          setConfigMovies({});
+          clearingMemory();
           setIsOpenPopupInform(false);
         })
         .catch((err) => {
+          setErrorApi(TEXT_ERROR);
+          if (err.name === 'TypeError') {
+            return console.error(err.message);
+          };
           err.then(({ message }) => {
             setErrorApi(message);
             setTimeout(() => setErrorApi(''), 5000);
           })
         })
-        .finally(setIsDownload(false))
+        .finally(() => {
+          setIsDownload(false);
+          setTimeout(() => setErrorApi(''), 5000);
+        });
     }
   }
 
   const onSubmitFormProfile = (evt) => {
+    setIsDownload(true);
     evt.preventDefault();
     if (newName.trim() !== currentUser.name ||
       newEmail.trim() !== currentUser.email) {

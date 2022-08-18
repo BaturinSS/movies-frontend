@@ -23,6 +23,13 @@ function App() {
 
   const mainApi = new MainApi({ NODE_ENV: NODE_ENV });
 
+  const clearingMemory = () => {
+    localStorage.clear();
+    setListMovies([]);
+    setListMoviesSaved([]);
+    setConfigMovies({});
+  }
+
   React.useEffect(() => {
     if (!isDownload) setIsDownload(true);
     if (isLoggedIn) return;
@@ -39,8 +46,10 @@ function App() {
         setCurrentUser(user);
       })
       .catch((err) => {
-        setListMovies([]);
-        setListMoviesSaved([]);
+        if (err.name === 'TypeError') {
+          return console.error(err.message);
+        };
+        clearingMemory();
         err.then(({ message }) => {
           console.error(message);
         });
@@ -99,9 +108,7 @@ function App() {
               isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
               isDownload={isDownload}
-              setConfigMovies={setConfigMovies}
-              setListMovies={setListMovies}
-              setListMoviesSaved={setListMoviesSaved}
+              clearingMemory={clearingMemory}
             />
           </Route>
           <Route path="/movies" exact>

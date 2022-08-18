@@ -27,7 +27,7 @@ function FormSubmitProfile({
             : ''}`}
           type={`submit`}
           disabled={!isValid}
-        >{`${isDownload ? 'Сохраняю...' : 'Сохранить'}`}
+        >{`${isDownload ? 'Обновляю информацию...' : 'Сохранить'}`}
         </button>}
         {!isPermission && <button
           className={`form__button`}
