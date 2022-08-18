@@ -145,7 +145,6 @@ const useMovies = (
     const newConfigMovies = createdObjConfig(arrElForm);
     setConfigMovies(newConfigMovies);
     localStorage.setItem('configMovies', JSON.stringify(newConfigMovies));
-    // checkedLengthArray(newListMovies)
     if (!isOneDownload) {
       setIsDownload(true);
       moviesApi
