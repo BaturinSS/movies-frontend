@@ -92,8 +92,24 @@ const useMovies = (
     const regex = new RegExp(`${searchQuery.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')}`, "i")
     const isEN = /[A-Za-z]/i.test(searchQuery);
     setIsEN(isEN);
-    let str = '';
-    const newListMovies = listMovies.filter((movies) => {
+    // let str = '';
+    // const newListMovies = listMovies.filter((movies, i) => {
+    //   isEN
+    //     ? str = movies.nameEN
+    //       ? movies.nameEN.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')
+    //       : movies.nameRU.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')
+    //     : str = movies.nameRU
+    //       ? movies.nameRU.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')
+    //       : movies.nameEN.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')
+
+    //   return filter
+    //     ? movies.duration <= 40 && regex.test(str)
+    //     : regex.test(str)
+    // })
+    // console.log(newListMovies)
+
+    const formString = (movies) => {
+      let str = '';
       isEN
         ? str = movies.nameEN
           ? movies.nameEN.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')
@@ -101,14 +117,34 @@ const useMovies = (
         : str = movies.nameRU
           ? movies.nameRU.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')
           : movies.nameEN.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')
+      return str;
+    }
+
+    const filterExpression = (str, movies) => {
       return filter
         ? movies.duration <= 40 && regex.test(str)
         : regex.test(str)
-    })
+    }
+
+    const newListMovies = [];
+    const startLength = listMovies.length;
+
+    for (let i = 0; i < startLength; i++) {
+      const movies = listMovies[i];
+      const str = formString(movies);
+      if (filterExpression(str, movies)) {
+        newListMovies.push(movies);
+      }
+    }
+    console.log(newListMovies)
+
+
+
+    console.log(newListMovies)
     const newList = newListMovies.map((movie) => {
       const id = movie.id || movie.movieId;
       const isLike = () => {
-        for (var i = 0; i < listMoviesSaved.length; i++) {
+        for (let i = 0; i < listMoviesSaved.length; i++) {
           if (listMoviesSaved[i].movieId === id) return true;
         }
         return false;
