@@ -138,7 +138,6 @@ const useMoviesCard = (
   }
 
   const handleClickLikes = (film) => {
-    console.log(film)
     film.like || film._id
       ? deleteFavorite(film)
       : addFavorite(film);
