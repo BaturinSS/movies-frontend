@@ -28,7 +28,7 @@ const useMovies = (
   const [newListMovies, setNewListMovies] = React.useState([]);
   const [limitedCounter, setLimitedCounter] = React.useState(0);
   const [widthScreen, setWidthScreen] = React.useState(document.documentElement.clientWidth);
-
+  const [isClickButton, setIsClickButton] = React.useState(false)
   const { handleClickLikes } = useMoviesCard(
     showMessageMoviesList,
     listMoviesSaved, setListMoviesSaved,
@@ -154,6 +154,7 @@ const useMovies = (
   }, [])
 
   const handleSubmitFormMovies = (evt) => {
+    setIsClickButton(!isClickButton);
     let form;
     if (evt.target) {
       evt.preventDefault();
@@ -223,40 +224,34 @@ const useMovies = (
     setNewListMoviesSaved(filterListMovies);
   }
 
-  // React.useEffect(() => {
-  //   let count = 12;
-  //   if (widthScreen >= 1028) {
-  //     count = 12;
-  //   } else if (widthScreen >= 747) {
-  //     count = 8;
-  //   } else {
-  //     count = 5;
-  //   }
+  React.useEffect(() => {
+    let count = 12;
+    if (widthScreen >= 1028) {
+      count = 12;
+    } else if (widthScreen >= 747) {
+      count = 8;
+    } else {
+      count = 5;
+    }
 
-  //   const lastMovies = JSON.parse(localStorage.getItem('lastMovies'))
+    const lastMovies = JSON.parse(localStorage.getItem('lastMovies'))
 
-  //   const arr = isOneDownload
-  //     ? listMovies
-  //     : lastMovies
-  //       ? lastMovies
-  //       : listMovies
+    const arr = isOneDownload
+      ? newListMovies
+      : lastMovies
+        ? lastMovies
+        : listMovies
 
-  //   // console.log('isOneDownload', isOneDownload)
-  //   // console.log('lastMovies', lastMovies)
-  //   // console.log('listMovies', listMovies)
-  //   // console.log(arr)
-  //   // const arr = lastMovies
+    if (arr.length === 0) return;
+    const newArr = [];
+    for (let i = 0; i < count + limitedCounter; i++) {
+      newArr.push(arr[i]);
+      if (arr.length - 1 === i) break;
+    }
 
-  //   if (arr.length === 0) return;
-  //   const newArr = [];
-  //   for (let i = 0; i < count + limitedCounter; i++) {
-  //     newArr.push(arr[i]);
-  //     if (arr.length - 1 === i) break;
-  //   }
+    setNewListMovies(newArr);
 
-  //   setNewListMovies(filterMovies(configMovies, newArr));
-
-  // }, [limitedCounter, widthScreen, isOneDownload])
+  }, [limitedCounter, widthScreen, isOneDownload, isClickButton])
 
   // const numberAddCard = () => {
   //   return widthScreen >= 1028
