@@ -13,7 +13,10 @@ const useMoviesCard = (
 ) => {
   const api = new MainApi({ NODE_ENV: NODE_ENV });
 
-  const [listSearchMovies] = React.useState(JSON.parse(localStorage.getItem('lastMovies')))
+  const [
+    listSearchMovies,
+  ] = React.useState(JSON.parse
+    (localStorage.getItem('lastMovies')))
 
   const validUrl = (url) => {
     if (validator.isURL(url.trim())) {
@@ -27,7 +30,8 @@ const useMoviesCard = (
         movies.like = false;
       }
     })
-    localStorage.setItem('lastMovies', JSON.stringify(listSearchMovies));
+    localStorage.setItem('lastMovies',
+      JSON.stringify(listSearchMovies));
   }
 
   const changeFavoriteMovies = (film) => {
