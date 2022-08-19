@@ -126,7 +126,7 @@ const useMovies = (
     return obj;
   };
 
-  const filterMovies = ({ filter, searchQuery }, listMovies) => {
+  const filterMovies = ({ filter, searchQuery }, list) => {
     if (searchQuery === undefined || searchQuery === null) return;
     const regex = new RegExp(`${searchQuery.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')}`, "i")
     const isEN = /[A-Za-z]/i.test(searchQuery);
@@ -152,8 +152,8 @@ const useMovies = (
 
     const newListMovies = [];
 
-    for (let i = 0; i < listMovies.length; i++) {
-      const movies = listMovies[i];
+    for (let i = 0; i < list.length; i++) {
+      const movies = list[i];
       const str = formString(movies);
       if (filterExpression(str, movies)) {
         newListMovies.push(movies);
@@ -214,6 +214,7 @@ const useMovies = (
             showMessageMovies(TEXT_ERROR_NO_MOVIES);
           }
           localStorage.setItem('lastMovies', JSON.stringify(filterListMovies));
+          setListSearchMovies(JSON.parse(localStorage.getItem('lastMovies')))
           setNewListMovies(filterListMovies);
         })
         .catch((err) => {
@@ -230,10 +231,11 @@ const useMovies = (
       if (filterListMovies.length === 0) {
         showMessageMovies(TEXT_ERROR_NO_MOVIES);
       };
+      console.log('ffffffffffffff')
       localStorage.setItem('lastMovies', JSON.stringify(filterListMovies));
       setNewListMovies(filterListMovies);
     }
-  };
+  }
 
   const handleSubmitFormMoviesSaved = (evt) => {
     let form;
@@ -251,8 +253,18 @@ const useMovies = (
   }
 
   React.useEffect(() => {
+    if (!isOneDownload) return;
+    const filterListMovies = filterMovies(configMovies, listMovies);
+    if (filterListMovies.length === 0) {
+      showMessageMovies(TEXT_ERROR_NO_MOVIES);
+    };
+    localStorage.setItem('lastMovies', JSON.stringify(filterListMovies));
     setListSearchMovies(JSON.parse(localStorage.getItem('lastMovies')))
+    setNewListMovies(filterListMovies);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [configMovies, widthScreen])
 
+  React.useEffect(() => {
     let count = 12;
     if (widthScreen >= 1028) {
       count = 12;
@@ -276,8 +288,8 @@ const useMovies = (
     }
 
     setNewListMovies(newArr);
-
-  }, [limitedCounter, widthScreen, isOneDownload, isClickButton])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [listSearchMovies])
 
   // const numberAddCard = () => {
   //   return widthScreen >= 1028
