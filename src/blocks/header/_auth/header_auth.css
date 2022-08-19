@@ -1,5 +1,6 @@
 .header_auth {
   height: auto;
+  width: 100%;
   padding: 56px 0 0;
   flex-direction: column;
   justify-content: center;
