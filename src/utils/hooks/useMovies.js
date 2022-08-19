@@ -26,7 +26,10 @@ const useMovies = (
   const [isEN, setIsEN] = useState(false)
   const [newListMoviesSaved, setNewListMoviesSaved] = React.useState([]);
   const [newListMovies, setNewListMovies] = React.useState([]);
-  const [limitCounter, setLimitCounter] = React.useState(12);
+  const [limitedCounter, setLimitedCounter] = React.useState(0);
+  const [widthScreen, setWidthScreen] = React.useState(document.documentElement.clientWidth);
+
+  console.log(widthScreen)
 
   const { handleClickLikes } = useMoviesCard(
     showMessageMoviesList,
@@ -35,26 +38,11 @@ const useMovies = (
   );
 
   const eventChangeScreenWidth = React.useCallback(() => {
-    const windowInnerWidth = document.documentElement.clientWidth;
-    if (windowInnerWidth >= 1280) {
-      setLimitCounter(12);
-    } else if (windowInnerWidth >= 480) {
-      setLimitCounter(8);
-    } else if (windowInnerWidth > 200) {
-      setLimitCounter(5);
-    }
+    setTimeout(() => {
+      const windowInnerWidth = document.documentElement.clientWidth;
+      setWidthScreen(windowInnerWidth);
+    }, 3000);
   }, [])
-
-  // const quantityMoviesArray = (arr) => {
-  //   eventChangeScreenWidth();
-
-  //   const newArr = [];
-  //   for (let i = 0; i < limitCounter; i++) {
-  //     newArr.push(arr[i]);
-  //     if (arr.length - 1 === i) break;
-  //   }
-  //   return newArr;
-  // }
 
   const mainApi = new MainApi({ NODE_ENV: NODE_ENV });
 
@@ -235,6 +223,37 @@ const useMovies = (
     setNewListMoviesSaved(filterListMovies);
   }
 
+  // React.useEffect(() => {
+  //   let count = 12;
+  //   if (widthScreen >= 1028) {
+  //     count = 12;
+  //   } else if (widthScreen >= 747) {
+  //     count = 8;
+  //   } else {
+  //     count = 5;
+  //   }
+  //   console.log(count)
+  //   if (listMovies.length === 0) return;
+  //   const newArr = [];
+  //   for (let i = 0; i < count + limitedCounter; i++) {
+  //     newArr.push(listMovies[i]);
+  //     if (listMovies.length - 1 === i) break;
+  //   }
+  //   // setNewListMovies
+  //   setNewListMovies(filterMovies(configMovies, newArr));
+
+  // }, [limitedCounter, widthScreen])
+
+  // const numberAddCard = () => {
+  //   return widthScreen >= 1028
+  //     ? 3
+  //     : 2
+  // }
+
+
+  // const handleClickAddMovies = () => {
+  //   setLimitedCounter(limitedCounter + numberAddCard())
+  // }
 
   return {
     isEN,
@@ -243,11 +262,12 @@ const useMovies = (
     messageMoviesList,
     messageMoviesSaved,
     handleClickLikes,
+    // handleClickAddMovies,
     handleSubmitFormMoviesSaved,
     handleSubmitFormMovies,
     configMovies,
     newListMoviesSaved,
-    newListMovies
+    newListMovies,
   };
 };
 
