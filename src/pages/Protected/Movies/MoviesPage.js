@@ -19,7 +19,6 @@ function MoviesPage({
   configMovies, setConfigMovies,
   isOneDownload, setIsOneDownload,
 }) {
-
   const {
     isEN,
     isDownload,

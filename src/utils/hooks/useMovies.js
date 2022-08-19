@@ -26,7 +26,29 @@ const useMovies = (
   const [isEN, setIsEN] = useState(false)
   const [newListMoviesSaved, setNewListMoviesSaved] = React.useState([]);
   const [newListMovies, setNewListMovies] = React.useState([]);
+  const [limitCounter, setLimitCounter] = React.useState(12);
 
+  const eventChangeScreenWidth = React.useCallback(() => {
+    const windowInnerWidth = document.documentElement.clientWidth;
+    if (windowInnerWidth >= 1280) {
+      setLimitCounter(12);
+    } else if (windowInnerWidth >= 480) {
+      setLimitCounter(8);
+    } else if (windowInnerWidth > 200) {
+      setLimitCounter(5);
+    }
+  }, [])
+
+  // const quantityMoviesArray = (arr) => {
+  //   eventChangeScreenWidth();
+
+  //   const newArr = [];
+  //   for (let i = 0; i < limitCounter; i++) {
+  //     newArr.push(arr[i]);
+  //     if (arr.length - 1 === i) break;
+  //   }
+  //   return newArr;
+  // }
 
   const { handleClickLikes } = useMoviesCard(
     showMessageMoviesList,
@@ -76,6 +98,10 @@ const useMovies = (
           });
         });
     } else setNewListMoviesSaved(listMoviesSaved);
+    window.addEventListener("resize", eventChangeScreenWidth);
+    return () => {
+      window.removeEventListener("resize", eventChangeScreenWidth);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -92,21 +118,6 @@ const useMovies = (
     const regex = new RegExp(`${searchQuery.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')}`, "i")
     const isEN = /[A-Za-z]/i.test(searchQuery);
     setIsEN(isEN);
-    // let str = '';
-    // const newListMovies = listMovies.filter((movies, i) => {
-    //   isEN
-    //     ? str = movies.nameEN
-    //       ? movies.nameEN.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')
-    //       : movies.nameRU.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')
-    //     : str = movies.nameRU
-    //       ? movies.nameRU.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')
-    //       : movies.nameEN.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')
-
-    //   return filter
-    //     ? movies.duration <= 40 && regex.test(str)
-    //     : regex.test(str)
-    // })
-    // console.log(newListMovies)
 
     const formString = (movies) => {
       let str = '';
@@ -127,6 +138,7 @@ const useMovies = (
     }
 
     const newListMovies = [];
+    let counterMovies = 0;
     const startLength = listMovies.length;
 
     for (let i = 0; i < startLength; i++) {
@@ -134,14 +146,25 @@ const useMovies = (
       const str = formString(movies);
       if (filterExpression(str, movies)) {
         newListMovies.push(movies);
+        counterMovies = counterMovies + 1;
       }
+      if (counterMovies === limitCounter + 7) break;
     }
-    console.log(newListMovies)
+    const sortFunction = isEN
+      ? function SortArray(x, y) {
+        if (x.nameEN < y.nameEN) { return -1; }
+        if (x.nameEN > y.nameEN) { return 1; }
+        return 0;
+      }
+      : function SortArray(x, y) {
+        if (x.nameRU < y.nameRU) { return -1; }
+        if (x.nameRU > y.nameRU) { return 1; }
+        return 0;
+      }
 
+    const sortAlphabetListMovies = newListMovies.sort(sortFunction);
 
-
-    console.log(newListMovies)
-    const newList = newListMovies.map((movie) => {
+    const newList = sortAlphabetListMovies.map((movie) => {
       const id = movie.id || movie.movieId;
       const isLike = () => {
         for (let i = 0; i < listMoviesSaved.length; i++) {

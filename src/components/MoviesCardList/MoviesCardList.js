@@ -15,12 +15,12 @@ function MoviesCardList({
       <section className="movies-list">
         <span className='movies-list__message'>{messageMoviesList}</span>
         <ul className="movies-list__cards">
-          {moviesList.map((film) => {
+          {moviesList.map((movie) => {
             return (
               <MoviesCard
-                key={film._id || film.id}
+                key={movie._id || movie.id}
                 isEN={isEN}
-                card={film}
+                card={movie}
                 modifierButton={modifierButton}
                 handleClickLikes={handleClickLikes} />
             );
