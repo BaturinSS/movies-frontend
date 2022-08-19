@@ -23,3 +23,18 @@ export const timeFormat = (timeFull) => {
 
   return `${timeHours()} ${timeMinutes()}`
 }
+
+export const sortAlphabetList = (list, isEN) => {
+  const sortFunction = isEN
+    ? function SortArray(x, y) {
+      if (x.nameEN < y.nameEN) { return -1; }
+      if (x.nameEN > y.nameEN) { return 1; }
+      return 0;
+    }
+    : function SortArray(x, y) {
+      if (x.nameRU < y.nameRU) { return -1; }
+      if (x.nameRU > y.nameRU) { return 1; }
+      return 0;
+    }
+  return list.sort(sortFunction);
+}

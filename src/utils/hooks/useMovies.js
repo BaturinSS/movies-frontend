@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import moviesApi from "../api/MoviesApi";
 import MainApi from "../api/MainApi";
 import useMoviesCard from '../../utils/hooks/useMoviesCard';
-import { checkedLengthArray } from "../utils";
+import { checkedLengthArray, sortAlphabetList } from "../utils";
 
 import {
   TEXT_MESSAGE_NO_SEARCH, NODE_ENV, TEXT_ERROR_NOT_FOUND,
@@ -28,6 +28,12 @@ const useMovies = (
   const [newListMovies, setNewListMovies] = React.useState([]);
   const [limitCounter, setLimitCounter] = React.useState(12);
 
+  const { handleClickLikes } = useMoviesCard(
+    showMessageMoviesList,
+    listMoviesSaved, setListMoviesSaved,
+    newListMoviesSaved, setNewListMoviesSaved,
+  );
+
   const eventChangeScreenWidth = React.useCallback(() => {
     const windowInnerWidth = document.documentElement.clientWidth;
     if (windowInnerWidth >= 1280) {
@@ -49,12 +55,6 @@ const useMovies = (
   //   }
   //   return newArr;
   // }
-
-  const { handleClickLikes } = useMoviesCard(
-    showMessageMoviesList,
-    listMoviesSaved, setListMoviesSaved,
-    newListMoviesSaved, setNewListMoviesSaved,
-  );
 
   const mainApi = new MainApi({ NODE_ENV: NODE_ENV });
 
@@ -85,8 +85,9 @@ const useMovies = (
         .getMovies()
         .then(({ films }) => {
           if (checkedLengthArray(films)) return;
-          setListMoviesSaved(films);
-          setNewListMoviesSaved(films);
+
+          setListMoviesSaved(sortAlphabetList(films, isEN));
+          setNewListMoviesSaved(sortAlphabetList(films, isEN));
         })
         .catch((err) => {
           showMessageMoviesSaved(TEXT_ERROR);
@@ -120,51 +121,32 @@ const useMovies = (
     setIsEN(isEN);
 
     const formString = (movies) => {
-      let str = '';
-      isEN
-        ? str = movies.nameEN
+      return isEN
+        ? movies.nameEN
           ? movies.nameEN.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')
           : movies.nameRU.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')
-        : str = movies.nameRU
+        : movies.nameRU
           ? movies.nameRU.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')
           : movies.nameEN.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')
-      return str;
-    }
+    };
 
     const filterExpression = (str, movies) => {
       return filter
         ? movies.duration <= 40 && regex.test(str)
         : regex.test(str)
-    }
+    };
 
     const newListMovies = [];
-    let counterMovies = 0;
-    const startLength = listMovies.length;
 
-    for (let i = 0; i < startLength; i++) {
+    for (let i = 0; i < listMovies.length; i++) {
       const movies = listMovies[i];
       const str = formString(movies);
       if (filterExpression(str, movies)) {
         newListMovies.push(movies);
-        counterMovies = counterMovies + 1;
-      }
-      if (counterMovies === limitCounter + 7) break;
-    }
-    const sortFunction = isEN
-      ? function SortArray(x, y) {
-        if (x.nameEN < y.nameEN) { return -1; }
-        if (x.nameEN > y.nameEN) { return 1; }
-        return 0;
-      }
-      : function SortArray(x, y) {
-        if (x.nameRU < y.nameRU) { return -1; }
-        if (x.nameRU > y.nameRU) { return 1; }
-        return 0;
-      }
+      };
+    };
 
-    const sortAlphabetListMovies = newListMovies.sort(sortFunction);
-
-    const newList = sortAlphabetListMovies.map((movie) => {
+    return newListMovies.map((movie) => {
       const id = movie.id || movie.movieId;
       const isLike = () => {
         for (let i = 0; i < listMoviesSaved.length; i++) {
@@ -175,7 +157,6 @@ const useMovies = (
       movie.like = isLike();
       return movie;
     })
-    return newList;
   }
 
   React.useEffect(() => {
@@ -210,8 +191,9 @@ const useMovies = (
         .download()
         .then((movies) => {
           setIsOneDownload(true);
-          setListMovies(movies);
-          const filterListMovies = filterMovies(newConfigMovies, movies);
+          setListMovies(sortAlphabetList(movies, isEN));
+          const filterListMovies =
+            filterMovies(newConfigMovies, sortAlphabetList(movies, isEN));
           if (filterListMovies.length === 0) {
             showMessageMovies(TEXT_ERROR_NO_MOVIES);
             return;

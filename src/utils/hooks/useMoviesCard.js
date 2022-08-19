@@ -15,13 +15,21 @@ const useMoviesCard = (
 
   const [
     listSearchMovies,
-  ] = React.useState(JSON.parse
-    (localStorage.getItem('lastMovies')))
+  ] = React.useState(JSON.parse(localStorage.getItem('lastMovies')))
 
   const validUrl = (url) => {
     if (validator.isURL(url.trim())) {
       return url;
     } else { return null }
+  }
+
+  const likeMovies = (film) => {
+    listSearchMovies.forEach((movies) => {
+      if (movies.id === film.movieId) {
+        movies.like = true;
+      }
+    })
+    localStorage.setItem('lastMovies', JSON.stringify(listSearchMovies));
   }
 
   const dislikeMovies = (film) => {
@@ -30,8 +38,7 @@ const useMoviesCard = (
         movies.like = false;
       }
     })
-    localStorage.setItem('lastMovies',
-      JSON.stringify(listSearchMovies));
+    localStorage.setItem('lastMovies', JSON.stringify(listSearchMovies));
   }
 
   const changeFavoriteMovies = (film) => {
@@ -95,6 +102,7 @@ const useMoviesCard = (
       .addMovies(newFilm)
       .then(({ message, newFilm }) => {
         film.like = true;
+        if (film.id) likeMovies(newFilm);
         showMessageMoviesList(message, '')
         changeFavoriteMovies({ newFilm: newFilm });
       })
@@ -114,7 +122,7 @@ const useMoviesCard = (
       .deleteMovies(film.id || film.movieId)
       .then(({ message, deletedFilm }) => {
         film.like = false;
-        if (film._id) dislikeMovies(deletedFilm);
+        if (film.id) dislikeMovies(deletedFilm);
         showMessageMoviesList(message, '')
         changeFavoriteMovies({ deletedFilm: deletedFilm });
       })
