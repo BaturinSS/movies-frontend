@@ -14,7 +14,7 @@ function MoviesCard({
       <li className="movies-list__card">
         <figure className="movies-list__info">
           <figcaption>
-            <h2 className="movies-list__title">{isEN
+            <h2 className="movies-list__title">{isEN && card.nameEN !== ''
               ? card.nameEN.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, ' ')
               : card.nameRU.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, ' ')}
               <p className='movies-list__title-time'>
@@ -33,7 +33,7 @@ function MoviesCard({
               </div>}
             <img className="movies-list__image"
               src={card.imageThumbnail || BASE_URL_IMAGE + card.image.url || noImage}
-              alt={isEN
+              alt={isEN && card.nameEN !== ''
                 ? card.nameEN.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, ' ')
                 : card.nameRU.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, ' ')
               }

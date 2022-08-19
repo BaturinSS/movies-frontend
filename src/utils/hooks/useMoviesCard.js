@@ -14,8 +14,8 @@ const useMoviesCard = (
   const api = new MainApi({ NODE_ENV: NODE_ENV });
 
   const [
-    listSearchMovies,
-  ] = React.useState(JSON.parse(localStorage.getItem('lastMovies')))
+    listSearchMovies, setListSearchMovies
+  ] = React.useState([])
 
   const validUrl = (url) => {
     if (validator.isURL(url.trim())) {
@@ -102,7 +102,7 @@ const useMoviesCard = (
       .addMovies(newFilm)
       .then(({ message, newFilm }) => {
         film.like = true;
-        if (film.id) likeMovies(newFilm);
+        likeMovies(newFilm);
         showMessageMoviesList(message, '')
         changeFavoriteMovies({ newFilm: newFilm });
       })
@@ -138,6 +138,7 @@ const useMoviesCard = (
   }
 
   const handleClickLikes = (film) => {
+    setListSearchMovies(JSON.parse(localStorage.getItem('lastMovies')))
     film.like || film._id
       ? deleteFavorite(film)
       : addFavorite(film);

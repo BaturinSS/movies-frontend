@@ -29,8 +29,6 @@ const useMovies = (
   const [limitedCounter, setLimitedCounter] = React.useState(0);
   const [widthScreen, setWidthScreen] = React.useState(document.documentElement.clientWidth);
 
-  console.log(widthScreen)
-
   const { handleClickLikes } = useMoviesCard(
     showMessageMoviesList,
     listMoviesSaved, setListMoviesSaved,
@@ -41,7 +39,7 @@ const useMovies = (
     setTimeout(() => {
       const windowInnerWidth = document.documentElement.clientWidth;
       setWidthScreen(windowInnerWidth);
-    }, 3000);
+    }, 5000);
   }, [])
 
   const mainApi = new MainApi({ NODE_ENV: NODE_ENV });
@@ -73,7 +71,6 @@ const useMovies = (
         .getMovies()
         .then(({ films }) => {
           if (checkedLengthArray(films)) return;
-
           setListMoviesSaved(sortAlphabetList(films, isEN));
           setNewListMoviesSaved(sortAlphabetList(films, isEN));
         })
@@ -104,16 +101,17 @@ const useMovies = (
   };
 
   const filterMovies = ({ filter, searchQuery }, listMovies) => {
+    if (searchQuery === undefined || searchQuery === null) return;
     const regex = new RegExp(`${searchQuery.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')}`, "i")
     const isEN = /[A-Za-z]/i.test(searchQuery);
     setIsEN(isEN);
 
     const formString = (movies) => {
       return isEN
-        ? movies.nameEN
+        ? (movies.nameEN && movies.nameEN !== '')
           ? movies.nameEN.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')
           : movies.nameRU.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')
-        : movies.nameRU
+        : (movies.nameRU && movies.nameRU !== '')
           ? movies.nameRU.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')
           : movies.nameEN.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')
     };
@@ -179,7 +177,7 @@ const useMovies = (
         .download()
         .then((movies) => {
           setIsOneDownload(true);
-          setListMovies(sortAlphabetList(movies, isEN));
+          setListMovies(sortAlphabetList(movies));
           const filterListMovies =
             filterMovies(newConfigMovies, sortAlphabetList(movies, isEN));
           if (filterListMovies.length === 0) {
@@ -223,26 +221,40 @@ const useMovies = (
     setNewListMoviesSaved(filterListMovies);
   }
 
-  // React.useEffect(() => {
-  //   let count = 12;
-  //   if (widthScreen >= 1028) {
-  //     count = 12;
-  //   } else if (widthScreen >= 747) {
-  //     count = 8;
-  //   } else {
-  //     count = 5;
-  //   }
-  //   console.log(count)
-  //   if (listMovies.length === 0) return;
-  //   const newArr = [];
-  //   for (let i = 0; i < count + limitedCounter; i++) {
-  //     newArr.push(listMovies[i]);
-  //     if (listMovies.length - 1 === i) break;
-  //   }
-  //   // setNewListMovies
-  //   setNewListMovies(filterMovies(configMovies, newArr));
+  React.useEffect(() => {
+    let count = 12;
+    if (widthScreen >= 1028) {
+      count = 12;
+    } else if (widthScreen >= 747) {
+      count = 8;
+    } else {
+      count = 5;
+    }
 
-  // }, [limitedCounter, widthScreen])
+    const lastMovies = JSON.parse(localStorage.getItem('lastMovies'))
+
+    const arr = isOneDownload
+      ? listMovies
+      : lastMovies
+        ? lastMovies
+        : listMovies
+
+    // console.log('isOneDownload', isOneDownload)
+    // console.log('lastMovies', lastMovies)
+    // console.log('listMovies', listMovies)
+    // console.log(arr)
+    // const arr = lastMovies
+
+    if (arr.length === 0) return;
+    const newArr = [];
+    for (let i = 0; i < count + limitedCounter; i++) {
+      newArr.push(arr[i]);
+      if (arr.length - 1 === i) break;
+    }
+
+    setNewListMovies(filterMovies(configMovies, newArr));
+
+  }, [limitedCounter, widthScreen, isOneDownload])
 
   // const numberAddCard = () => {
   //   return widthScreen >= 1028
