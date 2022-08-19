@@ -15,7 +15,7 @@ const useMoviesCard = (
 
   const [
     listSearchMovies, setListSearchMovies
-  ] = React.useState([])
+  ] = React.useState(JSON.parse(localStorage.getItem('lastMovies')))
 
   const validUrl = (url) => {
     if (validator.isURL(url.trim())) {

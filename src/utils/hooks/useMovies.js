@@ -122,6 +122,8 @@ const useMovies = (
         : regex.test(str)
     };
 
+
+
     const newListMovies = [];
 
     for (let i = 0; i < listMovies.length; i++) {
@@ -177,12 +179,12 @@ const useMovies = (
         .download()
         .then((movies) => {
           setIsOneDownload(true);
-          setListMovies(sortAlphabetList(movies));
+          const sortMovies = sortAlphabetList(movies, isEN)
+          setListMovies(sortMovies);
           const filterListMovies =
-            filterMovies(newConfigMovies, sortAlphabetList(movies, isEN));
+            filterMovies(newConfigMovies, sortMovies);
           if (filterListMovies.length === 0) {
             showMessageMovies(TEXT_ERROR_NO_MOVIES);
-            return;
           }
           localStorage.setItem('lastMovies', JSON.stringify(filterListMovies));
           setNewListMovies(filterListMovies);
@@ -221,40 +223,40 @@ const useMovies = (
     setNewListMoviesSaved(filterListMovies);
   }
 
-  React.useEffect(() => {
-    let count = 12;
-    if (widthScreen >= 1028) {
-      count = 12;
-    } else if (widthScreen >= 747) {
-      count = 8;
-    } else {
-      count = 5;
-    }
+  // React.useEffect(() => {
+  //   let count = 12;
+  //   if (widthScreen >= 1028) {
+  //     count = 12;
+  //   } else if (widthScreen >= 747) {
+  //     count = 8;
+  //   } else {
+  //     count = 5;
+  //   }
 
-    const lastMovies = JSON.parse(localStorage.getItem('lastMovies'))
+  //   const lastMovies = JSON.parse(localStorage.getItem('lastMovies'))
 
-    const arr = isOneDownload
-      ? listMovies
-      : lastMovies
-        ? lastMovies
-        : listMovies
+  //   const arr = isOneDownload
+  //     ? listMovies
+  //     : lastMovies
+  //       ? lastMovies
+  //       : listMovies
 
-    // console.log('isOneDownload', isOneDownload)
-    // console.log('lastMovies', lastMovies)
-    // console.log('listMovies', listMovies)
-    // console.log(arr)
-    // const arr = lastMovies
+  //   // console.log('isOneDownload', isOneDownload)
+  //   // console.log('lastMovies', lastMovies)
+  //   // console.log('listMovies', listMovies)
+  //   // console.log(arr)
+  //   // const arr = lastMovies
 
-    if (arr.length === 0) return;
-    const newArr = [];
-    for (let i = 0; i < count + limitedCounter; i++) {
-      newArr.push(arr[i]);
-      if (arr.length - 1 === i) break;
-    }
+  //   if (arr.length === 0) return;
+  //   const newArr = [];
+  //   for (let i = 0; i < count + limitedCounter; i++) {
+  //     newArr.push(arr[i]);
+  //     if (arr.length - 1 === i) break;
+  //   }
 
-    setNewListMovies(filterMovies(configMovies, newArr));
+  //   setNewListMovies(filterMovies(configMovies, newArr));
 
-  }, [limitedCounter, widthScreen, isOneDownload])
+  // }, [limitedCounter, widthScreen, isOneDownload])
 
   // const numberAddCard = () => {
   //   return widthScreen >= 1028
