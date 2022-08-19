@@ -29,6 +29,7 @@ function App() {
     setListMovies([]);
     setListMoviesSaved([]);
     setConfigMovies({});
+    setIsOneDownload(false);
   }
 
   React.useEffect(() => {
