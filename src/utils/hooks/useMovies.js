@@ -28,7 +28,8 @@ const useMovies = (
   const [newListMovies, setNewListMovies] = React.useState([]);
   const [limitedCounter, setLimitedCounter] = React.useState(0);
   const [widthScreen, setWidthScreen] = React.useState(document.documentElement.clientWidth);
-  const [isClickButton, setIsClickButton] = React.useState(false)
+  const [finalityListMovies, setFinalityListMovies] = React.useState([]);
+  const [isButtonDisabled, setIsButtonDisabled] = React.useState(false);
 
   const [
     listSearchMovies, setListSearchMovies
@@ -65,7 +66,7 @@ const useMovies = (
     setTimeout(() => {
       const windowInnerWidth = document.documentElement.clientWidth;
       setWidthScreen(windowInnerWidth);
-    }, 5000);
+    }, 10000);
   }, [])
 
   const mainApi = new MainApi({ NODE_ENV: NODE_ENV });
@@ -148,8 +149,6 @@ const useMovies = (
         : regex.test(str)
     };
 
-
-
     const newListMovies = [];
 
     for (let i = 0; i < list.length; i++) {
@@ -180,7 +179,7 @@ const useMovies = (
   }, [])
 
   const handleSubmitFormMovies = (evt) => {
-    setIsClickButton(!isClickButton);
+    setLimitedCounter(0);
     let form;
     if (evt.target) {
       evt.preventDefault();
@@ -231,7 +230,6 @@ const useMovies = (
       if (filterListMovies.length === 0) {
         showMessageMovies(TEXT_ERROR_NO_MOVIES);
       };
-      console.log('ffffffffffffff')
       localStorage.setItem('lastMovies', JSON.stringify(filterListMovies));
       setNewListMovies(filterListMovies);
     }
@@ -262,7 +260,7 @@ const useMovies = (
     setListSearchMovies(JSON.parse(localStorage.getItem('lastMovies')))
     setNewListMovies(filterListMovies);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [configMovies, widthScreen])
+  }, [configMovies, widthScreen, limitedCounter])
 
   React.useEffect(() => {
     let count = 12;
@@ -273,34 +271,42 @@ const useMovies = (
     } else {
       count = 5;
     }
+    console.log(newListMovies)
 
     const arr = isOneDownload
       ? newListMovies
       : listSearchMovies
         ? listSearchMovies
-        : listMovies
+        : newListMovies
 
-    if (arr.length === 0) return;
+    if (arr.length === 0) {
+      setFinalityListMovies(arr);
+      return;
+    };
+
+    if (arr.length >= count + limitedCounter) setIsButtonDisabled(true);
+
     const newArr = [];
-    for (let i = 0; i < count + limitedCounter; i++) {
+    for (let i = 0; i < (count + limitedCounter); i++) {
       newArr.push(arr[i]);
       if (arr.length - 1 === i) break;
     }
 
-    setNewListMovies(newArr);
+    if (arr.length === newArr.length) setIsButtonDisabled(false);
+
+    setFinalityListMovies(newArr);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [listSearchMovies])
+  }, [listSearchMovies, widthScreen, newListMovies, limitedCounter])
 
-  // const numberAddCard = () => {
-  //   return widthScreen >= 1028
-  //     ? 3
-  //     : 2
-  // }
+  const numberAddCard = () => {
+    return widthScreen >= 1028
+      ? 3
+      : 2
+  }
 
-
-  // const handleClickAddMovies = () => {
-  //   setLimitedCounter(limitedCounter + numberAddCard())
-  // }
+  const handleClickAddMovies = () => {
+    setLimitedCounter(limitedCounter + numberAddCard())
+  }
 
   return {
     isEN,
@@ -309,12 +315,13 @@ const useMovies = (
     messageMoviesList,
     messageMoviesSaved,
     handleClickLikes,
-    // handleClickAddMovies,
+    handleClickAddMovies,
     handleSubmitFormMoviesSaved,
     handleSubmitFormMovies,
     configMovies,
     newListMoviesSaved,
-    newListMovies,
+    finalityListMovies,
+    isButtonDisabled,
   };
 };
 

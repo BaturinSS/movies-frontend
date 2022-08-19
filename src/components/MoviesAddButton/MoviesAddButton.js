@@ -1,13 +1,16 @@
 import './MoviesAddButton.css';
 import React from "react";
 
-function MoviesAddButton({ handleClickAddMovies }) {
+function MoviesAddButton({
+  handleClickAddMovies,
+  isButtonDisabled,
+}) {
   return (
     <>
-      <button className="movies-list__button-add"
+      {isButtonDisabled && <button className="movies-list__button-add"
         type="button"
         onClick={handleClickAddMovies}>{`Ещё`}
-      </button>
+      </button>}
     </>
   )
 }

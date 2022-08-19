@@ -26,8 +26,9 @@ function MoviesPage({
     handleClickLikes,
     handleSubmitFormMovies,
     handleClickAddMovies,
-    newListMovies,
+    finalityListMovies,
     messageMoviesList,
+    isButtonDisabled,
   } = useMovies(
     listMovies, setListMovies,
     listMoviesSaved, setListMoviesSaved,
@@ -46,17 +47,19 @@ function MoviesPage({
           nameForm={'FormSearchMovies'} />
         {isDownload
           ? <Preloader modifier={'preloader_main'} />
-          : checkedLengthArray(newListMovies)
+          : checkedLengthArray(finalityListMovies)
             ? <GreetingMessage
               message={messageMovies}
             />
             : <MoviesCardList
               isEN={isEN}
               messageMoviesList={messageMoviesList}
-              moviesList={newListMovies}
+              moviesList={finalityListMovies}
               handleClickLikes={handleClickLikes}
             >
-              <MoviesAddButton handleClickAddMovies={handleClickAddMovies} />
+              <MoviesAddButton
+                isButtonDisabled={isButtonDisabled}
+                handleClickAddMovies={handleClickAddMovies} />
             </MoviesCardList>}
       </Main>
       <Footer config={configFooter} />
