@@ -29,10 +29,36 @@ const useMovies = (
   const [limitedCounter, setLimitedCounter] = React.useState(0);
   const [widthScreen, setWidthScreen] = React.useState(document.documentElement.clientWidth);
   const [isClickButton, setIsClickButton] = React.useState(false)
+
+  const [
+    listSearchMovies, setListSearchMovies
+  ] = React.useState(JSON.parse(localStorage.getItem('lastMovies')))
+
+  const likeMovies = (film) => {
+    listSearchMovies.forEach((movies) => {
+      if (movies.id === film.movieId) {
+        movies.like = true;
+      }
+    })
+    localStorage.setItem('lastMovies', JSON.stringify(listSearchMovies));
+  }
+
+  const dislikeMovies = (deletedFilm, film) => {
+    if (!listSearchMovies) return;
+    film.like = false;
+    listSearchMovies.forEach((movies) => {
+      if (movies.id === deletedFilm.movieId) {
+        movies.like = false;
+      }
+    })
+    localStorage.setItem('lastMovies', JSON.stringify(listSearchMovies));
+  }
+
   const { handleClickLikes } = useMoviesCard(
     showMessageMoviesList,
     listMoviesSaved, setListMoviesSaved,
     newListMoviesSaved, setNewListMoviesSaved,
+    likeMovies, dislikeMovies,
   );
 
   const eventChangeScreenWidth = React.useCallback(() => {
@@ -225,6 +251,8 @@ const useMovies = (
   }
 
   React.useEffect(() => {
+    setListSearchMovies(JSON.parse(localStorage.getItem('lastMovies')))
+
     let count = 12;
     if (widthScreen >= 1028) {
       count = 12;
@@ -234,12 +262,10 @@ const useMovies = (
       count = 5;
     }
 
-    const lastMovies = JSON.parse(localStorage.getItem('lastMovies'))
-
     const arr = isOneDownload
       ? newListMovies
-      : lastMovies
-        ? lastMovies
+      : listSearchMovies
+        ? listSearchMovies
         : listMovies
 
     if (arr.length === 0) return;
