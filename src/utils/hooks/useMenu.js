@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 
 const useMenu = () => {

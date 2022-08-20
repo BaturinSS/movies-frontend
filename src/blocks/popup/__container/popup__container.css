@@ -1,6 +1,5 @@
 .popup__container {
-  position: fixed;
-  height: 80vh;
+  max-height: 80vh;
   width: 80vw;
   padding: 0;
   margin: 40px;
@@ -17,5 +16,15 @@
   .popup__container {
     min-width: 300px;
     margin: 20px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .popup__container {
+    transform: rotate(90deg);
+    max-height: 80vh;
+    min-width: 150%;
+    padding: 0;
+    margin: 0;
   }
 }

@@ -1,7 +1,7 @@
 .movies-list__play-img {
   position: absolute;
-  top: 38%;
-  right: 42%;
+  bottom: 8%;
+  left: 4%;
   width: 15%;
   transition: .5s;
   z-index: 5;

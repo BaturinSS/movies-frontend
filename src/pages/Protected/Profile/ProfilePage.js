@@ -14,14 +14,15 @@ import configFormInputName from '../../../utils/config/formInput/configFormInput
 import { TranslationContext } from '../../../contexts/TranslationContext'
 import useProfile from '../../../utils/hooks/useProfile';
 import MainApi from "../../../utils/api/MainApi";
-import {
-  NODE_ENV, TEXT_ERROR_INPUT_NEW, TEXT_ERROR,
-} from "../../../utils/constants";
 import Popup from '../../../components/Popup/Popup';
 import PopupInform from '../../../components/PopupInform/PopupInform';
+import { NODE_ENV, TEXT_ERROR_INPUT_NEW, TEXT_ERROR } from "../../../utils/constants";
+
 
 function ProfilePage({
-  setCurrentUser, setIsLoggedIn, clearingMemory,
+  setCurrentUser,
+  setIsLoggedIn,
+  clearingMemory,
 }) {
   const { currentUser } = React.useContext(TranslationContext);
   const [isDownload, setIsDownload] = React.useState(false);

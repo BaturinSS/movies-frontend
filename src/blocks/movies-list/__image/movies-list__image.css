@@ -21,7 +21,7 @@
 @media screen and (min-width: 520px) {
   .movies-list__image {
     height: 300px;
-    max-width: 120px
+    max-width: 120px;
   }
 }
 
