@@ -66,7 +66,6 @@ const useMoviesCard = (
 
   function addFavorite(film) {
     const newFilm = reformatCardMovies(film);
-
     api
       .addMovies(newFilm)
       .then(({ message, newFilm }) => {
@@ -86,8 +85,8 @@ const useMoviesCard = (
     api
       .deleteMovies((film.id) || (film.movieId))
       .then(({ message, deletedFilm }) => {
-        film.like = false;
-        dislikeMovies(deletedFilm, film);
+        if (film.like) film.like = false;
+        dislikeMovies(deletedFilm);
         showMessageMoviesList(message, '');
         changeFavoriteMovies({ deletedFilm: deletedFilm });
       })

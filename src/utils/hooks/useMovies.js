@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import moviesApi from "../api/MoviesApi";
 import MainApi from "../api/MainApi";
 import useMoviesCard from '../../utils/hooks/useMoviesCard';
+
 import {
   checkedLengthArray, sortAlphabetList, testTextFormat,
   getParseLocalStorage, setStringifyLocalStorage,
@@ -34,7 +35,7 @@ const useMovies = (
   const [widthScreen, setWidthScreen] = React.useState(document.documentElement.clientWidth);
   const [finalityListMovies, setFinalityListMovies] = React.useState([]);
   const [isButtonDisabled, setIsButtonDisabled] = React.useState(false);
-  const [listSearchMovies, setListSearchMovies] = React.useState(JSON.parse(localStorage.getItem('lastMovies')));
+  const [listSearchMovies, setListSearchMovies] = React.useState(JSON.parse(localStorage.getItem('lastMovies')) || []);
 
   const mainApi = new MainApi({ NODE_ENV: NODE_ENV });
   const location = useLocation();
@@ -45,6 +46,7 @@ const useMovies = (
   };
 
   function dislikeMovies({ movieId }) {
+    if (!getParseLocalStorage('lastMovies')) return;
     listSearchMovies.forEach((movies) => { if (movies.id === movieId) movies.like = false });
     setStringifyLocalStorage('lastMovies', listSearchMovies);
   };
