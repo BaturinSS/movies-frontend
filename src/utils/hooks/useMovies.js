@@ -34,6 +34,9 @@ const useMovies = (
   const [isButtonDisabled, setIsButtonDisabled] = React.useState(false);
   const [listSearchMovies, setListSearchMovies] = React.useState(JSON.parse(localStorage.getItem('lastMovies')));
 
+  const mainApi = new MainApi({ NODE_ENV: NODE_ENV });
+  const location = useLocation();
+
   function likeMovies({ movieId }) {
     listSearchMovies.forEach((movies) => { if (movies.id === movieId) movies.like = true });
     setStringifyLocalStorage('lastMovies', listSearchMovies);
@@ -54,10 +57,6 @@ const useMovies = (
       setWidthScreen(document.documentElement.clientWidth);
     }, 10000);
   }, []);
-
-  const mainApi = new MainApi({ NODE_ENV: NODE_ENV });
-
-  const location = useLocation();
 
   function showMessageMovies(message) {
     setMessageMovies(message);
@@ -85,18 +84,12 @@ const useMovies = (
         })
         .catch((err) => {
           showMessageMoviesSaved(TEXT_ERROR);
-          if (err.name === 'TypeError') {
-            return console.error(err.message);
-          };
-          err.then(({ message }) => {
-            console.error(message);
-          });
+          if (err.name === 'TypeError') return console.error(err.message);
+          err.then(({ message }) => console.error(message));
         });
     } else setNewListMoviesSaved(listMoviesSaved);
     window.addEventListener("resize", eventChangeScreenWidth);
-    return () => {
-      window.removeEventListener("resize", eventChangeScreenWidth);
-    };
+    return () => window.removeEventListener("resize", eventChangeScreenWidth);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -110,7 +103,7 @@ const useMovies = (
   };
 
   const filterMovies = ({ filter, searchQuery }, list) => {
-    if (searchQuery === undefined || searchQuery === null) return;
+    if ((searchQuery === undefined) || (searchQuery === null)) return;
     const regex = new RegExp(`${searchQuery.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')}`, "i")
     const isEN = /[A-Za-z]/i.test(searchQuery);
     setIsEN(isEN);
