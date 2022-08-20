@@ -27,7 +27,7 @@ export function timeFormat(timeFull) {
 };
 
 export function sortAlphabetList(list, isEN) {
-  const sortFunction = isEN
+  const sortFunction = (isEN)
     ? function SortArray(x, y) {
       if (x.nameEN < y.nameEN) return -1;
       if (x.nameEN > y.nameEN) return 1;
@@ -45,13 +45,13 @@ export function sortAlphabetList(list, isEN) {
 export function appointTypeInput(typeInput) {
   const checkType = () => (ARR_TYPE_INPUTS.indexOf(typeInput) !== -1);
 
-  return (String(typeInput) && checkType())
+  return ((String(typeInput)) && (checkType()))
     ? typeInput
     : 'text'
 };
 
 export function validUrl(url) {
-  return validator.isURL(url.trim())
+  return (validator.isURL(url.trim()))
     ? url
     : null;
 };
