@@ -55,3 +55,11 @@ export function validUrl(url) {
     ? url
     : null;
 };
+
+export const getParseLocalStorage = (key) => {
+  JSON.parse(localStorage.getItem(key));
+};
+
+export const setStringifyLocalStorage = (key, arr) => {
+  localStorage.setItem(key, JSON.stringify(arr));
+};
