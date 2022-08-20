@@ -6,6 +6,7 @@ import useMoviesCard from '../../utils/hooks/useMoviesCard';
 import {
   checkedLengthArray, sortAlphabetList, testTextFormat,
   getParseLocalStorage, setStringifyLocalStorage,
+  filterExpression,
 } from "../utils";
 
 import {
@@ -13,6 +14,7 @@ import {
   TEXT_MESSAGE_NO_FAVORITE, TEXT_ERROR,
   TEXT_ERROR_EMPTY_REQUEST, TEXT_ERROR_API_REQUEST,
   TEXT_ERROR_NO_MOVIES, TEXT_ERROR_TEST_REQUEST,
+  REGEX_TEST_LANGUAGE_CARD,
 } from "../constants";
 
 const useMovies = (
@@ -104,32 +106,13 @@ const useMovies = (
 
   const filterMovies = ({ filter, searchQuery }, list) => {
     if ((searchQuery === undefined) || (searchQuery === null)) return;
-    const regex = new RegExp(`${searchQuery.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')}`, "i")
-    const isEN = /[A-Za-z]/i.test(searchQuery);
-    setIsEN(isEN);
-
-    const formString = (movies) => {
-      return isEN
-        ? (movies.nameEN && movies.nameEN !== '')
-          ? movies.nameEN.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')
-          : movies.nameRU.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')
-        : (movies.nameRU && movies.nameRU !== '')
-          ? movies.nameRU.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')
-          : movies.nameEN.replace(/[^A-Za-zА-Яа-яЁё0-9']+/g, '')
-    };
-
-    const filterExpression = (str, movies) => {
-      return filter
-        ? movies.duration <= 40 && regex.test(str)
-        : regex.test(str)
-    };
-
+    const isEN = REGEX_TEST_LANGUAGE_CARD.test(searchQuery);
     const newListMovies = [];
+    setIsEN(isEN);
 
     for (let i = 0; i < list.length; i++) {
       const movies = list[i];
-      const str = formString(movies);
-      if (filterExpression(str, movies)) {
+      if (filterExpression(searchQuery, filter, movies, isEN)) {
         newListMovies.push(movies);
       };
     };
@@ -144,8 +127,8 @@ const useMovies = (
       }
       movie.like = isLike();
       return movie;
-    })
-  }
+    });
+  };
 
   React.useEffect(() => {
     if (location.pathname === '/movies' && Object.keys(configMovies).length !== 0)

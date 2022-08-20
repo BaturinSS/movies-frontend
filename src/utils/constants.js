@@ -22,6 +22,7 @@ export const TEXT_MESSAGE_NO_FAVORITE = 'У вас пока нет избран�
 export const REGEX_INPUT_FORM_NAME = /^[a-zа-яё-\s]+$/i;
 export const REGEX_TEXT_SEARCH = /^[0-9a-zа-яё-\s]+$/i;
 export const REGEX_TEST_TITLE_CARD = /[^A-Za-zА-Яа-яЁё0-9']+/g;
+export const REGEX_TEST_LANGUAGE_CARD = /[A-Za-z]/i;
 
 export const NODE_ENV = process.env.NODE_ENV;
 

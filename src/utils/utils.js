@@ -1,6 +1,6 @@
 import { ARR_TYPE_INPUTS } from '../utils/constants';
 import validator from "validator";
-import { REGEX_TEXT_SEARCH } from '../utils/constants';
+import { REGEX_TEXT_SEARCH, REGEX_TEST_TITLE_CARD } from '../utils/constants';
 
 export const checkedLengthArray = (arr) => (arr.length === 0);
 export const testTextFormat = (text) => !(REGEX_TEXT_SEARCH.test(`${text}`));
@@ -64,4 +64,22 @@ export const getParseLocalStorage = (key) => {
 
 export const setStringifyLocalStorage = (key, arr) => {
   localStorage.setItem(key, JSON.stringify(arr));
+};
+
+export const filterExpression = (searchQuery, filter, movies, isEN) => {
+  const regex = new RegExp(`${searchQuery.replace(REGEX_TEST_TITLE_CARD, '')}`, "i")
+
+  const formString = () => {
+    return (isEN)
+      ? ((movies.nameEN) && (movies.nameEN !== ''))
+        ? movies.nameEN.replace(REGEX_TEST_TITLE_CARD, '')
+        : movies.nameRU.replace(REGEX_TEST_TITLE_CARD, '')
+      : ((movies.nameRU) && (movies.nameRU !== ''))
+        ? movies.nameRU.replace(REGEX_TEST_TITLE_CARD, '')
+        : movies.nameEN.replace(REGEX_TEST_TITLE_CARD, '');
+  };
+
+  return filter
+    ? movies.duration <= 40 && regex.test(formString())
+    : regex.test(formString());
 };
