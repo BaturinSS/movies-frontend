@@ -1,4 +1,5 @@
 import { ARR_TYPE_INPUTS } from '../utils/constants';
+import validator from "validator";
 
 export const checkedLengthArray = (arr) => (arr.length === 0);
 
@@ -47,4 +48,10 @@ export function appointTypeInput(typeInput) {
   return (String(typeInput) && checkType())
     ? typeInput
     : 'text'
+};
+
+export function validUrl(url) {
+  return validator.isURL(url.trim())
+    ? url
+    : null;
 };
