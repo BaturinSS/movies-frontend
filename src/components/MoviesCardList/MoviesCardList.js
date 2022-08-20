@@ -4,11 +4,13 @@ import MoviesCard from '../MoviesCard/MoviesCard'
 
 function MoviesCardList({
   children,
-  isEN,
+  isEN, setTrailerLink,
   moviesList,
   handleClickLikes,
   modifierButton,
   messageMoviesList,
+  setLinkImage, setTitleImage,
+  setIsOpenPopup,
 }) {
   return (
     <>
@@ -21,6 +23,10 @@ function MoviesCardList({
                 key={movie._id || movie.id}
                 isEN={isEN}
                 card={movie}
+                setTrailerLink={setTrailerLink}
+                setIsOpenPopup={setIsOpenPopup}
+                setLinkImage={setLinkImage}
+                setTitleImage={setTitleImage}
                 modifierButton={modifierButton}
                 handleClickLikes={handleClickLikes} />
             );

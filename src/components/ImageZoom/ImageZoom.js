@@ -2,10 +2,10 @@ import './ImageZoom.css';
 
 import React from "react";
 
-function ImageZoom({ titleImage, isLinkImage }) {
+function ImageZoom({ titleImage, linkImage }) {
   return (
     <>
-      <img className={'popup__zoom-image'} src={isLinkImage} alt={titleImage}/>
+      <img className={'popup__zoom-image'} src={linkImage} alt={titleImage} />
     </>
   )
 }

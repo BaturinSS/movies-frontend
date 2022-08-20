@@ -18,6 +18,8 @@ function MoviesPage({
   listMoviesSaved, setListMoviesSaved,
   configMovies, setConfigMovies,
   isOneDownload, setIsOneDownload,
+  setLinkImage, setTitleImage,
+  setIsOpenPopup, setTrailerLink,
 }) {
   const {
     isEN,
@@ -34,6 +36,7 @@ function MoviesPage({
     listMoviesSaved, setListMoviesSaved,
     configMovies, setConfigMovies,
     isOneDownload, setIsOneDownload,
+    setLinkImage, setTitleImage,
   );
   return (
     <>
@@ -53,9 +56,13 @@ function MoviesPage({
             />
             : <MoviesCardList
               isEN={isEN}
+              setTrailerLink={setTrailerLink}
+              setIsOpenPopup={setIsOpenPopup}
               messageMoviesList={messageMoviesList}
               moviesList={finalityListMovies}
               handleClickLikes={handleClickLikes}
+              setLinkImage={setLinkImage}
+              setTitleImage={setTitleImage}
             >
               <MoviesAddButton
                 isButtonDisabled={isButtonDisabled}

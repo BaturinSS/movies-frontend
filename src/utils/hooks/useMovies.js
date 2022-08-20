@@ -271,7 +271,6 @@ const useMovies = (
     } else {
       count = 5;
     }
-    console.log(newListMovies)
 
     const arr = isOneDownload
       ? newListMovies

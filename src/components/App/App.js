@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import { TranslationContext } from '../../contexts/TranslationContext';
 import AboutProjectPage from "../../pages/AboutProject/AboutProjectPage";
 import RegistrationPage from "../../pages/Registration/RegistrationPage";
@@ -11,6 +11,8 @@ import MoviesPage from "../../pages/Protected/Movies/MoviesPage";
 import MoviesSavedPage from "../../pages/Protected/MoviesSaved/MoviesSavedPage";
 import MainApi from "../../utils/api/MainApi";
 import { NODE_ENV } from "../../utils/constants";
+import Popup from "../../components/Popup/Popup";
+import ImageZoom from '../../components/ImageZoom/ImageZoom';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
@@ -21,8 +23,14 @@ function App() {
   const [isOneDownload, setIsOneDownload] = React.useState(false);
   const [configMovies, setConfigMovies] = React.useState(JSON.parse(localStorage.getItem('configMovies')) || {})
   const [errorApi, setErrorApi] = React.useState('');
+  const [linkImage, setLinkImage] = React.useState('');
+  const [titleImage, setTitleImage] = React.useState('');
+  const [isOpenPopup, setIsOpenPopup] = React.useState(false);
+  const [trailerLink, setTrailerLink] = React.useState('');
 
   const mainApi = new MainApi({ NODE_ENV: NODE_ENV });
+
+  const history = useHistory();
 
   const clearingMemory = () => {
     localStorage.clear();
@@ -59,6 +67,10 @@ function App() {
       .finally(() => setIsDownload(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  const keydownEnter = () => {
+    window.open(`${trailerLink}`, '_blank');
+  }
 
   return (
     <>
@@ -129,6 +141,10 @@ function App() {
               setConfigMovies={setConfigMovies}
               isOneDownload={isOneDownload}
               setIsOneDownload={setIsOneDownload}
+              setLinkImage={setLinkImage}
+              setTitleImage={setTitleImage}
+              setIsOpenPopup={setIsOpenPopup}
+              setTrailerLink={setTrailerLink}
             />
           </Route>
           <Route path="/saved-movies" exact>
@@ -145,6 +161,10 @@ function App() {
               setListMoviesSaved={setListMoviesSaved}
               isOneDownload={isOneDownload}
               setIsOneDownload={setIsOneDownload}
+              setLinkImage={setLinkImage}
+              setTitleImage={setTitleImage}
+              setIsOpenPopup={setIsOpenPopup}
+              setTrailerLink={setTrailerLink}
             />
           </Route>
           <Route path="*">
@@ -152,6 +172,15 @@ function App() {
           </Route>
         </Switch>
       </TranslationContext.Provider>
+      <Popup
+        isOpenPopup={isOpenPopup}
+        setIsOpenPopup={setIsOpenPopup}
+        keydownEnter={keydownEnter}
+      >
+        <ImageZoom
+          titleImage={titleImage}
+          linkImage={linkImage} />
+      </Popup>
     </>
   );
 }

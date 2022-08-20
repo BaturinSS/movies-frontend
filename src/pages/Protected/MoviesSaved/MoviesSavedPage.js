@@ -10,12 +10,14 @@ import configFooter from '../../../utils/config/configFooter';
 import useMovies from "../../../utils/hooks/useMovies";
 import Preloader from "../../../components/Preloader/Preloader";
 import { checkedLengthArray } from "../../../utils/utils";
-import GreetingMessage from '../../../components/GreetingMessage/GreetingMessage'
+import GreetingMessage from '../../../components/GreetingMessage/GreetingMessage';
 
 function MoviesSavedPage({
   listMovies, setListMovies, configMovies,
   listMoviesSaved, setListMoviesSaved,
   isOneDownload, setIsOneDownload,
+  setLinkImage, setTitleImage,
+  setIsOpenPopup, setTrailerLink,
 }) {
 
   const {
@@ -51,6 +53,10 @@ function MoviesSavedPage({
             />
             : <MoviesCardList
               isEN={isEN}
+              setTrailerLink={setTrailerLink}
+              setIsOpenPopup={setIsOpenPopup}
+              setLinkImage={setLinkImage}
+              setTitleImage={setTitleImage}
               messageMoviesList={messageMoviesList}
               moviesList={newListMoviesSaved}
               handleClickLikes={handleClickLikes}
@@ -58,8 +64,7 @@ function MoviesSavedPage({
             />}
       </Main>
       <Footer
-        config={configFooter}
-      />
+        config={configFooter} />
     </>
   )
 }
