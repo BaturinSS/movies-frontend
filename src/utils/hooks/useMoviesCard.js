@@ -86,6 +86,7 @@ const useMoviesCard = (
     api
       .deleteMovies((film.id) || (film.movieId))
       .then(({ message, deletedFilm }) => {
+        film.like = false;
         dislikeMovies(deletedFilm, film);
         showMessageMoviesList(message, '');
         changeFavoriteMovies({ deletedFilm: deletedFilm });

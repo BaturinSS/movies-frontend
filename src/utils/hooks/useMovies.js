@@ -3,7 +3,10 @@ import { useLocation } from "react-router-dom";
 import moviesApi from "../api/MoviesApi";
 import MainApi from "../api/MainApi";
 import useMoviesCard from '../../utils/hooks/useMoviesCard';
-import { checkedLengthArray, sortAlphabetList } from "../utils";
+import {
+  checkedLengthArray, sortAlphabetList,
+  getParseLocalStorage, setStringifyLocalStorage,
+} from "../utils";
 
 import {
   TEXT_MESSAGE_NO_SEARCH, NODE_ENV, TEXT_ERROR_NOT_FOUND,
@@ -30,44 +33,28 @@ const useMovies = (
   const [widthScreen, setWidthScreen] = React.useState(document.documentElement.clientWidth);
   const [finalityListMovies, setFinalityListMovies] = React.useState([]);
   const [isButtonDisabled, setIsButtonDisabled] = React.useState(false);
+  const [listSearchMovies, setListSearchMovies] = React.useState(JSON.parse(localStorage.getItem('lastMovies')));
 
-  const [
-    listSearchMovies, setListSearchMovies
-  ] = React.useState(JSON.parse(localStorage.getItem('lastMovies')))
+  function likeMovies({ movieId }) {
+    listSearchMovies.forEach((movies) => { if (movies.id === movieId) movies.like = true });
+    setStringifyLocalStorage('lastMovies', listSearchMovies);
+  };
 
-  const likeMovies = (film) => {
-    listSearchMovies.forEach((movies) => {
-      if (movies.id === film.movieId) {
-        movies.like = true;
-      }
-    })
-    localStorage.setItem('lastMovies', JSON.stringify(listSearchMovies));
-  }
-
-  const dislikeMovies = (deletedFilm, film) => {
-    if (!listSearchMovies) return;
-    film.like = false;
-    listSearchMovies.forEach((movies) => {
-      if (movies.id === deletedFilm.movieId) {
-        movies.like = false;
-      }
-    })
-    localStorage.setItem('lastMovies', JSON.stringify(listSearchMovies));
-  }
+  function dislikeMovies({ movieId }) {
+    listSearchMovies.forEach((movies) => { if (movies.id === movieId) movies.like = false });
+    setStringifyLocalStorage('lastMovies', listSearchMovies);
+  };
 
   const { handleClickLikes } = useMoviesCard(
-    showMessageMoviesList,
-    listMoviesSaved, setListMoviesSaved,
-    newListMoviesSaved, setNewListMoviesSaved,
-    likeMovies, dislikeMovies,
+    showMessageMoviesList, listMoviesSaved, setListMoviesSaved,
+    newListMoviesSaved, setNewListMoviesSaved, likeMovies, dislikeMovies,
   );
 
   const eventChangeScreenWidth = React.useCallback(() => {
     setTimeout(() => {
-      const windowInnerWidth = document.documentElement.clientWidth;
-      setWidthScreen(windowInnerWidth);
+      setWidthScreen(document.documentElement.clientWidth);
     }, 10000);
-  }, [])
+  }, []);
 
   const mainApi = new MainApi({ NODE_ENV: NODE_ENV });
 
