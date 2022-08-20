@@ -133,45 +133,49 @@ const useMovies = (
   };
 
   React.useEffect(() => {
-    if (location.pathname === '/movies' && Object.keys(configMovies).length !== 0)
+    if ((location.pathname === '/movies') && (Object.keys(configMovies).length !== 0))
       setNewListMovies(JSON.parse(localStorage.getItem('lastMovies')));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
   const handleSubmitFormMovies = (evt) => {
     setLimitedCounter(0);
     let form;
+
     if (evt.target) {
       evt.preventDefault();
       form = evt.target.form;
     } else form = evt;
+
     const arrElForm = Array.from(form);
+
     if (arrElForm[0].value.length === 0) {
       showMessageMovies(TEXT_ERROR_EMPTY_REQUEST);
       setNewListMovies([]);
       return;
     };
+
     if (testTextFormat(arrElForm[0].value)) {
       showMessageMovies(TEXT_ERROR_TEST_REQUEST);
       setNewListMovies([]);
       return;
     };
+
     const newConfigMovies = createdObjConfig(arrElForm);
     setConfigMovies(newConfigMovies);
     localStorage.setItem('configMovies', JSON.stringify(newConfigMovies));
+
     if (!isOneDownload) {
       setIsDownload(true);
+
       moviesApi
         .download()
         .then((movies) => {
           setIsOneDownload(true);
           const sortMovies = sortAlphabetList(movies, isEN)
           setListMovies(sortMovies);
-          const filterListMovies =
-            filterMovies(newConfigMovies, sortMovies);
-          if (filterListMovies.length === 0) {
-            showMessageMovies(TEXT_ERROR_NO_MOVIES);
-          }
+          const filterListMovies = filterMovies(newConfigMovies, sortMovies);
+          if (filterListMovies.length === 0) showMessageMovies(TEXT_ERROR_NO_MOVIES);
           localStorage.setItem('lastMovies', JSON.stringify(filterListMovies));
           setListSearchMovies(JSON.parse(localStorage.getItem('lastMovies')))
           setNewListMovies(filterListMovies);
@@ -179,108 +183,91 @@ const useMovies = (
         .catch((err) => {
           showMessageMovies(TEXT_ERROR_API_REQUEST);
           err.then(({ message }) => {
-            if (message === 'Not Found')
-              return console.error(TEXT_ERROR_NOT_FOUND);
+            if (message === 'Not Found') return console.error(TEXT_ERROR_NOT_FOUND);
             console.error(message);
           });
         })
         .finally(() => setIsDownload(false));
     } else {
       const filterListMovies = filterMovies(newConfigMovies, listMovies);
-      if (filterListMovies.length === 0) {
-        showMessageMovies(TEXT_ERROR_NO_MOVIES);
-      };
+      if (filterListMovies.length === 0) showMessageMovies(TEXT_ERROR_NO_MOVIES);
       localStorage.setItem('lastMovies', JSON.stringify(filterListMovies));
       setNewListMovies(filterListMovies);
-    }
-  }
+    };
+  };
 
   const handleSubmitFormMoviesSaved = (evt) => {
     let form;
+
     if (evt.target) {
       evt.preventDefault();
       form = evt.target.form;
     } else form = evt;
+
     const arrElForm = Array.from(form);
     const newConfigMovies = createdObjConfig(arrElForm);
     const filterListMovies = filterMovies(newConfigMovies, listMoviesSaved);
-    if (filterListMovies.length === 0) {
-      showMessageMoviesSaved(TEXT_ERROR_NO_MOVIES);
-    };
+    if (filterListMovies.length === 0) showMessageMoviesSaved(TEXT_ERROR_NO_MOVIES);
     setNewListMoviesSaved(filterListMovies);
-  }
+  };
 
   React.useEffect(() => {
     if (!isOneDownload) return;
     const filterListMovies = filterMovies(configMovies, listMovies);
-    if (filterListMovies.length === 0) {
-      showMessageMovies(TEXT_ERROR_NO_MOVIES);
-    };
+    if (filterListMovies.length === 0) showMessageMovies(TEXT_ERROR_NO_MOVIES);
     localStorage.setItem('lastMovies', JSON.stringify(filterListMovies));
     setListSearchMovies(JSON.parse(localStorage.getItem('lastMovies')))
     setNewListMovies(filterListMovies);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [configMovies, widthScreen, limitedCounter])
+  }, [configMovies, widthScreen, limitedCounter]);
 
   React.useEffect(() => {
+    const newArr = [];
     let count = 12;
+
     if (widthScreen >= 1028) {
       count = 12;
     } else if (widthScreen >= 747) {
       count = 8;
     } else {
       count = 5;
-    }
-
-    const arr = isOneDownload
-      ? newListMovies
-      : listSearchMovies
-        ? listSearchMovies
-        : newListMovies
-
-    if (arr.length === 0) {
-      setFinalityListMovies(arr);
-      return;
     };
 
-    if (arr.length >= count + limitedCounter) setIsButtonDisabled(true);
+    const arr = (isOneDownload)
+      ? newListMovies
+      : (listSearchMovies)
+        ? listSearchMovies
+        : newListMovies;
 
-    const newArr = [];
+    if (arr.length === 0) return setFinalityListMovies(arr);
+    if (arr.length >= (count + limitedCounter)) setIsButtonDisabled(true);
+
     for (let i = 0; i < (count + limitedCounter); i++) {
       newArr.push(arr[i]);
       if (arr.length - 1 === i) break;
-    }
+    };
 
     if (arr.length === newArr.length) setIsButtonDisabled(false);
 
     setFinalityListMovies(newArr);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [listSearchMovies, widthScreen, newListMovies, limitedCounter])
+  }, [listSearchMovies, widthScreen, newListMovies, limitedCounter]);
 
   const numberAddCard = () => {
-    return widthScreen >= 1028
+    return (widthScreen >= 1028)
       ? 3
-      : 2
-  }
+      : 2;
+  };
 
   const handleClickAddMovies = () => {
-    setLimitedCounter(limitedCounter + numberAddCard())
-  }
+    setLimitedCounter(limitedCounter + numberAddCard());
+  };
 
   return {
-    isEN,
-    isDownload,
-    messageMovies,
-    messageMoviesList,
-    messageMoviesSaved,
-    handleClickLikes,
-    handleClickAddMovies,
-    handleSubmitFormMoviesSaved,
-    handleSubmitFormMovies,
-    configMovies,
-    newListMoviesSaved,
-    finalityListMovies,
-    isButtonDisabled,
+    isEN, isDownload, messageMovies, messageMoviesList,
+    messageMoviesSaved, handleClickLikes, handleClickAddMovies,
+    handleSubmitFormMoviesSaved, handleSubmitFormMovies, configMovies,
+    newListMoviesSaved, finalityListMovies, isButtonDisabled,
   };
 };
 
