@@ -1,13 +1,15 @@
 import './Popup.css';
 import React from "react";
 import cross from '../../images/popup/image-cross.svg';
-import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 
 function Popup({
   children,
   isOpenPopup,
   setIsOpenPopup,
   keydownEnter,
+  disablePageScroll,
+  enablePageScroll,
+  modifierContainer,
 }) {
   React.useEffect(() => {
     if (isOpenPopup) {
@@ -42,14 +44,14 @@ function Popup({
   return (
     <div
       className={`popup ${(isOpenPopup) ? 'popup_opened' : ''}`}>
-      <div className="popup__container">
+      <div className={`popup__container ${(modifierContainer) ? `${modifierContainer}` : ''}`}>
         <button className="popup__close" type="button">
           {isOpenPopup && <img className="popup__image-cross"
             src={cross} alt="иконка" />}
         </button>
         {children}
       </div>
-    </div>
+    </div >
   )
 }
 

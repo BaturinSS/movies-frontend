@@ -13,6 +13,7 @@ import MainApi from "../../utils/api/MainApi";
 import { NODE_ENV } from "../../utils/constants";
 import Popup from "../Popup/Popup";
 import ImageZoom from '../ImageZoom/ImageZoom';
+import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
@@ -119,6 +120,8 @@ function App() {
               isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
               isDownload={isDownload}
+              disablePageScroll={disablePageScroll}
+              enablePageScroll={enablePageScroll}
               clearingMemory={clearingMemory} />
           </Route>
           <Route path="/movies" exact>
@@ -170,6 +173,9 @@ function App() {
         isOpenPopup={isOpenPopup}
         setIsOpenPopup={setIsOpenPopup}
         keydownEnter={keydownEnterPopupImage}
+        disablePageScroll={disablePageScroll}
+        enablePageScroll={enablePageScroll}
+        modifierContainer={'popup__container_image-zoom'}
       >
         <ImageZoom
           titleImage={titleImage}

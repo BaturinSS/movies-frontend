@@ -22,6 +22,8 @@ function ProfilePage({
   setCurrentUser,
   setIsLoggedIn,
   clearingMemory,
+  disablePageScroll,
+  enablePageScroll,
 }) {
   const { currentUser } = React.useContext(TranslationContext);
   const [isDownload, setIsDownload] = React.useState(false);
@@ -135,7 +137,10 @@ function ProfilePage({
   };
 
   const handleClickExit = () => setIsOpenPopupInform(true);
-  const clickButtonConfirm = () => outputProfile();
+  const clickButtonConfirm = () => {
+    outputProfile();
+    enablePageScroll();
+  };
 
   return (
     <>
@@ -183,6 +188,8 @@ function ProfilePage({
       <Popup
         keydownEnter={outputProfile}
         setIsOpenPopup={setIsOpenPopupInform}
+        disablePageScroll={disablePageScroll}
+        enablePageScroll={enablePageScroll}
         isOpenPopup={isOpenPopupInform}>
         <PopupInform
           message={'Вы уверены?'}

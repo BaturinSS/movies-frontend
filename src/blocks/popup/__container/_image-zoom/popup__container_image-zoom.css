@@ -1,0 +1,16 @@
+.popup__container_image-zoom {
+  min-width: 80%;
+  max-width: min-content;
+  margin: 20px;
+  padding: 0;
+}
+
+@media screen and (max-width: 520px) {
+  .popup__container_image-zoom {
+    transform: rotate(90deg);
+    max-height: 80vh;
+    min-width: 140%;
+    padding: 0;
+    margin: 0;
+  }
+}
