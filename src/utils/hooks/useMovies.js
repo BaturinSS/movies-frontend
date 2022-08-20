@@ -4,7 +4,7 @@ import moviesApi from "../api/MoviesApi";
 import MainApi from "../api/MainApi";
 import useMoviesCard from '../../utils/hooks/useMoviesCard';
 import {
-  checkedLengthArray, sortAlphabetList,
+  checkedLengthArray, sortAlphabetList, testTextFormat,
   getParseLocalStorage, setStringifyLocalStorage,
 } from "../utils";
 
@@ -12,8 +12,7 @@ import {
   TEXT_MESSAGE_NO_SEARCH, NODE_ENV, TEXT_ERROR_NOT_FOUND,
   TEXT_MESSAGE_NO_FAVORITE, TEXT_ERROR,
   TEXT_ERROR_EMPTY_REQUEST, TEXT_ERROR_API_REQUEST,
-  TEXT_ERROR_NO_MOVIES, REGEX_TEXT_SEARCH,
-  TEXT_ERROR_TEST_REQUEST,
+  TEXT_ERROR_NO_MOVIES, TEXT_ERROR_TEST_REQUEST,
 } from "../constants";
 
 const useMovies = (
@@ -59,10 +58,6 @@ const useMovies = (
   const mainApi = new MainApi({ NODE_ENV: NODE_ENV });
 
   const location = useLocation();
-
-  const testTextFormat = (text) => {
-    return !(REGEX_TEXT_SEARCH.test(`${text}`));
-  };
 
   function showMessageMovies(message) {
     setMessageMovies(message);
