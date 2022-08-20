@@ -1,9 +1,14 @@
 import './Form.css';
-
 import React from "react";
 
-function Form({ config, children, modifier, onSubmitForm }) {
+function Form({
+  config,
+  children,
+  modifier,
+  onSubmitForm,
+}) {
   const { idForm } = config;
+
   return (
     <>
       <form
@@ -17,4 +22,5 @@ function Form({ config, children, modifier, onSubmitForm }) {
     </>
   )
 }
+
 export default Form;

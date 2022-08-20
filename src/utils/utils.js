@@ -37,4 +37,6 @@ export const sortAlphabetList = (list, isEN) => {
       return 0;
     }
   return list.sort(sortFunction);
-}
+};
+
+export const checkType = (arr, el) => (arr.indexOf(el) !== -1);

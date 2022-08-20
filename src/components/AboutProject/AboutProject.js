@@ -1,19 +1,22 @@
 import "./AboutProject.css";
-
 import React from "react";
-
 import AboutProjectItem from "../../components/AboutProjectItem/AboutProjectItem";
 import AboutProjectScheme from "../AboutProjectScheme/AboutProjectScheme";
 
-function AboutProject({ config }) {
+function AboutProject({
+  config,
+}) {
   const { title, list, scheme } = config;
 
   return (
     <>
-      <section id="aboutProject" className='about-project default__block'>
-        <h2 id='aboutProjectTitle'
-          className='about-project__about default__title'>{title}</h2>
-        <ul id='aboutProjectList' className='about-project__list'>
+      <section className='about-project default__block' id="aboutProject" >
+        <h2 className='about-project__about default__title'
+          id='aboutProjectTitle'
+        >
+          {title}
+        </h2>
+        <ul className='about-project__list' id='aboutProjectList' >
           {list.map(item => {
             return (
               <AboutProjectItem
@@ -23,13 +26,13 @@ function AboutProject({ config }) {
             );
           })}
         </ul>
-        <article id='aboutProjectScheme' className='about-project__scheme'>
+        <article className='about-project__scheme' id='aboutProjectScheme' >
           {scheme.map(item => {
             return (
               <AboutProjectScheme
                 key={item.id}
                 config={item}
-                modifier={item.id === 2 ? 'about-project__stage_type_color' : ''}
+                modifier={(item.id === 2) ? 'about-project__stage_type_color' : ''}
               />
             );
           })}

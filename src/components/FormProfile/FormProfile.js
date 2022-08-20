@@ -1,11 +1,13 @@
 import './FormProfile.css';
-
 import React from "react";
 
 function FormProfile({
-  children, onSubmitFormProfile,
-  exitEditProfile, isPermission,
+  children,
+  onSubmitFormProfile,
+  exitEditProfile,
+  isPermission,
 }) {
+
   return (
     <>
       <form
@@ -18,7 +20,8 @@ function FormProfile({
         {isPermission && <button
           type='button'
           className='form__button-back'
-          onClick={exitEditProfile}>
+          onClick={exitEditProfile}
+        >
           {'Выход'}
         </button>}
       </form>

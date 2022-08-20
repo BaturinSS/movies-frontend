@@ -27,3 +27,5 @@ export const BASE_URL_IMAGE = 'https://api.nomoreparties.co';
 export const BASE_URL_MOVIES_API = ' https://api.nomoreparties.co/beatfilm-movies';
 export const URL_IMAGE_NO_IMAGE = 'https://torg-market.info/image/cache/catalog/00-00-00-00-800x800.jpg';
 export const URL_YOUTUBE = 'https://www.youtube.com';
+
+export const arrType = ['password', 'Email', 'number', 'tel', 'url'];

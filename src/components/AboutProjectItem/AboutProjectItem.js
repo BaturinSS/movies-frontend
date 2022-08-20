@@ -1,9 +1,11 @@
 import './AboutProjectItem.css';
-
 import React from "react";
 
-function AboutProjectItem({ config }) {
+function AboutProjectItem({
+  config,
+}) {
   const { title, description, } = config;
+
   return (
     <>
       <li className='about-project__item'>
@@ -13,4 +15,5 @@ function AboutProjectItem({ config }) {
     </>
   )
 }
+
 export default AboutProjectItem;

@@ -33,10 +33,6 @@ function Popup({ children, isOpenPopup, setIsOpenPopup, keydownEnter }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpenPopup]);
 
-  React.useEffect(() => {
-    if (isOpenPopup) disablePageScroll()
-  }, [isOpenPopup])
-
   return (
     <div
       className={`popup ${isOpenPopup ? 'popup_opened' : ''}`}>

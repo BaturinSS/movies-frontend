@@ -1,10 +1,10 @@
 import "./Footer.css";
-
 import React from "react";
-
 import LinkReact from "../../components/LinkReact/LinkReact";
 
-function Footer({ config }) {
+function Footer({
+  config,
+}) {
   const { title, links, copyright } = config;
 
   return (

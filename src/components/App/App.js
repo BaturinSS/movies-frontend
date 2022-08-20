@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, useHistory } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { TranslationContext } from '../../contexts/TranslationContext';
 import AboutProjectPage from "../../pages/AboutProject/AboutProjectPage";
 import RegistrationPage from "../../pages/Registration/RegistrationPage";
@@ -16,21 +16,23 @@ import ImageZoom from '../../components/ImageZoom/ImageZoom';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-  const [currentUser, setCurrentUser] = React.useState({});
-  const [isDownload, setIsDownload] = React.useState(true);
-  const [listMovies, setListMovies] = React.useState(JSON.parse(localStorage.getItem('lastMovies')) || []);
-  const [listMoviesSaved, setListMoviesSaved] = React.useState([]);
   const [isOneDownload, setIsOneDownload] = React.useState(false);
-  const [configMovies, setConfigMovies] = React.useState(JSON.parse(localStorage.getItem('configMovies')) || {})
+  const [isDownload, setIsDownload] = React.useState(true);
+  const [isOpenPopup, setIsOpenPopup] = React.useState(false);
+  const [currentUser, setCurrentUser] = React.useState({});
+  const [listMoviesSaved, setListMoviesSaved] = React.useState([]);
   const [errorApi, setErrorApi] = React.useState('');
   const [linkImage, setLinkImage] = React.useState('');
   const [titleImage, setTitleImage] = React.useState('');
-  const [isOpenPopup, setIsOpenPopup] = React.useState(false);
   const [trailerLink, setTrailerLink] = React.useState('');
 
-  const mainApi = new MainApi({ NODE_ENV: NODE_ENV });
+  const [configMovies, setConfigMovies] = React.useState(
+    (JSON.parse(localStorage.getItem('configMovies')) || {}));
 
-  const history = useHistory();
+  const [listMovies, setListMovies] = React.useState(
+    (JSON.parse(localStorage.getItem('lastMovies')) || []));
+
+  const mainApi = new MainApi({ NODE_ENV: NODE_ENV });
 
   const clearingMemory = () => {
     localStorage.clear();
@@ -38,7 +40,7 @@ function App() {
     setListMoviesSaved([]);
     setConfigMovies({});
     setIsOneDownload(false);
-  }
+  };
 
   React.useEffect(() => {
     if (!isDownload) setIsDownload(true);
@@ -60,17 +62,15 @@ function App() {
           return console.error(err.message);
         };
         clearingMemory();
-        err.then(({ message }) => {
-          console.error(message);
-        });
+        err.then(({ message }) => console.error(message));
       })
       .finally(() => setIsDownload(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
-  const keydownEnter = () => {
+  const keydownEnterPopupImage = () => {
     window.open(`${trailerLink}`, '_blank');
-  }
+  };
 
   return (
     <>
@@ -79,8 +79,7 @@ function App() {
           <Route path="/" exact>
             <AboutProjectPage
               isDownload={isDownload}
-              isLoggedIn={isLoggedIn}
-            />
+              isLoggedIn={isLoggedIn} />
           </Route>
           <Route path="/sign-up" exact>
             <ProtectedRoute
@@ -94,8 +93,7 @@ function App() {
               isDownload={isDownload}
               setIsDownload={setIsDownload}
               errorApi={errorApi}
-              setErrorApi={setErrorApi}
-            />
+              setErrorApi={setErrorApi} />
           </Route>
           <Route path="/sign-in" exact>
             <ProtectedRoute
@@ -109,8 +107,7 @@ function App() {
               isDownload={isDownload}
               setIsDownload={setIsDownload}
               errorApi={errorApi}
-              setErrorApi={setErrorApi}
-            />
+              setErrorApi={setErrorApi} />
           </Route>
           <Route path="/profile" exact>
             <ProtectedRoute
@@ -122,8 +119,7 @@ function App() {
               isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
               isDownload={isDownload}
-              clearingMemory={clearingMemory}
-            />
+              clearingMemory={clearingMemory} />
           </Route>
           <Route path="/movies" exact>
             <ProtectedRoute
@@ -144,8 +140,7 @@ function App() {
               setLinkImage={setLinkImage}
               setTitleImage={setTitleImage}
               setIsOpenPopup={setIsOpenPopup}
-              setTrailerLink={setTrailerLink}
-            />
+              setTrailerLink={setTrailerLink} />
           </Route>
           <Route path="/saved-movies" exact>
             <ProtectedRoute
@@ -156,16 +151,15 @@ function App() {
               isLoggedIn={isLoggedIn}
               isDownload={isDownload}
               listMovies={listMovies}
-              setListMovies={setListMovies}
-              listMoviesSaved={listMoviesSaved}
-              setListMoviesSaved={setListMoviesSaved}
-              isOneDownload={isOneDownload}
-              setIsOneDownload={setIsOneDownload}
               setLinkImage={setLinkImage}
+              setListMovies={setListMovies}
               setTitleImage={setTitleImage}
+              isOneDownload={isOneDownload}
               setIsOpenPopup={setIsOpenPopup}
               setTrailerLink={setTrailerLink}
-            />
+              listMoviesSaved={listMoviesSaved}
+              setIsOneDownload={setIsOneDownload}
+              setListMoviesSaved={setListMoviesSaved} />
           </Route>
           <Route path="*">
             <NotFoundPage />
@@ -175,7 +169,7 @@ function App() {
       <Popup
         isOpenPopup={isOpenPopup}
         setIsOpenPopup={setIsOpenPopup}
-        keydownEnter={keydownEnter}
+        keydownEnter={keydownEnterPopupImage}
       >
         <ImageZoom
           titleImage={titleImage}
