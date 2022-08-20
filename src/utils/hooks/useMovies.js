@@ -119,12 +119,14 @@ const useMovies = (
 
     return newListMovies.map((movie) => {
       const id = movie.id || movie.movieId;
+
       const isLike = () => {
         for (let i = 0; i < listMoviesSaved.length; i++) {
           if (listMoviesSaved[i].movieId === id) return true;
-        }
+        };
         return false;
-      }
+      };
+
       movie.like = isLike();
       return movie;
     });
