@@ -1,7 +1,9 @@
 import { ARR_TYPE_INPUTS } from '../utils/constants';
 import validator from "validator";
+import { REGEX_TEXT_SEARCH } from '../utils/constants';
 
 export const checkedLengthArray = (arr) => (arr.length === 0);
+export const testTextFormat = (text) => !(REGEX_TEXT_SEARCH.test(`${text}`));
 
 export function timeFormat(timeFull) {
   const minutes = (timeFull % 60);
