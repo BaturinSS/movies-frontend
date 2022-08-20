@@ -14,17 +14,10 @@ const useMoviesCard = (
 ) => {
   const api = new MainApi({ NODE_ENV: NODE_ENV });
 
-  const changeFavoriteMovies = (film) => {
-    if (film.deletedFilm) {
-      setListMoviesSaved(listMoviesSaved.filter((el) => {
-        return el._id !== film.deletedFilm._id;
-      }))
-      setNewListMoviesSaved(newListMoviesSaved.filter((el) => {
-        return el._id !== film.deletedFilm._id;
-      }))
-    } else {
-      setListMoviesSaved([film.newFilm, ...listMoviesSaved]);
-    }
+  function changeFavoriteMovies(film) {
+    if (!film.deletedFilm) return setListMoviesSaved([film.newFilm, ...listMoviesSaved]);
+    setListMoviesSaved(listMoviesSaved.filter((el) => (el._id !== film.deletedFilm._id)));
+    setNewListMoviesSaved(newListMoviesSaved.filter((el) => (el._id !== film.deletedFilm._id)));
   };
 
   const reformatCardMovies = (film) => {
