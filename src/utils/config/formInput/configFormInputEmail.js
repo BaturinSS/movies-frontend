@@ -1,10 +1,10 @@
 const configFormInputEmail = {
   idInput: 'inputEmail',
-  placeholder: '',
+  typeInput: 'Email',
+  nameInput: 'Email',
   textLabel: 'E-mail',
   required: true,
-  type: 'Email',
-  name: 'Email',
-}
+  placeholder: '',
+};
 
 export default configFormInputEmail;

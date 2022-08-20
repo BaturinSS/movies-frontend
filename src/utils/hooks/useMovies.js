@@ -9,7 +9,7 @@ import {
   TEXT_MESSAGE_NO_SEARCH, NODE_ENV, TEXT_ERROR_NOT_FOUND,
   TEXT_MESSAGE_NO_FAVORITE, TEXT_ERROR,
   TEXT_ERROR_EMPTY_REQUEST, TEXT_ERROR_API_REQUEST,
-  TEXT_ERROR_NO_MOVIES, REG_EX_TEXT_SEARCH,
+  TEXT_ERROR_NO_MOVIES, REGEX_TEXT_SEARCH,
   TEXT_ERROR_TEST_REQUEST,
 } from "../constants";
 
@@ -74,7 +74,7 @@ const useMovies = (
   const location = useLocation();
 
   const testTextFormat = (text) => {
-    return !(REG_EX_TEXT_SEARCH.test(`${text}`));
+    return !(REGEX_TEXT_SEARCH.test(`${text}`));
   };
 
   function showMessageMovies(message) {

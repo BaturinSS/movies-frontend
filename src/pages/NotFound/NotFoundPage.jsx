@@ -1,7 +1,5 @@
 import React from "react";
-
 import Main from '../../components/Main/Main';
-
 import NotFound from '../../components/NotFound/NotFound'
 
 function NotFoundPage() {

@@ -1,20 +1,20 @@
-import { useState } from "react";
+import React from "react";
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 
 const useMenu = () => {
-  const [isOpenCloseMenu, setIsOpenCloseMenu] = useState(false);
+  const [isOpenCloseMenu, setIsOpenCloseMenu] = React.useState(false);
 
-  const openMenu = () => {
+  function openMenu() {
     setIsOpenCloseMenu(true);
     disablePageScroll();
-  }
+  };
 
-  const closeMenu = () => {
+  function closeMenu() {
     setIsOpenCloseMenu(false);
     enablePageScroll();
-  }
+  };
 
-  return { isOpenCloseMenu, openMenu, closeMenu }
+  return { isOpenCloseMenu, openMenu, closeMenu };
 }
 
 export default useMenu;

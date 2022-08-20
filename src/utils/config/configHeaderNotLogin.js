@@ -11,6 +11,6 @@ export const configHeaderNotLogin = {
     to: '/sign-in',
     title: 'Войти',
   },
-}
+};
 
 export default configHeaderNotLogin;

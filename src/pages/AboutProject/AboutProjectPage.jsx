@@ -16,14 +16,17 @@ import configAboutMe from "../../utils/config/configAboutMe";
 import Footer from "../../components/Footer/Footer";
 import configFooter from "../../utils/config/configFooter";
 
-function AboutProjectPage({ isLoggedIn, isDownload }) {
+function AboutProjectPage({
+  isLoggedIn,
+  isDownload,
+}) {
 
   return (
     <>
       <Header>
-        {isDownload
+        {(isDownload)
           ? null
-          : isLoggedIn
+          : (isLoggedIn)
             ? <HeaderLogin config={configHeaderLogin} />
             : <HeaderNotLogin config={configHeaderNotLogin} />}
       </Header>

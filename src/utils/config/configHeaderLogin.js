@@ -22,5 +22,6 @@ export const configHeaderLogin = {
     title: 'Аккаунт',
     addIcon: true,
   },
-}
+};
+
 export default configHeaderLogin;

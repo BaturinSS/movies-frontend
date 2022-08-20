@@ -4,6 +4,6 @@ const configFormSubmitLogin = {
   textQuestion: 'Уже зарегистрированы?',
   title: 'Войти',
   to: '/sign-in',
-}
+};
 
 export default configFormSubmitLogin;

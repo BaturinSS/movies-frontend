@@ -17,6 +17,6 @@ const configPromo = {
       title: 'Студент',
     },
   ]
-}
+};
 
 export default configPromo;

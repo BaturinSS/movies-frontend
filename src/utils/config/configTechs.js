@@ -31,6 +31,7 @@ const configTechs = {
       id: 7,
       textItem: 'mongoDB',
     },
-  ]
-}
+  ],
+};
+
 export default configTechs;

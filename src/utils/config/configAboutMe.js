@@ -50,8 +50,8 @@ const configAboutMe = {
         addIcon: true,
         alt: 'Иконка ссылки',
       },
-    ]
-  }
+    ],
+  },
 };
 
 export default configAboutMe;

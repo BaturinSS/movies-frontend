@@ -12,14 +12,17 @@ import configFormInputEmail from '../../utils/config/formInput/configFormInputEm
 import configFormAuth from '../../utils/config/form/configFormAuth';
 import MainApi from "../../utils/api/MainApi";
 import useAuth from "../../utils/hooks/useAuth";
+
 import {
   TEXT_GREETINGS_LOGIN, TEXT_ERROR_AUTH_USER,
   TEXT_ERROR, NODE_ENV,
 } from '../../utils/constants';
 
 function AuthorizationPage({
-  setCurrentUser, setIsLoggedIn,
-  errorApi, setErrorApi,
+  setCurrentUser,
+  setIsLoggedIn,
+  errorApi,
+  setErrorApi,
 }) {
   const [isDownload, setIsDownload] = React.useState(false);
 
@@ -42,6 +45,7 @@ function AuthorizationPage({
     const { inputPassword, inputEmail } = values;
     event.preventDefault();
     setIsDownload(true);
+
     api
       .authorize(inputPassword, inputEmail)
       .then(({ user, message, token }) => {
@@ -56,20 +60,20 @@ function AuthorizationPage({
         setErrorApi(TEXT_ERROR);
         if (err.name === 'TypeError') {
           return console.error(err.message);
-        }
+        };
         err.then(({ message }) => {
           if (message === 'Validation failed') {
             setErrorApi(TEXT_ERROR_AUTH_USER);
           } else {
             setErrorApi(message);
-          }
+          };
         });
       })
       .finally(() => {
         setIsDownload(false);
         setTimeout(() => setErrorApi(''), 5000);
       });
-  }
+  };
 
   return (
     <>
@@ -85,22 +89,19 @@ function AuthorizationPage({
             config={configFormInputEmail}
             autoComplete={'username'}
             onChange={onChange}
-            errors={errors}
-          />
+            errors={errors} />
           <FormInput
             config={configFormInputPassword}
             autoComplete={'current-password'}
             onChange={onChange}
             errors={errors}
-            isValidPassword={isValidPassword}
-          />
+            isValidPassword={isValidPassword} />
           <FormSubmit
             config={configFormSubmitAuth}
             modifier={'form__block_auth'}
             errors={errorApi}
             isValid={isValid}
-            isDownload={isDownload}
-          />
+            isDownload={isDownload} />
         </Form>
       </Main>
     </>

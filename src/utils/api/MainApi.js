@@ -5,34 +5,30 @@ class MainApi {
   };
 
   _baseUrl = () => {
-    if (this._NODE_ENV === 'production') {
-      return 'https://mdiplomapi.nomoredomains.xyz';
-    } else {
-      return 'http://localhost:3000';
-    };
+    return (this._NODE_ENV === 'production')
+      ? 'https://mdiplomapi.nomoredomains.xyz'
+      : 'http://localhost:3000';
   };
 
   _checkResponse(res) {
-    return res.ok
+    return (res.ok)
       ? res.json()
-      : Promise.reject(res.json())
+      : Promise.reject(res.json());
   };
 
   _createdHeaders = () => {
     let basicHeaders = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
-    }
+    };
 
-    if (this._NODE_ENV !== 'production') {
-      return basicHeaders = {
+    return (this._NODE_ENV !== 'production')
+      ? basicHeaders = {
         ...basicHeaders,
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
-      };
-    } else {
-      return basicHeaders;
-    }
-  }
+      }
+      : basicHeaders;
+  };
 
   register(password, email, name) {
     return fetch(`${this._baseUrl()}/signup`, {
@@ -60,7 +56,7 @@ class MainApi {
       credentials: this._credentials,
       headers: this._createdHeaders(),
     })
-      .then(this._checkResponse);
+      .then(this._checkResponse)
   };
 
   deleteToken() {
@@ -69,7 +65,7 @@ class MainApi {
       credentials: this._credentials,
       headers: this._createdHeaders(),
     })
-      .then(this._checkResponse);
+      .then(this._checkResponse)
   };
 
   editUserInfo(name, email) {

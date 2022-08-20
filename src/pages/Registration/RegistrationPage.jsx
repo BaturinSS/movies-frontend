@@ -13,30 +13,27 @@ import FormSubmit from "../../components/FormSubmit/FormSubmit";
 import configFormSubmitLogin from "../../utils/config/formSubmit/configFormSubmitLogin";
 import useRegistration from "../../utils/hooks/useRegistration";
 import MainApi from "../../utils/api/MainApi";
-import {
-  NODE_ENV, TEXT_ERROR,
-  TEXT_ERROR_REGISTRATION,
-} from "../../utils/constants";
+import { NODE_ENV, TEXT_ERROR, TEXT_ERROR_REGISTRATION } from "../../utils/constants";
 
 function RegistrationPage({
-  setCurrentUser, setIsLoggedIn,
-  errorApi, setErrorApi,
+  setCurrentUser,
+  setIsLoggedIn,
+  errorApi,
+  setErrorApi,
 }) {
   const [isDownload, setIsDownload] = React.useState(false);
   const api = new MainApi({ NODE_ENV: NODE_ENV });
   const history = useHistory();
   const { errors, isValid, values, handleChange, resetForm } = useRegistration();
+  const onChange = (evt) => handleChange(evt);
 
-  const onChange = (evt) => {
-    handleChange(evt);
-  }
-
-  const onSubmitForm = (evt) => {
+  function onSubmitForm(evt) {
     evt.preventDefault();
     const token = localStorage.getItem('jwt');
     if (token) localStorage.removeItem('jwt');
     const { inputPassword, inputEmail, inputName } = values;
     setIsDownload(true);
+
     api
       .register(inputPassword, inputEmail, inputName)
       .then(({ user, message, token }) => {
@@ -45,7 +42,7 @@ function RegistrationPage({
         setCurrentUser(user);
         setIsLoggedIn(true);
         history.push('/movies');
-        resetForm(evt);
+        resetForm(evt)
       })
       .catch((err) => {
         setErrorApi(TEXT_ERROR);
@@ -55,9 +52,7 @@ function RegistrationPage({
         err.then(({ message }) => {
           if (message === 'Validation failed') {
             setErrorApi(TEXT_ERROR_REGISTRATION);
-          } else {
-            setErrorApi(message);
-          }
+          } else setErrorApi(message);
           resetForm(evt);
         });
       })
@@ -65,7 +60,7 @@ function RegistrationPage({
         setIsDownload(false);
         setTimeout(() => setErrorApi(''), 5000);
       });
-  }
+  };
 
   return (
     <>
@@ -81,30 +76,26 @@ function RegistrationPage({
             config={configFormInputName}
             onChange={onChange}
             errors={errors}
-            autoComplete={'given-name'}
-          />
+            autoComplete={'given-name'} />
           <FormInput
             config={configFormInputEmail}
             onChange={onChange}
             errors={errors}
-            autoComplete={'username'}
-          />
+            autoComplete={'username'} />
           <FormInput
             config={configFormInputPassword}
             onChange={onChange}
             errors={errors}
-            autoComplete={'new-password'}
-          />
+            autoComplete={'new-password'} />
           <FormSubmit
             isValid={isValid}
             config={configFormSubmitLogin}
             errors={errorApi}
-            isDownload={isDownload}
-          />
+            isDownload={isDownload} />
         </Form>
       </Main>
     </>
   );
-}
+};
 
 export default RegistrationPage;

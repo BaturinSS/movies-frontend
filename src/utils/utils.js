@@ -1,42 +1,50 @@
-export const checkedLengthArray = (arr) => {
-  return arr.length === 0;
-};
+import { ARR_TYPE_INPUTS } from '../utils/constants';
 
-export const timeFormat = (timeFull) => {
-  const minutes = timeFull % 60;
+export const checkedLengthArray = (arr) => (arr.length === 0);
+
+export function timeFormat(timeFull) {
+  const minutes = (timeFull % 60);
   const hours = Math.trunc(timeFull / 60);
 
-  const timeHours = () => {
-    if ((hours % 60) >= 1 && minutes === 0) return `${timeFull}м`
-    return hours !== 0
-      ? `${hours}ч`
-      : ''
-  }
+  function timeHours() {
+    return ((hours % 60) >= 1) && (minutes === 0)
+      ? `${timeFull}м`
+      : (hours !== 0)
+        ? `${hours}ч`
+        : ''
+  };
 
-  const timeMinutes = () => {
-    if (String(minutes).length === 1 && minutes !== 0 && hours >= 1) return `0${minutes}м`
-
-    return minutes !== 0
-      ? `${minutes}м`
-      : ''
-  }
+  function timeMinutes() {
+    return (String(minutes).length === 1) && (minutes !== 0) && (hours >= 1)
+      ? `0${minutes}м`
+      : (minutes !== 0)
+        ? `${minutes}м`
+        : ''
+  };
 
   return `${timeHours()} ${timeMinutes()}`
-}
+};
 
-export const sortAlphabetList = (list, isEN) => {
+export function sortAlphabetList(list, isEN) {
   const sortFunction = isEN
     ? function SortArray(x, y) {
-      if (x.nameEN < y.nameEN) { return -1; }
-      if (x.nameEN > y.nameEN) { return 1; }
+      if (x.nameEN < y.nameEN) return -1;
+      if (x.nameEN > y.nameEN) return 1;
       return 0;
     }
     : function SortArray(x, y) {
-      if (x.nameRU < y.nameRU) { return -1; }
-      if (x.nameRU > y.nameRU) { return 1; }
+      if (x.nameRU < y.nameRU) return -1;
+      if (x.nameRU > y.nameRU) return 1;
       return 0;
     }
+
   return list.sort(sortFunction);
 };
 
-export const checkType = (arr, el) => (arr.indexOf(el) !== -1);
+export function appointTypeInput(typeInput) {
+  const checkType = () => (ARR_TYPE_INPUTS.indexOf(typeInput) !== -1);
+
+  return (String(typeInput) && checkType())
+    ? typeInput
+    : 'text'
+};

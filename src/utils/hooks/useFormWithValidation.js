@@ -5,8 +5,8 @@ function useFormWithValidation() {
   const [errors, setErrors] = React.useState({});
   const [isValid, setIsValid] = React.useState(false);
 
-  const handleChange = (event) => {
-    const target = event.target;
+  function handleChange(evt) {
+    const target = evt.target;
     const name = target.id;
     const value = target.value;
     setValues({ ...values, [name]: value });
@@ -20,14 +20,11 @@ function useFormWithValidation() {
       setErrors(newErrors);
       setIsValid(newIsValid);
       if (evt) evt.target.reset();
-    },
-    [setValues, setErrors, setIsValid]
-  );
+    }, [setValues, setErrors, setIsValid]);
 
   return {
-    values, handleChange, errors,
-    isValid, resetForm, setErrors,
-    setIsValid, setValues,
+    values, handleChange, errors, isValid,
+    resetForm, setErrors, setIsValid, setValues,
   };
 }
 

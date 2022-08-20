@@ -24,5 +24,6 @@ const configAboutProject = {
       comment: 'Front-end',
     },
   ],
-}
+};
+
 export default configAboutProject;

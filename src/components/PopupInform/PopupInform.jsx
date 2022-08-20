@@ -1,7 +1,12 @@
 import './PopupInform.css';
 import React from "react";
 
-function PopupInform({ message, textButton, clickButton }) {
+function PopupInform({
+  message,
+  textButton,
+  clickButton
+}) {
+
   return (
     <>
       <div className='popup__block'>
@@ -10,7 +15,9 @@ function PopupInform({ message, textButton, clickButton }) {
           className="popup__button-confirm"
           type="button"
           onClick={clickButton}
-        >{textButton}</button>
+        >
+          {textButton}
+        </button>
       </div>
     </>
   )

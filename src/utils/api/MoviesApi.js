@@ -6,9 +6,9 @@ class MoviesApi {
   };
 
   _checkResponse(res) {
-    return res.ok
+    return (res.ok)
       ? res.json()
-      : Promise.reject(res.json())
+      : Promise.reject(res.json());
   };
 
   download() {
@@ -17,10 +17,8 @@ class MoviesApi {
     })
       .then(this._checkResponse)
   };
-}
+};
 
-const moviesApi = new MoviesApi({
-  baseUrl: BASE_URL_MOVIES_API,
-});
+const moviesApi = new MoviesApi({ baseUrl: BASE_URL_MOVIES_API });
 
 export default moviesApi;
