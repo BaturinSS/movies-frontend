@@ -77,7 +77,7 @@ const useMoviesCard = (
       })
       .catch((err) => {
         showMessageMoviesList(TEXT_ERROR, '');
-        if (err.name === 'TypeError') console.error(err.message);
+        if (err.name === 'TypeError') return console.error('ERROR:', err.message);
         err.then(({ message }) => console.error('error:', message));
       });
   };
@@ -92,7 +92,7 @@ const useMoviesCard = (
       })
       .catch((err) => {
         showMessageMoviesList(TEXT_ERROR, '');
-        if (err.name === 'TypeError') return console.error(err.message);
+        if (err.name === 'TypeError') return console.error('ERROR:', err.message);
         err.then(({ message }) => console.error('error', message));
       });
   };
