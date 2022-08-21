@@ -2,3 +2,8 @@
   background-color: #272727;
   color: #424242;
 }
+
+.form__submit-button_disabled:hover {
+  pointer-events: none;
+  background-color: #272727;
+}

@@ -10,14 +10,17 @@
   font-size: 11px;
   line-height: 13px;
   color: #FFFFFF;
+}
+
+.form__input-label_profile:first-of-type {
+  margin-top: 24px;
   border-bottom: 1px solid #424242;
 }
 
-.form__input-label_profile:first-child {
-  margin-top: 50px;
+.form__input-label_profile:last-of-type {
+  margin-top: 17px;
 }
 
-.form__input-label_profile:last-child {
-  margin-top: 17px;
-  border: none;
+.form__input-label_profile:hover {
+  color: rgba(61, 220, 132, 1);
 }

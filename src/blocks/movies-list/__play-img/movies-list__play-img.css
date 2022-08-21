@@ -1,0 +1,12 @@
+.movies-list__play-img {
+  position: absolute;
+  bottom: 8%;
+  left: 4%;
+  width: 15%;
+  transition: .5s;
+  z-index: 5;
+}
+
+.movies-list__play-img:hover {
+  opacity: .5;
+}

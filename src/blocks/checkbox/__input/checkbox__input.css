@@ -13,7 +13,7 @@
   height: 16px;
   margin-left: 3px;
   background-color: #FFFFFF;
-  border: .1px solid #3ab170;
+  border: 1px solid #3ab170;
   border-radius: 50%;
   transition: .5s;
 }

@@ -10,13 +10,12 @@
   .about-me__links {
     margin-left: auto;
     margin-right: auto;
-    width: 500px;
+    width: 100%;
   }
 }
 
 @media screen and (min-width: 747px) {
   .about-me__links {
-    width: 100%;
     grid-area: link;
     margin-top: 80px;
   }

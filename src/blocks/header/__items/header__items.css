@@ -10,7 +10,7 @@
   align-items: flex-end;
   justify-content: space-between;
   background-color: #202020;
-  transition: right .8s linear;
+  transition: right .3s linear;
   z-index: 10;
   /* border: 1px solid red; */
 }

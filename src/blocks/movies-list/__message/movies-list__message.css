@@ -1,0 +1,27 @@
+.movies-list__message {
+  margin: 0 0 0 14px;
+  padding: 0;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+  color: rgba(255, 0, 0, 0.801)
+}
+
+@media screen and (min-width: 320px) {
+  .movies-list__message {
+    font-size: calc((100vw - 769px) / (320 - 769) * (15 - 20) + 20px);
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .movies-list__message {
+    font-size: 20px;
+    height: 80px;
+  }
+}

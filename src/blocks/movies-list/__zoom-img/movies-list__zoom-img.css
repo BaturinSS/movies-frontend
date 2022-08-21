@@ -1,0 +1,14 @@
+.movies-list__zoom-img {
+  position: absolute;
+  top: 6%;
+  right: 3%;
+  margin: 0;
+  padding: 0;
+  width: 6%;
+  transition: .5s;
+  z-index: 5;
+}
+
+.movies-list__zoom-img:hover {
+  opacity: .5;
+}
