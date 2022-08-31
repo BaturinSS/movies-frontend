@@ -20,8 +20,8 @@
     "start": "set PORT=3106 && react-scripts start",
     "build": "react-scripts build",
     "predeploy": "npm run build",
-    "deploy": "scp -r ./build/* toko-nn@158.160.8.98:/home/toko-nn/mdiplom-full/movies-explorer-frontend/build",
-    "push": "scp -r ./build/* toko-nn@158.160.8.98:/home/toko-nn/mdiplom-full/movies-explorer-frontend/build",
+    "deploy": "scp -r ./build/* toko-nn@134.0.115.126:/home/toko-nn/frontend/movies",
+    "push": "scp -r ./build/* toko-nn@134.0.115.126:/home/toko-nn/frontend/movies",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

@@ -6,7 +6,7 @@ class MainApi {
 
   _baseUrl = () => {
     return (this._NODE_ENV === 'production')
-      ? 'https://mdiplomapi.nomoredomains.xyz'
+      ? 'https://api.movies.novo52.ru'
       : 'http://localhost:3000';
   };
 
