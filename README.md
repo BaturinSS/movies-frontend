@@ -50,6 +50,6 @@ Frontend часть одностраничного, адаптивного пр�
 ✅ Обновлять информации о пользователе         
     
 ### [Ссылка на backend 👈👈👈👈](https://api.movies.novo52.ru)   
-### [Ссылка на frontend 👈👈👈👈](https://movies.novo52.ru)    
 ### [GitHub на backend 👈👈👈👈](https://github.com/BaturinSS/movies-api)    
+### [Ссылка на frontend 👈👈👈👈](https://movies.novo52.ru)       
 ### [Ссылка на Pull Request 👈👈👈👈](https://github.com/BaturinSS/movies-explorer-frontend/pull/2)
