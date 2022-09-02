@@ -43,7 +43,7 @@ const configAboutMe = {
       {
         id: 5,
         to: {
-          pathname: 'https://server-mesto.ru'
+          pathname: 'https://mesto.novo52.ru'
         },
         target: '_blank',
         title: 'Одностраничное приложение',
