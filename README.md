@@ -1,7 +1,10 @@
 ## [Проект: Movies(frontend)](https://movies.novo52.ru)
 
-[Видео. Краткий обзор](https://user-images.githubusercontent.com/94468513/188140407-315ee995-1d58-441d-ac97-8a953e3dfd34.mp4)
-[Скачать видио](https://disk.yandex.ru/d/8RNxi50xr-LbgA)
+[Видео. Краткий обзор](https://user-images.githubusercontent.com/94468513/188140407-315ee995-1d58-441d-ac97-8a953e3dfd34.mp4)    
+
+[Скачать видео](https://disk.yandex.ru/d/8RNxi50xr-LbgA)    
+
+
 ### 🌕 Краткое описание:
 Дипломный проект.   
 Frontend часть одностраничного, адаптивного приложения на react.js, с сервером(backend) на node.js framework express.js.
