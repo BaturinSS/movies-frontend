@@ -1,6 +1,6 @@
 ## [Проект: Movies(frontend)](https://movies.novo52.ru)
 
-[Видео. Краткий обзор](https://user-images.githubusercontent.com/94468513/163075115-f2bbe1a0-51f3-4118-b5f6-601b5370f4c2.mp4)
+[Видео. Краткий обзор](https://user-images.githubusercontent.com/94468513/188140407-315ee995-1d58-441d-ac97-8a953e3dfd34.mp4)
 
 ### 🌕 Краткое описание:
 Дипломный проект.   
