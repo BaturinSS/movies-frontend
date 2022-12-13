@@ -1,6 +1,6 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
-import { TranslationContext } from '../../contexts/TranslationContext';
+import {Route, Switch} from "react-router-dom";
+import {TranslationContext} from '../../contexts/TranslationContext';
 import AboutProjectPage from "../../pages/AboutProject/AboutProjectPage";
 import RegistrationPage from "../../pages/Registration/RegistrationPage";
 import AuthorizationPage from "../../pages/Authorization/AuthorizationPage";
@@ -10,10 +10,10 @@ import ProfilePage from "../../pages/Protected/Profile/ProfilePage";
 import MoviesPage from "../../pages/Protected/Movies/MoviesPage";
 import MoviesSavedPage from "../../pages/Protected/MoviesSaved/MoviesSavedPage";
 import MainApi from "../../utils/api/MainApi";
-import { NODE_ENV } from "../../utils/constants";
+import {NODE_ENV} from "../../utils/constants";
 import Popup from "../Popup/Popup";
 import ImageZoom from '../ImageZoom/ImageZoom';
-import { disablePageScroll, enablePageScroll } from 'scroll-lock';
+import {disablePageScroll, enablePageScroll} from 'scroll-lock';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
@@ -80,7 +80,7 @@ function App() {
           <Route path="/" exact>
             <AboutProjectPage
               isDownload={isDownload}
-              isLoggedIn={isLoggedIn} />
+              isLoggedIn={isLoggedIn}/>
           </Route>
           <Route path="/sign-up" exact>
             <ProtectedRoute

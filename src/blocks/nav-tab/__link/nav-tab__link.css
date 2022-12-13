@@ -1,7 +1,7 @@
 .nav-tab__link {
   margin: 0 0 20px;
-  padding: 0;
-  width: 82px;
+  padding: 0 10px;
+  min-width: 82px;
   height: 26px;
   display: flex;
   text-decoration: none;
@@ -16,6 +16,7 @@
   border-radius: 6px;
   background-color: #303030;
   transition: .5s;
+  white-space: nowrap;
   /* border: 1px solid red; */
 }
 

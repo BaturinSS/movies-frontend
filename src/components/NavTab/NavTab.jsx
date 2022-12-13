@@ -1,15 +1,17 @@
 import "./NavTab.css";
-import { Link as LinkScroll } from "react-scroll";
+import {Link as LinkScroll} from "react-scroll";
 
 function NavTab({
-  config,
+   config,
+   selectionLanguage,
+   isLang
 }) {
-  const { links } = config;
+  const {links} = config;
 
   return (
     <>
       <nav className='nav-tab'>
-        {links.map(({ href, title }, i) => {
+        {links.map(({href, title}, i) => {
           return (
             <LinkScroll
               key={i * 18}
@@ -20,8 +22,9 @@ function NavTab({
               smooth={true}
               offset={0}
               duration={500}
+              lang={`${isLang}`}
             >
-              {title}
+              {selectionLanguage(title)}
             </LinkScroll>
           );
         })}
